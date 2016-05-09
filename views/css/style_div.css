@@ -1,0 +1,581 @@
+/*html, body {
+	height:100%;
+}*/
+
+div {
+	text-align:center;
+}
+
+.message {
+	font-size:21px;
+	color:green;
+}
+
+/***********************************************
+BALISES DE BANDEAU DE CONNEXION / PROPOSITION 
+***********************************************/
+
+/*.headband, .headband a {
+	font-size:20px;
+	width:100%;
+	height:20%;
+        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        color:#999;
+	text-align:center;
+	margin:auto;
+}
+
+
+.head-profile {
+	position:relative;
+	width:26%;
+	float:left;
+	text-align:left;
+}
+
+
+.head-logo {
+	position:relative;
+	float:right;
+	text-align:center;
+	width:48%;
+}
+
+
+.head-proposition {
+	position:relative;
+	width:25%;
+	float:right;
+	text-align:right;
+}*/
+
+/**************************************************
+*******  FIN DE BANDEAU / END OF HEADBAND ********
+**************************************************/
+
+
+
+
+
+/***************************************************************************
+SECTION POUR LA PAGE ACCUEIL RENNES / SECTION FOR HOME PAGES (Flash Buttons) 
+****************************************************************************/
+.art, .eat { 
+        position:relative;
+	float:right;
+}
+
+.run, .party {
+        position:relative;
+	float:left;
+}
+/**********************************
+FIN DE SECTION ACCUEIL
+**********************************/
+
+
+
+
+/******************************************************************************************************************************************************************
+BALISES DE CONTENU / CONTENT CLASSES (content-connection : connexion, inscription, forgotpass.. ),  (content-small : for home, profil.. ), (content : list & event)
+*******************************************************************************************************************************************************************/
+
+/*.content-connection {
+	width:55%;
+	height:70%;
+	margin:auto;
+}*/
+
+.content-small {
+	width:90%;
+	height:115%;
+	/*margin:auto;*/
+}
+
+/* CONTENT */
+/*.content {
+	width:140%;
+	height:100%;
+	margin:auto;
+}*/
+
+
+
+
+/* IMAGES ET TITRES DE CONTENU RENNES.PHP */
+/* RENNES.PHP */
+
+
+.nomville{
+        font-size:30px;
+	height:20%;
+}
+
+.nomville a:link, a:hover, a:focus, a:active{
+        text-decoration:none;
+}
+
+
+/* FIN RENNES.PHP */
+
+
+
+
+
+/**************************************
+HEADER FOR SECTIONS LIST.PHP, PROFIL.PHP, ETC...
+***************************************/
+.content-head {
+	float:center;
+	width:94%;
+	height:20%;
+	margin:auto;
+	margin-top:-7%;
+}
+
+
+.sort {
+	float:right;
+	text-align:left;
+	width:45%;
+}
+
+
+.lang {
+	float:left;
+	text-align:left;
+	width:45%;
+	margin-left:2%;
+}
+
+
+.content-img-left {
+	position:relative;
+	/*float:left;*/
+	text-align:center;
+	width:100%;
+	height:10%;
+	font:30px "noteworthy";
+	color:#d9523b;
+	/*background-color:black;*/
+}
+
+.content-img-left img {
+	position:relative;
+	display:inline-block;
+}
+
+
+.content-img-right {
+	position:relative;
+	/*float:left;*/
+	text-align:center;
+	width:100%;
+	height:10%;
+	font:30px "noteworthy";
+	color:#2b5f92;
+}
+
+
+.content-img-right img {
+	position:relative;
+	display:inline-block;
+}
+/* FIN DE SOUS-SECTION IMAGES */
+
+
+/*.content {
+	position: relative;
+	
+}*/
+
+.content-left {
+	/*margin-top: 6em;*/
+	position:relative;
+	float:left;
+	text-align:center;
+	width:46%;
+	height:100%;
+}
+
+.content-right {
+	/*margin-top: 6em;*/
+	/*margin-right: 2.5em;*/
+	position:relative;
+	float: right;
+	text-align:center;
+	width:46%;
+	height:100%;
+}
+
+/*.content-right {
+	position:relative;
+	float:right;
+	text-align:center;
+	width:49%;
+	height:75%;
+}*/
+
+
+
+
+
+.content-left table {
+	position:relative;
+	margin: auto;
+	width:94%;
+	font-size:14px;
+	border-spacing:2px;
+	background-color: yellow;
+}
+
+/*.content-left th {
+	font-size:14px;
+	text-align:left;
+}*/
+
+
+.content-right table {
+	position:relative;
+	margin: auto;
+	width:94%;
+	font-size:14px;
+	border-spacing:2px;
+	background-color: blue;
+}
+
+/**************************************************************
+SPECIFIQUE POUR PROPOSITION.PHP (dans le dossier proposition/)
+***************************************************************/
+/*.content-head-proposition {
+	float:center;
+	width:94%;
+	height:70%;
+	margin:auto;
+}*/
+
+.slogan {
+	color:#999;
+	font-size:22px;
+}
+
+
+.form3 {
+	color:#999;
+	width:60%;
+	height:45%;
+	margin:2% auto;
+	/*background-color:yellow;*/
+}
+
+
+.form3-left {
+        width:42%;
+	float:left;
+	text-align:left;
+        line-height:28px;
+	/*background-color:yellow;*/
+}
+
+.form3-right {
+        width:45%;
+	float:right;
+	text-align:left;
+        line-height:28px;
+	/*background-color:black;*/
+}
+
+
+
+.desc {
+	margin:30% auto;
+	height:35%;
+	/*background-color:black;*/
+
+}
+
+
+/***************************************************************************************************
+SPECIFIQUE POUR LES PAGES D'INSCRIPTION / CONNEXION (connexion.php, forgotpass.php, inscription.php
+****************************************************************************************************/
+.connexion {
+        color:#008e98;
+        font:54px "noteworthy";
+}
+
+
+.form2 {
+        position:relative;
+	height:32%;
+	width:82%;
+	color:#999;
+	text-align:right;
+	margin-top:6%;
+	margin-right:22%;
+        line-height:28px;
+}
+
+
+/***** INSCRIPTION.PHP *****/
+/***************************/
+.inscription {
+        color:#4d944e;
+        font:54px "noteworthy";
+}
+
+
+.form {
+        position:relative;
+	text-align:right;
+	height:80%;
+	margin-top:5%;
+	color:#999;
+	width:83%;
+        line-height:28px;
+}
+
+
+/**************************************
+SPECIFIQUE POUR LA PAGE PROFIL 
+***************************************/
+.idhead {
+	float:left;
+	width:50%;
+	font:45px "noteworthy";
+        color:#d9523b;
+}
+
+
+.idlang {
+	float:right;
+	text-align:left;
+	width:24%;
+}
+
+
+.idcard {
+	background-image: url('../img/identity_card_small.png');
+	background-repeat: no-repeat;
+	width:55%;
+	height:66%;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        color:#999;
+	/*background-color:yellow;*/
+}
+
+
+.idcontent {
+	width:92%;
+	height:82%;
+	padding:5%;
+	margin:auto;
+	font-size:22px;
+	padding:4%;
+}
+
+
+.idpicture {
+	float:left;
+}
+
+
+
+.idnumber {
+	float:right;
+	width:50%;
+	height:8%;
+}
+
+
+.idcard table {
+	font-size:19px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        color:#999;
+	display:inline-table;
+	float:left;
+	text-align:left;
+	padding:4%;
+}
+
+
+
+.idcard td {
+        color:#4682B4;
+	font-weight:lighter bold;
+	border-bottom:dotted 2px;
+}
+
+
+/* .idcard th {
+        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:20px;
+        color:#999;
+} */
+
+
+/***************************************************************************************************
+ FOOTERS / PIEDS-DE-PAGE | Copyrights, liens babyzpeak et contacts, presentation gozpeak, etc ....
+****************************************************************************************************/
+.footer, .footer a {
+	position:relative;
+	margin:auto;
+	font-size:14px;
+        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        color:#999;
+	width:94%;
+	height:12%;
+	margin-top:7%;
+	text-decoration:none;
+}
+
+
+.babyzpeak {
+	float:left;
+	text-align:left;
+}
+
+
+.footer-copyright {
+	margin-left:14%;
+	float:center;
+}
+
+
+.footer-link {
+	float:right;
+	text-align:left;
+}
+
+
+
+/*Typo*/
+/*@font-face {
+    font-family: 'noteworthy';
+    src: url('../img/typo/noteworthy.ttc');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+
+
+/**********************/
+/*Qu'est-ce que c'est?*/
+.def{
+        position:relative;
+	/*color:#4d322a;*/
+	margin-top:5%;
+	/*color:#8B0000;*/
+	font:22px "noteworthy";
+}
+
+
+.explication{
+	width:75%;
+	margin:auto;
+	font-size:16px;
+        text-align:justify;
+	color:#999;
+}
+
+.concept{
+        border:groove;
+        border-width:thin;
+}
+
+
+
+/*Typo*/
+@font-face {
+    font-family: 'noteworthy';
+    src: url('../img/typo/noteworthy.ttc');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*************
+TEST CALENDAR 
+*************/
+
+div.calendar
+{
+  font-size: smaller;
+  color: #000;
+}
+
+div.calendar.popup
+{
+  margin-left: -40px;
+  margin-top: -100px;
+}
+
+div.calendar table
+{
+  background-color: #eee;
+  border: 1px solid #aaa;
+  border-collapse: collapse;
+}
+
+div.calendar thead {
+  background-color: white;
+}
+
+div.calendar td,
+div.calendar th
+{
+  padding: 3px;
+  text-align: center;
+}
+
+div.calendar td.title
+{
+  font-weight: bold;
+}
+
+div.calendar th
+{
+  background: #ddd;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  font-weight: bold;
+  color: #555;
+}
+
+div.calendar tr.days td {
+  width: 2em;
+  color: #555;
+  text-align: center;
+  cursor: pointer;
+}
+
+div.calendar tr.days td:hover,
+div.calendar td.button:hover
+{
+  background-color: #34ABFA;
+  cursor: pointer;
+}
+
+div.calendar tr.days td:active
+div.calendar td.button:active
+{
+  background-color: #cde;
+}
+
+div.calendar tr.days td.selected
+{
+  font-weight: bold;
+  background-color: #fff;
+  color: #000;
+}
+
+div.calendar tr.days td.today
+{
+  font-weight: bold;
+  color: #D50000;
+}
+
+div.calendar tr.days td.otherDay
+{
+  color: #bbb;
+}
+
+

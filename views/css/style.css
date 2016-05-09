@@ -1,0 +1,249 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*Body*/
+body{
+	text-align:center;
+	color:#999;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+
+/* VILLE */
+.nomville{
+	position:relative;
+	/*bottom:78px;*/
+	bottom:78px;
+	font-size:28px;
+}
+
+.nomville a:link, a:hover, a:focus, a:active{
+	text-decoration:none;
+}
+
+.ville{
+	position:relative;
+	/*top:173px;*/
+	top:173px;
+}
+
+.ville2{
+	position:relative;
+	/*bottom:0px;*/
+	bottom:30px;
+}
+
+.art{
+	position:relative;
+	/* bottom:30px; */
+	bottom:60px;
+}
+
+.run{
+	position:absolute;
+	/*top:300px;*/
+	top:270px;
+	right:65%;
+}
+
+.party{
+	position:absolute;
+	/*top:300px;*/
+	top:270px;
+	left:65%;
+}
+
+.eat{
+	position:relative;
+	/*bottom:90px;*/
+	bottom:120px;
+	margin-bottom:-50px;
+}
+
+.babyzpeak{
+	position:fixed;
+	left:20px;
+	bottom:12px;
+}
+
+.babyzpeak a:link, a:visited, a:hover, a:focus, a:active{
+	color:#999;
+	text-decoration:none;
+}
+
+.quoi{
+	position:fixed;
+	right:20px;
+	bottom:12px;
+}
+
+.quoi a:link, a:visited, a:hover, a:focus, a:active{
+	color:#999;
+	text-decoration:none;
+}
+
+
+/*Qu'est-ce que c'est?*/
+.def{
+	position:relative;
+	bottom:20px;
+	font-size:14px;
+}
+
+.content{
+	margin-top: 9%;
+	margin-left: 4%;
+	position:relative;
+	width:92%;
+	height:140%;
+}
+
+.explication{
+	text-align:justify;
+}
+
+.explication img{
+	position:relative;
+	top:10px;
+}
+
+.fin{
+	line-height:2px;
+}
+
+.fin img{
+	position:relative;
+	top:10px;
+}
+
+.pslogan{
+	position:relative;
+	top:15px;
+	line-height:35px;
+}
+
+.slogan{
+	padding-left:12px;
+	padding-right:15px;
+	border:groove;
+	border-width:thin;
+}
+
+
+
+/* INSCRIPTION */
+.inscription{
+	position:relative;
+	text-align:center;
+	color:#4d944e;
+	font:68px "noteworthy";
+}
+
+.formulaire{
+	position:relative;
+	bottom:40px;
+	right:100px;
+	line-height:28px;
+}
+
+.valider{
+	position:relative;
+	bottom:40px;
+}
+
+label{
+	color:#999;
+	display:inline-block;
+	width:350px;
+	text-align:right;
+}
+
+.autreslangues{
+	position:relative;
+	left:178px;
+}
+
+
+
+/* CONNEXION */
+.connexion{
+	color:#008e98;
+	font:68px "noteworthy";
+}
+
+.formulaire2{
+	position:relative;
+	top:90px;
+	right:100px;
+	line-height:28px;
+}
+
+.oubli{
+	position:relative;
+	margin-left: 150px;
+	top:80px;
+	color:#999;
+	font-size:14px;
+}
+
+.valider2{
+	position:relative;
+	top:90px;
+}
+
+/*Footer*/
+/* .footer{
+	position:relative;
+	top:320px;
+	padding-bottom:20px;
+	color:#999;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:9px;
+}
+
+.footer2{
+	position:relative;
+	top:20px;
+	padding-bottom:20px;
+	color:#999;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:9px;
+}
+
+.footer3{
+	position:relative;
+	bottom:20px;
+	padding-bottom:-20px;
+	color:#999;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:9px;
+}
+
+.footer4{
+	position:relative;
+	top:320px;
+	padding-bottom:-20px;
+	color:#999;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:9px;
+}
+
+.footer5{
+	position:relative;
+	top:50px;
+	padding-bottom:20px;
+	color:#999;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:9px;
+}
+*/
+
+
+/*Typo*/
+@font-face {
+    font-family: 'noteworthy';
+    src: url('img/typo/noteworthy.ttc');
+    font-weight: normal;
+    font-style: normal;
+}
+
