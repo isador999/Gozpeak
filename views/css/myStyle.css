@@ -397,6 +397,29 @@ green = #4d944e;
 
 
 /** SPECIFIC CSS **/
+@media (max-width: 1700px){
+	#headerTop{
+		font-size: 1.4em;
+	}
+	.headerRight .simple {
+		padding-top: 19px;
+		padding-bottom: 19px;		
+	}
+	.headerRight .middle{
+		padding-top: 19px;
+		padding-bottom: 19px;
+	}
+	.headerRight .double {
+		padding-top: 14px;
+	}
+	#home .city{
+		padding-top: 3em;
+	}
+	#home .activity-img{
+		margin-top: 4em;
+	}
+}
+
 @media (max-width: 1300px){
 	#headerTop{
 		font-size: 1.4em;
@@ -443,7 +466,6 @@ green = #4d944e;
 		margin-top: 4em;
 	}
 }
-
 
 
 @media (max-width: 1060px){
@@ -595,20 +617,20 @@ green = #4d944e;
 }
 
 
-@media (max-width: 913px){
+/*@media (max-width: 913px){
 	.headerRight .double {
 		padding-top: 18px;
 	}
-}
+}*/
 
-@media (max-width: 768px){
+@media (max-width: 1000px){
 	#headerTop{
-		font-size: 1em;
+		font-size: 1.1em;
 		padding: 0;
 	}
 	.headerRight .simple {
-		padding-top: 12px;
-		padding-bottom: 12px;
+		padding-top: 19px;
+		padding-bottom: 19px;
 	}
 	.headerRight .middle{
 		padding-top: 19px;
@@ -617,9 +639,23 @@ green = #4d944e;
 }
 
 
+@media (max-width: 900px){
+        #headerTop{
+                font-size: 1em;
+                padding: 0;
+        }
+	.headerRight .simple {
+                padding-top: 10px;
+                padding-bottom: 10px;
+        }
+}
+
+
+
+
 @media (max-width: 600px){
 	.headerRight {
-		height : initial!important;
+		height: initial!important;
 	}
 	.headerRight span {
 		width: 100%;
