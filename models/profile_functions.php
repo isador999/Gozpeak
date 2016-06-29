@@ -1,6 +1,6 @@
 <?php
 
-function profil_info($DB, $pseudo) {
+function profile_info($DB, $pseudo) {
 	$req = $DB->prepare("SELECT id, pseudo, email, name, lastname, profession, nationality, birthday, languages, premium from members where pseudo = ?");
 	$req -> execute(array($pseudo));
 	$infos = $req->fetch();
@@ -19,7 +19,7 @@ function count_events ($DB, $pseudo) {
 
 
 //NOT FINISHED // THIS SQL FUNCTION MUST BE COMPLETED //
-function profil_update($DB, $d) {
+function profile_update($DB, $d) {
 	$req = $DB->prepare('UPDATE members SET (pseudo, name, lastname, password) VALUES (?, ?, ?, ?)');
         $req->execute($d);
         $req->closeCursor();

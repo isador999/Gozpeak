@@ -11,10 +11,14 @@
 <link rel=stylesheet type="text/css" href="views/css/bootstrap-theme.css">
 <link rel=stylesheet type="text/css" href="views/css/bootstrap-theme.css.map">
 <link rel=stylesheet type="text/css" href="views/css/bootstrap-theme.min.css">
+<!-- <link rel=stylesheet type="text/css" href="views/css/bootstrapValidator.min.css">  -->
+<!-- <link rel=stylesheet type="text/css" href="views/css/formValidation.min.css"> -->
+
 
 <!-- FONT AWESONE -->
 <link rel=stylesheet type="text/css" href="views/css/font-awesome.min.css">
 <link rel=stylesheet type="text/css" href="views/css/font-awesome.css">
+
 
 <!-- PERSONAL STYLE -->
 
@@ -23,3 +27,4 @@
 
 <link rel=stylesheet type="text/css" href="views/css/style_div.css">
 <link rel=stylesheet type="text/css" href="views/css/style.css">
+

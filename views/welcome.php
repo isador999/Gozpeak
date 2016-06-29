@@ -15,7 +15,7 @@
 <body> 
 	<div id="wrapper">
 		<header class="center">
-		   <a class="logo" href="index.php"><img src="views/images/logo.png" alt="logo" title="logo" /></a>
+		   <a class="logo" href="http://demo.gozpeak.com/index/"><img src="views/images/logo.png" alt="logo" title="logo" /></a>
 		</header>
 
 		<div id="book">				

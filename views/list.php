@@ -1,6 +1,5 @@
-<!--<div class="content"> -->
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
         <head>
                 <script>
                         window.onload = function(){ height("staticHome") };
@@ -8,17 +7,16 @@
                 </script>
         </head>
 
-<body>
-
+<body> -->
+</table>
 <!-- Ici, de mon point de vue, si on vient d'un des boutons de la page Home.php, on sette une variable PHP qui pourrait savoir quel thème afficher...   (enfin juste une image Artzpeak, Runzpeak, etc...  et eventuellement des couleurs (ou pas, on s'en fout peut-être pour l'instant)  -->
 
 <!-- POUR UN EXEMPLE DE COMMENT C'ETAIT SUR LA DEMO => https://gozpeak.no-ip.info -->
 
 
-
-
 <!-- FEUILLE GRISE DES Zpeak Sorties -->
 <div class="content-left" style="background-image:url(views/images/papier.png); background-repeat:no-repeat;"
+<div class="content-left"
 <br/>
 <br/>
 <div class="content-img-left">Les <img src="views/images/zpeak_orange.png" height="50" alt="Orange" />  Sorties ! </div>
@@ -30,18 +28,18 @@
     <th>Heure</th>
   </tr>
 
-<? foreach ($events as $event) : ?>
+
+<?php foreach ($events as $event) { ?>
   <tr>
-                <td><img src="views/images/p_<? echo $event['language'] ?>.png" alt="logo_lang"> </td>
-                <td><font color="red"> <a href="index.php?page=profil&profil=<?echo $event['organizer']?>"><? echo $event['organizer'] ?></a> </font></td>
-                <td><a href="index.php?page=idea&idea=<?echo $event['eventname']?>&query=runzpeak"><? echo $event['eventname'] ?></a></td>
-                <td><? echo $event['eventhour'].'H'.$event['eventminutes'] ?></td>
+                <td> <img src="views/images/p_<?php echo $event['language'] ?>.png" alt="<?php echo $event['language'] ?>"</td>
+                <td> <a href="index.php?page=profil&profil=<?php echo $event['organizer'] ?>"><?php echo $event['organizer'] ?></a> </td>
+                <td> <a href="index.php?page=event&event=<?php echo $event['eventname'] ?>&query=<?php echo $query ?>"> <?php echo $event['eventname'] ?> </a></td>
+                <td> <?php echo $event['eventhour'].'H'.$event['eventminutes'] ?></td>
   </tr>
-<? endforeach; ?>
+<?php } ?>
 </table>
 
 </div>
-
 
 
 <!-- FEUILLE GRISE DES Zpeak Idees -->
@@ -57,25 +55,26 @@
     <th> Heure </th>
   </tr>
 
-<? foreach ($ideas as $idea) : ?>
+
+<?php foreach ($ideas as $idea) { ?>
   <tr>
-	<td><img src="views/images/p_<?echo $idea['language'] ?>.png" alt="logo_lang"> </td>
-       	<td> <a href="index.php?page=profil&profil=<?echo $idea['organizer']?>"><? echo $idea['organizer'] ?></a> </td>
-       	<td><a href="index.php?page=idea&idea=<?echo $idea['ideaname']?>&query=runzpeak"><? echo $idea['ideaname'] ?></a></td>
-       	<td><? echo $idea['ideahour'].'H'.$idea['ideaminutes'] ?></td>
+                <td> <img src="views/images/p_<?php echo $idea['language'] ?>.png" alt="<?php echo $idea['language'] ?>"</td>
+                <td> <a href="index.php?page=profil&profil=<?php echo $idea['organizer'] ?>"><?php echo $idea['organizer'] ?></a> </td>
+                <td> <a href="index.php?page=event&event=<?php echo $idea['eventname'] ?>&query=<?php echo $query ?>"> <?php echo $idea['eventname'] ?> </a></td>
+                <td> <?php echo $idea['eventhour'].'H'.$idea['eventminutes'] ?></td>
   </tr>
-<? endforeach; ?>
+<?php } ?>
 </table>
 </div>
 
 </div>
-
-</div> <!-- CONTENT END -->
+<!-- </div>  CONTENT END -->
 
 
 <!-- Boutons JS de résolution -->
 <a onclick="alert(window.innerWidth);"> WIDTH </a>
 <a onclick="alert(window.innerHeight);"> HEIGHT </a>
 
+<!-- 
 </body>
-</html>
+</html> -->

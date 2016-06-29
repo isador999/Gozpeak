@@ -242,7 +242,7 @@ label{
 /*Typo*/
 @font-face {
     font-family: 'noteworthy';
-    src: url('img/typo/noteworthy.ttc');
+    src: url('../images/typo/noteworthy.ttc');
     font-weight: normal;
     font-style: normal;
 }

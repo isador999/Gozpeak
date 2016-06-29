@@ -10,9 +10,11 @@
 	     <!-- <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-1 col-lg-offset-1"> -->
 	     	<div class="headerRight col-xs-12 col-sm-12 col-md-9 col-lg-9">
 	     	<!-- Page to use when user is logged -->
-		    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 middle"><a href="index.php?page=logout"> Se déconnecter </a></span>
-	     	    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"> Connecté en tant que <a href="index.php?page=profil&profil=<?echo $_SESSION['profil']?>"> <b><?echo $_SESSION['profil']?> TEST </b></a> </span>
-		    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $header[$_SESSION['language']]['event']; ?></a></span>
+		    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 middle"><a href="http://demo.gozpeak.com/index.php?page=logout"> Se déconnecter </a></span>
+		<!-- ######### Doesn't works with GLOBALS $_SESSION variables...  CHECK IF IT'S NORMAL BEFORE PRODUCTION !!! ######### --> 
+	     	    <!-- <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"> Connecté en tant que <a href="index.php?page=profil&profil=<?//echo $_SESSION['profil']?>"> <b><?//echo $_SESSION['profil']?> </b></a> </span> -->
+	     	    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"> Connecté en tant que <a href="http://demo.gozpeak.com/index.php?page=profil"> <b><?php echo $_SESSION['profil'];?> </b></a> </span>
+		    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalEvent('<? echo $query ?>')"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['event']; ?></a></span>
 	    </div>
         </div>
     </div> <!--end navbar-header -->

@@ -1,0 +1,64 @@
+$(document).ready(function() {
+ $('#inscriptionForm').validate({
+  rules: {
+   pseudo: {
+    minlength: 5,
+    required: true
+   },
+   mail: {
+    minlength: 10,
+    maxlength: 60,
+    required: true,
+    email: true
+   },
+   mail_check: {
+    minlength: 10,
+    maxlength: 60,
+    required: true,
+    email: true,
+    equalTo: mail
+   },
+   password: {
+    min_length: 6,
+    required: true,
+   },
+   password_check: {
+    min_length: 6,
+    required: true,
+   }
+  },
+  //highlight: function(element) {
+  // $(element).closest('.form-control').removeClass('success').addClass('error');
+  //},
+  highlight: function(element) {
+      var id_attr = "#" + $( element ).attr("id") + "1";
+      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+      $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove');
+  },
+  unhighlight: function(element) {
+      var id_attr = "#" + $( element ).attr("id") + "1";
+      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+      $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');         
+  },
+  success: function(element) {
+   element.text('OK!').addClass('valid').closest('.form-control').removeClass('error').addClass('success');
+  },
+  errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.length) {
+                error.insertAfter(element);
+            } else {
+            error.insertAfter(element);
+            }
+	},
+  submitHandler: function(form) {
+   // do other stuff for a valid form
+   $.post('ajaxtry.php', $("#inscriptionForm").serialize(), function(data) {
+    $("##inscriptionForm").hide();
+    //alert('TEST ENVOI AJAX');}
+    $('#results').html(data);
+   });
+  }
+ });
+}); // end document.ready

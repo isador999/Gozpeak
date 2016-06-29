@@ -1,3 +1,9 @@
+<?php
+session_start();
+?>
+
+
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
     <div id="header" class="center">
        <div id="headerTop" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -6,9 +12,9 @@
 	    	</div>
 
 			<div class="headerRight col-xs-12 col-sm-12 col-md-9 col-lg-9">
-		        <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalInscription()"><i class="fa fa-user-plus fa-fw"></i>&nbsp;<?php echo $header[$_SESSION['language']]['registration']; ?></a></span>
-			    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalConnection()"><i class="fa fa-sign-in fa-fw"></i>&nbsp;<?php echo $header[$_SESSION['language']]['connection']; ?></a></span>
-				<span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $header[$_SESSION['language']]['event']; ?></a></span>
+		        <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalInscription()"><i class="fa fa-user-plus fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['registration']; ?></a></span>
+			    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalConnection()"><i class="fa fa-sign-in fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['connection']; ?></a></span>
+				<span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalEvent('<? echo $query ?>')"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['event']; ?></a></span>
 			</div>
 	    </div>
 	</div>

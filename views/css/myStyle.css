@@ -154,12 +154,17 @@ green = #4d944e;
 
 /** HOME **/
 #home{
-	padding: 0;
-	margin-left: 60px;
+	padding-top: 2%;
+}
+
+#staticHome{
+	height: 92%;
 }
 
 #dynamicHome{
-	margin-top: -110px;
+	height: 5%;
+	margin-top: -10%;
+	margin-bottom: 2%;
 }
 
 #home .city{
@@ -243,7 +248,7 @@ green = #4d944e;
 }
 
 #footerTop, #footerMiddle{
-	font-size: 1.6em;
+	font-size: 1.5em;
 }
 
 #footerTop .left, #footerMiddle .left{
@@ -260,12 +265,14 @@ green = #4d944e;
 	text-align: justify;
 }
 
-.modal-content{
+#modalInscription .modal-content{
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 85%;
 }
 
 #modalInscription .modal-dialog{
-	width: 700px;
+	/*width: 800px;*/
+	width: 50%;
 }
 
 #modalInscription .modal-title{
@@ -281,14 +288,16 @@ green = #4d944e;
 
 #modalInscription .modal-body{
 	padding-top: 0px;
+	height: 75%;
 }
 
 #modalInscription .form-group{
-	padding-top: 2em;
+	padding-top: 2.5em;
 }
 
 #modalInscription .modal-footer{
-	margin-top: 35px;
+	/*margin-top: 35px;*/
+	margin-top: 0.2%;
 }
 #modalInscription .btn-check{
 	background-color: #4d944e!important;
@@ -297,7 +306,55 @@ green = #4d944e;
 
 
 
+/* ProfileModal */
+#modalProfile .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 75%;
+}
+
+#modalProfile .modal-dialog{
+	/*width: 800px;*/
+	width: 62%;
+}
+
+#modalProfile .modal-title{
+	font-size: 54px;
+	font-family: "noteworthy"!important;
+	color: #4d944e;
+}
+
+#profileForm .right-modal{
+	text-align: right;
+	padding-right: 2em;
+}
+
+#modalProfile .modal-body{
+	padding-top: 0px;
+	height: 70%;
+}
+
+#modalProfile .form-group{
+	padding-top: 2.5em;
+}
+
+#modalProfile .modal-footer{
+	/*margin-top: 35px;*/
+	height: 1%;
+}
+#modalProfile .btn-check{
+	background-color: #4d944e!important;
+	color: white;
+}
+
+
+
+
 /* ConnectionModal */ 
+#modalConnection .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 48%;
+}
+
 #modalConnection .modal-dialog{
 	width: 700px;
 }
@@ -316,18 +373,26 @@ green = #4d944e;
 
 #modalConnection .modal-body{
 	padding-top: 0px;
+	height: 52%;
 }
 
 #modalConnection .form-group{
-	padding-top: 2em;
+	padding-top: 2.5em;
 }
 
 #modalConnection .modal-footer{
-	margin-top: 35px;
+	/*margin-top: 35px;*/
+	/*height: 10%;*/
 }
 #modalConnection .btn-check{
 	background-color: #4d944e!important;
 	color: white;
+}
+
+/* Specific ForgotPass Button */
+#modalConnection #forgotpasslink {
+	/*text-align: center;*/
+	padding-right: 41%;
 }
 
 

@@ -2,18 +2,15 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 	<head>
-		<script>
-			window.onload = function(){ height("staticHome") };
-			window.onresize = function(){ height("staticHome") };
-		</script>
 	</head>
 	
 	<body>		
 		<div id="home">
+			<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+
 			<div id="staticHome">
-			
 				<div class="city center">
-					<?php echo $generic[$_SESSION['language']]['city'][0]; ?>
+					<?php if(isset($generic[$_SESSION['language']]['city'][0])) echo $generic[$_SESSION['language']]['city'][0]; ?>
 				</div>
 				
 				<div class="activity-img hidden-xs hidden-sm hidden-md col-lg-12">
@@ -63,9 +60,9 @@
 			</div>
 			
 			<div id="dynamicHome">
-				<a onclick="alert(window.innerWidth);"> WIDTH </a>
-				<a onclick="alert(window.innerHeight);"> HEIGHT </a>
-				<?php //include('footer.php'); ?>
+				<h5><a onclick="alert('Resolution : La largeur de votre écran, en pixels : ' + window.innerWidth + 'px');"> Largeur d'écran </a></h5>
+				<h5><a onclick="alert('Resolution : La hauteur de votre écran, en pixels : ' + window.innerHeight + 'px');"> Hauteur d'écran </a></h5>
+
 			</div>
 		</div>
 	</body>

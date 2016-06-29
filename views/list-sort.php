@@ -1,6 +1,7 @@
 
 <h4><a href="index.php?page=list&query=<?php echo $query?>"><img src="views/images/<?php echo $query?>.png" alt="<?php echo $query?>" title="<?php echo $query?>" /></a> </h4>
 
+
 <!-- La classe contient les feuilles grises des sorties, + le 'sort' ci-dessous permettant de trier les sorties -->
 <div class="content">
 
@@ -53,4 +54,3 @@
     </div>
 
 </div>
-

@@ -106,14 +106,14 @@ BALISES DE CONTENU / CONTENT CLASSES (content-connection : connexion, inscriptio
 /* RENNES.PHP */
 
 
-.nomville{
+/*.nomville{
         font-size:30px;
 	height:20%;
 }
 
 .nomville a:link, a:hover, a:focus, a:active{
         text-decoration:none;
-}
+}*/
 
 
 /* FIN RENNES.PHP */
@@ -151,13 +151,11 @@ HEADER FOR SECTIONS LIST.PHP, PROFIL.PHP, ETC...
 
 .content-img-left {
 	position:relative;
-	/*float:left;*/
 	text-align:center;
 	width:100%;
 	height:10%;
 	font:30px "noteworthy";
 	color:#d9523b;
-	/*background-color:black;*/
 }
 
 .content-img-left img {
@@ -168,7 +166,6 @@ HEADER FOR SECTIONS LIST.PHP, PROFIL.PHP, ETC...
 
 .content-img-right {
 	position:relative;
-	/*float:left;*/
 	text-align:center;
 	width:100%;
 	height:10%;
@@ -254,18 +251,17 @@ SPECIFIQUE POUR PROPOSITION.PHP (dans le dossier proposition/)
 	margin:auto;
 }*/
 
-.slogan {
+/*.slogan {
 	color:#999;
 	font-size:22px;
-}
+}*/
 
 
-.form3 {
+/*.form3 {
 	color:#999;
 	width:60%;
 	height:45%;
 	margin:2% auto;
-	/*background-color:yellow;*/
 }
 
 
@@ -274,7 +270,6 @@ SPECIFIQUE POUR PROPOSITION.PHP (dans le dossier proposition/)
 	float:left;
 	text-align:left;
         line-height:28px;
-	/*background-color:yellow;*/
 }
 
 .form3-right {
@@ -282,29 +277,27 @@ SPECIFIQUE POUR PROPOSITION.PHP (dans le dossier proposition/)
 	float:right;
 	text-align:left;
         line-height:28px;
-	/*background-color:black;*/
-}
+}*/
 
 
 
-.desc {
+/*.desc {
 	margin:30% auto;
 	height:35%;
-	/*background-color:black;*/
 
-}
+}*/
 
 
 /***************************************************************************************************
 SPECIFIQUE POUR LES PAGES D'INSCRIPTION / CONNEXION (connexion.php, forgotpass.php, inscription.php
 ****************************************************************************************************/
-.connexion {
+/*.connexion {
         color:#008e98;
         font:54px "noteworthy";
-}
+}*/
 
 
-.form2 {
+/*.form2 {
         position:relative;
 	height:32%;
 	width:82%;
@@ -313,7 +306,7 @@ SPECIFIQUE POUR LES PAGES D'INSCRIPTION / CONNEXION (connexion.php, forgotpass.p
 	margin-top:6%;
 	margin-right:22%;
         line-height:28px;
-}
+}*/
 
 
 /***** INSCRIPTION.PHP *****/
@@ -324,16 +317,32 @@ SPECIFIQUE POUR LES PAGES D'INSCRIPTION / CONNEXION (connexion.php, forgotpass.p
 }
 
 
-.form {
+/* old class: .form*/
+/*.inscriptionForm {
         position:relative;
-	text-align:right;
-	height:80%;
-	margin-top:5%;
+	text-align:center;
+	height:90%;
+	margin-top:10%;
 	color:#999;
-	width:83%;
+	width:86%;
+        line-height:28px;
+}*/
+
+
+.eventForm {
+        position:relative;
+	text-align:center;
+	height:55%;
+	margin-top:10%;
+	color:#999;
+	width:105%;
         line-height:28px;
 }
 
+.eventForm .logo {
+	width:45%;
+	/*height:95%;*/
+}
 
 /**************************************
 SPECIFIQUE POUR LA PAGE PROFIL 
@@ -416,7 +425,7 @@ SPECIFIQUE POUR LA PAGE PROFIL
 /***************************************************************************************************
  FOOTERS / PIEDS-DE-PAGE | Copyrights, liens babyzpeak et contacts, presentation gozpeak, etc ....
 ****************************************************************************************************/
-.footer, .footer a {
+/*.footer, .footer a {
 	position:relative;
 	margin:auto;
 	font-size:14px;
@@ -444,7 +453,7 @@ SPECIFIQUE POUR LA PAGE PROFIL
 .footer-link {
 	float:right;
 	text-align:left;
-}
+}*/
 
 
 
@@ -460,11 +469,9 @@ SPECIFIQUE POUR LA PAGE PROFIL
 
 /**********************/
 /*Qu'est-ce que c'est?*/
-.def{
+/*.def{
         position:relative;
-	/*color:#4d322a;*/
 	margin-top:5%;
-	/*color:#8B0000;*/
 	font:22px "noteworthy";
 }
 
@@ -480,21 +487,21 @@ SPECIFIQUE POUR LA PAGE PROFIL
 .concept{
         border:groove;
         border-width:thin;
-}
+}*/
 
 
 
 /*Typo*/
 @font-face {
     font-family: 'noteworthy';
-    src: url('../img/typo/noteworthy.ttc');
+    src: url('../images/typo/noteworthy.ttc');
     font-weight: normal;
     font-style: normal;
 }
 
-/*************
-TEST CALENDAR 
-*************/
+/************************************
+TEST CALENDAR  -  A reprendre un peu 
+*************************************/
 
 div.calendar
 {

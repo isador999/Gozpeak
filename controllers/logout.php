@@ -2,21 +2,22 @@
 
 session_start();
 
-if(!isset($_SESSION['profil']) or empty ($_SESSION['profil'])) {
-	header('location: index.php?page=connexion');
-}
-
-
-if(!isset($_GET['query']) or empty($_GET['query'])) {
-	$query = "gozpeak";
-}
-
-include_once('Views/head.php');
-include_once('Views/headband-notlogged.php');
-include_once('Views/logout.php');
-include_once('Views/footer.php');
-
 $_SESSION = array();
-session_destroy();
+if(session_destroy()) { 
+	$message='<div class="form-group"> <div class="alert alert-success">Vous avez été déconnecté avec succès. A bientôt ;) </div> </div>';
+}
+
+#if(!isset($_GET['query']) or empty($_GET['query'])) {
+#	$query = "gozpeak";
+#}
+
+
+if (isset($message)) {
+	session_start();
+        $_SESSION['msg'] = $message;
+}
+
+header('location: http://demo.gozpeak.com/index.php?page=home');
+
 
 ?>

@@ -1,8 +1,7 @@
 <?php
 
-
 function retrieve_events_by_type ($DB, $type, $language, $date) {
-	$sql = "SELECT organizer, eventname, eventplace, language, eventdate, eventhour, eventminutes FROM events where eventtype = ?";
+	$sql = "SELECT organizer, language, eventname, eventtype, eventplace, eventhour, eventminutes FROM events where eventtype = ?";
 	$exec_array = array($type);
 
 	if (!empty($language)) { 
@@ -12,7 +11,8 @@ function retrieve_events_by_type ($DB, $type, $language, $date) {
 	}
 
 	if (!empty($date)) {
-		$sql .= ' AND eventdate = ?';
+		#$sql .= ' AND eventdate = ?';
+		$sql .= ' AND date = ?';
 		$exec_array = array_merge($exec_array, array($date));
 	}
 

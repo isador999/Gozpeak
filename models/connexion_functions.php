@@ -35,14 +35,21 @@ function check_active_account_by_pseudo ($DB, $pseudo) {
 
 }
 
-function retrieve_pass ($DB, $hashed_pass) {
-	$req = $DB->prepare("SELECT password from members where password = ?");
-        $req -> execute(array($hashed_pass));
-        $dbpass = $req->fetchColumn();
+function retrieve_pass_from_pseudo ($DB, $pseudo) {
+	$req = $DB->prepare("SELECT password from members where pseudo = ?");
+        $req -> execute(array($pseudo));
+        $hashed_dbpass = $req->fetchColumn();
         $req->closeCursor();
-	return ($dbpass);
+	return ($hashed_dbpass);
 }
 
+function retrieve_pass_from_email ($DB, $email) {
+	$req = $DB->prepare("SELECT password from members where email = ?");
+        $req -> execute(array($email));
+        $hashed_dbpass = $req->fetchColumn();
+        $req->closeCursor();
+	return ($hashed_dbpass);
+}
 
 
 function select_pseudo ($DB, $ident) {
@@ -74,13 +81,11 @@ function retrieve_resetpass_fields($DB, $pseudo) {
 }
 
 
-
 function update_passwd($DB, $newpass, $pseudo) {
 	$req = $DB->prepare("UPDATE members SET password = :newpass where pseudo = :pseudo");
 	$req -> execute(array(':newpass'=>$newpass, ':pseudo'=>$pseudo));
 
 	$req -> closeCursor();
 }
-
 
 ?>
