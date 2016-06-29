@@ -10,7 +10,7 @@
 				<?php if(isset($result)) echo $result; ?>
 			<div class="modal-body">
 				<!-- The messages container -->
-                		<div id="errors"></div>
+                		<div id="inscription-errors"></div>
 				<form class="form-vertical" id="inscriptionForm" name="inscriptionForm" method="post" action="https://demo.gozpeak.com/controllers/inscription.php">
 								<!-- <div class="alert-box success form-feedback"> Merci pour votre enregistrement !  Un lien de confirmation vous a été envoyé par mail.  Ce lien est valide pendant les prochaines 72H pour activer votre compte GoZpeak ;) </div>
 								<div class="alert-box error form-feedback"> Oups... Désolé, vous devez remplir tous les champs pour vous inscrire. </div> -->

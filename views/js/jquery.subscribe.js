@@ -369,7 +369,7 @@ $(document).ready(function() {
                                 data.element.focus();
                             })
                     )
-                    .appendTo('#errors');
+                    .appendTo('#inscription-errors');
             }
 
             // Hide the default message

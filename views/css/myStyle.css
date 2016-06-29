@@ -389,11 +389,55 @@ green = #4d944e;
 	color: white;
 }
 
-/* Specific ForgotPass Button */
+
+/******** Specific ForgotPass Button *******/
 #modalConnection #forgotpasslink {
 	/*text-align: center;*/
 	padding-right: 41%;
 }
+/*******************************************/
+
+
+/* ForgottenPassModal */ 
+#modalForgottenPass .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 24%;
+}
+
+#modalForgottenPass .modal-dialog{
+	width: 550px;
+}
+
+#modalForgottenPass .modal-title{
+	font-size: 54px;
+	font-family: "noteworthy"!important;
+	color: #4d944e;
+}
+
+#modalForgottenPass .right-modal{
+	text-align: right;
+	/*padding-right: 3em;*/
+	padding-right: 2em;
+}
+
+#modalForgottenPass .modal-body{
+	padding-top: 0px;
+	height: 52%;
+}
+
+#modalForgottenPass .form-group{
+	padding-top: 2.5em;
+}
+
+#modalForgottenPass .modal-footer{
+	margin-top: 35px;
+	height: 10%;
+}
+#modalForgottenPass .btn-check{
+	background-color: #4d944e!important;
+	color: white;
+}
+
 
 
 /** SPECIFIC CSS **/
@@ -649,8 +693,6 @@ green = #4d944e;
                 padding-bottom: 10px;
         }
 }
-
-
 
 
 @media (max-width: 600px){

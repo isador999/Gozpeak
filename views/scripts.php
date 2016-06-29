@@ -18,13 +18,13 @@
 
 <!-- PERSONNAL SCRIPTS -->
 <script src="views/js/myScript.js"></script>
-<script src="views/js/profile.js"></script>
 
 <script src="views/js/formValidation.min.js"></script>
 <script src="views/js/bootstrap-formValidation.min.js"></script>
 <script src="views/js/jquery.subscribe.js"></script>
 <script src="views/js/jquery.connect.js"></script>
 <script src="views/js/jquery.contact.js"></script>
+<script src="views/js/jquery.profile.js"></script>
 
 <!-- <script src="views/js/bootstrapValidator.min.js"></script> -->
 <!-- <script src="views/js/jquery.form.min.js"></script> -->
