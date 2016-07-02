@@ -1,1 +1,2 @@
 ./models/dbconnect*
+./views/welcome.php
