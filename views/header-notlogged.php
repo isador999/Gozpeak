@@ -3,7 +3,6 @@ session_start();
 ?>
 
 
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
     <div id="header" class="center">
        <div id="headerTop" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

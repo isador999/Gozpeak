@@ -62,7 +62,6 @@
 			<div id="dynamicHome">
 				<h5><a onclick="alert('Resolution : La largeur de votre écran, en pixels : ' + window.innerWidth + 'px');"> Largeur d'écran </a></h5>
 				<h5><a onclick="alert('Resolution : La hauteur de votre écran, en pixels : ' + window.innerHeight + 'px');"> Hauteur d'écran </a></h5>
-
 			</div>
 		</div>
 	</body>

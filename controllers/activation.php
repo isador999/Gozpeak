@@ -3,6 +3,7 @@
 session_start();
 
 require_once(LIB.'display.php');
+require_once(LIB.'sessions_init.php');
 require_once(MODELS.'dbconnect.php');
 require_once(MODELS.'activation_functions.php');
 
@@ -28,12 +29,13 @@ if ($initial_state == 1) {
 	}
 }
 
+
+
 /******** Finally, set Global var if $message isset, and simply redirect to HOME *********/
 if (isset($message)) {
         $_SESSION['msg'] = $message;
 }
-header('location: http://demo.gozpeak.com/index.php?page=home');
-
+header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 
 //require_once('views/head.php');
 //include_once('Views/headband-notlogged.php');

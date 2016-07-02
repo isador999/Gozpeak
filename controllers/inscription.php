@@ -20,8 +20,8 @@ session_start();
 #	echo "OK";
 #}
 	
-
 require_once('./lib/display.php');
+require_once('./lib/sessions_init.php');
 require_once('./lib/check_strings.php');
 require_once('./lib/mailgun.php');
 require_once('../models/dbconnect.php');
@@ -129,17 +129,25 @@ if($_POST){
 			/***** URLENCODE TO CHANGE SPECIAL CHARS TO CODE *****/
 			$pseudo = urlencode($pseudo);
 	        	$key = urlencode($key);
+			#if(!empty($_SERVER['HTTPS'])) {
+			#	$gozpeak_protocol = 'https://';
+			#} else {
+			#	$gozpeak_protocol = 'http://';
+			#}
+
+			#$gozpeak_host = $_SERVER['HTTP_HOST'];
+
 
 			$mail_subject="Confirmation de votre inscription Gozpeak";
 			$mail_content = '<html><body>';
 			$mail_content = '<h4>'."Bonjour $pseudo ! ".'</h4>'.'<br>'.'<br>';
 			$mail_content .= "Merci de votre inscription sur Gozpeak :) ".'<br>';
 			$mail_content .= "Afin de rendre votre compte actif, cliquez sur le lien suivant (valable pendant 72h)".'<br>';
-			$mail_content .= "http://demo.gozpeak.com/index.php?page=activation&login=$pseudo&key=$key".'<br>'.'<br>';
+			$mail_content .= "$gozpeak_protocol"."$gozpeak_host"."/index.php?page=activation&login=$pseudo&key=$key".'<br>'.'<br>';
 			$mail_content .= "A très bientôt pour de nombreuses activités !".'<br>'.'<br>';
 			$mail_content .= "Linguistiquement,".'<br>'.'<br>';
 			$mail_content .= "L'équipe Gozpeak".'<br>';
-			$mail_content .= '<img src="http://demo.gozpeak.com/views/images/gozpeak_small.png">'.'<br>';
+			$mail_content .= '<img src="'."$gozpeak_protocol"."$gozpeak_host".'/views/images/gozpeak_small.png" alt="Gozpeak Logo">'.'<br>';
 			$mail_content .= '</body> </html>';
 	       		if(send_by_mailgun($mail, "$mail_subject", "$mail_content")) {
 				$message='<div class="form-group"> <div class="alert alert-success"> Merci pour votre inscription sur Gozpeak ! Un email de confirmation vient de vous être envoyé ;) </div> </div>';
@@ -202,8 +210,7 @@ if (isset($message)) {
 	$_SESSION['msg'] = $message;
 }
 
-#echo $_SESSION['msg'];
-header('location: http://demo.gozpeak.com/index.php?page=home');
+header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 
 #include_once('Views/inscription.php');
 #include_once('Views/footer.php');

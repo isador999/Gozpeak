@@ -9,9 +9,9 @@
 				<!-- Will be used to display an alert to the user> -->
 				<?php if(isset($result)) echo $result; ?>
 			<div class="modal-body">
-				<!-- The messages container -->
-                		<div id="inscription-errors"></div>
-				<form class="form-vertical" id="inscriptionForm" name="inscriptionForm" method="post" action="https://demo.gozpeak.com/controllers/inscription.php">
+				<form class="form-horizontal inscriptionForm" id="inscriptionForm" name="inscriptionForm" method="post" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/inscription.php">
+					<!-- The messages container -->
+                			<div id="errors" class="inscription-errors"></div>
 								<!-- <div class="alert-box success form-feedback"> Merci pour votre enregistrement !  Un lien de confirmation vous a été envoyé par mail.  Ce lien est valide pendant les prochaines 72H pour activer votre compte GoZpeak ;) </div>
 								<div class="alert-box error form-feedback"> Oups... Désolé, vous devez remplir tous les champs pour vous inscrire. </div> -->
 					<?php foreach($modal[$_SESSION['language']]['inscription']['field'] as $key => $value){ 
@@ -84,7 +84,7 @@
 				<h4 class="modal-title" id="ModalConnection"><?php echo $modal[$_SESSION['language']]['connection']['title']; ?></h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" data-toggle="validator" class="connectionForm" name="connectionForm" id="connectionForm" method="post" action="https://demo.gozpeak.com/controllers/connexion.php">
+				<form role="form" data-toggle="validator" class="form-horizontal connectionForm" name="connectionForm" id="connectionForm" method="post" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/connexion.php">
 					<?php foreach($modal[$_SESSION['language']]['connection']['field'] as $key => $value){ ?>
 							<div class="form-group">
 								<label class="col-lg-4 control-label right-modal" for="<?php echo $value['mandatory']['desc']; ?>"><?php echo $value['mandatory']['desc']; ?>&nbsp;&#42;</label>
@@ -123,7 +123,7 @@
         </div>
     
     <div class="modal-body form-horizontal">
-	<form role="form" data-toggle="validator" class="forgotpassForm" name="forgotpassForm" id="forgotpassForm" method="post" action="https://demo.gozpeak.com/controllers/forgotpass.php">
+	<form role="form" data-toggle="validator" class="forgotpassForm" name="forgotpassForm" id="forgotpassForm" method="post" action="controllers/forgotpass.php">
 	<?php foreach($modal[$_SESSION['language']]['forgotpass']['field'] as $key => $value){ ?>
         <div class="control-group">
             <label for="<?php echo $value['input']; ?>" class="control-label"></label>
@@ -151,7 +151,7 @@
         </div>
     
     <div class="modal-body form-horizontal">
-	<form role="form" data-toggle="validator" class="changepassForm" name="changepassForm" id="changepassForm" method="post" action="https://demo.gozpeak.com/controllers/changepassword.php">
+	<form role="form" data-toggle="validator" class="changepassForm" name="changepassForm" id="changepassForm" method="post" action="controllers/changepassword.php">
 	<?php foreach($modal[$_SESSION['language']]['changepass']['field'] as $key => $value){ ?>
         <div class="control-group">
             <label for="<?php echo $value['input']; ?>" class="control-label"></label>
@@ -188,7 +188,7 @@
 				<div class="form-group">
 					<img src=" <?php #echo $modal[$_SESSION['language']]['query']['event']['img'] ?>">
 				</div>
-				<form role="form" data-toggle="validator" class="eventForm" name="eventForm" id="eventForm" method="post" action="https://demo.gozpeak.com/index.php?page=list">
+				<form role="form" data-toggle="validator" class="eventForm" name="eventForm" id="eventForm" method="post" action="">
 					<?php foreach($modal[$_SESSION['language']]['event']['field'] as $key => $value){
 						if (isset($value['mandatory'])) { ?>
 							<div class="form-group">
@@ -239,7 +239,7 @@
 				<h4 class="modal-title" id="myModalLabel"><?php echo $modal[$_SESSION['language']]['event']['title']; ?></h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" data-toggle="validator" class="eventForm" name="eventForm" id="eventForm" method="post" action="https://demo.gozpeak.com/index.php?page=list">
+				<form role="form" data-toggle="validator" class="eventForm" name="eventForm" id="eventForm" method="post" action="">
 					<div class="form-group">
 					<?php foreach($modal[$_SESSION['language']]['event']['logo'] as $key => $logo){ ?>
 						<a onclick="selectQuery('<?php echo $logo; ?>')"><img class="logo" src="<?php echo $logo ?>"></a>

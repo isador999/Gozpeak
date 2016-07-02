@@ -8,7 +8,7 @@
 			</div>
 
 			<div id="message" class="center form-wrapper modal-body">
-			<form role="form" data-toggle="validator" method="post" name="contactform" id="contactform" class="contactform" action="https://demo.gozpeak.com/index.php?page=contact">
+			<form role="form" data-toggle="validator" method="post" action="" name="contactform" id="contactform" class="contactform">
                                 <input type="text" name="name" placeholder="Nom" id="name" />
                                 <input type="text" name="email" placeholder="Email" id="email" />
                                 <input type="text" name="subject" placeholder="Sujet" id="subject" />

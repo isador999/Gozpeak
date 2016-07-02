@@ -15,7 +15,7 @@
 <body> 
 	<div id="wrapper">
 		<header class="center">
-		   <a class="logo" href="http://demo.gozpeak.com/index/"><img src="views/images/logo.png" alt="logo" title="logo" /></a>
+		   <a class="logo" href="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/index.php"><img src="views/images/logo.png" alt="logo" title="logo" /></a>
 		</header>
 
 		<div id="book">				
@@ -29,10 +29,12 @@
 					<div class="row"></div>
 					<h3> Bienvenue ! </h3>
 					<div class="row"></div>
+					<h5><p class="env" id="environment"> <b>Version de développement </b></p></h5>
+					<div class="row"></div>
 					<h3 class="presentation"> Gozpeak est actuellement démarré dans les villes suivantes : </h3>
 					    <div id="welcomeCity" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
 					        <span class="link">
-						    <a href="index.php?page=home">
+						    <a href="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/index.php?page=home">
 							  <p><?php echo $generic[$_SESSION['language']]['city'][0]; ?><p>
 						    </a>
 						</span>

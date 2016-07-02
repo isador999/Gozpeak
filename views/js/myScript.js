@@ -51,13 +51,9 @@ function showModalSuccess(){
 
 
 
-// Show Modal Connection, and if click on ForgotPass Link, change modal.
+// Show Modal Connection
 function showModalConnection(){
 	$('#modalConnection').modal('show');
-	$('#forgotpasslink').click(function(){
-	  $('#modalConnection').modal('hide');
-	  $('#modalForgottenPass').modal('show');
-	});
 }
 
 // Show Modal Event
@@ -103,6 +99,11 @@ function selectQuery(logo){
 function showModalContact(){
         $('#modalContact').modal('show');
 }
+
+
+
+
+
 
 
 /*function checkForm() {

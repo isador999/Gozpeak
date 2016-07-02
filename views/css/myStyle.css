@@ -1,3 +1,8 @@
+/******* Environment ******/
+.env {
+	color: darkblue;
+}
+
 /** GENERAL **/
 html, body {
 	margin: 0;
@@ -260,6 +265,7 @@ green = #4d944e;
 }
 
 
+
 /** MODAL **/
 .modal-body {
 	text-align: justify;
@@ -286,19 +292,30 @@ green = #4d944e;
 	padding-right: 2em;
 }
 
+#modalInscription .inscription-errors {
+	margin-top: 2em;
+	margin-bottom: 1.4em;
+}
+
 #modalInscription .modal-body{
 	padding-top: 0px;
-	height: 75%;
+	height: 70%;
 }
 
 #modalInscription .form-group{
-	padding-top: 2.5em;
+	padding-top: 0.2em;
+}
+
+#modalInscription .form-control{
+	width: 88%;
 }
 
 #modalInscription .modal-footer{
 	/*margin-top: 35px;*/
+	height: 10%;
 	margin-top: 0.2%;
 }
+
 #modalInscription .btn-check{
 	background-color: #4d944e!important;
 	color: white;
@@ -334,7 +351,7 @@ green = #4d944e;
 }
 
 #modalProfile .form-group{
-	padding-top: 2.5em;
+	padding-top: 2em;
 }
 
 #modalProfile .modal-footer{
@@ -356,7 +373,8 @@ green = #4d944e;
 }
 
 #modalConnection .modal-dialog{
-	width: 700px;
+	/*width: 700px;*/
+	width: 40%;
 }
 
 #modalConnection .modal-title{
@@ -373,11 +391,8 @@ green = #4d944e;
 
 #modalConnection .modal-body{
 	padding-top: 0px;
-	height: 52%;
-}
-
-#modalConnection .form-group{
-	padding-top: 2.5em;
+	height: 42%;
+        margin-top: 4em;
 }
 
 #modalConnection .modal-footer{
@@ -389,82 +404,17 @@ green = #4d944e;
 	color: white;
 }
 
-
-/******** Specific ForgotPass Button *******/
+/* Specific ForgotPass Button */
 #modalConnection #forgotpasslink {
 	/*text-align: center;*/
 	padding-right: 41%;
 }
-/*******************************************/
 
-
-/* ForgottenPassModal */ 
-#modalForgottenPass .modal-content{
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
-	height: 24%;
-}
-
-#modalForgottenPass .modal-dialog{
-	width: 550px;
-}
-
-#modalForgottenPass .modal-title{
-	font-size: 54px;
-	font-family: "noteworthy"!important;
-	color: #4d944e;
-}
-
-#modalForgottenPass .right-modal{
-	text-align: right;
-	/*padding-right: 3em;*/
-	padding-right: 2em;
-}
-
-#modalForgottenPass .modal-body{
-	padding-top: 0px;
-	height: 52%;
-}
-
-#modalForgottenPass .form-group{
-	padding-top: 2.5em;
-}
-
-#modalForgottenPass .modal-footer{
-	margin-top: 35px;
-	height: 10%;
-}
-#modalForgottenPass .btn-check{
-	background-color: #4d944e!important;
-	color: white;
-}
 
 
 
 /** SPECIFIC CSS **/
-@media (max-width: 1700px){
-	#headerTop{
-		font-size: 1.4em;
-	}
-	.headerRight .simple {
-		padding-top: 19px;
-		padding-bottom: 19px;		
-	}
-	.headerRight .middle{
-		padding-top: 19px;
-		padding-bottom: 19px;
-	}
-	.headerRight .double {
-		padding-top: 14px;
-	}
-	#home .city{
-		padding-top: 3em;
-	}
-	#home .activity-img{
-		margin-top: 4em;
-	}
-}
-
-@media (max-width: 1300px){
+@media (max-width: 1440px){
 	#headerTop{
 		font-size: 1.4em;
 	}
@@ -490,7 +440,7 @@ green = #4d944e;
 
 @media (max-width: 1200px){
 	#headerTop{
-		font-size: 1.4em;
+		font-size: 1.3em;
 	}
 	.headerRight .simple {
 		padding-top: 19px;
@@ -510,6 +460,7 @@ green = #4d944e;
 		margin-top: 4em;
 	}
 }
+
 
 
 @media (max-width: 1060px){
@@ -548,18 +499,6 @@ green = #4d944e;
 		padding-top: 14px;
 	}
 }	
-
-
-/*@media (max-width: 10px){
-	.headerRight .simple {
-		padding-top: 9px;
-		padding-bottom: 9px;		
-	}
-	.headerRight .middle{
-		padding-top: 19px;
-		padding-bottom: 19px;
-	}
-}*/
 
 
 @media (max-width: 1016px){
@@ -630,11 +569,11 @@ green = #4d944e;
 
 @media screen and (device-aspect-ratio: 1024/768){
 	#headerTop{
-		font-size: 1.4em;
+		font-size: 1.2em;
 	}
 	.headerRight .simple {
 		padding-top: 19px;
-		padding-bottom: 19px;		
+		padding-bottom: 19px;
 	}
 	.headerRight .middle{
 		padding-top: 19px;
@@ -661,20 +600,20 @@ green = #4d944e;
 }
 
 
-/*@media (max-width: 913px){
+@media (max-width: 913px){
 	.headerRight .double {
 		padding-top: 18px;
 	}
-}*/
+}
 
-@media (max-width: 1000px){
+@media (max-width: 768px){
 	#headerTop{
-		font-size: 1.1em;
+		font-size: 1em;
 		padding: 0;
 	}
 	.headerRight .simple {
-		padding-top: 19px;
-		padding-bottom: 19px;
+		padding-top: 12px;
+		padding-bottom: 12px;
 	}
 	.headerRight .middle{
 		padding-top: 19px;
@@ -683,21 +622,11 @@ green = #4d944e;
 }
 
 
-@media (max-width: 900px){
-        #headerTop{
-                font-size: 1em;
-                padding: 0;
-        }
-	.headerRight .simple {
-                padding-top: 10px;
-                padding-bottom: 10px;
-        }
-}
 
 
 @media (max-width: 600px){
 	.headerRight {
-		height: initial!important;
+		height : initial!important;
 	}
 	.headerRight span {
 		width: 100%;
@@ -789,3 +718,60 @@ green = #4d944e;
 
 @media (max-width: 336px){
 }
+
+
+
+/* Test Inscription Modal */
+@media screen and (device-aspect-ratio: 1024/768) {
+	#modalInscription .modal-content{
+	        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	        height: 85%;
+	}
+
+	#modalInscription .modal-dialog{
+	        /*width: 800px;*/
+	}
+
+	#modalInscription .modal-title{
+	        font-size: 30px;
+	        font-family: "noteworthy"!important;
+	        color: #4d944e;
+	}
+
+	#inscriptionForm .right-modal{
+	        text-align: right;
+	        /*padding-right: 1em;*/
+		font-size: 0.8em;
+	}
+
+	#modalInscription .modal-body{
+	        padding-top: 0px;
+	        height: 75%;
+	}
+
+	#modalInscription .form-group{
+	        padding-top: 0.1em;
+		width: 80%;
+	}
+
+	#modalInscription .modal-footer{
+	        /*margin-top: 35px;*/
+	        margin-top: 0.2%;
+	}
+	#modalInscription .form-control{
+		/*padding-left: 15px;*/
+		font-size: 10px;
+	        margin-left: 0%;
+		width: 70%;
+	}
+
+	#modalInscription .btn{
+		font-size: 12px;
+	}
+	#modalInscription .btn-check{
+	        background-color: #4d944e!important;
+	        color: white;
+	}
+}
+
+

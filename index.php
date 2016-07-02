@@ -14,6 +14,9 @@ define('CSS', VIEWS . '/css/');
 define('JS', VIEWS . '/js/');
 
 
+/***** Source generic vars to have independant environments (source language and SERVER_HOST vars*****/
+require_once(LIB.'sessions_init.php');
+
 ### First loop to redirect to the next file (controller or view, depending of request and the existing files )    ###
 ### ------------------------------------------------------------------------------------------------------------- ###
 ### Première boucle PHP pour rediriger vers un fichier demandé (selon la requête reçue et les fichier existants)  ###
@@ -24,8 +27,9 @@ define('JS', VIEWS . '/js/');
 error_reporting(E_ALL);
 
 if(strpos($_SERVER['REQUEST_URI'], "index.php/")) {
-	header("location: http://demo.gozpeak.com/index.php");
+	header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php');
 }
+
 
 if(strpos($_SERVER['REQUEST_URI'], "index")) {
 	if(isset($_SERVER['REQUEST_URI']))

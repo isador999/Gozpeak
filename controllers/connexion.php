@@ -3,6 +3,7 @@
 session_start();
 
 require_once('./lib/display.php');
+require_once('./lib/sessions_init.php');
 require_once('./lib/check_strings.php');
 require_once('../models/dbconnect.php');
 require_once('../models/connexion_functions.php');
@@ -157,7 +158,7 @@ if (isset($error)) {
 if (isset($message)) {
 	$_SESSION['msg'] = $message;
 }
-header('location: http://demo.gozpeak.com/index.php?page=home');
+header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 
 
 // IF A MEMBER HAS RESET HIS PASSWORD, RESET_PASS.PHP WILL SEND URL HERE AND THIS MESSAGE WILL BE DISPLAYED //

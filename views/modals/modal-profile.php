@@ -7,7 +7,7 @@
 				<h4 class="modal-title" id="ModalProfile"><?php echo $modal[$_SESSION['language']]['profile']['title']; ?></h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" data-toggle="validator" class="form-vertical" name="profileForm" id="profileForm" method="post" action="https://demo.gozpeak.com/index.php?page=updateprofil">
+				<form role="form" data-toggle="validator" class="form-vertical" name="profileForm" id="profileForm" method="post" action="">
 					<?php foreach($modal[$_SESSION['language']]['profile']['field'] as $key => $value){ ?>
 							<div class="form-group">
 								<label class="col-lg-4 control-label right-modal" for="<?php echo $value['desc']; ?>"><?php echo $value['desc']; ?>&nbsp;&#42;</label>
