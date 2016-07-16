@@ -397,7 +397,7 @@ green = #4d944e;
 
 #modalConnection .modal-footer{
 	/*margin-top: 35px;*/
-	/*height: 10%;*/
+	/*height: 15%;*/
 }
 #modalConnection .btn-check{
 	background-color: #4d944e!important;
@@ -408,6 +408,108 @@ green = #4d944e;
 #modalConnection #forgotpasslink {
 	/*text-align: center;*/
 	padding-right: 41%;
+}
+
+
+
+
+/* ForgottenPassword Modal */ 
+#modalForgottenPass .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 43%;
+}
+
+#modalForgottenPass .modal-dialog{
+	/*width: 700px;*/
+	width: 46%;
+}
+
+#modalForgottenPass .modal-title{
+	font-size: 34px;
+	font-family: "noteworthy"!important;
+	color: #4d944e;
+}
+
+#forgotpassForm .right-modal{
+	text-align: right;
+	/*padding-left: 1em;*/
+}
+
+#modalForgottenPass .modal-body{
+	padding-top: 0px;
+	height: 42%;
+        margin-top: 4em;
+	padding-left: 8em;
+}
+
+#modalForgottenPass .form-group{
+	/*width: 100%;*/
+	/*padding-left: 6em;*/
+	padding-top: 0.2em;
+}
+
+#modalForgottenPass .form-control{
+	width: 90%;
+}
+
+#modalForgottenPass .modal-footer{
+	/*margin-top: 35px;*/
+	/*height: 18%;*/
+}
+#modalForgottenPass .btn-check{
+	background-color: #4d944e!important;
+	color: white;
+}
+
+
+
+
+/***** ResetPassword ModalForm *****/
+#modalResetPassword .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 54%;
+}
+
+#modalResetPassword .modal-dialog{
+	/*width: 700px;*/
+	width: 55%;
+}
+
+#modalResetPassword .modal-title{
+	font-size: 34px;
+	font-family: "noteworthy"!important;
+	color: #4d944e;
+}
+
+#resetpassForm .right-modal{
+	text-align: right;
+	margin-left: 1em;
+}
+
+#modalResetPassword .modal-body{
+	padding-top: 0px;
+	height: 51%;
+        margin-top: 4em;
+	padding-left: 8em;
+}
+
+#modalResetPassword .form-group{
+	/*width: 100%;*/
+	/*padding-left: 6em;*/
+	padding-top: 0.2em;
+}
+
+#modalResetPassword .form-control{
+	width: 76%;
+}
+
+#modalResetPassword .modal-footer{
+	/*margin-top: 35px;*/
+	height: 18%;
+}
+#modalResetPassword .btn-check{
+	background-color: #4d944e!important;
+	color: white;
 }
 
 

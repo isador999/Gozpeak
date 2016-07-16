@@ -22,6 +22,7 @@
 	<img src="views/images/p_hebreux.png"> Hebreux 
 	<img src="views/images/p_indien.png"> Indien 
 	<img src="views/images/p_japonais.png"> Japonais <br/>
+	<img src="views/images/p_others.png"> Autres langues <br/>
     </div>
 
 
@@ -46,6 +47,7 @@
         <input type="checkbox" name="language[]" id="hebreux"  value="hebreux"  /> Hebreux
         <input type="checkbox" name="language[]" id="indien"   value="indien"   /> Indien
         <input type="checkbox" name="language[]" id="japonais" value="japonais" /> Japonais
+        <input type="checkbox" name="language[]" id="japonais" value="others"   /> Autres langues
         <!-- <input type="checkbox" onclick="checkedAll()" name="all"      id="all"      value="Tous"     /> Tous -->
         <br/>
         <input type="submit" value="Actualiser !">

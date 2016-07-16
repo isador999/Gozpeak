@@ -54,7 +54,18 @@ function showModalSuccess(){
 // Show Modal Connection
 function showModalConnection(){
 	$('#modalConnection').modal('show');
+	$('#forgotpasslink').click(function(){
+		$('#modalConnection').modal('hide');
+		setTimeout(function() { $('#modalForgottenPass').modal('show'); }, 500);
+	});
 }
+
+
+/*function showModalForgottenPass(){
+              $('#modalConnection').modal('hide');
+              setTimeout(function() { $('#modalForgottenPass').modal('show'); }, 500);
+}*/
+
 
 // Show Modal Event
 function showModalEvent(request){
@@ -99,11 +110,6 @@ function selectQuery(logo){
 function showModalContact(){
         $('#modalContact').modal('show');
 }
-
-
-
-
-
 
 
 /*function checkForm() {

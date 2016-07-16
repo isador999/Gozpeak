@@ -1,11 +1,13 @@
-$('#modalConnection').on('hidden.bs.modal', function() {
-    $('#connectionForm').formValidation('resetForm', true);
-    $('#connect-errors').html('');
+//$('#modalForgottenPass').on('hidden.bs.modal', function() {
+$('#modalForgottenPass').on('hide.bs.modal', function() {
+    $('#forgotpassForm').formValidation('resetForm', true);
+    $('#forgotpass-errors').html('');
 });
 
 
 $(document).ready(function() {
-    $('#connectionForm').on('init.field.fv', function(e, data) {
+    $('#forgotpassForm')
+        .on('init.field.fv', function(e, data) {
             var field  = data.field,        // Get the field name
                 $field = data.element,      // Get the field element
                 bv     = data.fv;           // FormValidation instance
@@ -25,39 +27,33 @@ $(document).ready(function() {
                 $span.html(message);
             }
         })
-	.formValidation({
-        //container: '#messages',
-	framework: 'bootstrap',
-        message: "Cette valeur n'est pas valide",
-	verbose: 'false',
-	excluded: 'disabled',
-	trigger: 'blur',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            userlogin: {
-                validators: {
-                    notEmpty: {
-                        message: "Votre pseudo (ou email) est requis pour la connexion"
-                    }
-                }
+        .formValidation({
+            framework: 'bootstrap',
+            message: "Cette valeur n'est pas valide",
+            verbose: 'false',
+            trigger: 'blur',
+            icon: {
+		required: 'glyphicon glyphicon-asterisk',
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
             },
-            passwordlogin: {
-                validators: {
-                    notEmpty: {
-                        message: "Votre mot de passe est requis pour la connexion"
+            fields: {
+                mail_forgotpass: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Votre adresse email est requise pour la récupération de mot de passe'
+                        },
+			emailAddress: {
+                            message: "La valeur n'est pas une adresse email valide"
+                        }
                     }
                 }
             }
-
-        }
-    })
+        })
     .on('success.form.fv', function(e) {
             // Reset the message element when the form is valid
-            $('#connect-errors').html('');
+            $('#forgotpass-errors').html('');
         })
     .on('err.field.fv', function(e, data) {
             // data.fv      --> The FormValidation instance
@@ -68,7 +64,7 @@ $(document).ready(function() {
             var messages = data.fv.getMessages(data.element);
 
             // Remove the field messages if they're already available
-            $('#connect-errors').find('li[data-field="' + data.field + '"]').remove();
+            $('#forgotpass-errors').find('li[data-field="' + data.field + '"]').remove();
 
             // Loop over the messages
             for (var i in messages) {
@@ -81,13 +77,13 @@ $(document).ready(function() {
                             .html(messages[i])
                             .on('click', function(e) {
                                 // Hide the modal first
-                                $('#modalConnection').modal('hide');
+                                $('#modalForgottenPass').modal('hide');
 
                                 // Focus on the invalid field
                                 data.element.focus();
                             })
                     )
-                    .appendTo('#connect-errors');
+                    .appendTo('#forgotpass-errors');
             }
 
             // Hide the default message
@@ -99,13 +95,13 @@ $(document).ready(function() {
         })
      .on('success.field.fv', function(e, data) {
             // Remove the field messages
-            $('#connect-errors').find('li[data-field="' + data.field + '"]').remove();
+            $('#forgotpass-errors').find('li[data-field="' + data.field + '"]').remove();
         })
-        .on('err.form.fv', function(e) {
+     .on('err.form.fv', function(e) {
             // Show the message modal
-            $('#modalConnection').modal('show');
+            $('#modalForgottenPass').modal('show');
         })
-    .on('success.form.fv', function(e) {
+     .on('success.form.fv', function(e) {
             // Prevent form submission
             e.preventDefault();
 
@@ -113,16 +109,16 @@ $(document).ready(function() {
             var $form = $(e.target),        // The form instance
                 fv    = $(e.target).data('formValidation'); // FormValidation instance
 
-	    // By default, this action will redirect to PHP Action of the form //
-            fv.defaultSubmit()
+                //$('#modalInscription').modal('hide');
+                //$('#inscription-succeed').modal('show');
+                fv.defaultSubmit()//.on('click', function(e) {
+                         // Hide the modal first
+                         //alert('TEST');
+                         //$('#modalInscriptionSucceed').modal('show');;
 
-	    //$('#modalConnection').on('#forgotpasslink', function(e) {
-	      //$('#modalConnection').modal('close');
-	      //$('#ModalForgottenPass').modal('show');
-	    //});
+                //('#modalInscription').click(function
+
+                //$('#mymodal').on('hidden.bs.modal', function() {
+                //  return false;
         });
-    // Enable the password/password_check validators if the password is not empty
-
-    // Enable the email/email_check validators if the email is not empty
 });
-

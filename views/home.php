@@ -7,6 +7,11 @@
 	<body>		
 		<div id="home">
 			<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+			<?php if(isset($_SESSION['resetpass']) && ($_SESSION['resetpass'] == "valid")) { ?>
+				<script src="views/js/jquery.resetpass.js"> </script>
+				<script> $("#modalResetPassword").modal() </script>
+			<?php } ?>
+
 
 			<div id="staticHome">
 				<div class="city center">

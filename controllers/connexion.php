@@ -105,7 +105,6 @@ if($_POST) {
 		 	elseif ($method == "pseudo") {
 				/***************** Provided login is a pseudo ******************/
 				$display_user = $login_user;
-                 		#$_SESSION['profil'] = $login_user;
 			}
                 }
 		else {

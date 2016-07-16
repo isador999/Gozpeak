@@ -156,9 +156,9 @@
 
 // END OF TEST FOR FEEDBACKS AND VALIDATION - Not Working for now //
 
-
 $('#modalInscription').on('hidden.bs.modal', function() {
     $('#inscriptionForm').formValidation('resetForm', true);
+    $('#errors').html('');
 });
 
 
@@ -190,9 +190,9 @@ $(document).ready(function() {
 	verbose: 'false',
 	excluded: 'disabled',
 	//trigger: 'blur',
-	//err: {
-        //	container: '#errors',
-	//},
+	err: {
+        	container: '#errors',
+	},
         icon: {
 	    required: 'glyphicon glyphicon-asterisk',
             valid: 'glyphicon glyphicon-ok',

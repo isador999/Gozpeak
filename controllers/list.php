@@ -41,7 +41,7 @@ $date = "2016-05-15 10:40:02";
 $events = retrieve_events_by_type($DB, $query, $language, $date);
 
 // RETRIEVE FROM 'IDEAS' TABLE //
-$ideas = retrieve_ideas_by_type ($DB, $query, $language, $date);
+$ideas = retrieve_ideas_by_type($DB, $query, $language, $date);
 
 
 #if ($eventposted == 1) {

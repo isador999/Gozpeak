@@ -139,14 +139,31 @@ $modal['fr']['changepass']['check']['submit'] = "Submit";
 
 // Modal ForgotPass
 $modal['fr']['forgotpass']['title'] = "Récupération de votre mot de passe";
-$modal['fr']['forgotpass']['field'][0]['desc'] = "Entrez votre adresse mail";
+$modal['fr']['forgotpass']['field'][0]['desc'] = "Vérification de l'adresse mail";
 $modal['fr']['forgotpass']['field'][0]['input'] = "mail_forgotpass";
 $modal['fr']['forgotpass']['field'][0]['type'] = "email";
-$modal['fr']['forgotpass']['field'][0]['spanclass'] = "glyphicon glyphicon-eye-open";
-$modal['fr']['forgotpass']['field'][0]['placeholder'] = "";
+$modal['fr']['forgotpass']['field'][0]['spanclass'] = "glyphicon-envelope";
+$modal['fr']['forgotpass']['field'][0]['placeholder'] = "example@gmail.com";
 $modal['fr']['forgotpass']['check']['desc'] = "Valider";
 $modal['fr']['forgotpass']['check']['type'] = "submit";
 $modal['fr']['forgotpass']['check']['submit'] = "Submit";
+
+
+//Modal ResetPass
+$modal['fr']['resetpass']['title'] = "Réinitialiser votre mot de passe";
+$modal['fr']['resetpass']['field'][0]['desc'] = "Choisir un nouveau mot de passe";
+$modal['fr']['resetpass']['field'][0]['input'] = "resettedpass";
+$modal['fr']['resetpass']['field'][0]['type'] = "password";
+$modal['fr']['resetpass']['field'][0]['spanclass'] = "glyphicon glyphicon-eye-open";
+$modal['fr']['resetpass']['field'][0]['placeholder'] = "Nouveau mot de passe";
+$modal['fr']['resetpass']['field'][1]['desc'] = "Confirmez le nouveau mot de passe";
+$modal['fr']['resetpass']['field'][1]['input'] = "resettedpass_check";
+$modal['fr']['resetpass']['field'][1]['type'] = "password";
+$modal['fr']['resetpass']['field'][1]['spanclass'] = "glyphicon glyphicon-eye-open";
+$modal['fr']['resetpass']['field'][1]['placeholder'] = "Confirmez le nouveau mot de passe";
+$modal['fr']['resetpass']['check']['desc'] = "Valider";
+$modal['fr']['resetpass']['check']['type'] = "submit";
+$modal['fr']['resetpass']['check']['submit'] = "Submit";
 
 /****************************************
    End of :Variables for Modals Passwords 
@@ -171,7 +188,7 @@ $modal['fr']['connection']['check']['submit'] = "Submit";
 
 //////  Modal Event  ///////
 //     List of Fields 	  //
-$modal['fr']['event']['title'] = "Proposer un évènement";
+$modal['fr']['event']['title'] = "Proposer un événement";
 $modal['fr']['run']['event']['img'] = "views/images/event_run.jpg";
 $modal['fr']['art']['event']['img'] = "views/images/event_art.jpg";
 $modal['fr']['party']['event']['img'] = "views/images/event_party.jpg";
@@ -180,7 +197,7 @@ $modal['fr']['event']['logo']['0'] = "views/images/run.png";
 $modal['fr']['event']['logo']['1'] = "views/images/art.png";
 $modal['fr']['event']['logo']['2'] = "views/images/party.png";
 $modal['fr']['event']['logo']['3'] = "views/images/eat.png";
-$modal['fr']['event']['field']['0']['mandatory'] = "Evènement / Activité";
+$modal['fr']['event']['field']['0']['mandatory'] = "Evénement / Activité";
 $modal['fr']['event']['field']['1']['mandatory'] = "Lieu";
 $modal['fr']['event']['field']['2']['select']['mandatory'] = "Langue à pratiquer";
 $modal['fr']['event']['field']['3']['mandatory'] = "Date & Heure";
@@ -222,7 +239,7 @@ $event['fr']['icon']['japanese'] = "views/images/p_japonais.png";
 // HEADER
 $headband['fr']['registration'] = "Inscription";
 $headband['fr']['connection'] = "Connexion";
-$headband['fr']['event'] = "Proposer un évènement";
+$headband['fr']['event'] = "Proposer un événement";
 
 
 // FOOTER

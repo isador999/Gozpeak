@@ -7,9 +7,9 @@
 				<h4 class="modal-title" id="ModalInscription"><?php echo $modal[$_SESSION['language']]['inscription']['title']; ?></h4>
 			</div>
 				<!-- Will be used to display an alert to the user> -->
-				<?php if(isset($result)) echo $result; ?>
+				<?php //if(isset($result)) echo $result; ?>
 			<div class="modal-body">
-				<form class="form-horizontal inscriptionForm" id="inscriptionForm" name="inscriptionForm" method="post" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/inscription.php">
+				<form role="form" class="form-horizontal inscriptionForm" id="inscriptionForm" name="inscriptionForm" method="post" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/inscription.php">
 					<!-- The messages container -->
                 			<div id="errors" class="inscription-errors"></div>
 								<!-- <div class="alert-box success form-feedback"> Merci pour votre enregistrement !  Un lien de confirmation vous a été envoyé par mail.  Ce lien est valide pendant les prochaines 72H pour activer votre compte GoZpeak ;) </div>
@@ -85,6 +85,8 @@
 			</div>
 			<div class="modal-body">
 				<form role="form" data-toggle="validator" class="form-horizontal connectionForm" name="connectionForm" id="connectionForm" method="post" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/connexion.php">
+					<!-- The messages container -->
+                			<div id="connect-errors" class="connect-errors"></div>
 					<?php foreach($modal[$_SESSION['language']]['connection']['field'] as $key => $value){ ?>
 							<div class="form-group">
 								<label class="col-lg-4 control-label right-modal" for="<?php echo $value['mandatory']['desc']; ?>"><?php echo $value['mandatory']['desc']; ?>&nbsp;&#42;</label>
@@ -110,68 +112,39 @@
 
 
 
-
-
 <!-- ### BEGIN Password Modals - ChangePass AND ForgottenPass ### BEGIN -->
 
 <!-- Modal ForgotPassword -->
-<div class="modal" id="modalForgottenPass"  tabindex="-1"  role="dialog" aria-labelledby="ModalForgottenPass">
-    <div class="modal-dialog" role="document">
-        <div class="modal-header">
-	     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3><?php echo $modal[$_SESSION['language']]['forgotpass']['title']; ?><span class="extra-title muted"></span></h3>
-        </div>
+<div class="modal fade" id="modalForgottenPass"  tabindex="-1"  role="dialog" aria-labelledby="ModalForgottenPass">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		        <div class="modal-header">
+			     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			     <h4 class="modal-title" id="ModalForgottenPass"><?php echo $modal[$_SESSION['language']]['forgotpass']['title']; ?></h4>
+        		</div>
     
-    <div class="modal-body form-horizontal">
-	<form role="form" data-toggle="validator" class="forgotpassForm" name="forgotpassForm" id="forgotpassForm" method="post" action="controllers/forgotpass.php">
-	<?php foreach($modal[$_SESSION['language']]['forgotpass']['field'] as $key => $value){ ?>
-        <div class="control-group">
-            <label for="<?php echo $value['input']; ?>" class="control-label"></label>
-            <div class="controls">
-                <input name="<?php echo $value['input']; ?>" type="<?php echo $value['type']; ?>">
-            </div>
-        </div>
-	</form>
-    </div>
-    <?php } ?>
+    			<div class="modal-body">
+				<form role="form" data-toggle="validator" class="form-horizontal forgotpassForm" id="forgotpassForm" name="forgotpassForm" method="post" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/forgotpass.php">
+				<!-- The messages container -->
+               			<div id="forgotpass-errors" class="forgotpass-errors"></div><br>
+				<?php foreach($modal[$_SESSION['language']]['forgotpass']['field'] as $key => $value){ ?>
+        				<div class="form-group">
+            					<label class="col-lg-4 control-label right-modal" for="<?php echo $value['desc']; ?>"><?php echo $value['desc']; ?>&nbsp;&#42;</label>
+            					<div class="col-lg-7">
+							<input type="<?php echo $value['type']; ?>" class="form-control" id="<?php echo $value['input']; ?>" name="<?php echo $value['input']; ?>" placeholder="<?php echo $value['placeholder']; ?>"/>
+            					</div>
+        				</div>
+    				<?php } ?>
+    			</div>
     
-    <div class="modal-footer">
-        <button href="#" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><?php echo $modal['fr']['generic']['closed']; ?></button>
-        <button href="#" class="btn btn-primary" id="<?php echo $modal['fr']['forgotpass']['check']['type']; ?>"><?php echo $modal['fr']['forgotpass']['check']['desc']; ?></button>
-    </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
+				<button type="<?php echo $modal['fr']['forgotpass']['check']['type']; ?>" value="<?php echo $modal['fr']['forgotpass']['check']['submit']; ?>" class="btn btn-primary"><?php echo $modal['fr']['forgotpass']['check']['desc']; ?></button>
+			</div>
+			</form>
+		</div>
+	</div>
 </div>
-
-
-
-<!-- Modal ChangePassword -->
-<div class="modal" id="modalChangepass"  tabindex="-1"  role="dialog" aria-labelledby="ModalPasswordChange">
-    <div class="modal-dialog" role="document">
-        <div class="modal-header">
-            <h3><?php echo $modal[$_SESSION['language']]['changepass']['title']; ?><span class="extra-title muted"></span></h3>
-        </div>
-    
-    <div class="modal-body form-horizontal">
-	<form role="form" data-toggle="validator" class="changepassForm" name="changepassForm" id="changepassForm" method="post" action="controllers/changepassword.php">
-	<?php foreach($modal[$_SESSION['language']]['changepass']['field'] as $key => $value){ ?>
-        <div class="control-group">
-            <label for="<?php echo $value['input']; ?>" class="control-label"></label>
-            <div class="controls">
-                <input name="<?php echo $value['input']; ?>" type="<?php echo $value['type']; ?>">
-            </div>
-        </div>
-	</form>
-    </div>
-    <?php } ?>
-    
-    <div class="modal-footer">
-        <button href="#" class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $modal['fr']['generic']['closed']; ?></button>
-        <button href="#" class="btn btn-primary" id="<?php echo $modal['fr']['changepass']['check']['type']; ?>"><?php echo $modal['fr']['changepass']['check']['desc']; ?></button>
-    </div>
-</div>
-
-<!-- ### END Password Modals - ChangePass AND ForgottenPass ### END -->
-
-
 
 
 

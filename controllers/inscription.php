@@ -4,22 +4,6 @@ session_start();
 
 // Inscription Validation before saving in database //
 
-#var_dump($_POST['pseudo']);
-#var_dump($_POST['mail']);
-#var_dump($_POST['mail_check']);
-#var_dump($_POST['password']);
-#var_dump($_POST['password_check']);
-
-#echo "Test if request is Post: ";
-#if(!$_POST) {
-#	echo "NOK";
-#	exit();
-#}
-
-#if($_POST){
-#	echo "OK";
-#}
-	
 require_once('./lib/display.php');
 require_once('./lib/sessions_init.php');
 require_once('./lib/check_strings.php');
@@ -54,10 +38,6 @@ if($_POST){
 		echo "NOK: rule2";
 		$error="invalid_email";
 	}
-	    #$result_error='<div class="form-group"> <div class="alert alert-danger"> Veuillez remplir tous les champs pour l\inscription </div> </div>';
-
-
-
 
 
 	/*************** Other checks ***************/
@@ -140,7 +120,7 @@ if($_POST){
 
 			$mail_subject="Confirmation de votre inscription Gozpeak";
 			$mail_content = '<html><body>';
-			$mail_content = '<h4>'."Bonjour $pseudo ! ".'</h4>'.'<br>'.'<br>';
+			$mail_content .= '<h4>'."Bonjour $pseudo ! ".'</h4>'.'<br>'.'<br>';
 			$mail_content .= "Merci de votre inscription sur Gozpeak :) ".'<br>';
 			$mail_content .= "Afin de rendre votre compte actif, cliquez sur le lien suivant (valable pendant 72h)".'<br>';
 			$mail_content .= "$gozpeak_protocol"."$gozpeak_host"."/index.php?page=activation&login=$pseudo&key=$key".'<br>'.'<br>';
@@ -151,9 +131,18 @@ if($_POST){
 			$mail_content .= '</body> </html>';
 	       		if(send_by_mailgun($mail, "$mail_subject", "$mail_content")) {
 				$message='<div class="form-group"> <div class="alert alert-success"> Merci pour votre inscription sur Gozpeak ! Un email de confirmation vient de vous être envoyé ;) </div> </div>';
-				#$message = "'Merci de votre inscription !'.'<br>'.'Un email de confirmation avec un lien pour activer votre compte vous a été envoyé sur votre adresse $mail'";
+
+
+				/******** Send Mail to Gozpeak Team ********/
+				$team_mail_content = '<html><body>';
+                        	$team_mail_content .= '<h4>'."Un nouveau membre inscrit sur Gozpeak ! ".'</h4>'.'<br>'.'<br>';
+                        	$team_mail_content .= "Son pseudo : $pseudo".'<br>';
+                        	$team_mail_content .= "Son adresse e-mail : $pseudo".'<br>';
+                        	$team_mail_content .= "Cette personne devra activer son compte pour se connecter et s'inscrire aux activités".'<br>';
+				send_by_mailgun('info@gozpeak.com', 'Nouvelle inscription [demo.gozpeak.com]', "$team_mail_content");
 			} else {
-				$message = my_echo("3", "red", "'Désolé, une erreur est survenue lors de votre inscription'.'<br>'.'Veuillez réessayer ultérieurement'");
+				#$message = my_echo("3", "red", "'Désolé, une erreur est survenue lors de votre inscription'.'<br>'.'Veuillez réessayer ultérieurement'");
+				$message='<div class="form-group"> <div class="alert alert-danger">  Désolé, une erreur est survenue lors de votre inscription.   Veuillez réessayer ultérieurement </div> </div>';
 			}
 
 		/***** If register has not processed correctly *****/
@@ -163,7 +152,6 @@ if($_POST){
 			echo "NOK";
 			$message='<div class="form-group"> <div class="alert alert-danger"> Désolé, une erreur est survenue pendant l\'inscription. Veuillez réessayer plus tard. </div> </div>';
 		}
-
         }
 }
 
@@ -211,9 +199,6 @@ if (isset($message)) {
 }
 
 header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
-
-#include_once('Views/inscription.php');
-#include_once('Views/footer.php');
 
 ?>
 
