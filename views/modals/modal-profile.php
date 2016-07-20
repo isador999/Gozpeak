@@ -4,11 +4,13 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="ModalProfile"><?php echo $modal[$_SESSION['language']]['profile']['title']; ?></h4>
+				<h4 class="modal-title" id="modalProfile"><?php echo $modal[$_SESSION['language']]['profile']['title']; ?></h4>
 			</div>
 			<div class="modal-body">
 				<form role="form" data-toggle="validator" class="form-vertical" name="profileForm" id="profileForm" method="post" action="">
 					<?php foreach($modal[$_SESSION['language']]['profile']['field'] as $key => $value){ ?>
+					<!-- The messages container -->
+                                        <div id="profile-errors" class="profile-errors"></div>
 							<div class="form-group">
 								<label class="col-lg-4 control-label right-modal" for="<?php echo $value['desc']; ?>"><?php echo $value['desc']; ?>&nbsp;&#42;</label>
 								<div class="col-lg-7">

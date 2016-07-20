@@ -1,7 +1,7 @@
 <?php
 
 function profile_info($DB, $pseudo) {
-	$req = $DB->prepare("SELECT id, pseudo, email, name, lastname, profession, nationality, birthday, languages, premium from members where pseudo = ?");
+	$req = $DB->prepare("SELECT id, pseudo, email, name, lastname, nationality, birthday, premium from members where pseudo = ?");
 	$req -> execute(array($pseudo));
 	$infos = $req->fetch();
 	$req->closeCursor();

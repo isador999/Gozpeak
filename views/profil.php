@@ -50,7 +50,12 @@
 		<th> LANGUES PARLÉES : </th> <td> <? echo $infos['languages'] ?> </td>
 	    </tr>
 	</table>
-</div>
+	<table>
+	    <tr>
+		<th> Nombre de sorties proposées : </th> <td> <? echo $nb_events; ?> </td>
+	    </tr>
+	</table>
+	</div>
 
 </div>
 </div>
