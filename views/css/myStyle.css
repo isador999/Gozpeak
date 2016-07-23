@@ -516,9 +516,33 @@ green = #4d944e;
 
 
 /** SPECIFIC CSS **/
-@media (max-width: 1440px){
+
+@media (max-width: 1800px){
 	#headerTop{
 		font-size: 1.4em;
+	}
+	.headerRight .simple {
+		padding-top: 19px;
+		padding-bottom: 19px;		
+	}
+	.headerRight .middle{
+		padding-top: 19px;
+		padding-bottom: 19px;
+	}
+	.headerRight .double {
+		padding-top: 14px;
+	}
+	#home .city{
+		padding-top: 3em;
+	}
+	#home .activity-img{
+		margin-top: 4em;
+	}
+}
+
+@media (max-width: 1600px){
+	#headerTop{
+		font-size: 1.3em;
 	}
 	.headerRight .simple {
 		padding-top: 19px;
@@ -564,14 +588,37 @@ green = #4d944e;
 }
 
 
-
-@media (max-width: 1060px){
+@media (max-width: 1161px){
 	#headerTop{
-		font-size: 1.3em;
+		font-size: 1.2em;
 	}
 	.headerRight .simple {
-		padding-top: 2.4%;
-		padding-bottom: 2.4%;		
+		padding-top: 19px;
+		padding-bottom: 19px;		
+	}
+	.headerRight .middle{
+		padding-top: 19px;
+		padding-bottom: 19px;
+	}
+	.headerRight .double {
+		padding-top: 14px;
+	}
+	#home .city{
+		padding-top: 3em;
+	}
+	#home .activity-img{
+		margin-top: 4em;
+	}
+}
+
+
+@media (max-width: 1110px){
+	#headerTop{
+		font-size: 1.1em;
+	}
+	.headerRight .simple {
+		padding-top: 19px;
+		padding-bottom: 19px;		
 	}
 	.headerRight .middle{
 		padding-top: 19px;
@@ -603,9 +650,9 @@ green = #4d944e;
 }	
 
 
-@media (max-width: 1016px){
+@media (max-width: 1040px){
 	#headerTop{
-		font-size: 1.2em;
+		font-size: 1.0em;
 		padding: 0;
 	}
 
@@ -624,7 +671,7 @@ green = #4d944e;
 		float: none;
 	}
 	#headerTop{
-		font-size: 1.2em;
+		font-size: 1.0em;
 		padding: 0;
 	}
 	.headerRight .simple {
@@ -714,8 +761,8 @@ green = #4d944e;
 		padding: 0;
 	}
 	.headerRight .simple {
-		padding-top: 12px;
-		padding-bottom: 12px;
+		padding-top: 19px;
+		padding-bottom: 19px;
 	}
 	.headerRight .middle{
 		padding-top: 19px;
@@ -726,7 +773,7 @@ green = #4d944e;
 
 
 
-@media (max-width: 600px){
+@media (max-width: 705px){
 	.headerRight {
 		height : initial!important;
 	}
