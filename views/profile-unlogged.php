@@ -22,33 +22,25 @@
 		<br/>
 	</div>
 
-	<div class="idcard">
-		<div class="idcontent">
-			<div class="idpicture"> <img src="views/images/portrait_moyen.png"> </div>
-			<div class="idnumber"> CARTE N°<?echo $infos['id'] ?> </div>
+	<!-- <div class="idcard"> -->
+	<div class="idpicture"> <img src="views/images/portrait_moyen.png"> </div>
+	<div class="idnumber"> CARTE N°<?echo $infos['id'] ?> </div>
+	<div>
 	<table>
 	    <tr>
-		<th> NOM : </th> <td> <? echo $infos['lastname'] ?> &nbsp; &nbsp; </td>
-		<th> PRENOM : </th> <td> <? echo $infos['name'] ?> </td> 
+		<th> Nom : </th> <td> <? echo $infos['lastname'] ?> &nbsp; &nbsp; </td>
+		<th> Prenom : </th> <td> <? echo $infos['name'] ?> </td> 
 	    </tr>
-	</table>
-	<table>
 	    <tr>
-		<th> PROFESSION : </th> <td> <? echo $infos['profession'] ?> &nbsp; &nbsp; &nbsp; </td>
+		<th> Profession : </th> <td> <? echo $infos['profession'] ?> &nbsp; &nbsp; &nbsp; </td>
 	    </tr>
-	</table>
-	<table>
 	    <tr>
-		<th> NATIONALITE : </th> <td> <? echo $infos['nationality'] ?> &nbsp; &nbsp; &nbsp; </td>
-		<th> DATE DE NAISSANCE : </th> <td> <? echo $infos['birthday'] ?> </td>
+		<th> Nationalite : </th> <td> <? echo $infos['nationality'] ?> &nbsp; &nbsp; &nbsp; </td>
+		<th> Date de naissance : </th> <td> <? echo $infos['birthday'] ?> </td>
 	    </tr>
-	</table>
-	<table>
 	    <tr>
-		<th> LANGUES PARLÉES : </th> <td> <? echo $infos['languages'] ?> </td>
+		<th> Langues parlées : </th> <td> <? echo $infos['languages'] ?> </td>
 	    </tr>
-	</table>
-	<table>
 	    <tr>
 		<th> Nombre de sorties proposées : </th> <td> <? echo $nb_events; ?> </td>
 	    </tr>

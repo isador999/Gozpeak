@@ -13,7 +13,6 @@ if(isset($_SESSION['profil']) && (!empty($_SESSION['profil']))) {
 	$pseudo = $_SESSION['profil'];
 }
 
-
 $infos = profile_info($DB, $pseudo);
 
 //COUNT NUMBER OF EVENTS POSTED BY USER //

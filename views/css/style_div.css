@@ -86,10 +86,11 @@ BALISES DE CONTENU / CONTENT CLASSES (content-connection : connexion, inscriptio
 	margin:auto;
 }*/
 
-.content-small {
-	width:90%;
-	height:115%;
-	/*margin:auto;*/
+.content-profile {
+	padding-left: 8%;
+	padding-top: 4%;
+	width:96%;
+	height:80%;
 }
 
 /* CONTENT */
@@ -125,14 +126,23 @@ BALISES DE CONTENU / CONTENT CLASSES (content-connection : connexion, inscriptio
 /**************************************
 HEADER FOR SECTIONS LIST.PHP, PROFIL.PHP, ETC...
 ***************************************/
-.content-head {
+/*.content-head {
 	float:center;
 	width:94%;
-	height:20%;
+	height:35%;
 	margin:auto;
 	margin-top:-7%;
+}*/
+
+.content-head {
+	padding-top: 7%;
+	text-align:left;
 }
 
+.head-links {
+	text-align: left;
+	padding-left: 10%;
+}
 
 .sort {
 	float:right;
@@ -348,25 +358,26 @@ SPECIFIQUE POUR LES PAGES D'INSCRIPTION / CONNEXION (connexion.php, forgotpass.p
 SPECIFIQUE POUR LA PAGE PROFIL 
 ***************************************/
 .idhead {
-	float:left;
-	width:50%;
-	font:45px "noteworthy";
+	font:30px "noteworthy";
         color:#d9523b;
 }
 
 
 .idlang {
 	float:right;
+	padding-top: 5%;
 	text-align:left;
 	width:24%;
 }
 
 
 .idcard {
-	background-image: url('../img/identity_card_small.png');
-	background-repeat: no-repeat;
-	width:55%;
-	height:66%;
+	/*background-image: url('../images/identity_card_small.png');
+	background-repeat: no-repeat;*/
+	width:100%;
+	height:80%;
+	/*padding:5%;*/
+	margin:auto;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
         color:#999;
 	/*background-color:yellow;*/
@@ -374,29 +385,52 @@ SPECIFIQUE POUR LA PAGE PROFIL
 
 
 .idcontent {
-	width:92%;
-	height:82%;
-	padding:5%;
-	margin:auto;
-	font-size:22px;
-	padding:4%;
+	background-image: url('../images/identity_card.png');
+	background-size: 99% 99%;
+	background-repeat: no-repeat;
+	width: 70%;
+	height: 88%;
+	font-size:18px;
 }
 
 
 .idpicture {
-	float:left;
+	width: 20%;
+	padding-top: 2%;
+	float: left; 
 }
 
+
+.idinfos table {
+	width: 70%;
+	height: 40%;
+	margin-top: 22%;
+	margin-left: -23%;
+	float: left;
+	font-size:16px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        color:#999;
+}
+
+.idinfos th {
+	width:32%;
+}
+
+.idinfos td {
+	width: 40%;
+        color:#4682B4;
+	font-weight:lighter bold;
+	border-bottom:dotted 2px;
+}
 
 
 .idnumber {
-	float:right;
-	width:50%;
-	height:8%;
+	float:left;
+	padding-top: 2%;
 }
 
 
-.idcard table {
+/*.idcard table {
 	font-size:19px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
         color:#999;
@@ -404,15 +438,14 @@ SPECIFIQUE POUR LA PAGE PROFIL
 	float:left;
 	text-align:left;
 	padding:4%;
-}
+}*/
 
 
-
-.idcard td {
+/*.idcard td {
         color:#4682B4;
 	font-weight:lighter bold;
 	border-bottom:dotted 2px;
-}
+}*/
 
 
 /* .idcard th {

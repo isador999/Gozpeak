@@ -18,7 +18,6 @@
 
 <!-- PERSONNAL SCRIPTS -->
 <script src="views/js/myScript.js"></script>
-<script src="views/js/jquery.profile.js"></script>
 
 <script src="views/js/formValidation.min.js"></script>
 <script src="views/js/bootstrap-formValidation.min.js"></script>
