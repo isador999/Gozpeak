@@ -26,8 +26,10 @@ $logged = check_logged();
 if ($logged == 1) {
         require_once(VIEWS.'header-logged.php');
 	require_once(MODALS.'modal-profile.php');
+	require_once(VIEWS.'profile-logged.php');
 } else {
         require_once(VIEWS.'header-notlogged.php');
+	require_once(VIEWS.'profile-unlogged.php');
 }
 
 
@@ -37,7 +39,6 @@ if ($infos['premium'] == 0) {
 	$infos['premium'] == 'Oui';
 }
 
-require_once(VIEWS.'profil.php');
 require_once(VIEWS.'footer.php');
 require_once(VIEWS.'scripts.php');
 

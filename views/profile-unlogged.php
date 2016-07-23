@@ -6,8 +6,6 @@
 
 <div class="content-small">
 	<div class="idlang">
-	<div> <a href="index.php?page=deletion&profile=<?echo $infos['pseudo'] ?>"> Supprimer le compte GoZpeak </a> </div>
-	<div> <a onclick="showModalProfile('<? echo $pseudo ?>')"><i> Editer la Zpeak ID </a></div>
 		<br/>
 		<br/>
         	<img src="views/images/p_anglais.png">    Anglais  <br/>
