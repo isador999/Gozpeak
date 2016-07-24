@@ -61,6 +61,11 @@ function showModalConnection(){
 }
 
 
+function showModalProfileDeletion(){
+        $('#modalProfileDeletion').modal('show');
+}
+
+
 /*function showModalForgottenPass(){
               $('#modalConnection').modal('hide');
               setTimeout(function() { $('#modalForgottenPass').modal('show'); }, 500);

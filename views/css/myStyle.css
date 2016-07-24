@@ -365,6 +365,52 @@ green = #4d944e;
 
 
 
+/* ModalProfileDeletion */
+#modalProfileDeletion .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 54%;
+}
+
+#modalProfileDeletion .modal-dialog{
+	/*width: 800px;*/
+	width: 50%;
+}
+
+#modalProfileDeletion .modal-title{
+	font-size: 27px;
+	font-family: "noteworthy"!important;
+	color: #B22222;
+}
+
+#profiledeletionForm .right-modal{
+	text-align: left;
+	float: left;
+}
+
+#modalProfileDeletion .modal-body{
+	padding-top: 0px;
+	height: 40%;
+}
+
+#modalProfileDeletion .form-group{
+	/*padding-top: 5em;*/
+	margin: 8em;
+	/*padding-left: 6em;*/
+}
+
+#profiledeletionForm .form-control{
+        text-align: left;
+	float: right;
+	width: 70%;
+}
+
+#modalProfileDeletion .btn-check{
+	background-color: #4d944e!important;
+	color: white;
+}
+
+
+
 
 /* ConnectionModal */ 
 #modalConnection .modal-content{

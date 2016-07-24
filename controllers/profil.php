@@ -8,6 +8,7 @@ require_once(MODELS.'profile_functions.php');
 require_once(LIB.'display.php');
 require_once(VIEWS.'styles.php');
 require_once(MODALS.'modal-navbar.php');
+require_once(MODALS.'modal-footer.php');
 
 if(isset($_SESSION['profil']) && (!empty($_SESSION['profil']))) {
 	$pseudo = $_SESSION['profil'];
@@ -21,7 +22,6 @@ $nb_events = count_events($DB, $pseudo);
 
 $logged = check_logged();
 
-
 if ($logged == 1) {
         require_once(VIEWS.'header-logged.php');
 	require_once(MODALS.'modal-profile.php');
@@ -33,9 +33,9 @@ if ($logged == 1) {
 
 
 if ($infos['premium'] == 0) {
-	$infos['premium'] == 'Non';
+	$_SESSION['ispremium'] = "Non";
 } else {
-	$infos['premium'] == 'Oui';
+	$_SESSION['ispremium'] = "Oui";
 }
 
 require_once(VIEWS.'footer.php');

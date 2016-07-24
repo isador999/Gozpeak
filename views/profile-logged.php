@@ -1,10 +1,13 @@
-<script src="views/js/jquery.profile.js"></script>
+<head>
+	<script src="views/js/jquery.profiledelete.js"></script>
+	<!-- <script src="views/js/jquery.profile.js"></script> -->
+</head>
 
 <div class="content-head">
 	<div class="head-links">
 		<p class="idhead">Votre profil Gozpeak</p>
-		<a href="index.php?page=deletion&profile=<?php echo $infos['pseudo'] ?>"> Supprimer le compte GoZpeak </a> <br>
-		<a onclick="showModalProfile('<?php echo $pseudo ?>')"><i> Editer la Zpeak ID </a>
+		<a onclick="showModalProfile('<?php echo $_SESSION['profil']?>')"><i> Editer la Zpeak ID </i> </a>
+		<a onclick="showModalProfileDeletion('<?php echo $_SESSION['profil']?>')"><i> Supprimer le compte GoZpeak </i></a> <br>
 	</div>
 </div>
 
@@ -52,7 +55,7 @@
 			</tr>
 			<tr>
 				<th> Profession : </th>
-				<td> <?php echo $infos['profession'] ?> &nbsp; &nbsp; &nbsp; </td>
+				<td> <?php //echo $infos['profession'] ?> &nbsp; &nbsp; &nbsp; </td>
 			</tr>
 			<tr>
 				<th> Nationalite : </th>
@@ -68,7 +71,11 @@
 			</tr>
 			<tr>
 				<th> Langues parlées : </th>
-				<td> <?php echo $infos['languages'] ?> </td>
+				<td> <?php //echo $infos['languages'] ?> </td>
+			</tr>
+			<tr>
+				<th> Utilisateur Premium : </th>
+				<td> <a href="#become_premium#"> <?php echo $_SESSION['ispremium'] ?> </a></td>
 			</tr>
 		</table>
 		</div>
