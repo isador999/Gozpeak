@@ -130,7 +130,7 @@ if($_POST){
 			$mail_content .= '<img src="'."$gozpeak_protocol"."$gozpeak_host".'/views/images/gozpeak_small.png" alt="Gozpeak Logo">'.'<br>';
 			$mail_content .= '</body> </html>';
 	       		if(send_by_mailgun($mail, "$mail_subject", "$mail_content")) {
-				$message='<div class="form-group"> <div class="alert alert-success"> Merci pour votre inscription sur Gozpeak ! Un email de confirmation vient de vous être envoyé ;) </div> </div>';
+				$message='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a>Merci pour votre inscription sur Gozpeak ! Un email de confirmation vient de vous être envoyé ;) </div> </div>';
 
 
 				/******** Send Mail to Gozpeak Team ********/
@@ -142,7 +142,7 @@ if($_POST){
 				send_by_mailgun('info@gozpeak.com', 'Nouvelle inscription [demo.gozpeak.com]', "$team_mail_content");
 			} else {
 				#$message = my_echo("3", "red", "'Désolé, une erreur est survenue lors de votre inscription'.'<br>'.'Veuillez réessayer ultérieurement'");
-				$message='<div class="form-group"> <div class="alert alert-danger">  Désolé, une erreur est survenue lors de votre inscription.   Veuillez réessayer ultérieurement </div> </div>';
+				$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de votre inscription.   Veuillez réessayer ultérieurement </div> </div>';
 			}
 
 		/***** If register has not processed correctly *****/
@@ -150,7 +150,7 @@ if($_POST){
 		else 
 		{
 			echo "NOK";
-			$message='<div class="form-group"> <div class="alert alert-danger"> Désolé, une erreur est survenue pendant l\'inscription. Veuillez réessayer plus tard. </div> </div>';
+			$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, une erreur est survenue pendant l\'inscription. Veuillez réessayer plus tard. </div> </div>';
 		}
         }
 }
@@ -159,35 +159,35 @@ if($_POST){
 
 if (isset($error)) {
         if ($error == 'empty_fields') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Veuillez remplir les champs obligatoires pour votre inscription </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir les champs obligatoires pour votre inscription </div> </div>';
                 #my_echo ("3", "red", "Veuillez remplir les champs obligatoires pour votre inscription");
         }
         elseif ($error == 'pseudo_already_exists') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Désolé, le pseudo que vous avez choisi existe deja </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, le pseudo que vous avez choisi existe deja </div> </div>';
                 #my_echo ("3", "red", "Le pseudo que vous avez choisi existe deja ! ");
         }
         elseif ($error == 'email_already_exists') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> L\'email que vous avez entré existe déjà </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> L\'email que vous avez entré existe déjà </div> </div>';
                 #my_echo ("3", "red", "L'email que vous avez rentré existe déjà ! ");
         }
         elseif ($error == 'bad_length_pass') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Le mot de passe doit etre compris entre 8 et 25 caracteres </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Le mot de passe doit etre compris entre 8 et 25 caracteres </div> </div>';
                 #my_echo ("3", "red", "Le mot de passe doit etre compris entre 6 et 25 caracteres !");
         }
         elseif ($error == 'notcompliant_password') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Le mot de passe choisi ne respecte pas la politique de sécurité, il doit contenir au minimum 2 chiffres, une majuscule et un caractère spécial. </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Le mot de passe choisi ne respecte pas la politique de sécurité, il doit contenir au minimum 2 chiffres, une majuscule et un caractère spécial. </div> </div>';
                 #my_echo ("3", "red", "Les deux mots de passe entres sont differents ! ");
         }
         elseif ($error == 'passwords_not_matching') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Les mots de passe ne correspondent pas </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Les mots de passe ne correspondent pas </div> </div>';
                 #my_echo ("3", "red", "Les deux mots de passe entres sont differents ! ");
         }
         elseif ($error == 'invalid_email') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> L\'adresse email est invalide </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> L\'adresse email est invalide </div> </div>';
                 #my_echo ("3", "red", "Merci de rentrer une adresse email valide ! ");
         }
         elseif ($error == 'emails_not_matching') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Les adresses email ne correspondent pas </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Les adresses email ne correspondent pas </div> </div>';
                 #my_echo ("3", "red", "Les deux adresses emails rentrees ne correspondent pas ! ");
         }
 }

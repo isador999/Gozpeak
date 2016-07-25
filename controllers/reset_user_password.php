@@ -44,12 +44,12 @@ if($_POST) {
 			if ($pass_updated_successfully == 0) {
 				set_resetpass_token($DB, 'NULL', $resetpass_login);
 				set_resetpass_expiration($DB, 'NULL', $resetpass_login);
-				$message='<div class="form-group"> <div class="alert alert-success"> Votre mot de passe Gozpeak a été réinitialisé avec succès ;-)  </div> </div>';
+				$message='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Votre mot de passe Gozpeak a été réinitialisé avec succès ;-)  </div> </div>';
 			} else {
-				$message='<div class="form-group"> <div class="alert alert-danger"> update_password failed.  Désolé, une erreur est survenue.  Veuillez réessayer cette opération ultérieurement </div> </div>';
+				$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, une erreur est survenue.  Veuillez réessayer cette opération ultérieurement </div> </div>';
 			}
 		} else {
-			$message='<div class="form-group"> <div class="alert alert-danger">  OLD_DBPASS is empty or not set.  Désolé, une erreur est survenue.  Veuillez réessayer cette opération ultérieurement </div> </div>';
+			$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue.  Veuillez réessayer cette opération ultérieurement </div> </div>';
 		}
 	}
 }

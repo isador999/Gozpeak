@@ -120,18 +120,18 @@ if($_POST) {
 
 			$premium = check_if_premium($DB, $display_user);
 			if ($premium == 1) {
-				$message='<div class="form-group"> <div class="alert alert-warning"> Les fonctionnatés Premium ne sont pas encore disponibles </div> <br> <div class="alert alert-success">Content de vous revoir ! '.$display_user.'</div> </div>';
+				$message='<div class="form-group"> <div class="alert alert-warning fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Les fonctionnatés Premium ne sont pas encore disponibles </div> <br> <div class="alert alert-success">Content de vous revoir ! '.$display_user.'</div> </div>';
 			} else {	
-				$message='<div class="form-group"> <div class="alert alert-success"> Content de vous revoir sur Gozpeak, '.$display_user.' ! </div> </div>';
+				$message='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Content de vous revoir sur Gozpeak, '.$display_user.' ! </div> </div>';
 			}
 		} else {
-			$message='<div class="form-group"> <div class="alert alert-warning"> Votre compte Gozpeak n\'est pas encore actif, vous devez cliquer sur le lien d\'activation envoyé par email </div> </div>';
+			$message='<div class="form-group"> <div class="alert alert-warning fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Votre compte Gozpeak n\'est pas encore actif, vous devez cliquer sur le lien d\'activation envoyé par email </div> </div>';
         echo "Votre compte Gozpeak n'est pas encore actif";
 		}
 
 	/******* If result_connect NOK  (password is false), display Error *******/
 	} elseif (isset($result_connect) && ($result_connect == "nok")) {
-		 $message='<div class="form-group"> <div class="alert alert-danger"> Le mot de passe entré est incorrect </div> </div>';		
+		 $message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Le mot de passe entré est incorrect </div> </div>';		
 	}
 }
 
@@ -139,16 +139,16 @@ if($_POST) {
 /******** Set Messages depending error *******/
 if (isset($error)) {
 	if ($error == 'empty_fields') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Veuillez remplir les champs obligatoires pour votre inscription </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir les champs obligatoires pour votre inscription </div> </div>';
 	}
 	elseif ($error == 'bad_length_user') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> L\'utilisateur de connexion est invalide </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> L\'utilisateur de connexion est invalide </div> </div>';
 	}
 	elseif ($error == 'wrong_password') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Le mot de passe entré est incorrect </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Le mot de passe entré est incorrect </div> </div>';
 	}
 	elseif ($error == 'connection_method_undefined') {
-		$message='<div class="form-group"> <div class="alert alert-danger"> Une erreur est survenue lors de la connexion... <br> Veuillez réessayer ultérieurement </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Une erreur est survenue lors de la connexion... <br> Veuillez réessayer ultérieurement </div> </div>';
 	}
 }
 
