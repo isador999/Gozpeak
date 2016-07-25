@@ -86,7 +86,7 @@ BALISES DE CONTENU / CONTENT CLASSES (content-connection : connexion, inscriptio
 	margin:auto;
 }*/
 
-.content-profile {
+.profile-content {
 	padding-left: 8%;
 	padding-top: 4%;
 	width:96%;
@@ -101,6 +101,102 @@ BALISES DE CONTENU / CONTENT CLASSES (content-connection : connexion, inscriptio
 }*/
 
 
+.list-header {
+	padding-top: 3%;
+	height: 42%;
+}
+
+.list-titles {
+	width: 25%;
+	font-size: 16px;
+	margin:auto;
+	float:center;
+}
+
+.list-content-head {
+	margin:auto;
+	float:center;
+	width:78%;
+}
+
+
+.list-sort {
+	width: 30%;
+	float: right;
+	text-align:left;
+}
+
+
+.list-lang {
+	width: 28%;
+	float: left;
+	text-align:left;
+}
+
+
+/***** list.php *****/
+.list-content {
+	width: 90%;
+	height: 100%;
+	margin:auto;
+	float:center;
+	padding-top: 2%;
+}
+
+
+.middle-left {
+	float:left;
+	width: 50%;
+	height: 100%;
+}	
+
+.middle-right {
+	float:right;
+	width: 50%;
+	height: 100%;
+}	
+
+
+.list-content-left {
+	background-image: url("../images/papier.png");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	background-attachment:local;
+	float:left;
+	height:100%;
+	width:80%;
+}
+
+.list-content-right {
+	background-image: url("../images/papier.png");
+        background-repeat:no-repeat;
+	background-size: 100% 100%;
+        background-attachment:local;
+	float:right;
+        height:100%;
+        width:80%;
+}
+
+.list-content-img-left {
+	width: 60%;
+	margin:auto;
+	padding-bottom: 5.5%;
+	font:28px "noteworthy";
+	color:#d9523b;
+}
+
+.list-content-img-right {
+	width: 60%;
+	margin:auto;
+	padding-bottom: 6%;
+	font:28px "noteworthy";
+	color:#2b5f92;
+}
+
+/*.list-content-img-right img {
+	position:relative;
+	display:inline-block;
+}*/
 
 
 /* IMAGES ET TITRES DE CONTENU RENNES.PHP */
@@ -126,15 +222,9 @@ BALISES DE CONTENU / CONTENT CLASSES (content-connection : connexion, inscriptio
 /**************************************
 HEADER FOR SECTIONS LIST.PHP, PROFIL.PHP, ETC...
 ***************************************/
-/*.content-head {
-	float:center;
-	width:94%;
-	height:35%;
-	margin:auto;
-	margin-top:-7%;
-}*/
 
-.content-head {
+
+.profile-head {
 	padding-top: 7%;
 	text-align:left;
 }
@@ -144,179 +234,53 @@ HEADER FOR SECTIONS LIST.PHP, PROFIL.PHP, ETC...
 	padding-left: 10%;
 }
 
-.sort {
-	float:right;
-	text-align:left;
-	width:45%;
-}
 
-
-.lang {
-	float:left;
-	text-align:left;
-	width:45%;
-	margin-left:2%;
-}
-
-
-.content-img-left {
-	position:relative;
-	text-align:center;
-	width:100%;
-	height:10%;
-	font:30px "noteworthy";
-	color:#d9523b;
-}
-
-.content-img-left img {
-	position:relative;
-	display:inline-block;
-}
-
-
-.content-img-right {
-	position:relative;
-	text-align:center;
-	width:100%;
-	height:10%;
-	font:30px "noteworthy";
-	color:#2b5f92;
-}
-
-
-.content-img-right img {
-	position:relative;
-	display:inline-block;
-}
 /* FIN DE SOUS-SECTION IMAGES */
 
 
-/*.content {
-	position: relative;
-	
-}*/
-
-.content-left {
-	/*margin-top: 6em;*/
-	position:relative;
-	float:left;
-	text-align:center;
-	width:46%;
-	height:100%;
-}
-
-.content-right {
-	/*margin-top: 6em;*/
-	/*margin-right: 2.5em;*/
-	position:relative;
-	float: right;
-	text-align:center;
-	width:46%;
-	height:100%;
-}
-
-/*.content-right {
-	position:relative;
-	float:right;
-	text-align:center;
-	width:49%;
-	height:75%;
-}*/
 
 
 
-
-
-.content-left table {
-	position:relative;
+/*** Left table ***/
+.list-content-left table {
 	margin: auto;
-	width:94%;
+	width:96%;
 	font-size:14px;
 	border-spacing:2px;
-	background-color: yellow;
+	text-align:left;
+	margin-left: 2.5%;
 }
 
-/*.content-left th {
-	font-size:14px;
-	text-align:left;
-}*/
+
+.list-content-left th {
+	font-size:16px;
+	text-decoration: underline;
+}
+
+.list-content-left td {
+	font-size:15px;
+	padding-top: 3%;
+}
 
 
-.content-right table {
-	position:relative;
+/*** Right table ***/
+.list-content-right table {
 	margin: auto;
-	width:94%;
+	width:96%;
 	font-size:14px;
 	border-spacing:2px;
-	background-color: blue;
-}
-
-/**************************************************************
-SPECIFIQUE POUR PROPOSITION.PHP (dans le dossier proposition/)
-***************************************************************/
-/*.content-head-proposition {
-	float:center;
-	width:94%;
-	height:70%;
-	margin:auto;
-}*/
-
-/*.slogan {
-	color:#999;
-	font-size:22px;
-}*/
-
-
-/*.form3 {
-	color:#999;
-	width:60%;
-	height:45%;
-	margin:2% auto;
-}
-
-
-.form3-left {
-        width:42%;
-	float:left;
 	text-align:left;
-        line-height:28px;
+	margin-left: 2.5%;
+}
+.list-content-right th {
+	font-size:16px;
+	text-decoration: underline;
 }
 
-.form3-right {
-        width:45%;
-	float:right;
-	text-align:left;
-        line-height:28px;
-}*/
-
-
-
-/*.desc {
-	margin:30% auto;
-	height:35%;
-
-}*/
-
-
-/***************************************************************************************************
-SPECIFIQUE POUR LES PAGES D'INSCRIPTION / CONNEXION (connexion.php, forgotpass.php, inscription.php
-****************************************************************************************************/
-/*.connexion {
-        color:#008e98;
-        font:54px "noteworthy";
-}*/
-
-
-/*.form2 {
-        position:relative;
-	height:32%;
-	width:82%;
-	color:#999;
-	text-align:right;
-	margin-top:6%;
-	margin-right:22%;
-        line-height:28px;
-}*/
+.list-content-right td {
+	font-size:15px;
+	padding-top: 3%;
+}
 
 
 /***** INSCRIPTION.PHP *****/
@@ -371,22 +335,9 @@ SPECIFIQUE POUR LA PAGE PROFIL
 }
 
 
-.idcard {
-	/*background-image: url('../images/identity_card_small.png');
-	background-repeat: no-repeat;*/
-	width:100%;
-	height:80%;
-	/*padding:5%;*/
-	margin:auto;
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-        color:#999;
-	/*background-color:yellow;*/
-}
-
-
 .idcontent {
 	background-image: url('../images/identity_card.png');
-	background-size: 99% 99%;
+	background-size: 84% 100%;
 	background-repeat: no-repeat;
 	width: 70%;
 	height: 88%;
@@ -396,133 +347,52 @@ SPECIFIQUE POUR LA PAGE PROFIL
 
 .idpicture {
 	width: 20%;
-	padding-top: 2%;
+	padding-top: 3%;
 	float: left; 
 }
 
 
 .idinfos table {
-	width: 70%;
-	height: 40%;
-	margin-top: 22%;
-	margin-left: -23%;
-	float: left;
-	font-size:16px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-style: italic;
         color:#999;
+	width: 70%;
+	height: 43%;
+	margin-top: 23%;
+	margin-left: -26%;
+	float: left;
+	font-size:15px;
 }
 
 .idinfos th {
-	width:32%;
+	width:24%;
 }
 
 .idinfos td {
-	width: 40%;
-        color:#4682B4;
-	font-weight:lighter bold;
-	border-bottom:dotted 2px;
+	width:10%;
+	border-bottom: solid SteelBlue 0.2px;
 }
 
+.idinfos td, .idinfos a {
+	color: DimGray;
+}
+
+.idinfos a:hover {
+	color: SteelBlue;
+}
+
+.idinfos a:visited, .idinfos a:active {
+	color: DarkGray;
+}
 
 .idnumber {
 	float:left;
-	padding-top: 2%;
+	padding-top: 5%;
 }
 
 
-/*.idcard table {
-	font-size:19px;
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-        color:#999;
-	display:inline-table;
-	float:left;
-	text-align:left;
-	padding:4%;
-}*/
-
-
-/*.idcard td {
-        color:#4682B4;
-	font-weight:lighter bold;
-	border-bottom:dotted 2px;
-}*/
-
-
-/* .idcard th {
-        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-size:20px;
-        color:#999;
-} */
-
-
-/***************************************************************************************************
- FOOTERS / PIEDS-DE-PAGE | Copyrights, liens babyzpeak et contacts, presentation gozpeak, etc ....
-****************************************************************************************************/
-/*.footer, .footer a {
-	position:relative;
-	margin:auto;
-	font-size:14px;
-        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-        color:#999;
-	width:94%;
-	height:12%;
-	margin-top:7%;
-	text-decoration:none;
-}
-
-
-.babyzpeak {
-	float:left;
-	text-align:left;
-}
-
-
-.footer-copyright {
-	margin-left:14%;
-	float:center;
-}
-
-
-.footer-link {
-	float:right;
-	text-align:left;
-}*/
-
-
-
-/*Typo*/
-/*@font-face {
-    font-family: 'noteworthy';
-    src: url('../img/typo/noteworthy.ttc');
-    font-weight: normal;
-    font-style: normal;
-}*/
-
-
-
-/**********************/
-/*Qu'est-ce que c'est?*/
-/*.def{
-        position:relative;
-	margin-top:5%;
-	font:22px "noteworthy";
-}
-
-
-.explication{
-	width:75%;
-	margin:auto;
-	font-size:16px;
-        text-align:justify;
-	color:#999;
-}
-
-.concept{
-        border:groove;
-        border-width:thin;
-}*/
-
-
+/******************************/
+/***** ################## *****/
 
 /*Typo*/
 @font-face {

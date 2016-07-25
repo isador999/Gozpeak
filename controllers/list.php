@@ -8,7 +8,10 @@ require_once(MODELS.'list_functions.php');
 require_once(LIB.'display.php');
 require_once(VIEWS.'styles.php');
 
-$query = isset($_GET['query']) ? $_GET['query'] : '';
+if(isset($_GET['query']) && !empty($_GET['query'])) {
+	$_SESSION['query'] = $_GET['query'];
+}
+
 $eventposted = isset($_GET['eventposted']) ? $_GET['eventposted'] : '';
 #$date = (!empty($_GET['date'])) ? $_GET['date'] : date("Y-m-d");
 $language = (!empty($_GET['language'])) ? $_GET['language'] : '';
@@ -38,10 +41,10 @@ $date = "2016-05-15 10:40:02";
 //$events = retrieve_events_by_type ($DB, $query, $language, $date);
 
 #$events = retrieve_events_by_type ($DB, $query, $language);
-$events = retrieve_events_by_type($DB, $query, $language, $date);
+$events = retrieve_events_by_type($DB, $_SESSION['query'], $language, $date);
 
 // RETRIEVE FROM 'IDEAS' TABLE //
-$ideas = retrieve_ideas_by_type($DB, $query, $language, $date);
+$ideas = retrieve_ideas_by_type($DB, $_SESSION['query'], $language, $date);
 
 
 #if ($eventposted == 1) {
@@ -57,11 +60,7 @@ $ideas = retrieve_ideas_by_type($DB, $query, $language, $date);
 #	$message = "";
 #}
 
-require_once(VIEWS.'list-sort.php');
-echo "Query_String :";
-echo $_SERVER['QUERY_STRING'];
-echo "Request_Uri :";
-echo $_SERVER['REQUEST_URI'];
+require_once(VIEWS.'list-head.php');
 require_once(VIEWS.'list.php');
 require_once(VIEWS.'footer.php');
 require_once(MODALS.'modal-footer.php');

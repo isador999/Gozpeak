@@ -1,6 +1,6 @@
 <div class="content-head">
 	<div class="head-links">
-		<p class="idhead">Le profil Gozpeak de <?php echo $pseudo?></p>
+		<p class="idhead">Le profil Gozpeak de <?php echo $infos['pseudo'] ?></p>
 	</div>
 </div>
 
@@ -20,11 +20,14 @@
 	       	<img src="views/images/p_hebreux.png">    Hebreux  <br/>
 	       	<img src="views/images/p_indien.png">     Indien   <br/>
 	       	<img src="views/images/p_japonais.png">   Japonais <br/>
-		<br/>
-	</div>
+	       	<img src="views/images/p_x.png" alt="img_others">   Autres Langues <br/>
+			<br/>
+		</div>
 
 
-	<!-- <div class="idcard"> -->
+	<!-- <div class="sateur Premium : </th>
+                                <td> <a href="#become_premium#"> <?php echo $_SESSION['ispremium'] ?> </a></td>
+                        </tr>idcard"> -->
 	<div class="idcontent">
 		<div class="idpicture"> <img src="views/images/portrait_moyen.png"> </div>
 		<div class="idnumber"> Profil N°<?php echo $infos['id'] ?> </div>

@@ -368,16 +368,16 @@ green = #4d944e;
 /* ModalProfileDeletion */
 #modalProfileDeletion .modal-content{
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
-	height: 54%;
+	height: 46%;
 }
 
 #modalProfileDeletion .modal-dialog{
 	/*width: 800px;*/
-	width: 50%;
+	width: 52%;
 }
 
 #modalProfileDeletion .modal-title{
-	font-size: 27px;
+	font-size: 22px;
 	font-family: "noteworthy"!important;
 	color: #B22222;
 }
@@ -388,13 +388,15 @@ green = #4d944e;
 }
 
 #modalProfileDeletion .modal-body{
-	padding-top: 0px;
-	height: 40%;
+	padding-top: 6%;
+	margin-left: 8%;
+	margin-right: 8%;
+	height: 62%;
 }
 
 #modalProfileDeletion .form-group{
 	/*padding-top: 5em;*/
-	margin: 8em;
+	/*margin: 7em;*/
 	/*padding-left: 6em;*/
 }
 
@@ -408,7 +410,6 @@ green = #4d944e;
 	background-color: #4d944e!important;
 	color: white;
 }
-
 
 
 

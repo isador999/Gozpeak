@@ -259,22 +259,22 @@ $footer['fr']['premium'] = "Devenir Premium";
 
 
 // HOME
-$home['fr']['runzpeak']['img'] = "views/images/run.png";
-$home['fr']['runzpeak']['title'] = "Runzpeak";
-$home['fr']['runzpeak']['alt'] = "Runzpeak";
-$home['fr']['artzpeak']['img'] = "views/images/art.png";
-$home['fr']['artzpeak']['title'] = "Artzpeak";
-$home['fr']['artzpeak']['alt'] = "Artzpeak";
-$home['fr']['eatzpeak']['img'] = "views/images/eat.png";
-$home['fr']['eatzpeak']['title'] = "Eatzpeak";
-$home['fr']['eatzpeak']['alt'] = "Eatzpeak";
-$home['fr']['partyzpeak']['img'] = "views/images/party.png";
-$home['fr']['partyzpeak']['title'] = "Partyzpeak";
-$home['fr']['partyzpeak']['alt'] = "Partyzpeak";
+$home['fr']['run']['img'] = "views/images/run.png";
+$home['fr']['run']['title'] = "Runzpeak";
+$home['fr']['run']['alt'] = "Runzpeak";
+$home['fr']['art']['img'] = "views/images/art.png";
+$home['fr']['art']['title'] = "Artzpeak";
+$home['fr']['art']['alt'] = "Artzpeak";
+$home['fr']['eat']['img'] = "views/images/eat.png";
+$home['fr']['eat']['title'] = "Eatzpeak";
+$home['fr']['eat']['alt'] = "Eatzpeak";
+$home['fr']['party']['img'] = "views/images/party.png";
+$home['fr']['party']['title'] = "Partyzpeak";
+$home['fr']['party']['alt'] = "Partyzpeak";
 
-$home['fr']['runzpeak']['text'] = "Pratiquer et faire du sport";
-$home['fr']['artzpeak']['text'] = "Pratiquer et se cultiver";
-$home['fr']['eatzpeak']['text'] = "Pratiquer et manger";
-$home['fr']['partyzpeak']['text'] = "Pratiquer et boire un verre";
+$home['fr']['run']['text'] = "Pratiquer et faire du sport";
+$home['fr']['art']['text'] = "Pratiquer et se cultiver";
+$home['fr']['eat']['text'] = "Pratiquer et manger";
+$home['fr']['party']['text'] = "Pratiquer et boire un verre";
 
 ?>

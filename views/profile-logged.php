@@ -1,18 +1,18 @@
 <head>
 	<script src="views/js/jquery.profiledelete.js"></script>
-	<!-- <script src="views/js/jquery.profile.js"></script> -->
+	<script src="views/js/jquery.profile.js"></script>
 </head>
 
-<div class="content-head">
+<div class="profile-head">
 	<div class="head-links">
 		<p class="idhead">Votre profil Gozpeak</p>
-		<a onclick="showModalProfile('<?php echo $_SESSION['profil']?>')"><i> Editer la Zpeak ID </i> </a>
+		<a onclick="showModalProfile('<?php echo $_SESSION['profil']?>')"><i> Editer la Zpeak ID </i> </a> <br>
 		<a onclick="showModalProfileDeletion('<?php echo $_SESSION['profil']?>')"><i> Supprimer le compte GoZpeak </i></a> <br>
 	</div>
 </div>
 
 
-<div class="content-profile">
+<div class="profile-content">
 	<div class="idlang">
 		<br/>
 		<br/>
@@ -75,7 +75,7 @@
 			</tr>
 			<tr>
 				<th> Utilisateur Premium : </th>
-				<td> <a href="#become_premium#"> <?php echo $_SESSION['ispremium'] ?> </a></td>
+				<td> <a href="#premium#"> <?php echo $_SESSION['ispremium'] ?> </a></td>
 			</tr>
 		</table>
 		</div>
