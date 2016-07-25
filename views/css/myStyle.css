@@ -613,7 +613,7 @@ green = #4d944e;
 
 @media (max-width: 1200px){
 	#headerTop{
-		font-size: 1.3em;
+		font-size: 1.2em;
 	}
 	.headerRight .simple {
 		padding-top: 19px;
@@ -659,7 +659,7 @@ green = #4d944e;
 }
 
 
-@media (max-width: 1110px){
+@media (max-width: 1120px){
 	#headerTop{
 		font-size: 1.1em;
 	}
