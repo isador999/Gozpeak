@@ -109,7 +109,7 @@ session.save_path = "tcp://127.0.0.1:6379?auth=<AUTH_TOKEN>"
 
 The session.save_path can use a token or not, but if yes, you need to configure   <i> /etc/redis/redis.conf </i> : 
 
-requirepass 'AUTH_TOKEN'
+<code> requirepass 'AUTH_TOKEN' </code>
 
 Restart Redis : 
 
