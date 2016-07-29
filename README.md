@@ -16,6 +16,12 @@ In this way, people could speak a lot of different languages, increase their lan
 <br>
 ## Install Gozpeak Dev Environment 
 
+#### Install packages
+
+Apache2, PHP and MySQL are the main middlewares required for Gozpeak : 
+
+<code> apt-get update; apt-get install apache2 libapache2-mod-php5 php5-mysql mysql-server </code>
+
 #### Clone files
 
 Clone firstly the repository in an Apache/Nginx Vhost : 
@@ -82,3 +88,26 @@ Ok !  Eventually map Apache configuration to the gozpeak folder, restart apache 
 
 Go to <b> http://localhost:[custom_port]/index.php </b>
 
+
+<br>
+#### Optionnal settings
+
+Enventually, to manage sessions, Redis can be installed, and then configured in   <i> /etc/php5/apache2/php.ini  </i> : 
+
+```bash
+apt-get install redis php5-redis
+```
+
+Lines to be configured in php.ini : 
+```
+session.save_handler = redis
+session.save_path = "tcp://127.0.0.1:6379?auth=<AUTH_TOKEN>"
+```
+
+The session.save_path can use a token or not, but if yes, you need to configure   <i> /etc/redis/redis.conf </i> : 
+
+requirepass 'AUTH_TOKEN'
+
+Restart Redis : 
+
+<code> service redis-server restart </code>
