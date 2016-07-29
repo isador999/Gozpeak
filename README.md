@@ -20,7 +20,10 @@ In this way, people could speak a lot of different languages, increase their lan
 
 Apache2, PHP and MySQL are the main middlewares required for Gozpeak : 
 
-<code> apt-get update; apt-get install apache2 libapache2-mod-php5 php5-mysql mysql-server </code>
+```
+apt-get update
+apt-get install apache2 libapache2-mod-php5 php5-mysql mysql-server
+```
 
 #### Clone files
 
