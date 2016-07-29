@@ -1,9 +1,20 @@
 # Gozpeak Website
+
 Gozpeak Repo for demo.gozpeak.com development
 
-<br>
-<br>
-## Initialization 
+<b>
+The goal of Gozpeak Project : 
+</b>
+
+Gozpeak is a concept to speak languages ('go speak'). 
+If you need to speak/improve some languages, so Gozpeak is made for you ! 
+Through the website, users will be able to propose some activities, grouped by categories (sport, eat, art and party). 
+One or more languages could be associated to each event. 
+
+In this way, people could speak a lot of different languages, increase their language skills, improve their accents, etc...  just by practicing some social things ... and especially by meeting native people !!! 
+
+
+## Install Gozpeak Dev Environment 
 
 #### Clone files
 
