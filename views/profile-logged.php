@@ -35,7 +35,7 @@
 	<div class="idcontent">
 		<div class="idpicture"> <img src="views/images/portrait_moyen.png"> </div>
 		<div class="idnumber"> Profil N°<?php echo $infos['id'] ?> </div>
-		<div class="idinfos">
+		<div class="idinfos-logged">
 		<table>
 			<tr>
 				<th> Pseudo : </th>

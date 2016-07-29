@@ -1,0 +1,144 @@
+/******************************************************************/
+/***** Design for profile-unlogged.php and profile-logged.php *****/
+
+.profile-content {
+        padding-left: 8%;
+        padding-top: 4%;
+        width:96%;
+        height:80%;
+}
+
+
+.profile-head {
+        padding-top: 7%;
+        text-align:left;
+}
+
+.head-links {
+        text-align: left;
+        padding-left: 10%;
+}
+
+.idhead {
+        font:30px "noteworthy";
+        color:#d9523b;
+}
+
+.idhead span {
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 28px;
+	font-style: italic;
+}
+
+.idlang {
+        float:right;
+        padding-top: 5%;
+        text-align:left;
+        width:24%;
+}
+
+.idcontent {
+        background-image: url('../images/identity_card.png');
+        background-size: 84% 100%;
+        background-repeat: no-repeat;
+        width: 70%;
+        height: 88%;
+        font-size:18px;
+}
+
+.idpicture {
+        width: 20%;
+        padding-top: 3%;
+        float: left;
+}
+
+.idnumber {
+        float:left;
+        padding-top: 5%;
+}
+
+
+
+/***** Table for profile-unlogged.php *****/
+.idinfos-unlogged table {
+        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        font-style: italic;
+        color:#999;
+        width: 70%;
+        height: 43%;
+        margin-top: 23%;
+        margin-left: -24%;
+        float: left;
+        font-size:15px;
+}
+
+.idinfos-unlogged th {
+        width:24%;
+}
+
+.idinfos-unlogged td {
+        width:12%;
+        border-bottom: solid SteelBlue 0.2px;
+}
+
+.idinfos-unlogged td, .idinfos-unlogged a {
+        color: DimGray;
+}
+
+.idinfos-unlogged a:hover {
+        color: SteelBlue;
+}
+
+.idinfos-unlogged a:visited, .idinfos-unlogged a:active {
+        color: DarkGray;
+}
+
+
+
+/***** Table for profile-logged.php *****/
+.idinfos-logged table {
+        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        font-style: italic;
+        color:#999;
+        width: 70%;
+        height: 43%;
+        margin-top: 23%;
+        margin-left: -25%;
+        float: left;
+        font-size:15px;
+}
+
+.idinfos-logged th {
+        width:24%;
+}
+
+.idinfos-logged td {
+        width:12%;
+        border-bottom: solid SteelBlue 0.2px;
+}
+
+.idinfos-logged td, .idinfos-logged a {
+        color: DimGray;
+}
+
+.idinfos-logged a:hover {
+        color: SteelBlue;
+}
+
+.idinfos-logged a:visited, .idinfos-logged a:active {
+        color: DarkGray;
+}
+
+
+
+
+
+/*Typo*/
+@font-face {
+    font-family: 'noteworthy';
+    src: url('../images/typo/noteworthy.ttc');
+    font-weight: normal;
+    font-style: normal;
+}
+
+

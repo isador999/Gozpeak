@@ -9,6 +9,15 @@ function profile_info($DB, $pseudo) {
 }
 
 
+function pseudo_exist($DB, $pseudo) {
+        $req = $DB->prepare("SELECT COUNT(pseudo) FROM members where pseudo = ?");
+        $req -> execute(array($pseudo));
+        $nbre_pseudo = $req->fetchColumn();
+        $req->closeCursor();
+        return ($nbre_pseudo);
+}
+
+
 function count_events ($DB, $pseudo) {
 	$req = $DB->prepare("SELECT COUNT(id) from events where organizer = ?");
 	$req -> execute(array($pseudo));

@@ -1,0 +1,157 @@
+/***** Design of list.php, list-head.php ..... *****/
+
+/* list-head.php */
+/*****************/
+.list-header {
+        padding-top: 5%;
+        height: 42%;
+}
+
+.list-titles {
+        width: 25%;
+        font-size: 16px;
+        margin:auto;
+        float:center;
+}
+
+
+.list-content-head {
+        float:center;
+	margin:auto;
+	padding-right:4%;
+        width:80%;
+}
+
+
+.list-lang {
+        width: 28%;
+        float: left;
+        text-align:left;
+}
+
+.list-sort {
+        width: 30%;
+        float: right;
+        text-align:left;
+}
+
+
+
+
+
+/***** list.php *****/
+/********************/
+
+.list-content {
+        width: 90%;
+        height: 100%;
+        margin:auto;
+        float:center;
+        padding-top: 4%;
+        padding-bottom: 2%;
+}
+
+/*** Left global bloc ***/
+.middle-left {
+        float:left;
+        width: 50%;
+        height: 100%;
+}
+
+/*** Right global blocœ ***/
+.middle-right {
+        float:right;
+        width: 50%;
+        height: 100%;
+}
+
+.list-content-left {
+        background-image: url("../images/papier.png");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+        background-attachment:local;
+        float:left;
+        height:100%;
+        width:80%;
+}
+
+.list-content-right {
+        background-image: url("../images/papier.png");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+        background-attachment:local;
+        float:right;
+        height:100%;
+        width:80%;
+}
+
+
+/*** Title in left paper ***/
+.list-content-img-left {
+        width: 60%;
+        margin:auto;
+        padding-bottom: 3.5%;
+        font:28px "noteworthy";
+        color:#d9523b;
+}
+
+
+/*** Title in right paper ***/
+.list-content-img-right {
+        width: 60%;
+        margin:auto;
+        padding-bottom: 3.5%;
+        font:28px "noteworthy";
+        color:#2b5f92;
+}
+
+
+
+/***** List tables *****/
+/***********************/
+/* Left table */
+.list-content-left table {
+        margin: auto;
+        width:96%;
+        font-size:14px;
+        border-spacing:2px;
+        text-align:left;
+        margin-left: 2.5%;
+}
+
+
+.list-content-left th {
+        font-size:16px;
+        text-decoration: underline;
+}
+
+
+.list-content-left td {
+        font-size:14px;
+        padding-top: 0.5%;
+}
+
+
+
+/*** Right table ***/
+/*******************/
+.list-content-right table {
+        margin: auto;
+        width:96%;
+        font-size:14px;
+        border-spacing:2px;
+        text-align:left;
+        margin-left: 2.5%;
+}
+
+.list-content-right th {
+        font-size:16px;
+        text-decoration: underline;
+}
+
+.list-content-right td {
+        font-size:14px;
+        padding-top: 0.5%;
+}
+
+

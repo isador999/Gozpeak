@@ -254,9 +254,46 @@ $headband['fr']['event'] = "Proposer un événement";
 
 // FOOTER
 $footer['fr']['baby_zpeak'] = "BABY ZPEAK !";
-$footer['fr']['contact'] = "CONTACT";
-$footer['fr']['premium'] = "Devenir Premium";
+$footer['fr']['contact'] = "Contact";
 
+
+/***** Footer ModalContact *****/
+$modal['fr']['contact']['title'] = "Fomulaire de contact";
+$modal['fr']['contact']['field'][0]['placeholder'] = "Nom";
+$modal['fr']['contact']['field'][0]['input'] = "name";
+$modal['fr']['contact']['field'][0]['name'] = "name";
+$modal['fr']['contact']['field'][0]['type'] = "text";
+$modal['fr']['contact']['field'][1]['placeholder'] = "Email";
+$modal['fr']['contact']['field'][1]['input'] = "email";
+$modal['fr']['contact']['field'][1]['name'] = "email";
+$modal['fr']['contact']['field'][1]['type'] = "email";
+$modal['fr']['contact']['field'][2]['placeholder'] = "Sujet";
+$modal['fr']['contact']['field'][2]['input'] = "contact_subject";
+$modal['fr']['contact']['field'][2]['name'] = "subject";
+$modal['fr']['contact']['field'][2]['type'] = "text";
+$modal['fr']['contact']['textarea']['name'] = "comments";
+$modal['fr']['contact']['textarea']['id'] = "comments";
+$modal['fr']['contact']['textarea']['placeholder'] = "Entrez votre message";
+$modal['fr']['contact']['check']['desc'] = "Envoyer votre message";
+$modal['fr']['contact']['check']['type'] = "submit";
+$modal['fr']['contact']['check']['submit'] = "Submit";
+
+
+
+
+$modal['fr']['forgotpass']['title'] = "Récupération de votre mot de passe";
+$modal['fr']['forgotpass']['field'][0]['desc'] = "Vérification de l'adresse mail";
+$modal['fr']['forgotpass']['field'][0]['input'] = "mail_forgotpass";
+$modal['fr']['forgotpass']['field'][0]['type'] = "email";
+$modal['fr']['forgotpass']['field'][0]['spanclass'] = "glyphicon-envelope";
+$modal['fr']['forgotpass']['field'][0]['placeholder'] = "example@gmail.com";
+$modal['fr']['forgotpass']['check']['desc'] = "Valider";
+$modal['fr']['forgotpass']['check']['type'] = "submit";
+$modal['fr']['forgotpass']['check']['submit'] = "Submit";
+
+
+
+$footer['fr']['premium'] = "Devenir Premium";
 
 // HOME
 $home['fr']['run']['img'] = "views/images/run.png";

@@ -19,12 +19,15 @@
 <link rel=stylesheet type="text/css" href="views/css/font-awesome.min.css">
 <link rel=stylesheet type="text/css" href="views/css/font-awesome.css">
 
+<link rel=stylesheet type="text/css" href="views/css/style.css">
+<link rel=stylesheet type="text/css" href="views/css/style_div.css">
 
 <!-- PERSONAL STYLE -->
-
 <link rel=stylesheet type="text/css" href="views/css/contact.css">
 <link rel=stylesheet type="text/css" href="views/css/myStyle.css">
+<link rel=stylesheet type="text/css" href="views/css/list.css">
+<link rel=stylesheet type="text/css" href="views/css/profile.css">
 
-<link rel=stylesheet type="text/css" href="views/css/style_div.css">
-<link rel=stylesheet type="text/css" href="views/css/style.css">
+
+
 

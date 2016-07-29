@@ -4,32 +4,35 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Restez en contact avec nous :</h4>
+				<h4 class="modal-title" id="myModalLabel"> <?php echo $modal['fr']['contact']['title'] ?> </h4>
 			</div>
 
 			<div id="message" class="center form-wrapper modal-body">
-			<form role="form" data-toggle="validator" method="post" action="" name="contactform" id="contactform" class="contactform">
-                                <input type="text" name="name" placeholder="Nom" id="name" />
+			<form role="form" data-toggle="validator" method="post" name="contactform" id="contactform" class="contactform" action="">
+				<?php foreach($modal[$_SESSION['language']]['contact']['field'] as $key => $value){ ?>				
+				<div class="form-group">
+                                                       <input type="<?php echo $value['type']; ?>" class="form-control" id="<?php echo $value['name']; ?>" name="<?php echo $value['name']; ?>" placeholder="<?php echo $value['placeholder']; ?>"/>
+                                        </div>
+                                <?php } ?>
+                                <!-- <input type="text" name="name" placeholder="Nom" id="name" />
                                 <input type="text" name="email" placeholder="Email" id="email" />
-                                <input type="text" name="subject" placeholder="Sujet" id="subject" />
-                                <textarea placeholder="Message" name="comments" id="comments"></textarea>
+                                <input type="text" name="subject" placeholder="Sujet" id="subject" /> -->
+                                <textarea placeholder="<?php $modal['fr']['contact']['textarea']['placeholder'] ?>" name="<?php $modal['fr']['contact']['textarea']['name'] ?>" id="<?php $modal['fr']['contact']['textarea']['id'] ?>"></textarea>
 				<br>
 				<div class="center" id="captcha">
 					<span>3+1=</span>
 					<input type="text" name="verify" id="verify" />
 				</div>
 
-				<input type="submit" id="ssubmit" name="subscribe" value="SOUSCRIRE" class="orange" />
-			</form>
-
-			</div>
-
-			<div class="modal-footer">
-				<button onclick="closedContact()" type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
+				<div class="modal-footer">
+					<button onclick="closedContact()" type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
+					<button type="<?php echo $modal['fr']['contact']['check']['type']; ?>" id="ssubmit" value=<?php echo $modal['fr']['contact']['check']['submit']; ?> name="subscribe" class="btn btn-primary pull-right orange"><?php echo $modal['fr']['contact']['check']['desc']; ?></button>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 
 

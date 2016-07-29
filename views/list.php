@@ -25,7 +25,8 @@
 			                <td> <img src="views/images/p_<?php echo $event['language'] ?>.png" alt="<?php echo $event['language'] ?>"</td>
 				                <td> <a href="index.php?page=profil&profil=<?php echo $event['organizer'] ?>"><?php echo $event['organizer'] ?></a> </td>
 			                <td> <a href="index.php?page=event&event=<?php echo $event['eventname'] ?>&query=<?php echo $_SESSION['query'] ?>"> <?php echo $event['eventname'] ?> </a></td>
-			                <td> <?php echo $event['eventhour'].'H'.$event['eventminutes'] ?></td>
+			                <!-- <td> <?php //echo $event['eventhour'].'H'.$event['eventminutes'] ?></td> -->
+			                <td> <?php echo $event['eventday'] ?><br><?php echo $event['eventtime'] ?></td>
 			  </tr>
 			<?php } ?>
 			</table>
@@ -53,8 +54,8 @@
 			  <tr>
 		                <td> <img src="views/images/p_<?php echo $idea['language'] ?>.png" alt="<?php echo $idea['language'] ?>"</td>
 		                <td> <a href="index.php?page=profil&profil=<?php echo $idea['organizer'] ?>"><?php echo $idea['organizer'] ?></a> </td>
-		                <td> <a href="index.php?page=event&event=<?php echo $idea['eventname'] ?>&query=<?php echo $_SESSION['query'] ?>"> <?php echo $idea['eventname'] ?> </a></td>
-		                <td> <?php echo $idea['eventhour'].'H'.$idea['eventminutes'] ?></td>
+		                <td> <a href="index.php?page=idea&idea=<?php echo $idea['ideaname'] ?>&query=<?php echo $_SESSION['query'] ?>"> <?php echo $idea['ideaname'] ?> </a></td>
+		                <td> <?php echo $idea['ideaday'] ?><br><?php echo $idea['ideatime'] ?></td>
 			  </tr>
 			<?php } ?>
 			</table> 
