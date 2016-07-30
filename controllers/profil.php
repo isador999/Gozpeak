@@ -3,7 +3,6 @@
 session_start();
 
 require_once(LIB.'sessions_init.php');
-require_once(LIB.'display.php');
 require_once(CONTROLLERS.'init.php');
 require_once(MODELS.'dbconnect.php');
 require_once(MODELS.'profile_functions.php');

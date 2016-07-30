@@ -1,7 +1,7 @@
 <div class="list-header">
 	<div class="list-titles">
-		<a href="index.php?page=list&query=<?php echo $_SESSION['query']?>"><img src="views/images/<?php echo $_SESSION['query']?>.png" alt="<?php echo $_SESSION['query']?>" title="<?php echo $_SESSION['query']?>" /></a>
-		<p> <?php echo $home[$_SESSION['language']][$_SESSION['query']]['text'] ?></p>
+		<a href="index.php?page=list&query=<?php echo $query?>"><img src="views/images/<?php echo $query?>.png" alt="<?php echo $query?>" title="<?php echo $query?>" /></a>
+		<p> <?php echo $home[$_SESSION['language']][$query]['text'] ?></p>
 	</div>
 	<br>
 	<br>

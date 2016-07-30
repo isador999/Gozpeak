@@ -49,6 +49,7 @@
         float:center;
         padding-top: 4%;
         padding-bottom: 2%;
+	margin-bottom: 4%;
 }
 
 /*** Left global bloc ***/
@@ -73,6 +74,23 @@
         float:left;
         height:100%;
         width:80%;
+}
+
+/*** Paginations at bottom of left paper ***/
+.pagination-left {
+	font:16px "noteworthy";
+	font-style: bold;
+	margin-right: auto;
+	width: 75%;
+	float:left;
+}
+
+.pagination-right {
+	font:16px "noteworthy";
+	font-style: bold;
+	margin-right: auto;
+	width: 36%;
+	float:right;
 }
 
 .list-content-right {
@@ -123,12 +141,13 @@
 .list-content-left th {
         font-size:16px;
         text-decoration: underline;
+	padding-bottom:1.2%;
 }
 
 
 .list-content-left td {
         font-size:14px;
-        padding-top: 0.5%;
+        padding-top: 0.2%;
 }
 
 
@@ -147,11 +166,14 @@
 .list-content-right th {
         font-size:16px;
         text-decoration: underline;
+	padding-bottom:1.2%;
 }
 
 .list-content-right td {
         font-size:14px;
-        padding-top: 0.5%;
+        padding-top: 0.2%;
 }
+
+
 
 

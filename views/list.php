@@ -23,7 +23,7 @@
 			<?php foreach ($events as $event) { ?>
 			  <tr>
 			                <td> <img src="views/images/p_<?php echo $event['language'] ?>.png" alt="<?php echo $event['language'] ?>"</td>
-				                <td> <a href="index.php?page=profil&profil=<?php echo $event['organizer'] ?>"><?php echo $event['organizer'] ?></a> </td>
+				        <td> <a href="index.php?page=profil&profil=<?php echo $event['organizer'] ?>"><?php echo $event['organizer'] ?></a> </td>
 			                <td> <a href="index.php?page=event&event=<?php echo $event['eventname'] ?>&query=<?php echo $_SESSION['query'] ?>"> <?php echo $event['eventname'] ?> </a></td>
 			                <!-- <td> <?php //echo $event['eventhour'].'H'.$event['eventminutes'] ?></td> -->
 			                <td> <?php echo $event['eventday'] ?><br><?php echo $event['eventtime'] ?></td>
@@ -32,6 +32,20 @@
 			</table>
 		<!-- End Content-left -->
 		</div>
+			<?php 
+			echo $num_events;
+			echo '<p class="pagination-left">[ Page :';
+			
+			// Boucle sur les pages
+				for ($i = 1 ; $i <= $events_total_pages ; $i++) {
+				    if ($i == $events_current_page ) {
+				        echo " $i";
+				    } else {
+				        echo " <a href=\"$gozpeak_protocol$gozpeak_host/index.php?page=list&query=$query&eventpage=$i\">$i</a> ";
+				    }
+				}
+				echo ' ]</p>';
+			?>
 	</div>
 
 
@@ -62,6 +76,20 @@
 		<!-- End of content-right -->
 		</div>
 	</div>
+			<?php 
+			//echo $num_ideas;
+			echo '<p class="pagination-right">[ Page :';
+			
+			// Boucle sur les pages
+				for ($i = 1 ; $i <= $ideas_total_pages ; $i++) {
+				    if ($i == $ideas_current_page ) {
+				        echo " $i";
+				    } else {
+				        echo " <a href=\"$gozpeak_protocol$gozpeak_host/index.php?page=list&query=$query&ideapage=$i\">$i</a> ";
+				    }
+				}
+				echo ' ]</p>';
+			?>
 </div>
 
 
