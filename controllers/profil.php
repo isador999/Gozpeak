@@ -10,17 +10,16 @@ require_once(MODALS.'modal-navbar.php');
 require_once(MODALS.'modal-footer.php');
 
 
-if(isset($_SESSION['profil']) && (!empty($_SESSION['profil']))) {
-	$pseudo = $_SESSION['profil'];
-} elseif (!isset($_SESSION['profil']) OR (empty($_SESSION['profil']))) {
-	$pseudo = isset($_GET['profil']) ? $_GET['profil'] : '';
-
-	/***** Check if profil entered exists *****/
-	$nbre_pseudo = pseudo_exist($DB, $pseudo);
-	if (!$nbre_pseudo > 0) {
-		unset($pseudo);
+if (isset($_GET['profil']) && (!empty($_GET['profil']))) {
+	$provided_profile = $_GET['profil'];
+	$nbre_pseudo = pseudo_exist($DB, $provided_profile);
+	if($nbre_pseudo > 0) {
+		$pseudo = $provided_profile;
+	} else {
 		$error="unknown_pseudo";
 	}
+} elseif (isset($_SESSION['profil']) && (!empty($_SESSION['profil']))) {
+	$pseudo = $_SESSION['profil'];
 }
 
 
@@ -31,8 +30,12 @@ if (isset($pseudo)) {
 	$logged = check_logged();
 	if ($logged == 1) {
 	        require_once(VIEWS.'header-logged.php');
-		require_once(MODALS.'modal-profile.php');
-		require_once(VIEWS.'profile-logged.php');
+		if ($pseudo == $_SESSION['profil']) {
+			require_once(MODALS.'modal-profile.php');
+			require_once(VIEWS.'profile-logged.php');
+		} else {
+			require_once(VIEWS.'profile-unlogged.php');
+		}
 	} else {
 	        require_once(VIEWS.'header-notlogged.php');
 		require_once(VIEWS.'profile-unlogged.php');

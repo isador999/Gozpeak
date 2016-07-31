@@ -1,7 +1,7 @@
 <div class="profile-head">
 	<div class="head-links">
 		<p class="idhead"> Profil Gozpeak de <span class="idpseudo"> <?php echo $pseudo ?> </span> </p>
-		<a href="#" ><strong> Lui envoyer un message privé </strong></a> <br>
+		<!-- <a href="#" ><strong> Lui envoyer un message privé </strong></a> <br> -->
 	</div>
 </div>
 
