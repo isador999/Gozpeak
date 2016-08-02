@@ -1,9 +1,9 @@
 <?php
 
 function send_by_mailgun($email,$subject,$msg) {
-	 $api_key="key-d63020f29a13791a9757e14e749478df";       /* Api Key got from https://mailgun.com/cp/my_account */
-	 $domain="gozpeak.com";   				/* Domain Name you given to Mailgun */
-         $address="info@gozpeak.com";
+	 $api_key="<AUTH_KEY>";       /* Api Key got from https://mailgun.com/cp/my_account */
+	 $domain="<gozpeak_domain>";   				/* Domain Name you given to Mailgun */
+         $address="<gozpeak_email>";
 	 $ch = curl_init();
 	 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 	 curl_setopt($ch, CURLOPT_USERPWD, 'api:'.$api_key);
