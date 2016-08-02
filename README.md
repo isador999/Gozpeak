@@ -25,6 +25,11 @@ apt-get update
 apt-get install apache2 libapache2-mod-php5 php5-mysql mysql-server
 ```
 
+Gozpeak uses Mailgun to send mails, so you need to install these packages too : 
+```
+aptitude install libmagic-dev install php5-dev libcurl3 php5-curl
+```
+
 #### Clone files
 
 Clone firstly the repository in an Apache/Nginx Vhost : 
