@@ -3,7 +3,6 @@
 <!-- Ici, de mon point de vue, si on vient d'un des boutons de la page Home.php, on sette une variable PHP qui pourrait savoir quel thème afficher...   (enfin juste une image Artzpeak, Runzpeak, etc...  et eventuellement des couleurs (ou pas, on s'en fout peut-être pour l'instant)  -->
 
 
-
 <div class="list-content">
 	<!-- FEUILLE GRISE DES Zpeak Sorties -->
 	<div class="middle-left">
@@ -22,10 +21,9 @@
 
 			<?php foreach ($events as $event) { ?>
 			  <tr>
-			                <td> <img src="views/images/p_<?php echo $event['language'] ?>.png" alt="<?php echo $event['language'] ?>"</td>
+			                <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$event['language']]?>" alt="<?php echo $event['language'] ?>"</td>
 				        <td> <a href="index.php?page=profil&profil=<?php echo $event['organizer'] ?>"><?php echo $event['organizer'] ?></a> </td>
-			                <td> <a href="index.php?page=event&event=<?php echo $event['eventname'] ?>&query=<?php echo $_SESSION['query'] ?>"> <?php echo $event['eventname'] ?> </a></td>
-			                <!-- <td> <?php //echo $event['eventhour'].'H'.$event['eventminutes'] ?></td> -->
+			                <td> <a href="index.php?page=event&event=<?php echo $event['eventname'] ?>"> <?php echo $event['eventname'] ?> </a></td>
 			                <td> <?php echo $event['eventday'] ?><br><?php echo $event['eventtime'] ?></td>
 			  </tr>
 			<?php } ?>
@@ -33,7 +31,6 @@
 		<!-- End Content-left -->
 		</div>
 			<?php 
-			echo $num_events;
 			echo '<p class="pagination-left">[ Page :';
 			
 			// Boucle sur les pages
@@ -66,9 +63,9 @@
 
 			<?php foreach ($ideas as $idea) { ?>
 			  <tr>
-		                <td> <img src="views/images/p_<?php echo $idea['language'] ?>.png" alt="<?php echo $idea['language'] ?>"</td>
+		                <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$idea['language']]?>" alt="<?php echo $idea['language'] ?>"</td>
 		                <td> <a href="index.php?page=profil&profil=<?php echo $idea['organizer'] ?>"><?php echo $idea['organizer'] ?></a> </td>
-		                <td> <a href="index.php?page=idea&idea=<?php echo $idea['ideaname'] ?>&query=<?php echo $_SESSION['query'] ?>"> <?php echo $idea['ideaname'] ?> </a></td>
+		                <td> <a href="index.php?page=idea&idea=<?php echo $idea['ideaname'] ?>"> <?php echo $idea['ideaname'] ?> </a></td>
 		                <td> <?php echo $idea['ideaday'] ?><br><?php echo $idea['ideatime'] ?></td>
 			  </tr>
 			<?php } ?>

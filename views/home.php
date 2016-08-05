@@ -18,7 +18,7 @@
 
 			<div id="courses-messages" class="alert alert-info fade in">
 				<a href="" class="close" data-dismiss="alert">&times;</a>
-				<strong><u> Information :</u></strong>  Gozpeak proposera également des cours particuliers efficaces pour apprendre l'espagnol ;-)
+				<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-)
 			</div>
 
 

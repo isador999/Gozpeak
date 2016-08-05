@@ -10,10 +10,8 @@ require_once(VIEWS.'styles.php');
 $logged = check_logged();
 if ($logged == 1) {
        	require_once(VIEWS.'header-logged.php');
-        echo "USER LOGGED !";
 } else {
         require_once(VIEWS.'header-notlogged.php');
-        echo "USER unlogged !";
 }
 
 

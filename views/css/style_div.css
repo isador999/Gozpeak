@@ -82,17 +82,19 @@ SECTION POUR LA PAGE ACCUEIL RENNES / SECTION FOR HOME PAGES (Flash Buttons)
 .eventForm {
         position:relative;
 	text-align:center;
-	height:55%;
+	height:24%;
 	margin-top:10%;
 	color:#999;
-	width:105%;
+	width:200%!important;
         line-height:28px;
 }
 
-.eventForm .logo {
-	width:45%;
-	/*height:95%;*/
+.eventForm #EventWithQueryImg {
+	width:80%;
 }
+
+
+
 
 /******************************/
 /***** ################## *****/

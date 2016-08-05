@@ -196,23 +196,52 @@ $modal['fr']['connection']['check']['type'] = "submit";
 $modal['fr']['connection']['check']['submit'] = "Submit";
 
 
-//////  Modal Event  ///////
-//     List of Fields 	  //
-$modal['fr']['event']['title'] = "Proposer un événement";
-$modal['fr']['run']['event']['img'] = "views/images/event_run.jpg";
-$modal['fr']['art']['event']['img'] = "views/images/event_art.jpg";
-$modal['fr']['party']['event']['img'] = "views/images/event_party.jpg";
-$modal['fr']['eat']['event']['img'] = "views/images/event_eat.jpg";
-$modal['fr']['event']['logo']['0'] = "views/images/run.png";
-$modal['fr']['event']['logo']['1'] = "views/images/art.png";
-$modal['fr']['event']['logo']['2'] = "views/images/party.png";
-$modal['fr']['event']['logo']['3'] = "views/images/eat.png";
-$modal['fr']['event']['field']['0']['mandatory'] = "Evénement / Activité";
-$modal['fr']['event']['field']['1']['mandatory'] = "Lieu";
-$modal['fr']['event']['field']['2']['select']['mandatory'] = "Langue à pratiquer";
-$modal['fr']['event']['field']['3']['mandatory'] = "Date & Heure";
-$modal['fr']['event']['field']['4'] = "Numéro";
-$modal['fr']['event']['check'] = "Proposer la sortie !";
+
+/***** Modal Event *****/
+$modal['fr']['postevent']['title'] = "Proposer un événement";
+#$modal['fr']['run']['postevent']['img'] = "views/images/event_run.jpg";
+#$modal['fr']['art']['postevent']['img'] = "views/images/event_art.jpg";
+#$modal['fr']['party']['postevent']['img'] = "views/images/event_party.jpg";
+#$modal['fr']['eat']['postevent']['img'] = "views/images/event_eat.jpg";
+$modal['fr']['postevent']['logo']['0'] = "views/images/run.png";
+$modal['fr']['postevent']['logo']['1'] = "views/images/art.png";
+$modal['fr']['postevent']['logo']['2'] = "views/images/party.png";
+$modal['fr']['postevent']['logo']['3'] = "views/images/eat.png";
+$modal['fr']['postevent']['field']['0']['mandatory']['desc'] = "Evénement / Activité";
+$modal['fr']['postevent']['field']['0']['mandatory']['input'] = "event_name";
+$modal['fr']['postevent']['field']['0']['mandatory']['placeholder'] = "Le nom de l'événement";
+$modal['fr']['postevent']['field']['1']['mandatory']['desc'] = "Lieu de l'événement";
+$modal['fr']['postevent']['field']['1']['mandatory']['input'] = "event_place";
+$modal['fr']['postevent']['field']['1']['mandatory']['placeholder'] = "Un bar, un parc, salle de concert... ";
+$modal['fr']['postevent']['field']['2']['mandatory']['desc'] = "Date & Heure";
+$modal['fr']['postevent']['field']['2']['mandatory']['input'] = "event_datetime";
+$modal['fr']['postevent']['field']['2']['mandatory']['placeholder'] = "Jour et Heure de l'événement";
+$modal['fr']['postevent']['field']['3']['desc'] = "Téléphone";
+$modal['fr']['postevent']['field']['3']['input'] = "phone_number";
+$modal['fr']['postevent']['field']['3']['placeholder'] = "0123456789";
+$modal['fr']['postevent']['field']['4']['select']['mandatory'] = "Langue à pratiquer";
+$modal['fr']['postevent']['check'] = "Proposer la sortie !";
+
+
+
+/***** Modal SelectQuery *****/
+$modal['fr']['SelectQuery']['title'] = "Choix d'une catégorie";
+$modal['fr']['SelectQuery']['field']['0']['logo'] = "views/images/run.png";
+$modal['fr']['SelectQuery']['field']['0']['color'] = "color:3060A7;";
+$modal['fr']['SelectQuery']['field']['0']['img'] = "views/images/event_run.jpg";
+$modal['fr']['SelectQuery']['field']['0']['query'] = "run";
+$modal['fr']['SelectQuery']['field']['1']['logo'] = "views/images/art.png";
+$modal['fr']['SelectQuery']['field']['1']['color'] = "color:purple;";
+$modal['fr']['SelectQuery']['field']['1']['img'] = "views/images/event_art.jpg";
+$modal['fr']['SelectQuery']['field']['1']['query'] = "art";
+$modal['fr']['SelectQuery']['field']['2']['logo'] = "views/images/party.png";
+$modal['fr']['SelectQuery']['field']['2']['color'] = "color:#4d944e;";
+$modal['fr']['SelectQuery']['field']['2']['img'] = "views/images/event_party.jpg";
+$modal['fr']['SelectQuery']['field']['2']['query'] = "party";
+$modal['fr']['SelectQuery']['field']['3']['logo'] = "views/images/eat.png";
+$modal['fr']['SelectQuery']['field']['3']['color'] = "color:#C13131;";
+$modal['fr']['SelectQuery']['field']['3']['img'] = "views/images/event_eat.jpg";
+$modal['fr']['SelectQuery']['field']['3']['query'] = "eat";
 
 
 //   List of Select Field  //
@@ -221,29 +250,34 @@ $modal['fr']['lang']['1'] = "allemand";
 $modal['fr']['lang']['2'] = "espagnol";
 $modal['fr']['lang']['3'] = "français";
 $modal['fr']['lang']['4'] = "italien";
-$modal['fr']['lang']['5'] = "russe";
-$modal['fr']['lang']['6'] = "chinois";
-$modal['fr']['lang']['7'] = "arabe";
-$modal['fr']['lang']['8'] = "hebreux";
-$modal['fr']['lang']['9'] = "indien";
-$modal['fr']['lang']['10'] = "japonais";
+$modal['fr']['lang']['5'] = "Autres langues";
+#$modal['fr']['lang']['6'] = "Libre / International";
 
+#$modal['fr']['lang']['5'] = "russe";
+#$modal['fr']['lang']['6'] = "chinois";
+#$modal['fr']['lang']['7'] = "arabe";
+#$modal['fr']['lang']['8'] = "hebreux";
+#$modal['fr']['lang']['9'] = "indien";
+#$modal['fr']['lang']['10'] = "japonais";
 //////  END OF MODAL Event  ///////
 
 
-
 // MINI-LANG ICON PATHS //
-$event['fr']['icon']['english'] = "views/images/p_anglais.png";
-$event['fr']['icon']['deutsch'] = "views/images/p_allemand.png";
-$event['fr']['icon']['spanish'] = "views/images/p_espagnol.png";
-$event['fr']['icon']['french'] = "views/images/p_francais.png";
-$event['fr']['icon']['italian'] = "views/images/p_italien.png";
-$event['fr']['icon']['russian'] = "views/images/p_russe.png";
-$event['fr']['icon']['chinese'] = "views/images/p_chinois.png";
-$event['fr']['icon']['arabe'] = "views/images/p_arabe.png";
-$event['fr']['icon']['hebreux'] = "views/images/p_hebreux.png";
-$event['fr']['icon']['japanese'] = "views/images/p_japonais.png";
+$minilang['fr']['icon']['anglais'] = "views/images/p_anglais.png";
+$minilang['fr']['icon']['allemand'] = "views/images/p_allemand.png";
+$minilang['fr']['icon']['espagnol'] = "views/images/p_espagnol.png";
+$minilang['fr']['icon']['francais'] = "views/images/p_francais.png";
+$minilang['fr']['icon']['italien'] = "views/images/p_italien.png";
+$minilang['fr']['icon']['russe'] = "views/images/p_russe.png";
+$minilang['fr']['icon']['chinois'] = "views/images/p_chinois.png";
+$minilang['fr']['icon']['arabe'] = "views/images/p_arabe.png";
+$minilang['fr']['icon']['hebreux'] = "views/images/p_hebreux.png";
+$minilang['fr']['icon']['japonais'] = "views/images/p_japonais.png";
 
+
+$event_img_uploader['fr']['button']['add'] = "Ajouter une photo/image pour l'événement";
+$event_img_uploader['fr']['button']['upload'] = "Envoyer l'image";
+$event_img_uploader['fr']['button']['delete'] = "Supprimer";
 
 
 // HEADER
@@ -279,8 +313,6 @@ $modal['fr']['contact']['check']['type'] = "submit";
 $modal['fr']['contact']['check']['submit'] = "Submit";
 
 
-
-
 $modal['fr']['forgotpass']['title'] = "Récupération de votre mot de passe";
 $modal['fr']['forgotpass']['field'][0]['desc'] = "Vérification de l'adresse mail";
 $modal['fr']['forgotpass']['field'][0]['input'] = "mail_forgotpass";
@@ -291,9 +323,8 @@ $modal['fr']['forgotpass']['check']['desc'] = "Valider";
 $modal['fr']['forgotpass']['check']['type'] = "submit";
 $modal['fr']['forgotpass']['check']['submit'] = "Submit";
 
-
-
 $footer['fr']['premium'] = "Devenir Premium";
+
 
 // HOME
 $home['fr']['run']['img'] = "views/images/run.png";

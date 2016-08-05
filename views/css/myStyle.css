@@ -159,8 +159,26 @@ green = #4d944e;
 
 /** HOME **/
 #home{
-	padding-top: 2%;
+	padding-top: 3%;
 }
+
+.alert {
+	font-size: 15px;
+	margin-top:1%;
+}
+
+.alert-info {
+	background: rgba(0, 100, 200, 0.14) none repeat scroll 0 0;
+	text-shadow: 0 -0px 0 rgba(0, 0, 0, 0.40);
+	color: #18838C;
+	text-align:left;
+	height: 9%;
+	width: 44%;
+	margin-left:4%;
+}
+
+
+
 
 #staticHome{
 	height: 92%;
@@ -188,6 +206,7 @@ green = #4d944e;
 #home .activity-text{
 	color: #999;
 }
+
 
 
 /** HEADER **/
@@ -237,6 +256,8 @@ green = #4d944e;
 	padding-top: 5px;
 	border-left-style: solid;
 }
+
+
 
 .fa-fw {
 	text-align: center;
@@ -555,6 +576,92 @@ green = #4d944e;
 	height: 18%;
 }
 #modalResetPassword .btn-check{
+	background-color: #4d944e!important;
+	color: white;
+}
+
+
+
+
+/***************** For Modals Event ****************/
+/***************************************************/
+
+#modalSelectQuery .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 50%;
+}
+
+#modalSelectQuery .modal-dialog{
+	/*width: 800px;*/
+	width: 50%;
+}
+
+#modalSelectQuery .modal-title{
+	font-size: 54px;
+	font-family: "noteworthy"!important;
+	color: #4d944e;
+}
+
+#modalSelectQuery .selectquery-msg {
+	text-align: center;
+	font-size: 17px;
+}
+
+
+
+
+
+#modalEventWithQuery .EventWithQueryImg {
+	float:left;
+}
+
+#modalEventWithQuery .EventWithQueryContent {
+	float:left;
+}
+
+#modalEventWithQuery #EventWithQueryImg {
+	max-width: 100%;
+	max-height: 100%;
+	float:left;
+}
+
+#modalEventWithQuery .form-group {
+	width: 74%;
+	/*margin-left:-13%;*/
+}
+
+#modalEventWithQuery select {
+	width: 40%;
+	padding-left:2%;
+}
+
+#modalEventWithQuery .form-control {
+	margin-left:-4%;
+}
+
+#modalEventWithQuery .modal-content{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif!important;
+	height: 82%;
+}
+
+#modalEventWithQuery .modal-dialog{
+	/*width: 800px;*/
+	width: 65%;
+}
+
+#modalEventWithQuery .modal-title{
+	font-size: 40px;
+	font-family: "noteworthy"!important;
+}
+
+#modalEventWithQuery .modal-body{
+	height: 68%;
+}
+
+#modalEventWithQuery .modal-footer{
+}
+
+#modalEventWithQuery .btn-check{
 	background-color: #4d944e!important;
 	color: white;
 }
