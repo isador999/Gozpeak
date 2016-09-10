@@ -72,7 +72,7 @@
 			  <tr>
 		                <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$idea['language']]['png'] ?>" alt="<?php echo $idea['language'] ?>" title="<?php echo $minilang[$_SESSION['language']]['icon'][$idea['language']]['text'] ?>"> </td>
 		                <td> <a href="index.php?page=profil&profil=<?php echo $idea['organizer'] ?>"><?php echo $idea['organizer'] ?></a> </td>
-		                <td> <a href="index.php?page=idea&query=<?php echo $event['eventtype'] ?>&idea=<?php echo $idea['ideaname'] ?>"> <?php echo $idea['ideaname'] ?> </a></td>
+		                <td> <a href="index.php?page=idea&query=<?php echo $idea['ideatype'] ?>&idea=<?php echo $idea['ideaname'] ?>"> <?php echo $idea['ideaname'] ?> </a></td>
 		                <!-- <td> <?php #echo $idea['ideaday'] ?><br><?php #echo $idea['ideatime'] ?></td> -->
 		                <td> <?php echo convertDateToFr($idea['ideaday']); ?> </td>
 		                <td> <?php echo $idea['ideatime']; ?> </td>

@@ -15,7 +15,6 @@
 			<br>
 			<form class="form-horizontal eventFeedbackForm" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/event_postcomment.php" method="POST" enctype="multipart/form-data">
 				<div class="form-group">
-					<!-- <label for="event-feedback-title" class="control-label"> <?php echo $form['comments']['title']; ?> </label> <br> <br> -->
 					<textarea class="form-control" rows="5" name="message"></textarea>
 				</div>
 				<!-- <a href="#" onclick="()"><input type="submit" name="dsubmit" id="commentSubmit" value="<?php #echo $form['comments']['submit'] ?>"></a> -->
