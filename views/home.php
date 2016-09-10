@@ -16,11 +16,11 @@
         <!-- <a href="#" class="close" data-dismiss="alert">&times;</a> -->
 
 
-		<!--	<div class="alert alert-info fade in" id="course-message">
+			<div class="alert alert-info fade in" id="course-message">
 				<a href="" class="close" data-dismiss="alert">&times;</a>
 				<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-) <br>
 				<a href="#"><i class="fa fa-leanpub"></i> Cliquez pour plus d'informations </a>
-			</div>-->
+			</div>
 
 
 			<div id="staticHome">
