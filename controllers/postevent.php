@@ -37,7 +37,7 @@ if($_POST){
 
 	/********* Regexp : Check if special chars in fields ***********/
 	foreach ($text_postfields as $field) {
-		if(!preg_match("/^[a-zA-Z0-9éèàêç'+() ]+$/", $field)) {
+		if(!preg_match("/^[a-zA-Z0-9éèàêç'+()\- ]+$/", $field)) {
 			echo "$field nok: rule2";
 			$error="notcompliant_fields";
 		}
@@ -173,7 +173,7 @@ if (isset($error)) {
                 #my_echo ("3", "red", "Veuillez remplir les champs obligatoires pour votre inscription");
         }
         elseif ($error == 'notcompliant_fields') {
-		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Certains caractères spéciaux sont interdits pour les noms et lieux d\événement </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Certains caractères spéciaux sont interdits pour les noms et lieux d\'événement </div> </div>';
                 #my_echo ("3", "red", "Veuillez remplir les champs obligatoires pour votre inscription");
         }
         elseif ($error == 'unauthorized_postevent') {
