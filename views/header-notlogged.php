@@ -13,7 +13,7 @@ session_start();
 			<div class="headerRight col-xs-12 col-sm-12 col-md-9 col-lg-9">
 		        <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalInscription()"><i class="fa fa-user-plus fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['registration']; ?></a></span>
 			    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalConnection()"><i class="fa fa-sign-in fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['connection']; ?></a></span>
-				<span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalEvent('<? echo $query ?>')"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['event']; ?></a></span>
+				<span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalSelectQuery()"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['event']; ?></a></span>
 			</div>
 	    </div>
 	</div>

@@ -16,7 +16,7 @@
 <script src="views/js/bootstrap.min.js"></script>
 <!-- <script src="views/js/npm.js"></script> -->
 
-<!-- PERSONNAL SCRIPTS -->
+<!-- PERSONAL SCRIPTS -->
 <script src="views/js/myScript.js"></script>
 
 <script src="views/js/formValidation.min.js"></script>
@@ -26,5 +26,11 @@
 <script src="views/js/jquery.forgotpass.js"></script>
 <script src="views/js/jquery.contact.js"></script>
 
-<!-- <script src="views/js/bootstrapValidator.min.js"></script> -->
-<!-- <script src="views/js/jquery.form.min.js"></script> -->
+
+<!-- <script src="views/js/bootstrap-datepicker.js"></script> -->
+<script src="views/js/bootstrap-datetimepicker.js"></script>
+
+<!-- <script src="views/js/Fileupload/jquery.fileupload-ui.js"></script>
+<script src="views/js/Fileupload/jquery.iframe-transport.js"></script>
+<script src="views/js/Fileupload/jquery.ui.widget.js"></script> -->
+

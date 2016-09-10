@@ -79,7 +79,7 @@ SECTION POUR LA PAGE ACCUEIL RENNES / SECTION FOR HOME PAGES (Flash Buttons)
 }
 
 
-.eventForm {
+.posteventForm {
         position:relative;
 	text-align:center;
 	height:24%;
@@ -89,7 +89,7 @@ SECTION POUR LA PAGE ACCUEIL RENNES / SECTION FOR HOME PAGES (Flash Buttons)
         line-height:28px;
 }
 
-.eventForm #EventWithQueryImg {
+.posteventForm #EventWithQueryImg {
 	width:80%;
 }
 

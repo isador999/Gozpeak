@@ -7,7 +7,7 @@
 	<div class="head-links">
 		<p class="idhead">Votre profil Gozpeak</p>
 		<a onclick="showModalProfile('<?php echo $_SESSION['profil']?>')"><i> Editer la Zpeak ID </i> </a> <br>
-		<a onclick="showModalProfileDeletion('<?php echo $_SESSION['profil']?>')"><i> Supprimer le compte GoZpeak </i></a> <br>
+		<a onclick="showModalProfileDeletion('<?php echo $_SESSION['profil']?>')"><i> <span class="glyphicon glyphicon-trash"></span> Supprimer le compte GoZpeak </i></a> <br>
 	</div>
 </div>
 
@@ -16,17 +16,9 @@
 	<div class="idlang">
 		<br/>
 		<br/>
-        	<img src="views/images/p_anglais.png">    Anglais  <br/>
-        	<img src="views/images/p_allemand.png">   Allemand <br/>
-	       	<img src="views/images/p_espagnol.png">   Espagnol <br/>
-	       	<img src="views/images/p_francais.png">   Français <br/>
-	      	<img src="views/images/p_italien.png">    Italien  <br/>
-	        <img src="views/images/p_russe.png">      Russe    <br/>
-	       	<img src="views/images/p_chinois.png">    Chinois  <br/>
-	       	<img src="views/images/p_arabe.png">      Arabe    <br/>
-	       	<img src="views/images/p_hebreux.png">    Hebreux  <br/>
-	       	<img src="views/images/p_indien.png">     Indien   <br/>
-	       	<img src="views/images/p_japonais.png">   Japonais <br/>
+		<?php foreach($minilang[$_SESSION['language']]['icon'] as $key => $value){ ?>
+                	<img src="<?php echo $value['png']; ?>"> <?php echo $value['text']; ?> <br>
+                <?php } ?>
 		<br/>
 	</div>
 
@@ -53,10 +45,10 @@
 				<th> Prenom : </th>
 				<td> <?php echo $infos['name'] ?> </td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<th> Profession : </th>
 				<td> <?php //echo $infos['profession'] ?> &nbsp; &nbsp; &nbsp; </td>
-			</tr>
+			</tr> -->
 			<tr>
 				<th> Nationalite : </th>
 				<td> <?php echo $infos['nationality'] ?> &nbsp; &nbsp; &nbsp; </td>
@@ -72,6 +64,10 @@
 			<tr>
 				<th> Langues parlées : </th>
 				<td> <?php //echo $infos['languages'] ?> </td>
+			</tr>
+			<tr>
+				<th> Niveau des langues parlées : </th>
+				<td> <?php echo $infos['level_languages'] ?> &nbsp; &nbsp; &nbsp; </td>
 			</tr>
 			<tr>
 				<th> Utilisateur Premium : </th>

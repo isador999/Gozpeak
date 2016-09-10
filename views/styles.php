@@ -26,8 +26,11 @@
 <link rel=stylesheet type="text/css" href="views/css/contact.css">
 <link rel=stylesheet type="text/css" href="views/css/myStyle.css">
 <link rel=stylesheet type="text/css" href="views/css/list.css">
+
 <link rel=stylesheet type="text/css" href="views/css/profile.css">
+<link rel=stylesheet type="text/css" href="views/css/event_idea.css">
+<!--<link rel=stylesheet type="text/css" href="views/css/datepicker.css"> -->
+<link rel=stylesheet type="text/css" href="views/css/bootstrap-datetimepicker.min.css">
 
 
-
-
+<!-- <link rel=stylesheet type="text/css" href="views/css/file-upload/jquery.fileupload.css"> -->

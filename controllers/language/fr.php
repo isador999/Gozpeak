@@ -79,11 +79,13 @@ $modal['fr']['profile']['field'][1]['input'] = "firstname";
 $modal['fr']['profile']['field'][1]['type'] = "text";
 $modal['fr']['profile']['field'][1]['spanclass'] = "glyphicon";
 $modal['fr']['profile']['field'][1]['placeholder'] = "Votre Prénom";
+
 $modal['fr']['profile']['field'][2]['desc'] = "E-mail";
 $modal['fr']['profile']['field'][2]['input'] = "profile_mail";
 $modal['fr']['profile']['field'][2]['type'] = "email";
 $modal['fr']['profile']['field'][2]['spanclass'] = "glyphicon-envelope";
 $modal['fr']['profile']['field'][2]['placeholder'] = "E-mail";
+
 $modal['fr']['profile']['field'][3]['desc'] = "Changer votre mot de passe";
 $modal['fr']['profile']['field'][3]['input'] = "profile_password";
 $modal['fr']['profile']['field'][3]['type'] = "password";
@@ -100,11 +102,17 @@ $modal['fr']['profile']['field'][5]['input'] = "birthdate";
 $modal['fr']['profile']['field'][5]['type'] = "date";
 $modal['fr']['profile']['field'][5]['spanclass'] = "glyphicon";
 $modal['fr']['profile']['field'][5]['placeholder'] = "Format 3 mai 1992 : 1992-05-03";
-$modal['fr']['profile']['field'][6]['desc'] = "Profession";
-$modal['fr']['profile']['field'][6]['input'] = "job";
-$modal['fr']['profile']['field'][6]['type'] = "text";
-$modal['fr']['profile']['field'][6]['spanclass'] = "glyphicon";
-$modal['fr']['profile']['field'][6]['placeholder'] = "Votre métier";
+
+$modal['fr']['profile']['select']['lang']['label'] = "Langue pratiquée ";
+$modal['fr']['profile']['select']['lang']['arrayname'] = "lang";
+$modal['fr']['profile']['select']['langlevel']['label'] = "Niveau de langue";
+$modal['fr']['profile']['select']['langlevel']['arrayname'] = "langlevel";
+
+#$modal['fr']['profile']['field'][6]['desc'] = "Profession";
+#$modal['fr']['profile']['field'][6]['input'] = "job";
+#$modal['fr']['profile']['field'][6]['type'] = "text";
+#$modal['fr']['profile']['field'][6]['spanclass'] = "glyphicon";
+#$modal['fr']['profile']['field'][6]['placeholder'] = "Votre métier";
 $modal['fr']['profile']['check']['desc'] = "Mettre à jour la Zpeak ID";
 $modal['fr']['profile']['check']['type'] = "submit";
 $modal['fr']['profile']['check']['submit'] = "Submit";
@@ -203,81 +211,132 @@ $modal['fr']['postevent']['title'] = "Proposer un événement";
 #$modal['fr']['art']['postevent']['img'] = "views/images/event_art.jpg";
 #$modal['fr']['party']['postevent']['img'] = "views/images/event_party.jpg";
 #$modal['fr']['eat']['postevent']['img'] = "views/images/event_eat.jpg";
-$modal['fr']['postevent']['logo']['0'] = "views/images/run.png";
-$modal['fr']['postevent']['logo']['1'] = "views/images/art.png";
-$modal['fr']['postevent']['logo']['2'] = "views/images/party.png";
-$modal['fr']['postevent']['logo']['3'] = "views/images/eat.png";
-$modal['fr']['postevent']['field']['0']['mandatory']['desc'] = "Evénement / Activité";
-$modal['fr']['postevent']['field']['0']['mandatory']['input'] = "event_name";
-$modal['fr']['postevent']['field']['0']['mandatory']['placeholder'] = "Le nom de l'événement";
-$modal['fr']['postevent']['field']['1']['mandatory']['desc'] = "Lieu de l'événement";
-$modal['fr']['postevent']['field']['1']['mandatory']['input'] = "event_place";
-$modal['fr']['postevent']['field']['1']['mandatory']['placeholder'] = "Un bar, un parc, salle de concert... ";
-$modal['fr']['postevent']['field']['2']['mandatory']['desc'] = "Date & Heure";
-$modal['fr']['postevent']['field']['2']['mandatory']['input'] = "event_datetime";
-$modal['fr']['postevent']['field']['2']['mandatory']['placeholder'] = "Jour et Heure de l'événement";
-$modal['fr']['postevent']['field']['3']['desc'] = "Téléphone";
-$modal['fr']['postevent']['field']['3']['input'] = "phone_number";
-$modal['fr']['postevent']['field']['3']['placeholder'] = "0123456789";
-$modal['fr']['postevent']['field']['4']['select']['mandatory'] = "Langue à pratiquer";
-$modal['fr']['postevent']['check'] = "Proposer la sortie !";
+#$modal['fr']['postevent']['logo']['0'] = "views/images/run.png";
+#$modal['fr']['postevent']['logo']['1'] = "views/images/art.png";
+#$modal['fr']['postevent']['logo']['2'] = "views/images/party.png";
+#$modal['fr']['postevent']['logo']['3'] = "views/images/eat.png";
+$modal['fr']['postevent']['field'][0]['mandatory']['desc'] = "Evénement / Activité";
+$modal['fr']['postevent']['field'][0]['mandatory']['input'] = "event_name";
+$modal['fr']['postevent']['field'][0]['mandatory']['type'] = "text";
+$modal['fr']['postevent']['field'][0]['mandatory']['placeholder'] = "Le nom de l'événement";
+$modal['fr']['postevent']['field'][1]['mandatory']['desc'] = "Lieu de l'événement";
+$modal['fr']['postevent']['field'][1]['mandatory']['input'] = "event_place";
+$modal['fr']['postevent']['field'][1]['mandatory']['type'] = "text";
+$modal['fr']['postevent']['field'][1]['mandatory']['placeholder'] = "Un bar, un parc, salle de concert... ";
+$modal['fr']['postevent']['field'][2]['mandatory']['desc'] = "Date & Heure";
+$modal['fr']['postevent']['field'][2]['mandatory']['input'] = "event_datetime";
+$modal['fr']['postevent']['field'][2]['mandatory']['type'] = "text";
+$modal['fr']['postevent']['field'][2]['mandatory']['js'] = "showDatetimePicker();";
+$modal['fr']['postevent']['field'][2]['mandatory']['placeholder'] = "Jour et Heure de l'événement";
+$modal['fr']['postevent']['field'][3]['desc'] = "Téléphone";
+$modal['fr']['postevent']['field'][3]['input'] = "phone_number";
+$modal['fr']['postevent']['field'][3]['type'] = "tel";
+$modal['fr']['postevent']['field'][3]['placeholder'] = "0123456789";
+
+$modal['fr']['postevent']['select']['lang']['label'] = "Langue à pratiquer";
+$modal['fr']['postevent']['select']['lang']['arrayname'] = "lang";
+$modal['fr']['postevent']['select']['langlevel']['label'] = "Niveau de la langue";
+$modal['fr']['postevent']['select']['langlevel']['arrayname'] = "langlevel";
+$modal['fr']['postevent']['check']['type'] = "submit";
+$modal['fr']['postevent']['check']['submit'] = "Submit";
+$modal['fr']['postevent']['check']['desc'] = "Proposer la sortie !";
 
 
-
-/***** Modal SelectQuery *****/
-$modal['fr']['SelectQuery']['title'] = "Choix d'une catégorie";
-$modal['fr']['SelectQuery']['field']['0']['logo'] = "views/images/run.png";
-$modal['fr']['SelectQuery']['field']['0']['color'] = "color:3060A7;";
-$modal['fr']['SelectQuery']['field']['0']['img'] = "views/images/event_run.jpg";
-$modal['fr']['SelectQuery']['field']['0']['query'] = "run";
-$modal['fr']['SelectQuery']['field']['1']['logo'] = "views/images/art.png";
-$modal['fr']['SelectQuery']['field']['1']['color'] = "color:purple;";
-$modal['fr']['SelectQuery']['field']['1']['img'] = "views/images/event_art.jpg";
-$modal['fr']['SelectQuery']['field']['1']['query'] = "art";
-$modal['fr']['SelectQuery']['field']['2']['logo'] = "views/images/party.png";
-$modal['fr']['SelectQuery']['field']['2']['color'] = "color:#4d944e;";
-$modal['fr']['SelectQuery']['field']['2']['img'] = "views/images/event_party.jpg";
-$modal['fr']['SelectQuery']['field']['2']['query'] = "party";
-$modal['fr']['SelectQuery']['field']['3']['logo'] = "views/images/eat.png";
-$modal['fr']['SelectQuery']['field']['3']['color'] = "color:#C13131;";
-$modal['fr']['SelectQuery']['field']['3']['img'] = "views/images/event_eat.jpg";
-$modal['fr']['SelectQuery']['field']['3']['query'] = "eat";
-
-
-//   List of Select Field  //
-$modal['fr']['lang']['0'] = "anglais";
-$modal['fr']['lang']['1'] = "allemand";
-$modal['fr']['lang']['2'] = "espagnol";
-$modal['fr']['lang']['3'] = "français";
-$modal['fr']['lang']['4'] = "italien";
-$modal['fr']['lang']['5'] = "Autres langues";
+/*****  List of Select Field *****/
+/* select lang */
+$modal['fr']['lang']['default']['entry'] = "Choisissez une langue";
+$modal['fr']['lang']['default']['value'] = "";
+$modal['fr']['lang'][0]['value'] = "anglais";
+$modal['fr']['lang'][0]['entry'] = "Anglais";
+$modal['fr']['lang'][1]['value'] = "espagnol";
+$modal['fr']['lang'][1]['entry'] = "Espagnol";
+$modal['fr']['lang'][2]['value'] = "italien";
+$modal['fr']['lang'][2]['entry'] = "Italien";
+$modal['fr']['lang'][3]['value'] = "français";
+$modal['fr']['lang'][3]['entry'] = "Français";
+$modal['fr']['lang'][4]['value'] = "portugais";
+$modal['fr']['lang'][4]['entry'] = "Portugais";
+$modal['fr']['lang'][5]['value'] = "breton";
+$modal['fr']['lang'][5]['entry'] = "Breton";
+$modal['fr']['lang'][6]['value'] = "autre";
+$modal['fr']['lang'][6]['entry'] = "Autre langue";
 #$modal['fr']['lang']['6'] = "Libre / International";
-
 #$modal['fr']['lang']['5'] = "russe";
 #$modal['fr']['lang']['6'] = "chinois";
 #$modal['fr']['lang']['7'] = "arabe";
 #$modal['fr']['lang']['8'] = "hebreux";
 #$modal['fr']['lang']['9'] = "indien";
 #$modal['fr']['lang']['10'] = "japonais";
-//////  END OF MODAL Event  ///////
+
+/* select langlevel */
+$modal['fr']['langlevel']['default']['entry'] = "Choisissez un niveau";
+$modal['fr']['langlevel']['default']['value'] = "";
+$modal['fr']['langlevel'][0]['value'] = "Débutant";
+$modal['fr']['langlevel'][0]['entry'] = "Débutant";
+$modal['fr']['langlevel'][1]['value'] = "Intermédiaire";
+$modal['fr']['langlevel'][1]['entry'] = "Intermédiaire";
+$modal['fr']['langlevel'][2]['value'] = "Avancé";
+$modal['fr']['langlevel'][2]['entry'] = "Avancé";
+/*****  END OF MODAL Event *****/
+
+
+/***** Modal SelectQuery *****/
+$modal['fr']['SelectQuery']['title'] = "Choix d'une catégorie";
+$modal['fr']['SelectQuery']['field'][0]['logo'] = "views/images/run.png";
+$modal['fr']['SelectQuery']['field'][0]['color'] = "color:3060A7;";
+$modal['fr']['SelectQuery']['field'][0]['img'] = "views/images/event_run.jpg";
+$modal['fr']['SelectQuery']['field'][0]['query'] = "run";
+$modal['fr']['SelectQuery']['field'][1]['logo'] = "views/images/art.png";
+$modal['fr']['SelectQuery']['field'][1]['color'] = "color:purple;";
+$modal['fr']['SelectQuery']['field'][1]['img'] = "views/images/event_art.jpg";
+$modal['fr']['SelectQuery']['field'][1]['query'] = "art";
+$modal['fr']['SelectQuery']['field'][2]['logo'] = "views/images/party.png";
+$modal['fr']['SelectQuery']['field'][2]['color'] = "color:#4d944e;";
+$modal['fr']['SelectQuery']['field'][2]['img'] = "views/images/event_party.jpg";
+$modal['fr']['SelectQuery']['field'][2]['query'] = "party";
+$modal['fr']['SelectQuery']['field'][3]['logo'] = "views/images/eat.png";
+$modal['fr']['SelectQuery']['field'][3]['color'] = "color:#C13131;";
+$modal['fr']['SelectQuery']['field'][3]['img'] = "views/images/event_eat.jpg";
+$modal['fr']['SelectQuery']['field'][3]['query'] = "eat";
 
 
 // MINI-LANG ICON PATHS //
-$minilang['fr']['icon']['anglais'] = "views/images/p_anglais.png";
-$minilang['fr']['icon']['allemand'] = "views/images/p_allemand.png";
-$minilang['fr']['icon']['espagnol'] = "views/images/p_espagnol.png";
-$minilang['fr']['icon']['francais'] = "views/images/p_francais.png";
-$minilang['fr']['icon']['italien'] = "views/images/p_italien.png";
-$minilang['fr']['icon']['russe'] = "views/images/p_russe.png";
-$minilang['fr']['icon']['chinois'] = "views/images/p_chinois.png";
-$minilang['fr']['icon']['arabe'] = "views/images/p_arabe.png";
-$minilang['fr']['icon']['hebreux'] = "views/images/p_hebreux.png";
-$minilang['fr']['icon']['japonais'] = "views/images/p_japonais.png";
+$minilang['fr']['icon']['anglais']['png'] = "views/images/p_anglais.png";
+$minilang['fr']['icon']['anglais']['text'] = "Anglais";
+$minilang['fr']['icon']['anglais']['value'] = "anglais";
+$minilang['fr']['icon']['espagnol']['png'] = "views/images/p_espagnol.png";
+$minilang['fr']['icon']['espagnol']['text'] = "Espagnol";
+$minilang['fr']['icon']['espagnol']['value'] = "espagnol";
+$minilang['fr']['icon']['italien']['png'] = "views/images/p_italien.png";
+$minilang['fr']['icon']['italien']['text'] = "Italien";
+$minilang['fr']['icon']['italien']['value'] = "italien";
+$minilang['fr']['icon']['français']['png'] = "views/images/p_français.png";
+$minilang['fr']['icon']['français']['text'] = "Français";
+$minilang['fr']['icon']['français']['value'] = "français";
+$minilang['fr']['icon']['portugais']['png'] = "views/images/p_portugais.png";
+$minilang['fr']['icon']['portugais']['text'] = "Portugais";
+$minilang['fr']['icon']['portugais']['value'] = "portugais";
+$minilang['fr']['icon']['breton']['png'] = "views/images/p_breton.png";
+$minilang['fr']['icon']['breton']['text'] = "Breton";
+$minilang['fr']['icon']['breton']['value'] = "breton";
+$minilang['fr']['icon']['autre']['png'] = "views/images/p_autre.png";
+$minilang['fr']['icon']['autre']['text'] = "Autres langues";
+$minilang['fr']['icon']['autre']['value'] = "autre";
+#$minilang['fr']['icon']['russe'] = "views/images/p_russe.png";
+#$minilang['fr']['icon']['chinois'] = "views/images/p_chinois.png";
+#$minilang['fr']['icon']['arabe'] = "views/images/p_arabe.png";
+#$minilang['fr']['icon']['hebreux'] = "views/images/p_hebreux.png";
+#$minilang['fr']['icon']['japonais'] = "views/images/p_japonais.png";
 
 
 $event_img_uploader['fr']['button']['add'] = "Ajouter une photo/image pour l'événement";
 $event_img_uploader['fr']['button']['upload'] = "Envoyer l'image";
 $event_img_uploader['fr']['button']['delete'] = "Supprimer";
+
+$form['fr']['comments']['title'] = "Donnez votre avis sur la sortie";
+$form['fr']['comments']['type'] = "submit";
+$form['fr']['comments']['submit'] = "Submit";
+$form['fr']['comments']['desc'] = "Envoyer le commentaire";
 
 
 // HEADER

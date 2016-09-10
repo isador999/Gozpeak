@@ -14,7 +14,7 @@
 		<!-- ######### Doesn't works with GLOBALS $_SESSION variables...  CHECK IF IT'S NORMAL BEFORE PRODUCTION !!! ######### --> 
 	     	    <!-- <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"> Connecté en tant que <a href="index.php?page=profil&profil=<?//echo $_SESSION['profil']?>"> <b><?//echo $_SESSION['profil']?> </b></a> </span> -->
 	     	    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"> Connecté en tant que <a href="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/index.php?page=profil"> <b><?php echo $_SESSION['profil'];?> </b></a> </span>
-		    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalEvent('<? echo $query ?>')"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['event']; ?></a></span>
+		    <span class="btn-default navbar-right col-xs-4 col-sm-4 col-md-4 col-lg-4 simple"><a onclick="showModalSelectQuery()"><i class="fa fa-calendar-plus-o fa-fw"></i>&nbsp;<?php echo $headband[$_SESSION['language']]['event']; ?></a></span>
 	    </div>
         </div>
     </div> <!--end navbar-header -->

@@ -24,18 +24,17 @@
 
 
 .list-lang {
-        width: 28%;
+        width: 27%;
         float: left;
         text-align:left;
+	margin-top:4%;
 }
 
 .list-sort {
-        width: 30%;
+        width: 28%;
         float: right;
         text-align:left;
 }
-
-
 
 
 

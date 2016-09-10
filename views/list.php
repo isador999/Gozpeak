@@ -2,29 +2,33 @@
 
 <!-- Ici, de mon point de vue, si on vient d'un des boutons de la page Home.php, on sette une variable PHP qui pourrait savoir quel thème afficher...   (enfin juste une image Artzpeak, Runzpeak, etc...  et eventuellement des couleurs (ou pas, on s'en fout peut-être pour l'instant)  -->
 
-
 <div class="list-content">
 	<!-- FEUILLE GRISE DES Zpeak Sorties -->
 	<div class="middle-left">
 		<div class="list-content-left">
 		<br/>
 		<br/>
-			<div class="list-content-img-left">Les <img src="views/images/zpeak_orange.png" height="50" alt="OrangeZpeak" />  Sorties ! </div>
+			<div class="list-content-img-left">Les <img src="views/images/zpeak_orange.png" height="50" alt="Zpeak" />  Sorties ! </div>
 			<table>
 			  <tr>
-			    <th>Langue &nbsp;</th>
-			    <th>Organisateur &nbsp; </th>
-			    <th>Nom de la sortie &nbsp; </th>
-			    <th>Heure</th>
+			    <th>Langue&nbsp;</th>
+			    <!--<th>Organisateur &nbsp; </th>-->
+			    <th>Sortie&nbsp; </th>
+			    <th>Date&nbsp;</th>
+			    <th>Heure&nbsp;</th>
 			  </tr>
 
 
+			<br>
+			<br>
 			<?php foreach ($events as $event) { ?>
 			  <tr>
-			                <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$event['language']]?>" alt="<?php echo $event['language'] ?>"</td>
-				        <td> <a href="index.php?page=profil&profil=<?php echo $event['organizer'] ?>"><?php echo $event['organizer'] ?></a> </td>
-			                <td> <a href="index.php?page=event&event=<?php echo $event['eventname'] ?>"> <?php echo $event['eventname'] ?> </a></td>
-			                <td> <?php echo $event['eventday'] ?><br><?php echo $event['eventtime'] ?></td>
+			                <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$event['language']]['png'] ?>" alt="<?php echo $event['language'] ?>" title="<?php echo $minilang[$_SESSION['language']]['icon'][$event['language']]['text'] ?>"> </td>
+				        <!-- <td> <a href="index.php?page=profil&profil=<?php #echo $event['organizer'] ?>"><?php #echo $event['organizer'] ?></a> </td> -->
+			                <td> <a href="index.php?page=event&query=<?php echo $event['eventtype'] ?>&event=<?php echo $event['eventname'] ?>"> <?php echo $event['eventname'] ?> </a></td>
+			                <!-- <td> <?php #echo $event['eventday'] ?><br><?php #echo $event['eventtime'] ?></td> -->
+			                <td> <?php echo convertDateToFr($event['eventday']); ?></td>
+			                <td> <?php echo $event['eventtime']; ?></td>
 			  </tr>
 			<?php } ?>
 			</table>
@@ -51,22 +55,27 @@
 		<div class="list-content-right">
 		<br/>
 		<br/>
-			<div class="list-content-img-right">Vos <img src="views/images/zpeak_bleu.png" height="50" alt="BleuZpeak" />  Idées !</div>
+			<div class="list-content-img-right">Vos <img src="views/images/zpeak_bleu.png" height="50" alt="Zpeak" />  Idées !</div>
 			<table>
 			  <tr>
-			    <th>Langue &nbsp;</th>
-			    <th>Organisateur &nbsp; </th>
-			    <th>Nom de la sortie &nbsp; </th>
-			    <th> Heure </th>
+			    <th>Langue&nbsp;</th>
+			    <th>Organisateur&nbsp;</th>
+			    <th>Idée&nbsp;</th>
+			    <th>Date&nbsp;</th>
+			    <th>Heure&nbsp;</th>
 			  </tr>
 
 
+			<br>
+			<br>
 			<?php foreach ($ideas as $idea) { ?>
 			  <tr>
-		                <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$idea['language']]?>" alt="<?php echo $idea['language'] ?>"</td>
+		                <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$idea['language']]['png'] ?>" alt="<?php echo $idea['language'] ?>" title="<?php echo $minilang[$_SESSION['language']]['icon'][$idea['language']]['text'] ?>"> </td>
 		                <td> <a href="index.php?page=profil&profil=<?php echo $idea['organizer'] ?>"><?php echo $idea['organizer'] ?></a> </td>
-		                <td> <a href="index.php?page=idea&idea=<?php echo $idea['ideaname'] ?>"> <?php echo $idea['ideaname'] ?> </a></td>
-		                <td> <?php echo $idea['ideaday'] ?><br><?php echo $idea['ideatime'] ?></td>
+		                <td> <a href="index.php?page=idea&query=<?php echo $event['eventtype'] ?>&idea=<?php echo $idea['ideaname'] ?>"> <?php echo $idea['ideaname'] ?> </a></td>
+		                <!-- <td> <?php #echo $idea['ideaday'] ?><br><?php #echo $idea['ideatime'] ?></td> -->
+		                <td> <?php echo convertDateToFr($idea['ideaday']); ?> </td>
+		                <td> <?php echo $idea['ideatime']; ?> </td>
 			  </tr>
 			<?php } ?>
 			</table> 

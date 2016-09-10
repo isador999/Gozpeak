@@ -16,10 +16,11 @@
         <!-- <a href="#" class="close" data-dismiss="alert">&times;</a> -->
 
 
-			<div id="courses-messages" class="alert alert-info fade in">
+		<!--	<div class="alert alert-info fade in" id="course-message">
 				<a href="" class="close" data-dismiss="alert">&times;</a>
-				<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-)
-			</div>
+				<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-) <br>
+				<a href="#"><i class="fa fa-leanpub"></i> Cliquez pour plus d'informations </a>
+			</div>-->
 
 
 			<div id="staticHome">
@@ -73,10 +74,10 @@
 				</div>	
 			</div>
 			
-			<div id="dynamicHome">
+			<!-- <div id="dynamicHome">
 				<h5><a onclick="alert('Resolution : La largeur de votre écran, en pixels : ' + window.innerWidth + 'px');"> Largeur d'écran </a></h5>
 				<h5><a onclick="alert('Resolution : La hauteur de votre écran, en pixels : ' + window.innerHeight + 'px');"> Hauteur d'écran </a></h5>
-			</div>
+			</div> -->
 		</div>
 	</body>
 </html>

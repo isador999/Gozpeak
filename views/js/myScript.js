@@ -36,6 +36,36 @@ function showModalSuccess(){
 	$('#modalInscriptionSucceed').modal('show');
 }
 
+
+function showDatetimePicker() {
+        var currDate = new Date();
+        var initDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate() + " " + currDate.getDay;
+        //var maxDate = initDate.getYear()+1 + '-' initDate.getMonth() + '-' initDate.getDate();
+        var maxDate = (currDate.getFullYear()+1) + "-" + (currDate.getMonth()+2) + "-" + currDate.getDate();
+
+        $("#datetime-lang").datetimepicker({
+        language: "fr",
+        autoclose: true,
+        maxView: "year",
+        minuteStep: 15,
+        rtl: true,
+        fontAwesome: true,
+        todayBtn: true,
+        todayHighlight: "true",
+        pickerPosition: "bottom-right",
+        format: "yyyy-mm-dd hh:ii",
+        //startDate: "2016-09-01 21:00",
+        startDate: initDate,
+        //endDate: "2018-09-01 21:00"
+        endDate: maxDate
+    });
+    //$('#datetime-btn').datetimepicker('update');
+    /*$("#datetime-btn").datetimepicker().on('changeDate'), function (ev) {
+        $("#input-test").change();
+    };*/
+};
+
+
 //function showModalInscription(){
 //	$('#modalInscription').modal('show');
 	//$('#modalInscription').click(function () {
@@ -66,16 +96,10 @@ function showModalProfileDeletion(){
 }
 
 
-/*function showModalForgottenPass(){
-              $('#modalConnection').modal('hide');
-              setTimeout(function() { $('#modalForgottenPass').modal('show'); }, 500);
-}*/
-
-
-// Show Modal Event
-function showModalEvent(request){
-        //alert(request);
-	switch(request) {
+// Function initially coded to know if user comes with query predefined or not.
+// But for the moment, all the time user will must choose a query on Modal. 
+/*function DetectModalEvent(query){
+	switch(query) {
 		case "run": 
 		case "art": 
 		case "party": 
@@ -87,28 +111,29 @@ function showModalEvent(request){
 		    var mode = "logo";
 	}
 
-//	// If var $query (from PHP) is set, display "modal event" with the correct image (run, art, ...)   //
-//	// Else if var $query (from PHP) is not set, display "modal event" with gozpeak logos.             //
-	if (mode == "img") {
+	if (mode == "img") { 
 		$('#modalEventWithQuery').modal('show');
 	} else if (mode == "logo") {
-		$('#modalEvent').modal('show');
+		$('#modalSelectQuery').modal('show');
 	}
+}*/
+
+
+function showModalSelectQuery() {
+	$('#modalSelectQuery').modal('show');
 }
 
 
-function selectQuery(logo){
-	//alert(logo);
-	//switch(logo) {
-	if (logo =~ 'run') {
-		alert('change form with runzpeak image');
-	}else if (logo =~ 'art') {
-		alert('change form with artzpeak image');
-	}else if(logo =~ 'party') {
-		alert('change form with partyzpeak image');
-	}else if (logo =~ 'eat'){
-		alert('change form with eatzpeak image');
-	}
+function showModalEventWithQuery(logo, color, img, query){
+	$('#modalSelectQuery').modal('hide');
+	$(".modal-title #EventWithQueryTitle").attr("src", logo);
+	$(".modal-title").attr("style", color);
+	$(".modal-body #EventWithQueryImg").attr("src", img);
+	$(".modal-body #EventWithQueryImg").attr("alt", query);
+
+	$(".modal-body #hiddenInput").attr("value", query);
+
+	$('#modalEventWithQuery').modal('show');
 }
 
 
@@ -116,18 +141,4 @@ function showModalContact(){
         $('#modalContact').modal('show');
 }
 
-
-/*function checkForm() {
-	var pseudo = document.getElementById("").value;
-	var email = document.getElementById("").value;
-	var check_email = document.getElementById("").value;
-	var password = document.getElementById("").value;
-	var check_password = document.getElementById("").value;
-
-	if (name == '' || password == '' || email == '' || website == '') {
-		alert("Vous devez remplir tous les champs pour vous inscrire");
-	} else {
-		
-	}
-}*/
 

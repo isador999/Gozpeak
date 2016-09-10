@@ -1,24 +1,43 @@
 <?php
 
-require_once('lib/sessions.php');
-require_once('models/dbconnect.php');
-require_once('models/event_functions.php');
+session_start();
+require_once(CONTROLLERS.'init.php');
+require_once(VIEWS.'styles.php');
+require_once(MODELS.'dbconnect.php');
+require_once(MODELS.'event_functions.php');
 
-$query = $_GET['query'];
-$event = $_GET['event'];
+
+if(isset($_GET['query']) && !empty($_GET['query'])) {
+        //$_SESSION['query'] = $_GET['query'];
+        $query = $_GET['query'];
+}
+
+/***** Check if user logged *****/
 $logged = check_logged();
-$infos_event = retrieve_event($DB, $event);
-
-include_once('Views/head.php');
-include_once('Views/logo.php');
 if ($logged == 1) {
-        include_once('Views/headband-logged.php');
+        require_once(VIEWS.'header-logged.php');
+	require_once(MODALS.'modal-postevent-logged.php');
 } else {
-        include_once('Views/headband-notlogged.php');
+        require_once(VIEWS.'header-notlogged.php');
+	require_once(MODALS.'modal-postevent-notlogged.php');
+}
+
+$eventname = $_GET['event'];
+$infos_event = retrieve_event($DB, $eventname);
+$DiffDate = retrieve_remaining_days_event($DB, $eventname);
+
+if ($DiffDate < 0) {
+	#$DiffDate = preg_match("/-/", "", $Brutvalue);
+	$DiffDate = "Evenement terminé";
+} else {
+	$DiffDate .= " jours";
 }
 
 
-include_once('Views/event.php');
-include_once('Views/footer.php');
+require_once(VIEWS.'event.php');
+require_once(MODALS.'modal-footer.php');
+require_once(VIEWS.'scripts.php');
+require_once(VIEWS.'footer.php');
+
 
 ?>

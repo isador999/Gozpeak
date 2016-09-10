@@ -148,142 +148,55 @@
 
 
 
-<!-- ############### MODALS FOR EVENT ############## -->
-<!-- ############################################### -->
-
-<!-- Modal SelectQuery to choose a category -->
-<div class="modal fade" id="modalSelectQuery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-                <div class="modal-content">
-                        <div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel"><?php echo $modal[$_SESSION['language']]['SelectQuery']['title']; ?></h4>
-			</div>
-			<div class="modal-body">
-				<p class="selectquery-msg"> Cliquez sur un logo pour choisir la catégorie de votre événement Gozpeak  </p>
-				<div class="form-group">
-				<?php foreach($modal[$_SESSION['language']]['SelectQuery']['field'] as $key => $value){ ?>
-					<a onclick="showModalEventWithQuery('<?php echo $value['logo']; ?>','<?php echo $value['color']; ?>','<?php echo $value['img']; ?>', '<?php echo $value['query']; ?>')"><img class="logo" src="<?php echo $value['logo'] ?>"></a> &nbsp; 
-				<?php } ?>
-				</div>
-				<br>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-<!-- Modal EVENT With Query -->
-<div class="modal fade" id="modalEventWithQuery" tabindex="-1" role="dialog" aria-labelledby="ModalEventWithQuery">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel"><?php echo $modal[$_SESSION['language']]['postevent']['title']; ?> <span> <img id="EventWithQueryTitle"></span> </h4>
-			</div>
-			<div class="modal-body">
-				<div class="EventWithQueryImg">
-					<img id="EventWithQueryImg">
-					<br/>
-				</div>
-				<div class="EventWithQueryContent">
-					<form role="form" data-toggle="validator" class="vertical-form eventForm" name="eventForm" id="eventForm" method="post" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/postevent.php">
-						<?php foreach($modal[$_SESSION['language']]['postevent']['field'] as $key => $value){
-							if (isset($value['mandatory'])) { ?>
-								<br>
-								<div class="form-group">
-									<label class="col-lg-4 control-label right-modal" for="<?php echo $value['mandatory']['input']; ?>"><?php echo $value['mandatory']['desc']; ?>&nbsp;&#42;</label>
-									<div class="col-lg-7">
-										<input type="text" class="form-control" id="<?php echo $value['mandatory']['input']; ?>" name="<?php echo $value['mandatory']['input']; ?>" placeholder="<?php echo $value['mandatory']['placeholder']; ?>"/>
-									</div>
-								</div>
-							<?php } elseif(isset($value['select'])) { ?>
-								<br>
-								<div class="form-group">
-									<label class="col-lg-4 control-label right-modal" for="<?php echo $value['select']['mandatory']; ?>"><?php echo $value['select']['mandatory']; ?>&nbsp;&#42;</label>
-									<select class="form-control" required>
-										 <?php foreach($modal[$_SESSION['language']]['lang'] as $key => $lang){ ?>
-										 	<option value="<?php echo $lang; ?>"> <?php echo $lang ?></option>
-										 <?php } ?>
-									</select>
-								</div>
-								<br>
-							<?php } else { ?>
-								<br>
-								<div class="form-group">
-									<label class="col-lg-4 control-label right-modal" for="<?php echo $value['input']; ?>"><?php echo $value['desc']; ?></label>
-									<div class="col-lg-7">
-										<input type="text" class="form-control" id="<?php echo $value['input']; ?>" name="<?php echo $value['input']; ?>" placeholder="<?php echo $value['placeholder']; ?>"/>
-									</div>
-								</div>
-								<br>
-							<?php }
-						} ?>
-				</div>
-			</div>
-			<p style="text-align:left; padding-left:2%; color:darkred"> <u> Rappel </u>:  Vous devez posséder un compte et être connecté pour proposer un événement </p>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
-				<button type="button" class="btn btn-primary"><?php echo $modal['fr']['postevent']['check']; ?></button>
-			</div>
-			</form>
-		</div>
-	</div>
-</div>
-
-
-
-
 
 <!-- Modal EVENT -->
-<div class="modal fade" id="modalEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="modalEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel"><?php echo $modal[$_SESSION['language']]['event']['title']; ?></h4>
+				<h4 class="modal-title" id="myModalLabel"><?php #echo $modal[$_SESSION['language']]['event']['title']; ?></h4>
 			</div>
 			<div class="modal-body">
 				<form role="form" data-toggle="validator" class="eventForm" name="eventForm" id="eventForm" method="post" action="">
 					<div class="form-group">
-					<?php foreach($modal[$_SESSION['language']]['event']['logo'] as $key => $logo){ ?>
-						<a onclick="selectQuery('<?php echo $logo; ?>')"><img class="logo" src="<?php echo $logo ?>"></a>
-					<?php } ?>
+					<?php #foreach($modal[$_SESSION['language']]['event']['logo'] as $key => $logo){ ?>
+						<a onclick="selectQuery('<?php #echo $logo; ?>')"><img class="logo" src="<?php #echo $logo ?>"></a>
+					<?php #} ?>
 					</div>
-					<?php foreach($modal[$_SESSION['language']]['event']['field'] as $key => $value){
-						if (isset($value['mandatory'])) { ?>
+					<?php #foreach($modal[$_SESSION['language']]['event']['field'] as $key => $value){
+						#if (isset($value['mandatory'])) { ?>
 							<div class="form-group">
-								<label class="col-lg-4 control-label right-modal" for="<?php echo $value['mandatory']; ?>"><?php echo $value['mandatory']; ?>&nbsp;&#42;</label>
+								<label class="col-lg-4 control-label right-modal" for="<?php #echo $value['mandatory']; ?>"><?php #echo $value['mandatory']; ?>&nbsp;&#42;</label>
 								<div class="col-lg-7">
-									<input type="text" class="form-control" id="<?php echo $value['mandatory']; ?>" name="<?php echo $value['mandatory']; ?>" placeholder="<?php echo $value['mandatory']; ?>"/>
+									<input type="text" class="form-control" id="<?php #echo $value['mandatory']; ?>" name="<?php #echo $value['mandatory']; ?>" placeholder="<?php #echo $value['mandatory']; ?>"/>
 								</div>
 							</div>
 							<br>
-						<?php } elseif(isset($value['select'])) { ?>
+						<?php #} elseif(isset($value['select'])) { ?>
 							<div class="form-group">
-								<label class="col-lg-4 control-label right-modal" for="<?php echo $value['select']['mandatory']; ?>"><?php echo $value['select']['mandatory']; ?>&nbsp;&#42;</label>
+								<label class="col-lg-4 control-label right-modal" for="<?php #echo $value['select']['mandatory']; ?>"><?php #echo $value['select']['mandatory']; ?>&nbsp;&#42;</label>
 								<select required>
-									 <?php foreach($modal[$_SESSION['language']]['lang'] as $key => $lang){ ?>
-									 	<option value="<?php echo $lang; ?>"> <?php echo $lang ?></option>
-									 <?php } ?>
+									 <?php #foreach($modal[$_SESSION['language']]['lang'] as $key => $lang){ ?>
+									 	<option value="<?php #echo $lang; ?>"> <?php #echo $lang ?></option>
+									 <?php #} ?>
 								</select>
 							</div>
-						<?php } else { ?>
+						<?php #} else { ?>
 							<div class="form-group">
-								<label class="col-lg-4 control-label right-modal" for="<?php echo $value; ?>"><?php echo $value; ?></label>
+								<label class="col-lg-4 control-label right-modal" for="<?php #echo $value; ?>"><?php #echo $value; ?></label>
 								<div class="col-lg-7">
-									<input type="text" class="form-control" id="<?php echo $value; ?>" name="<?php echo $value; ?>" placeholder="<?php echo $value; ?>"/>
+									<input type="text" class="form-control" id="<?php #echo $value; ?>" name="<?php #echo $value; ?>" placeholder="<?php #echo $value; ?>"/>
 								</div>
 							</div>
-						<?php }
-					} ?>
+						<?php #}
+					#} ?>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
-				<button type="button" class="btn btn-primary"><?php echo $modal['fr']['event']['check']; ?></button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><?php #echo $modal['fr']['generic']['closed']; ?></button>
+				<button type="button" class="btn btn-primary"><?php #echo $modal['fr']['event']['check']; ?></button>
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
