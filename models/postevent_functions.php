@@ -24,5 +24,16 @@ function add_idea($DB, $d) {
 }
 
 
+function get_mail_organizer ($DB, $organizer) {
+        $req = $DB->prepare("SELECT email from members where pseudo = ?");
+        $req -> execute(array($organizer));
+        $mail_organizer = $req->fetchColumn();
+        $req -> closeCursor();
+        return ($mail_organizer);
+
+}
+
+
+
 ?>
 

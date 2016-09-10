@@ -28,9 +28,9 @@ if($_POST){
 
 	/************ Foreach loops *************/
 	foreach ($mandatory_postfields as $field) {
-		echo $field;
+		#echo $field;
 		if((trim($field) == '') OR (empty($field))) {
-			echo "NOK: rule1";
+			#echo "NOK: rule1";
 			$error="empty_fields";
 		}
 	}
@@ -38,7 +38,7 @@ if($_POST){
 	/********* Regexp : Check if special chars in fields ***********/
 	foreach ($text_postfields as $field) {
 		if(!preg_match("/^[a-zA-Z0-9éèàêç'+()\- ]+$/", $field)) {
-			echo "$field nok: rule2";
+			#echo "$field nok: rule2";
 			$error="notcompliant_fields";
 		}
 	}
@@ -52,44 +52,44 @@ if($_POST){
 		/*********** Check if pseudo of organizer exists ************/
 		$nb_organizer = pseudo_exist($DB, $organizer);
 		if($nb_organizer < 0) {
-		    echo "NOK: rule3";
+		    #echo "NOK: rule3";
 		    $error="unauthorized_postevent";
 		}
 		elseif((strlen($event_name) < 6) OR (strlen($event_name) > 25))
 		{
-		    echo "NOK: rule4";
+		    #echo "NOK: rule4";
 		    $error="invalid_event_name";
 		}
 		elseif((strlen($event_place) < 6) OR (strlen($event_place) > 25))
 		{
-		    echo "NOK: rule5";
+		    #echo "NOK: rule5";
 		    $error="invalid_event_place";
 		}
 		elseif(!strlen($event_datetime < 16) && (!strlen($event_datetime > 16)))
 		{
 		    $varleng = strlen($event_datetime);
-		    echo "$varleng NOK: rule6";
+		    #echo "$varleng NOK: rule6";
 		    $error="invalid_event_datetime";
 		}
 		#elseif((!preg_match("/^(0)[67](\s?\d{2}){4}$/", $phone_number))) {
 		elseif (!empty($phone_number)) {
 			if((!preg_match("/^0[0-9]{9}$/", $phone_number))) {
-				echo "NOK: rule7";
+				#echo "NOK: rule7";
 				$error="invalid_phone_number";
 			}
 		}
 		#elseif(!preg_match("/^[a-zA-Zç ]+$/", $lang)) {
 		elseif(!preg_match("/^(anglais|espagnol|italien|français|portugais|breton|autre)$/", $lang)) {
-			echo "nok: rule8";
+			#echo "nok: rule8";
 			$error="invalid_lang";
 		}
 		#elseif(!preg_match("/^[a-zA-Zé]+$/", $langlevel)) {
 		elseif(!preg_match("/^(Débutant|Intermédiaire|Avancé)$/", $langlevel)) {
-			echo "NOK: rule9";
+			#echo "NOK: rule9";
 			$error="invalid_langlevel";
 		}
 		elseif(!preg_match("/^(run|art|party|eat)$/", $query)) {
-			echo "NOK: rule10";
+			#echo "NOK: rule10";
 			$error="invalid_query";
 		}
         
@@ -100,7 +100,7 @@ if($_POST){
 		if(!isset($error)) {
 			if($nb_event_name > 0)
 			{
-			    echo "NOK: rule11";
+			    #echo "NOK: rule11";
 			    $error="eventname_already_exists";
 			} 
 			else {
@@ -127,7 +127,8 @@ if($_POST){
 					/***** URLENCODE TO CHANGE SPECIAL CHARS TO CODE *****/
 					/**** Change to use $_SESSION['profil'] $pseudo = urlencode($pseudo); *****/
 					$event_name = urlencode($event_name);
-                                
+					$mail_organizer = get_mail_organizer($DB, $organizer);                                
+
 					$mail_subject="Ajout d'événement Gozpeak";
 					$mail_content = '<html><body>';
 					$mail_content .= '<h4>'."Bonjour $organizer ! ".'</h4>'.'<br>'.'<br>';
@@ -140,11 +141,11 @@ if($_POST){
 					$mail_content .= "L'équipe Gozpeak".'<br>';
 					$mail_content .= '<img src="'."$gozpeak_protocol"."$gozpeak_host".'/views/images/gozpeak_small.png" alt="Gozpeak Logo">'.'<br>';
 					$mail_content .= '</body> </html>';
-	       	       	       		if(send_by_mailgun($mail, "$mail_subject", "$mail_content")) {
+	       	       	       		if(send_by_mailgun($mail_organizer, "$mail_subject", "$mail_content")) {
 						$message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre idée d\'événement a été enregistré avec succès ! </div> </div>';
 						/******** Send Mail to Gozpeak Team ********/
 						/***** $team_mail_content = '<html><body>'; *****/
-                                        	$team_mail_content .= '<h4>'."Nouvelle idée postée - $query ! ".'</h4>'.'<br>'.'<br>';
+                                        	$team_mail_content = '<h4>'."Nouvelle idée postée - $query ! ".'</h4>'.'<br>'.'<br>';
                                         	$team_mail_content .= "L'organisateur : $organizer".'<br>';
                                         	$team_mail_content .= "Téléphone (peut être vide) : $phone_number".'<br>'.'<br>';
                                         	$team_mail_content .= "Le nom de l'idée postée : $event_name".'<br>';
