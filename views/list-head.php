@@ -1,7 +1,7 @@
 <script src="views/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script src="views/js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <script src="views/js/myScript.js" charset="UTF-8"></script>
-<script src="views/js/jquery/lang-sort.js" charset="UTF-8"></script>
+<script src="views/js/jquery.lang-sort.js" charset="UTF-8"></script>
 
 
 <div class="list-header">

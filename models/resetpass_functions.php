@@ -22,7 +22,6 @@ function retrieve_resetpass_expiration($DB, $pseudo) {
 
 
 
-
 /*********** Functions used by 'reset_user_password.php' file ************/
 function update_password($DB, $new_dbpass, $pseudo) {
         $req = $DB -> prepare("UPDATE members SET password = :newpass where pseudo = :pseudo");

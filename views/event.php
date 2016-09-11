@@ -1,4 +1,6 @@
 <div class="event-head">
+	<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+	<br>
 	<div class="event-titles">
 		<a href="index.php?page=event&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
 		
@@ -17,7 +19,6 @@
 				<div class="form-group">
 					<textarea class="form-control" rows="5" name="message"></textarea>
 				</div>
-				<!-- <a href="#" onclick="()"><input type="submit" name="dsubmit" id="commentSubmit" value="<?php #echo $form['comments']['submit'] ?>"></a> -->
 				<button style="margin-right: 6%;" type="<?php echo $form[$_SESSION['language']]['comments']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['comments']['submit']; ?> class="btn pull-right"><?php echo $form[$_SESSION['language']]['comments']['desc']; ?></button> 
 				<!-- <div> 	
 					<input style="width: 30px" type="checkbox" value="1" name="subscribe" id="subscribe" checked="checked">
@@ -27,32 +28,6 @@
 			</div>
 		</div>
 
-
-			<!-- <form class="form-horizontal" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/event_addimage.php" method="POST" enctype="multipart/form-data"> -->
-				<!-- <label class="btn btn-default btn-file">
-					<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-    					Ajouter une image/photo pour cet événement <input name="eventimage" type="file">
-					<input type="submit" value="Envoyer" />
-				</label>   -->
-
-<!--				<div class="col-lg-7 event-img-uploader">
-                			<span class="btn btn-success fileinput-button">
-                			    <i class="glyphicon glyphicon-plus"></i>
-                			    <span><?php //echo $event_img_uploader[$_SESSION['language']]['button']['add'] ?></span>
-                			    <input type="file" name="files[]" multiple>
-                			</span>
-                			<button type="submit" class="btn btn-primary start">
-                			    <i class="glyphicon glyphicon-upload"></i>
-                			    <span><?php //echo $event_img_uploader[$_SESSION['language']]['button']['upload'] ?></span>
-                			</button>
-                			<button type="button" class="btn btn-danger delete">
-                			    <i class="glyphicon glyphicon-trash"></i>
-                			    <span><?php //echo $event_img_uploader[$_SESSION['language']]['button']['delete'] ?></span>
-                			</button>
-		                </div>  -->
-
-
-			<!-- </form> -->
 
 		<div class="event-infos">
 			<table>
@@ -103,6 +78,23 @@
 			</table>
 
 		</div>
-	<div class="btn btn-primary event-addmember"> S'inscrire à cet événement </div>
+
+	<?php if($logged == 0) { ?>
+		<button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" title="<?php echo $form[$_SESSION['language']]['addmember']['title']; ?>" class="event-addmember btn btn-primary pull-right disabled"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button> 
+	<?php } elseif (($logged == 1) && ($user_registered == 0)) { ?>
+		<form class="form-horizontal event-addmember" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/event_addmember.php" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="addmember-eventname" value="<?php echo $infos_event['eventname'] ?>">
+			<!-- <input type="hidden" name="addmember-eventtype" value="<?php #echo $infos_event['eventtype'] ?>"> -->
+			<button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['addmember']['submit']; ?> class="btn btn-primary pull-right"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button> 
+		</form>
+	<?php } elseif (($logged == 1) && ($user_registered == 1)) { ?>
+		<form class="form-horizontal event-addmember" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/event_delmember.php" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="delmember-eventname" value="<?php echo $infos_event['eventname'] ?>">
+			<button type="<?php echo $form[$_SESSION['language']]['delmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['delmember']['submit']; ?> class="btn btn-default pull-right"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button> 
+		</form>
+
+	<?php } ?>
+
 </div>
+
 

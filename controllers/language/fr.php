@@ -338,6 +338,15 @@ $form['fr']['comments']['type'] = "submit";
 $form['fr']['comments']['submit'] = "Submit";
 $form['fr']['comments']['desc'] = "Envoyer le commentaire";
 
+$form['fr']['addmember']['type'] = "submit";
+$form['fr']['addmember']['submit'] = "Submit";
+$form['fr']['addmember']['desc'] = "S'inscrire à cet événement !";
+$form['fr']['addmember']['title'] = "L'inscription aux événements nécessite d'être connecté à votre compte Gozpeak";
+
+$form['fr']['delmember']['type'] = "submit";
+$form['fr']['delmember']['submit'] = "Submit";
+$form['fr']['delmember']['desc'] = "Se désinscrire de l'événement !";
+
 
 // HEADER
 $headband['fr']['registration'] = "Inscription";

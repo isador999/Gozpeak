@@ -11,6 +11,7 @@ require_once('./lib/mailgun.php');
 require_once('../models/dbconnect.php');
 require_once('../models/inscription_functions.php');
 
+
 if($_POST){
 	$pseudo 	= isset($_POST['pseudo']) ? $_POST['pseudo'] : '';
 	$mail 		= isset($_POST['mail']) ? $_POST['mail'] : '';

@@ -1,10 +1,12 @@
 <div class="event-head">
+	<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+	<br>
 	<div class="event-titles">
 		<a href="index.php?page=idea&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
 
 		<p> <?php echo $home[$_SESSION['language']][$query]['text'] ?></p>
 	</div>
-	<p class="idea-banner"> <img src="views/images/zpeak_bleu.png" alt="Zpeak"> Idée "<strong><i><?php echo $infos_idea['ideaname']?></i></strong>" </p>
+	<p class="idea-banner"> <img src="views/images/zpeak_bleu.png" alt="Zpeak"> Idée "<i><?php echo $infos_idea['ideaname']?></i>" </p>
 </div>
 
 
@@ -16,7 +18,7 @@
                         <form class="form-horizontal eventFeedbackForm" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/idea_postcomment.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                         <!-- <label for="event-feedback-title" class="control-label"> <?php echo $form['comments']['title']; ?> </label> <br> <br> -->
-                                        <textarea class="form-control" rows="4" name="message"></textarea>
+                                        <textarea class="form-control" rows="5" name="message"></textarea>
                                 </div>
 				<button style="margin-right: 6%;" type="<?php echo $form[$_SESSION['language']]['comments']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['comments']['submit']; ?> class="btn pull-right"><?php echo $form[$_SESSION['language']]['comments']['desc']; ?></button>
 
@@ -73,6 +75,23 @@
                        </tr>
                </table>
 	</div>
-	<div class="btn btn-primary idea-addmember"> S'inscrire à cet événement </div>
+
+	<?php if($logged == 0) { ?>
+                <button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" title="<?php echo $form[$_SESSION['language']]['addmember']['title']; ?>" class="idea-addmember btn btn-primary pull-right disabled"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
+        <?php } elseif (($logged == 1) && ($user_registered == 0)) { ?>
+                <form class="form-horizontal idea-addmember" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/idea_addmember.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="addmember-ideaname" value="<?php echo $infos_idea['ideaname'] ?>">
+                        <!-- <input type="hidden" name="addmember-ideatype" value="<?php #echo $infos_idea['ideatype'] ?>"> -->
+                        <button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['addmember']['submit']; ?> class="btn btn-primary pull-right"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
+                </form>
+        <?php } elseif (($logged == 1) && ($user_registered == 1)) { ?>
+                <form class="form-horizontal idea-addmember" action="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/controllers/idea_delmember.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="delmember-ideaname" value="<?php echo $infos_idea['ideaname'] ?>">
+                        <button type="<?php echo $form[$_SESSION['language']]['delmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['delmember']['submit']; ?> class="btn btn-default pull-right"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button>
+                </form>
+
+        <?php } ?>
+
 </div>
+
 

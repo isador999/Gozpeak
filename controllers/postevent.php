@@ -6,13 +6,13 @@ session_start();
 
 require_once('./lib/display.php');
 require_once('./lib/sessions_init.php');
+require_once('./lib/check_login.php');
 require_once('./lib/mailgun.php');
 require_once('../models/dbconnect.php');
 require_once('../models/postevent_functions.php');
 
 
 if($_POST){
-
 	$organizer 		= isset($_SESSION['profil']) ? $_SESSION['profil'] : '';
 	$event_name 		= isset($_POST['event_name']) ? $_POST['event_name'] : '';
 	$event_place 		= isset($_POST['event_place']) ? $_POST['event_place'] : '';
@@ -228,5 +228,4 @@ if (isset($message)) {
 header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 
 ?>
-
 

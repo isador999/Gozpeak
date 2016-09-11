@@ -27,6 +27,9 @@
 				<div class="city center">
 					<?php if(isset($generic[$_SESSION['language']]['city'][0])) echo $generic[$_SESSION['language']]['city'][0]; ?>
 				</div>
+				<br>
+				<br>
+				<a style="font-size: 14px;" href="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/index.php"> Retourner à l'accueil  </a> <br>
 				
 				<div class="activity-img hidden-xs hidden-sm hidden-md col-lg-12">
 					<a href="index.php?page=list&query=run" ><span class="col-lg-3 center"><img src="<?php echo $home[$_SESSION['language']]['run']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['run']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['run']['title']; ?>" /></span></a>

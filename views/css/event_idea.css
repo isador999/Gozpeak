@@ -2,7 +2,7 @@
 /***** Design for event.php and idea.php *****/
 
 .event-head {
-	padding-top: 6%;
+	padding-top: 3%;
         font:34px "noteworthy";
 }
 
@@ -10,7 +10,7 @@
         width: 60%;
         margin:auto;
         padding-bottom: 3.5%;
-        font: bold 28px "noteworthy";
+        font: 28px "noteworthy";
         color:#2b5f92;
 }
 
@@ -47,10 +47,12 @@
 
 .event-addmember {
 	margin-top:3%;
+	margin-right:35%;
 }
 
 .idea-addmember {
 	margin-top:3%;
+	margin-right:35%;
 }
 
 
