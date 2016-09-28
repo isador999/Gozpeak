@@ -25,7 +25,7 @@
 <script src="views/js/jquery.connect.js"></script>
 <script src="views/js/jquery.forgotpass.js"></script>
 <script src="views/js/jquery.contact.js"></script>
-
+<script src="views/js/jquery.listmembers.js"></script>
 
 <!-- <script src="views/js/bootstrap-datepicker.js"></script> -->
 <script src="views/js/bootstrap-datetimepicker.js"></script>

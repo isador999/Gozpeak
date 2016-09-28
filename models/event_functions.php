@@ -37,4 +37,13 @@ function check_eventuser_association($DB, $eventid, $memberid) {
 }
 
 
+function event_members_count($DB, $eventid) {
+        $req = $DB->prepare("SELECT COUNT(memberid) FROM eventusers where eventid = ?");
+        $req -> execute(array($eventid));
+        $nbre_members = $req->fetchColumn();
+        $req->closeCursor();
+        return ($nbre_members);
+}
+
+
 ?>

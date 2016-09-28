@@ -38,4 +38,12 @@ function check_ideauser_association($DB, $ideaid, $memberid) {
 }
 
 
+function idea_members_count($DB, $ideaid) {
+        $req = $DB->prepare("SELECT COUNT(memberid) FROM ideausers where ideaid = ?");
+        $req -> execute(array($ideaid));
+        $nbre_members = $req->fetchColumn();
+        $req->closeCursor();
+        return ($nbre_members);
+}
+
 ?>

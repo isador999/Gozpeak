@@ -10,7 +10,6 @@ if(!empty($_SERVER['HTTPS'])) {
 
 $gozpeak_host = $_SERVER['HTTP_HOST'];
 
-
 // CHECK LANGUAGE //
 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 	$language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
@@ -26,7 +25,7 @@ if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 	$_SESSION['language'] = 'fr';
 }
 
-$_SESSION['user_status'] = 'unknown';
+#$_SESSION['user_status'] = 'unknown';
 
 ?>
 

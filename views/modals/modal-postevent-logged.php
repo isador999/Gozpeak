@@ -15,7 +15,7 @@
                                 <h4 class="modal-title" id="myModalLabel"><?php echo $modal[$_SESSION['language']]['SelectQuery']['title']; ?></h4>
                         </div>
                         <div class="modal-body">
-                                <p class="selectquery-msg"> Cliquez sur un logo pour choisir la catégorie de votre événement Gozpeak  </p>
+                                <p class="selectquery-msg"> <?php echo $modal[$_SESSION['language']]['SelectQuery']['msg'] ?> </p>
                                 <div class="form-group">
                                 <?php foreach($modal[$_SESSION['language']]['SelectQuery']['field'] as $key => $value){ ?>
                                         <a onclick="showModalEventWithQuery('<?php echo $value['logo']; ?>','<?php echo $value['color']; ?>','<?php echo $value['img']; ?>', '<?php echo $value['query']; ?>')"><img class="logo" src="<?php echo $value['logo'] ?>"></a> &nbsp;

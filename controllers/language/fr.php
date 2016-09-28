@@ -282,6 +282,7 @@ $modal['fr']['langlevel'][2]['entry'] = "Avancé";
 
 /***** Modal SelectQuery *****/
 $modal['fr']['SelectQuery']['title'] = "Choix d'une catégorie";
+$modal['fr']['SelectQuery']['msg'] = "Cliquez sur un logo pour choisir la catégorie de votre événement Gozpeak";
 $modal['fr']['SelectQuery']['field'][0]['logo'] = "views/images/run.png";
 $modal['fr']['SelectQuery']['field'][0]['color'] = "color:3060A7;";
 $modal['fr']['SelectQuery']['field'][0]['img'] = "views/images/event_run.jpg";
@@ -298,6 +299,7 @@ $modal['fr']['SelectQuery']['field'][3]['logo'] = "views/images/eat.png";
 $modal['fr']['SelectQuery']['field'][3]['color'] = "color:#C13131;";
 $modal['fr']['SelectQuery']['field'][3]['img'] = "views/images/event_eat.jpg";
 $modal['fr']['SelectQuery']['field'][3]['query'] = "eat";
+
 
 
 // MINI-LANG ICON PATHS //
@@ -333,6 +335,7 @@ $event_img_uploader['fr']['button']['add'] = "Ajouter une photo/image pour l'év
 $event_img_uploader['fr']['button']['upload'] = "Envoyer l'image";
 $event_img_uploader['fr']['button']['delete'] = "Supprimer";
 
+$form['fr']['comments']['disabled'] = "Vous devez être connecté pour utiliser les commentaires";
 $form['fr']['comments']['title'] = "Donnez votre avis sur la sortie";
 $form['fr']['comments']['type'] = "submit";
 $form['fr']['comments']['submit'] = "Submit";
@@ -343,10 +346,24 @@ $form['fr']['addmember']['submit'] = "Submit";
 $form['fr']['addmember']['desc'] = "S'inscrire à cet événement !";
 $form['fr']['addmember']['title'] = "L'inscription aux événements nécessite d'être connecté à votre compte Gozpeak";
 
+
+$form['fr']['listmembers']['type'] = "submit";
+$form['fr']['listmembers']['submit'] = "Submit";
+$form['fr']['listmembers']['desc'] = "Liste des membres inscrits";
+$form['fr']['listmembers']['title'] = "Cliquez pour afficher les membres inscrits à l'événement";
+
+
+$form['fr']['displaymembers']['title'] = "Liste des membres inscrits à l'événement";
+
+
+
+
 $form['fr']['delmember']['type'] = "submit";
 $form['fr']['delmember']['submit'] = "Submit";
 $form['fr']['delmember']['desc'] = "Se désinscrire de l'événement !";
 
+$form['fr']['organizer']['desc'] = "Vous êtes l'organisateur de cet événement";
+$form['fr']['organizer']['title'] = "L'organisateur ne peut pas s'inscrire à son propre événement";
 
 // HEADER
 $headband['fr']['registration'] = "Inscription";
