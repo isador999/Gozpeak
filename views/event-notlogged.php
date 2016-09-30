@@ -6,7 +6,6 @@
 		
 		<p> <?php echo $home[$_SESSION['language']][$infos_event['eventtype']]['text'] ?></p>
 	</div>
-		<div class="alert alert-info" style="width:32%; margin:auto;"> Vous devez être connecté pour effectuer des actions sur les événements </div>
 	<p class="event-banner"> <img src="views/images/zpeak_orange.png" alt="Zpeak"> Sortie "<i><?php echo $infos_event['eventname']?></i>" </p> 
 </div>
 
