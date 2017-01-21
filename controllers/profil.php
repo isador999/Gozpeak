@@ -6,9 +6,10 @@ require_once(LIB.'sessions_init.php');
 require_once(CONTROLLERS.'init.php');
 require_once(MODELS.'dbconnect.php');
 require_once(MODELS.'profile_functions.php');
-require_once(MODALS.'modal-navbar.php');
-require_once(MODALS.'modal-footer.php');
 
+
+/* Set List of views to be sourced */
+$ViewPages = array();
 
 if (isset($_GET['profil']) && (!empty($_GET['profil']))) {
 	$provided_profile = $_GET['profil'];
@@ -25,43 +26,51 @@ if (isset($_GET['profil']) && (!empty($_GET['profil']))) {
 
 if (isset($pseudo)) {
 	$infos = profile_info($DB, $pseudo);
-	$nb_events = count_events($DB, $pseudo);
+	$nb_posted_ideas = count_ideas($DB, $pseudo);
 
 	$logged = check_logged();
 	if ($logged == 1) {
-	        require_once(VIEWS.'header-logged.php');
+		$ViewPages[] = VIEWS.'header-logged.php';
+		$ViewPages[] = MODALS.'modal-postevent-logged.php';
 		if ($pseudo == $_SESSION['profil']) {
-			require_once(MODALS.'modal-profile.php');
-			require_once(VIEWS.'profile-logged.php');
+			$ViewPages[] = VIEWS.'profile-logged.php';
+			$ViewPages[] = MODALS.'modal-profile.php';
+			$ViewPages[] = MODALS.'modal-profile-eventlist.php';
 		} else {
-			require_once(VIEWS.'profile-unlogged.php');
+			$ViewPages[] = VIEWS.'profile-notlogged.php';
 		}
 	} else {
-	        require_once(VIEWS.'header-notlogged.php');
-		require_once(VIEWS.'profile-unlogged.php');
+		$ViewPages[] = VIEWS.'header-notlogged.php';
+		$ViewPages[] = VIEWS.'profile-notlogged.php';
+		$ViewPages[] = MODALS.'modal-postevent-notlogged.php';
 	}
-
-	require_once(VIEWS.'footer.php');
-	require_once(VIEWS.'scripts.php');
 
 	if ($infos['premium'] == 0) {
 		$_SESSION['ispremium'] = "Non";
 	} else {
 		$_SESSION['ispremium'] = "Oui";
 	}
+} else {
+	$error="unknown_pseudo";
 }
 
+
+/* Retrieve Subscribe date of the user */
+$ViewPages[] = VIEWS.'footer.php';
+$ViewPages[] = MODALS.'modal-navbar.php';
+$ViewPages[] = MODALS.'modal-footer.php';
+
+
+unset($_SESSION['msg']);
 
 /***** If message is set, so profil entered does not exist or link is corrupted *****/
-if (isset($error)) {
-	if ($error == 'unknown_pseudo') {
-		$message='<div class="form-group profile-head"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Ce profil n\'existe pas ou le lien est corrompu </div> </div>';
-		$_SESSION['msg'] = $message;
-	}
-	require_once(VIEWS.'header-notlogged.php');
-	echo $_SESSION['msg'];
-	unset($_SESSION['msg']);
+if (isset($error) && ($error == 'unknown_pseudo')) {
+	$message='<div class="form-group"> <div class="text-center alert alert-warning fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Ce profil n\'existe pas ou le lien est corrompu </div> </div>';
+	$_SESSION['msg'] = $message;
+	header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 }
 
-?>
+$ViewTitle = $generic['fr']['region'][0];
+require_once(VIEWS.'maintemplate.php');
 
+?>

@@ -1,37 +1,11 @@
-
-function showDatetimePicker() {
-	var currDate = new Date();
-	var initDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate() + " " + currDate.getDay;	
-	//var maxDate = initDate.getYear()+1 + '-' initDate.getMonth() + '-' initDate.getDate();
-	var maxDate = (currDate.getFullYear()+1) + "-" + (currDate.getMonth()+2) + "-" + currDate.getDate();
-
-	$("#datetime-btn").datetimepicker({
-	language: "fr",
-        autoclose: true,
-	maxView: "year",
-	minuteStep: 15,
-	rtl: true,
-	fontAwesome: true,
-        todayBtn: true,
-	todayHighlight: "true",
-	pickerPosition: "bottom-left",
-	format: "yyyy-mm-dd hh:ii",
-	//startDate: "2016-09-01 21:00",
-	startDate: initDate,
-	//endDate: "2018-09-01 21:00"
-	endDate: maxDate
-    });
-    //$('#datetime-btn').datetimepicker('update');
-    /*$("#datetime-btn").datetimepicker().on('changeDate'), function (ev) {
-	$("#input-test").change();
-    };*/
-};
-
-
 $('#modalEventWithQuery').on('hidden.bs.modal', function() {
     $('#posteventForm').formValidation('resetForm', true);
     $('#postevent-errors').html('');
 });
+
+$('#modalEventWithQuery').on('shown.bs.modal', function () {
+  $('#event_name').focus();
+})
 
 $(document).ready(function() {
     $('#posteventForm').on('init.field.fv', function(e, data) {
@@ -104,6 +78,23 @@ $(document).ready(function() {
 		    regexp: {
                             regexp: /^[a-zA-Z0-9_\.]+$/,
                             message: "Le lieu de l'événement ne peut pas comporter de caractères spéciaux"
+                    }
+                }
+            },
+            event_desc: {
+		//validMessage: "L'adresse email semble valide",
+                validators: {
+                    notEmpty: {
+                        message: "La description de l'événement est requise"
+                    },
+		    stringLength: {
+			min: 4,
+                        max: 300,
+                        message: "La description doit faire entre 5 et 300 caractères"
+                    },
+		    regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: "La description de l'événement ne peut pas comporter de caractères spéciaux"
                     }
                 }
             },
@@ -244,7 +235,7 @@ $(document).ready(function() {
             // Some instances you can use are
             var $form = $(e.target),        // The form instance
                 fv    = $(e.target).data('formValidation'); // FormValidation instance
-		
+
 		//$('#modalEventWithQuery').modal('hide');
 		//$('#inscription-succeed').modal('show');
 		fv.defaultSubmit()//.on('click', function(e) {
@@ -261,4 +252,3 @@ $(document).ready(function() {
 	//setTimeout(showModalSuccess, 6000);
 	//});
 });
-

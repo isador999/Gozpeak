@@ -1,0 +1,37 @@
+/***** FOOTER *****/
+footer {
+  padding-top: 15%;
+  font-size: 14pt;
+  margin:auto;
+  /*color: #558df3;*/
+  /*color: #16599C;*/
+  font-weight:lighter;
+  /*background-color: #bce5f5;*/
+}
+
+#titlefooter {
+  margin: auto;
+  height: 60px;
+  background-color:rgb(34,80,138);
+  opacity: 0.79;
+  border-radius: 15px;
+  color: white;
+}
+
+#titlefooter h4 {
+  margin:auto;
+}
+
+.foot-link {
+  margin-bottom: 6%;
+}
+
+footer a {
+  color:rgb(34,81,132);
+  font-weight: bold;
+}
+
+#copyright {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}

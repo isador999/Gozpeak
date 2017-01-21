@@ -24,7 +24,6 @@ $modal['en']['what'][5]['alt'] = "GoZpeak";
 $modal['en']['what'][5]['title'] = "GoZpeak";
 
 
-
 // HEADER
 $header['en']['registration'] = "Registration";
 $header['en']['connection'] = "Connection";

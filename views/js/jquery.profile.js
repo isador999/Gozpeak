@@ -1,12 +1,13 @@
-function showModalProfile(){
-        $('#modalProfile').modal('show');
-}
 
-$('#modalProfile').on('hidden.bs.modal', function() {
+$('#modalProfileEdition').on('hidden.bs.modal', function() {
     $('#profileForm').formValidation('resetForm', true);
     $('#profile-errors').html('');
 });
 
+
+$('#modalProfileEdition').on('shown.bs.modal', function () {
+  $('#lastname').focus();
+})
 
 $(document).ready(function() {
     $('#profileForm').on('init.field.fv', function(e, data) {
@@ -30,118 +31,88 @@ $(document).ready(function() {
             }
         })
 	.formValidation({
-        framework: 'bootstrap',
-	//live: 'enabled',
-	message: "Cette valeur n'est pas valide",
+        //container: '#messages',
+	framework: 'bootstrap',
+  message: "Cette valeur n'est pas valide",
 	verbose: 'false',
 	excluded: 'disabled',
-	//trigger: 'blur',
-	err: {
-        	container: '#profile-errors',
-	},
+	trigger: 'blur',
         icon: {
-	    required: 'glyphicon glyphicon-asterisk',
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
+            pseudo: {
+                validators: {
+                    notEmpty: {
+                        message: "Votre pseudo ne peut pas être vide"
+                    }
+                }
+            },
             lastname: {
                 validators: {
-                    //notEmpty: {
-                    //    message: " est nécessaire pour vous inscrire"
-                    //},
-		    stringLength: {
-			min: 3,
-                        max: 20,
-                        message: "Votre pseudonyme doit comporter 6 caractères au minimum, et 20 caractères au maximum"
+                    stringLength: {
+                      min: 3,
+                      max: 25,
+                      message: "Votre nom doit comporter 3 caractères au minimum, et 25 caractères au maximum"
                     },
-		    regexp: {
-                            regexp: /^[a-zA-Z0-9_\.]+$/,
-                            message: "Le nom ne peut pas comporter des caractères spéciaux comme l'@, le point ou l'underscore (_)"
-                    }
                 }
             },
             firstname: {
                 validators: {
-                    //notEmpty: {
-                    //    message: "Votre adresse email est nécessaire pour vous inscrire"
-                    //},
-		    stringLength: {
-			min: 2,
-                        max: 20,
-                        message: "Une adresse mail doit comporter au moins 10 caractères"
-                    },
-                    //emailAddress: {
-                    //    message: "La valeur n'est pas une adresse email valide"
-                    //}
-		    regexp: {
-                            regexp: /^[a-zA-Z0-9_\.]+$/,
-                            message: "Le prénom ne peut pas comporter des caractères spéciaux comme l'@, le point ou l'underscore (_)"
-                    }
-                }
-            },
-	    profile_mail: {
-                validators: {
-                    //notEmpty: {
-                    //    message: "Les adresses email doivent être identiques"
-                    //},
-                    emailAddress: {
-                        message: "La valeur n'est pas une adresse email valide"
-                    },
-		    stringLength: {
-                        min: 10,
-                        max: 70,
-                        message: "Une adresse mail doit comporter au moins 10 caractères"
-                    },
-		    //identical: {
-                    //    field: "mail",
-                    //    message: "Les adresses email entrées ne correspondent pas"
-                    //}
-                }
-            },
-            profile_password: {
-                validators: {
-                    //notEmpty: {
-                    //    message: "Veuillez choisir un mot de passe pour votre compte"
-                    //},
                     stringLength: {
-                        min: 8,
-                        max: 25,
-                        message: "Le mot de passe doit comporter 8 caractères au minimum, et 25 caractères au maximum"
-                    },
-		    regexp: {
-                            regexp: /(?=.*[A-Z].*)(?=.*[0-9].*[0-9])(?=.*[!@#$&*].*)/,
-                            message: "Le mot de passe doit comporter au minimum une majuscule, deux chiffres et un caractère spécial"
-                    },
-		    different: {
-                        field: 'pseudo',
-                        message: 'Le mot de passe doit être différent du pseudo'
+                      min: 2,
+                      max: 25,
+                      message: "Votre prénom doit comporter 2 caractères au minimum, et 25 caractères au maximum"
                     }
                 }
             },
-	    nationality: {
+            profile_mail: {
                 validators: {
-		    /***** To be completed *****/ 
+                  notEmpty: {
+                      message: "Votre email ne peut pas être vide"
+                  }
                 }
             },
-	    birthdate: {
+            nationality: {
                 validators: {
-		    /***** To be completed *****/ 
+                  stringLength: {
+                    min: 4,
+                    max: 15,
+                    message: "Votre nationalité n'est pas valide"
+                  },
+                  regexp: {
+                    regexp: /(?=.*[A-Z].*)(?=.*[0-9].*[0-9])(?=.*[!@#$&*].*)/,
+                    message: "La nationalité ne peut pas comporter de caractères spéciaux"
+                  }
                 }
             },
-	    job: {
+            birthdate: {
                 validators: {
-		    /***** To be completed *****/ 
+                  stringLength: {
+                    min: 8,
+                    max: 10,
+                    message: "Le format de date de naissance ne semble pas valide"
+                  }
                 }
             },
+            profile_languages: {
+                validators: {
+                  stringLength: {
+                    min: 8,
+                    max: 10,
+                    message: "Le format de date de naissance ne semble pas valide"
+                  }
+                }
+            }
         }
     })
-.on('success.form.fv', function(e) {
+    .on('success.form.fv', function(e) {
             // Reset the message element when the form is valid
             $('#profile-errors').html('');
         })
-        .on('err.field.fv', function(e, data) {
+    .on('err.field.fv', function(e, data) {
             // data.fv      --> The FormValidation instance
             // data.field   --> The field name
             // data.element --> The field element
@@ -163,7 +134,7 @@ $(document).ready(function() {
                             .html(messages[i])
                             .on('click', function(e) {
                                 // Hide the modal first
-                                $('#modalProfile').modal('hide');
+                                $('#modalProfileEdition').modal('hide');
 
                                 // Focus on the invalid field
                                 data.element.focus();
@@ -179,32 +150,13 @@ $(document).ready(function() {
                 .find('.help-block[data-fv-for="' + data.field + '"]')
                 .hide();
         })
-        .on('success.field.fv', function(e, data) {
+     .on('success.field.fv', function(e, data) {
             // Remove the field messages
             $('#profile-errors').find('li[data-field="' + data.field + '"]').remove();
         })
         .on('err.form.fv', function(e) {
             // Show the message modal
-            $('#modalProfile').modal('show');
-        })
-
-    .on('success.field.fv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element;      // Get the field element
-
-            // Retrieve the valid message element
-            $field
-                .next('.validMessage[data-field="' + field + '"]')
-                .show();  // Show it
-        })
-    .on('err.field.fv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element;      // Get the field element
-
-            // Hide the valid message element
-            $field
-                .next('.validMessage[data-field="' + field + '"]')
-                .hide();
+            $('#modalProfileEdition').modal('show');
         })
     .on('success.form.fv', function(e) {
             // Prevent form submission
@@ -213,106 +165,57 @@ $(document).ready(function() {
             // Some instances you can use are
             var $form = $(e.target),        // The form instance
                 fv    = $(e.target).data('formValidation'); // FormValidation instance
-		
-		//$('#modalProfile').modal('hide');
-		//$('#inscription-succeed').modal('show');
-		fv.defaultSubmit()//.on('click', function(e) {
-                         // Hide the modal first
-			 //alert('TEST');
-                         //$('#modalProfileSucceed').modal('show');;
 
-		//('#modalProfile').click(function
+	    // By default, this action will redirect to PHP Action of the form //
+            fv.defaultSubmit()
+	    //$('#modalConnection').on('#forgotpasslink', function(e) {
+	      //$('#modalConnection').modal('close');
+	      //$('#ModalForgottenPass').modal('show');
+	    //});
+        });
+    // Enable the password/password_check validators if the password is not empty
 
-		//$('#mymodal').on('hidden.bs.modal', function() {
-		//  return false;
-	})
-    .on('success.form.fv', function(e) {
-	//$('#modalProfile').modal('hide');
-	setTimeout(showModalSuccess, 6000);
-	//$("#modalProfileSucceed").modal('show', { backdrop: 'static',keyboard: false});
-	});
+    // Enable the email/email_check validators if the email is not empty
 });
 
 
-//////// jQuery Ajax Method ////////
-//jQuery(document).ready(function(){
-//	$('#profileForm').submit(function(){
-//		var action = $(this).attr('action');
-//
-// 		$('#submit')
-//			.after('<img src="images/ajax-loader.gif" class="loader" />')
-//			.attr('disabled','disabled');
-//
-//		$.post(action, {
-//			name: $('#pseudo').val(),
-//			email: $('#mail').val(),
-//			comments: $('#password').val(),
-//		});
-//			function(data){
-//				document.getElementById('modalProfile').innerHTML = data;
-//				$('#message').slideDown('slow');
-//				$('#profileForm img.loader').fadeOut('slow',function(){$(this).remove()});
-//				$('#submit').removeAttr('disabled');
-//				if(data.match('success') != null) $('#profileForm').slideUp('slow');
-//			//
-//			//}
-//		});
-//
-//		return false;
-//
-//	});
-
-//});
-              
-
-//$(function() {
-//  $('profileForm').submit(function(e) {
-//    e.preventDefault();
-//
-//    $form = $(this);
-//
-//    $.post(document.location.url, $(this).serialize(), function(data) {
-//      $feedback = $("<div>").html(data).find(".form-feedback")
-//
-//      $form.prepend($feedback);
-//    });
-//  });
-//})
 
 
-//// jQuery Submit working,  redirect to the PHP action page correctly. ////
+/*function GetProfileInfos(profile) {
+  $.ajax({
+    url: 'http://192.168.122.104:8001/controllers/getprofile.php?profil=demozpeak',     // process.php file resides in the same folder where this file resides
+    type: 'POST',
+    data: {
+        id : id,    // id of selected record
+    },
+    success: function(response){
+        // response from process.php which is an json object that contain data on diff index
 
-//jQuery(document).ready(function(){
-//
-//        $('#profileForm').submit(function(){
-//                var action = $(this).attr('action');
-//
-//                $("#modalProfile").slideUp(750,function() {
-//                $('#modalProfile').hide();
-//
-//                $('#submit')
-//                        .after('<img src="images/ajax-loader.gif" class="loader" />')
-//                        .attr('disabled','disabled');
-//
-//                $.post(action, {
-//                        name: $('#pseudo').val(),
-//                        email: $('#mail').val(),
-//                        verify: $('#password').val()
-//                },
-//                        function(data){
-//                                document.getElementById('modalProfile').innerHTML = data;
-//                                $('#modalProfile').slideDown('slow');
-//                                $('#profileForm img.loader').fadeOut('slow',function(){$(this).remove()});
-//                                $('#submit').removeAttr('disabled');
-//                                if(data.match('success') != null) $('#profileForm').slideUp('slow');
-//
-//                        }
-//                );
-//
-//                });
-//
-//                return false;
-//
-//        });
-//
-//});
+        var data = JSON.parse(response);
+
+        $('#selector1').val(data.val1);
+        $('#selector2').val(data.val2);
+        // and so on
+    }
+});*/
+
+
+function GetProfileInfos(baseUrl, profile) {
+  ajaxUrl = baseUrl;
+
+  $.ajax({
+    url: ajaxUrl+'/controllers/getprofile.php?profil=' + profile,
+    type: 'GET',
+    dataType: "html",
+    success: function(response)
+    {
+      var data = JSON.parse(response);
+      $("#profileForm").find("#pseudo").val(data.pseudo);
+      $("#profileForm").find("#lastname").val(data.lastname);
+      $("#profileForm").find("#firstname").val(data.name);
+      $("#profileForm").find("#profile_mail").val(data.email);
+      $("#profileForm").find("#nationality").val(data.nationality);
+      $("#profileForm").find("#birthdate").val(data.birthday);
+    }
+  });
+}

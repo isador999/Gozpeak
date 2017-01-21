@@ -1,0 +1,46 @@
+/**************************/
+/******** CSS HOME ********/
+
+
+/**** HOME ****/
+header {
+  height: 61%;
+  font-size: 20pt;
+  margin-bottom: 5%;
+}
+
+.activities {
+  min-width: 615px;
+	font-size: 14pt;
+	color: #576CAA;
+}
+
+/*#course-message {
+        font-size: 15px;
+        text-shadow: 0 -0px 0 rgba(0, 0, 0, 0. 50);
+        color: #18838C;
+}*/
+/*#corpse {
+  margin-left: 4%;
+  margin-right: 4%;
+}*/
+
+#corpse a {
+  color:rgb(34,78,126);
+}
+
+.city-block {
+  height:20%;
+  margin-bottom: 4%;
+}
+
+.promote-block {
+  height:10%;
+	color: #16599C;
+  font-style: oblique;
+}
+
+.promote-block img {
+  min-width: 340px;
+  max-width: 370px;
+}

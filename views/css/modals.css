@@ -1,0 +1,84 @@
+/***** CSS for Bootstrap Modals *****/
+
+.modal-errors a {
+  color: darkred;
+  font-size: 11pt;
+  font-weight: lighter;
+}
+
+.modal-header {
+  margin-bottom: 4%;
+}
+
+.modal-body {
+  margin-top: 4%;
+  margin-bottom: 2.5%;
+}
+
+.modal-body select {
+  margin-bottom: 7%;
+}
+
+.modal-body .form-group {
+  margin-top: 2%;
+}
+
+.modal-title:not(#modalEventWithQuery) {
+  font-size: 21pt;
+  font-family: 'noteworthy';
+}
+
+
+/***** Specific to forgotpass-errors *****/
+#forgotpass-errors {
+  margin-bottom: 3%;
+}
+
+#modalForgottenPass label {
+  margin-bottom: 6%;
+}
+
+
+/***** Specific to modalSelectQuery (when user notlogged) *****/
+#modalSelectQueryNotLogged .modal-footer {
+  font-size: 13pt;
+  font-style: italic;
+  color:darkred;
+}
+
+#modalSelectQueryNotLogged .modal-body {
+  margin-bottom: 20%;
+}
+
+.titleSelectQuery {
+  font-size: 15pt;
+  font-weight: bolder;
+  font-style: oblique;
+  color: rgb(34, 80, 138);
+}
+
+
+/***** Specific to postevent modal *****/
+#modalEventWithQuery .modal-body {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+
+#modalEventWithQuery .modal-lg {
+  width: 55%;
+}
+
+#modalEventWithQuery .modal-body {
+  margin-bottom: 6%;
+}
+
+#modalEventWithQuery .form-group {
+  margin-top: 6%;
+}
+
+
+/***** Specific to Profile Modals (Edition, ChangePass & Deletion) *****/
+#modalProfileEdition h4 {
+  color: rgb(205, 90, 50);
+}

@@ -1,7 +1,5 @@
 <?php
 
-//require('models/dbconnect.php');
-
 function pseudo_exist($DB, $pseudo) {
 	$req = $DB->prepare("SELECT COUNT(pseudo) FROM members where pseudo = ?");
 	$req -> execute(array($pseudo));
@@ -9,7 +7,6 @@ function pseudo_exist($DB, $pseudo) {
 	$req->closeCursor();
 	return ($nbre_pseudo);
 }
-
 
 
 function mail_exist($DB, $email) {
@@ -23,8 +20,8 @@ function mail_exist($DB, $email) {
 
 function add_member($DB, $d) {
 	$req = $DB->prepare('INSERT INTO members (pseudo, email, password, randomkey) VALUES (?, ?, ?, ?)');
-        $req->execute($d);
-        $req->closeCursor();
+  $req->execute($d);
+  $req->closeCursor();
 }
 
 

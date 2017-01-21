@@ -5,128 +5,116 @@
 require_once(CONTROLLERS.'init.php');
 require_once(MODELS.'dbconnect.php');
 require_once(MODELS.'list_pagination_functions.php');
-#require_once(LIB.'check_login.php');
-require_once(LIB.'display.php');
-require_once(VIEWS.'styles.php');
 
 setlocale (LC_TIME, 'fr_FR','fra');
 date_default_timezone_set("Europe/Paris");
 mb_internal_encoding("UTF-8");
 
+$ViewPages = array();
 
 if(isset($_GET['query']) && !empty($_GET['query'])) {
-	//$_SESSION['query'] = $_GET['query'];
 	$query = $_GET['query'];
 }
 
+/***** Define 3 current years *****/
+$sortYears = array();
+$sortYears[] = date("Y")-1;
+$sortYears[] = date("Y");
+$sortYears[] = date("Y")+1;
 
-/***** Events display *****/
-$nb_events = count_events_by_type($DB, $query);
-$nb_rows_per_page = 15;
-
-// Nombre de pages à afficher
-$events_total_pages = ceil($nb_events / $nb_rows_per_page);
-
-
-// get the current page or set a default
-if (isset($_GET['eventpage']) && is_numeric($_GET['eventpage'])) {
-   // cast var as int
-   $events_current_page = (int) $_GET['eventpage'];
-} else {
-   // default page num
-   $events_current_page = 1;
-} // end if
+$current_eventyear = date("Y");
+$current_ideayear = date("Y");
 
 
-// if event current page is greater than total pages...
-if ($events_current_page > $events_total_pages) {
-   // set current page to last page
-   $events_current_page = $events_total_pages;
-} // end if
-// if current page is less than first page...
-if ($events_current_page < 1) {
-   // set current page to first page
-   $events_current_page = 1;
-} // end if
-
-
-// the offset of the list, based on current page 
-$events_offset = ($events_current_page - 1) * $nb_rows_per_page;
-$events = event_paginate_retrieve_starting_id($DB, $events_offset, $nb_rows_per_page, $query);
-
-#foreach ($events as $event) {
-#	$event['eventday'] = convertDateToFr($event['eventday']);
-#	echo $event['eventday'];
-#}
-
-
-
-/***********************************************/
-
-/***** Ideas display *****/
-$nb_ideas = count_ideas_by_type($DB, $query);
-$nb_rows_per_page = 15;
-
-// Nombre de pages à afficher
-$ideas_total_pages = ceil($nb_ideas / $nb_rows_per_page);
-
-// get the current page or set a default
-if (isset($_GET['ideapage']) && is_numeric($_GET['ideapage'])) {
-   // cast var as int
-   $ideas_current_page = (int) $_GET['ideapage'];
-} else {
-   // default page num
-   $ideas_current_page = 1;
-} // end if
-
-
-// if idea current page is greater than total pages...
-if ($ideas_current_page > $ideas_total_pages) {
-   // set current page to last page
-   $ideas_current_page = $ideas_total_pages;
-} // end if
-// if current page is less than first page...
-if ($ideas_current_page < 1) {
-   // set current page to first page
-   $ideas_current_page = 1;
-} // end if
-
-
-// the offset of the list, based on current page 
-$ideas_offset = ($ideas_current_page - 1) * $nb_rows_per_page;
-$ideas = idea_paginate_retrieve_starting_id($DB, $ideas_offset, $nb_rows_per_page, $query);
-
+// $nb_events = count_events_by_type($DB, $query, $filteredLanguages, $current_eventyear);
+//
+// $nb_rows_per_page = 15;
+//
+// $events_total_pages = ceil($nb_events / $nb_rows_per_page);
+//
+//
+// if (isset($_GET['eventpage']) && is_numeric($_GET['eventpage'])) {
+//
+//   $events_current_page = (int) $_GET['eventpage'];
+// } else {
+//
+//   $events_current_page = 1;
+// }
+//
+//
+//
+// if ($events_current_page > $events_total_pages) {
+//
+//   $events_current_page = $events_total_pages;
+// }
+//
+// if ($events_current_page < 1) {
+//
+//   $events_current_page = 1;
+// }
+//
+// $events_offset = ($events_current_page - 1) * $nb_rows_per_page;
+//
+//
+//
+//
+// $nb_ideas = count_ideas_by_type($DB, $query, $filteredLanguages, $current_ideayear);
+//
+// $nb_rows_per_page = 15;
+//
+// $ideas_total_pages = ceil($nb_ideas / $nb_rows_per_page);
+//
+//
+// if (isset($_GET['ideapage']) && is_numeric($_GET['ideapage'])) {
+//
+//   $ideas_current_page = (int) $_GET['ideapage'];
+// } else {
+//
+//   $ideas_current_page = 1;
+// }
+//
+//
+//
+// if ($ideas_current_page > $ideas_total_pages) {
+//
+//   $ideas_current_page = $ideas_total_pages;
+// }
+//
+// if ($ideas_current_page < 1) {
+//
+//   $ideas_current_page = 1;
+// }
+//
+//
+// $ideas_offset = ($ideas_current_page - 1) * $nb_rows_per_page;
+//
+// $events = list_events_by_type($DB, $events_offset, $nb_rows_per_page, $query, $filteredLanguages, $current_eventyear);
+// $ideas = list_ideas_by_type($DB, $ideas_offset, $nb_rows_per_page, $query, $filteredLanguages, $current_ideayear);
 /****************************************************************/
 
-
-#$date = (!empty($_GET['date'])) ? $_GET['date'] : date("Y-m-d");
-$language = (!empty($_GET['language'])) ? $_GET['language'] : '';
-
+//Source Views
 $logged = check_logged();
 if ($logged == 1) {
-	require_once(VIEWS.'header-logged.php');
-	require_once(MODALS.'modal-postevent-logged.php');
+	$ViewPages[] = VIEWS.'header-logged.php';
+	$ViewPages[] = VIEWS.'list.php';
+	$ViewPages[] = VIEWS.'footer.php';
+	$ViewPages[] = MODALS.'modal-navbar.php';
+	$ViewPages[] = MODALS.'modal-postevent-logged.php';
+	$ViewPages[] = MODALS.'modal-footer.php';
 } else {
-	require_once(VIEWS.'header-notlogged.php');
-	require_once(MODALS.'modal-postevent-notlogged.php');
+	$ViewPages[] = VIEWS.'header-notlogged.php';
+	$ViewPages[] = VIEWS.'list.php';
+	$ViewPages[] = VIEWS.'footer.php';
+	$ViewPages[] = MODALS.'modal-navbar.php';
+	$ViewPages[] = MODALS.'modal-postevent-notlogged.php';
+	$ViewPages[] = MODALS.'modal-footer.php';
 }
 
 
-require_once(VIEWS.'list-head.php');
-require_once(VIEWS.'list.php');
+$ViewTitle = $generic[$_SESSION['language']]['region'][0].' - '.'Evénements';
 
-/*** Debug, display retrieved events ***/
-#if (!empty($events)) {
-#	foreach ($events as $event) {
-#		echo $event['eventdatetime'];
-#	}
-#} else {
-#	echo "Event empty ? ";
-#}
+require_once(VIEWS.'maintemplate.php');
 
-require_once(VIEWS.'footer.php');
-require_once(MODALS.'modal-footer.php');
-require_once(VIEWS.'scripts.php');
+unset($_SESSION['msg']);
 
 ?>
-

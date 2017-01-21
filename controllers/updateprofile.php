@@ -1,43 +1,145 @@
 <?php
+session_start();
 
-require_once(CONTROLLERS.'init.php');
-require_once(MODELS.'dbconnect.php');
-require_once(MODELS.'profile_functions.php');
-#require_once(MODELS.'list_functions.php');
-#require_once(LIB.'check_login.php');
-require_once(LIB.'display.php');
-require_once(VIEWS.'styles.php');
-
-
-$query = "gozpeak";
-
-$pseudo = $_GET['profile'];
-$infos = profile_info($DB, $pseudo);
-
-//COUNT NUMBER OF EVENTS POSTED BY USER //
-#$nb_events = count_events ($DB, $pseudo);
+// Inscription Validation before saving in database //
+require_once('./language.php');
+require_once('./lib/sessions_init.php');
+require_once('./lib/check_strings.php');
+require_once('../models/dbconnect.php');
+require_once('../models/inscription_functions.php');
+require_once('../models/profile_functions.php');
 
 
-$logged = check_logged();
+if($_POST) {
+	$pseudo 	      	= isset($_POST['pseudo']) ? $_POST['pseudo'] : '';
+  $lastname 	    	= isset($_POST['lastname']) ? $_POST['lastname'] : '';
+  $firstname 	    	= isset($_POST['firstname']) ? $_POST['firstname'] : '';
+	$email 		      	= isset($_POST['profile_mail']) ? $_POST['profile_mail'] : '';
+  $nationality 			= isset($_POST['nationality']) ? $_POST['nationality'] : '';
+  $birthdate   			= isset($_POST['birthdate']) ? $_POST['birthdate'] : '';
+	$speakedlanguages = isset($_POST['languages']) ? $_POST['languages'] : '';
 
-if ($logged == 1) {
-        require_once(VIEWS.'header-logged.php');
-        echo "USER LOGGED !";
-} else {
-        require_once(VIEWS.'header-notlogged.php');
-        echo "USER unlogged !";
+	if((trim($pseudo) == '') OR (trim($email) == '')) {
+		$error="empty_fields";
+	}
+	elseif((strlen($email) < 10) OR (!isEmail($email)))
+	  $error="invalid_email";
+		{
+	}
+	#else if(!isEmail($email)) {
+	#	echo "NOK: rule2";
+	#	$error="invalid_email";
+	#}
+
+
+	/*************** Other checks ***************/
+	/***** Count pseudo, count mail in DB *****/
+	$nbre_pseudo = pseudo_exist($DB, $pseudo);
+
+	/***** If pseudo or mail is not 0, so one of them exists already *****/
+	if($nbre_pseudo < 1)
+	{
+	  $error="pseudo_dont_exists";
+	}
+
+/*	elseif (strlen($password) > 25 || strlen($password) < 8)
+	{
+	  echo "NOK: rule6";
+	  $error="bad_length_pass";
+
+	}
+	elseif (ctype_alnum($password)) {
+	  echo "NOK: rule7 - specialchars";
+		$error="notcompliant_password";
+	}
+	elseif (!preg_match("/.*[0-9].*[0-9].*+/", $password) || !preg_match("/.*[A-Z].*+/", $password))  {
+	        echo "NOK: rule7 - numbers and CAPS";
+		$error="notcompliant_password";
+	}
+	elseif ($password != $password_check)
+	{
+	    echo "NOK: rule8";
+	    $error="passwords_not_matching";
+	}*/
+
+	else {
+   	/***** 'htmlentities function permit to esacpe/protect fields against attacks, like XSS *****/
+    $pseudo = htmlspecialchars(trim($pseudo));
+    $lastname = htmlspecialchars(trim($lastname));
+    $firstname = htmlspecialchars(trim($firstname));
+    $email = htmlspecialchars(trim($email));
+    $nationality = htmlspecialchars(trim($nationality));
+		$birthdate = htmlspecialchars(trim($birthdate));
+    $speakedlanguages = htmlspecialchars(trim($speakedlanguages));
+
+		/***** Generate Activation Key *****/
+		/*$key = md5(microtime(TRUE)*100000);
+		$hashed_password = password_hash($password, PASSWORD_DEFAULT);*/
+
+		/***** Registering... *****/
+		//$profile_infos_attrs = "$pseudo, $email, $lastname, $name, $nationality, $birthdate, $speakedlanguages";
+		update_profile($DB, $pseudo, $email, $lastname, $name, $nationality, $birthdate, $speakedlanguages);
+
+		/****** Check if update processed correctly ******/
+    $nbre_mail = mail_exist($DB, $email);
+
+		if($nbre_mail > 0) {
+      echo "OK ! ";
+      $message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Vos informations de profil ont été validées !  </div> </div>';
+			/*$mail_subject="Confirmation de votre inscription Gozpeak";
+			$mail_content = '<html><body>';
+			$mail_content .= '<h4>'."Bonjour $pseudo ! ".'</h4>'.'<br>'.'<br>';
+			$mail_content .= "Merci de votre inscription sur Gozpeak :) ".'<br>';
+			$mail_content .= "Afin de rendre votre compte actif, cliquez sur le lien suivant (valable pendant 72h)".'<br>';
+			$mail_content .= "$gozpeak_protocol"."$gozpeak_host"."/index.php?page=activation&login=$pseudo&key=$key".'<br>'.'<br>';
+			$mail_content .= "A très bientôt pour de nombreuses activités !".'<br>'.'<br>';
+			$mail_content .= "Linguistiquement,".'<br>'.'<br>';
+			$mail_content .= "L'équipe Gozpeak".'<br>';
+			$mail_content .= '<img src="'."$gozpeak_protocol"."$gozpeak_host".'/views/images/gozpeak_small.png" alt="Gozpeak Logo">'.'<br>';
+			$mail_content .= '</body> </html>';
+	       		if(send_by_mailgun($mail, "$mail_subject", "$mail_content")) {
+				$message='<div class="form-group"> <div class="alert alert-success text-center fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a>Merci pour votre inscription sur Gozpeak ! Un email de confirmation vient de vous être envoyé ;) </div> </div>';
+        */
+
+				/******** Send Mail to Gozpeak Team ********/
+				/*$team_mail_content = '<html><body>';
+        $team_mail_content .= '<h4>'."Un nouveau membre inscrit sur Gozpeak ! ".'</h4>'.'<br>'.'<br>';
+        $team_mail_content .= "Son pseudo : $pseudo".'<br>';
+        $team_mail_content .= "Son adresse e-mail : $pseudo".'<br>';
+        $team_mail_content .= "Cette personne devra activer son compte pour se connecter et s'inscrire aux activités".'<br>';
+				send_by_mailgun('info@gozpeak.com', 'Nouvelle inscription [demo.gozpeak.com]', "$team_mail_content");
+			} else {
+				#$message = my_echo("3", "red", "'Désolé, une erreur est survenue lors de votre inscription'.'<br>'.'Veuillez réessayer ultérieurement'");
+				$message='<div class="form-group"> <div class="alert alert-danger text-center fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de votre inscription.   Veuillez réessayer ultérieurement </div> </div>';
+			}
+      */
+
+		/***** If register has not processed correctly *****/
+		}
+		else
+		{
+			echo "NOK";
+			$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, une erreur est survenue pendant l\'inscription. Veuillez réessayer ultérieurement. </div> </div>';
+		}
+  }
 }
 
-if ($infos['premium'] == 0) {
-	$infos['premium'] == 'Non';
-} else {
-	$infos['premium'] == 'Oui';
+
+if (isset($error)) {
+  if ($error == 'empty_fields') {
+	  $message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir les champs obligatoires pour votre inscription </div> </div>';
+  } elseif ($error == 'pseudo_dont_exists') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, le pseudo que vous avez choisi existe deja </div> </div>';
+  } elseif ($error == 'invalid_email') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> L\'adresse email est invalide </div> </div>';
+  }
 }
 
-require_once(VIEWS.'updateprofile.php');
-require_once(VIEWS.'footer.php');
-require_once(VIEWS.'scripts.php');
+/******** Finally, set Global var if $message isset, and simply redirect to HOME *********/
+/*if (isset($message)) {
+	$_SESSION['msg'] = $message;
+}*/
+
+//redirect_to_page($_GET['page']);
 
 ?>
-
-

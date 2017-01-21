@@ -2,8 +2,9 @@
 
 session_start();
 
+
+/***** TO BE COMPLETED TO MANAGE SEARCH IN LIST VIEW *****/
 // Sort events by languages //
-require_once('./lib/display.php');
 require_once('./lib/sessions_init.php');
 require_once('../models/dbconnect.php');
 require_once('../models/langsort_functions.php');
@@ -81,8 +82,8 @@ if($_POST){
 			echo "NOK: rule10";
 			$error="invalid_query";
 		}
-        
-        
+
+
 		/*************** Other checks ***************/
 		/***** Check if event_name already exists *****/
 		$nb_event_name = idea_exist($DB, $event_name);
@@ -91,7 +92,7 @@ if($_POST){
 			{
 			    echo "NOK: rule11";
 			    $error="eventname_already_exists";
-			} 
+			}
 			else {
 
 
@@ -102,24 +103,24 @@ if($_POST){
 				$phone_number = htmlspecialchars(trim($phone_number));
 				$lang = htmlspecialchars(trim($lang));
 				$langlevel = htmlspecialchars(trim($langlevel));
-                                
+
 				/***** Generate Activation Key *****/
 				#$key = md5(microtime(TRUE)*100000);
 				#$password = hash(sha1, $password);
 				#$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                                
+
 				/***** Registering... *****/
 				$postfields = array($organizer, $event_name, $event_place, $event_datetime, $phone_number, $lang, $langlevel, $query);
 				add_idea($DB, $postfields);
-                                
+
 				/****** Check if register processed correctly ******/
 				$nb_event_name = idea_exist($DB, $event_name);
 				if(!$nb_event_name > 0) {
-						$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'enregistrement de l`événement.  Veuillez réessayer ultérieurement </div> </div>';
-                                
+						$message='<div class="form-group"> <div class="alert alert-danger text-center fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'enregistrement de l`événement.  Veuillez réessayer ultérieurement </div> </div>';
+
 					/***** URLENCODE TO CHANGE SPECIAL CHARS TO CODE *****/
 					/**** Change to use $_SESSION['profil'] $pseudo = urlencode($pseudo); *****/
-                                
+
 					/***** Futur envoi de mail *****/
 					/***** $mail_subject="Ajout de votre événement ou activité Gozpeak";
 					$mail_content = '<html><body>';
@@ -134,7 +135,7 @@ if($_POST){
 	       	       	       		if(send_by_mailgun($mail, "$mail_subject", "$mail_content")) {
 						$message='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a>Merci pour votre inscription sur Gozpeak ! Un email de confirmation vient de vous être envoyé ;) </div> </div>';
 					*****/
-                                
+
 						/******** Send Mail to Gozpeak Team ********/
 						/***** $team_mail_content = '<html><body>';
                                         	$team_mail_content .= '<h4>'."Un nouveau membre inscrit sur Gozpeak ! ".'</h4>'.'<br>'.'<br>';
@@ -148,7 +149,7 @@ if($_POST){
 				******/
 				/***** If register has not processed correctly *****/
 				}
-				else 
+				else
 				{
 					$message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre idée d\'événement a été enregistré avec succès ! </div> </div>';
 				}
@@ -219,5 +220,3 @@ if (isset($message)) {
 header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 
 ?>
-
-

@@ -1,11 +1,11 @@
-/*function showModalProfileDeletion(){
+function showModalProfileDeletion(){
         $('#modalProfileDeletion').modal('show');
-}*/
+}
 
-/*$('#modalProfileDeletion').on('hidden.bs.modal', function() {
+$('#modalProfileDeletion').on('hidden.bs.modal', function() {
     $('#profiledeletionForm').formValidation('resetForm', true);
     $('#profiledeletion-errors').html('');
-});*/
+});
 
 
 $(document).ready(function() {

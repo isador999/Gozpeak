@@ -4,6 +4,11 @@ $('#modalConnection').on('hidden.bs.modal', function() {
 });
 
 
+$('#modalConnection').on('shown.bs.modal', function () {
+  $('#userlogin').focus();
+})
+
+
 $(document).ready(function() {
     $('#connectionForm').on('init.field.fv', function(e, data) {
             var field  = data.field,        // Get the field name
@@ -28,7 +33,7 @@ $(document).ready(function() {
 	.formValidation({
         //container: '#messages',
 	framework: 'bootstrap',
-        message: "Cette valeur n'est pas valide",
+  message: "Cette valeur n'est pas valide",
 	verbose: 'false',
 	excluded: 'disabled',
 	trigger: 'blur',
@@ -125,4 +130,3 @@ $(document).ready(function() {
 
     // Enable the email/email_check validators if the email is not empty
 });
-

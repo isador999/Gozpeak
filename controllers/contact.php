@@ -1,120 +1,144 @@
 <?php
 
-if(!$_POST) exit;
 
-// Email address verification, do not edit.
-function isEmail($email) {
-	return(preg_match("/^[-_.[:alnum:]]+@((([[:alnum:]]|[[:alnum:]][[:alnum:]-]*[[:alnum:]])\.)+(ad|ae|aero|af|ag|ai|al|am|an|ao|aq|ar|arpa|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|biz|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|com|coop|cr|cs|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|edu|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gh|gi|gl|gm|gn|gov|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|in|info|int|io|iq|ir|is|it|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|mg|mh|mil|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|museum|mv|mw|mx|my|mz|na|name|nc|ne|net|nf|ng|ni|nl|no|np|nr|nt|nu|nz|om|org|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|pro|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)$|(([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.){3}([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5]))$/i",$email));
+session_start();
+
+// Inscription Validation before saving in database //
+require_once('./language.php');
+require_once('./lib/sessions_init.php');
+require_once('./lib/check_strings.php');
+require_once('./lib/mailgun.php');
+require_once('../models/dbconnect.php');
+require_once('../models/contact_functions.php');
+
+$page = isset($_GET['page']) ? $_GET['page'] : '';
+
+if($_POST){
+	$contact_name 			= isset($_POST['contact_name']) ? $_POST['contact_name'] : '';
+	$contact_email 			= isset($_POST['contact_email']) ? $_POST['contact_email'] : '';
+	$contact_subject 		= isset($_POST['contact_subject']) ? $_POST['contact_subject'] : '';
+	$contact_message 		= isset($_POST['contact_message']) ? $_POST['contact_message'] : '';
+	$contact_captcha 		= isset($_POST['contact_captcha']) ? $_POST['contact_captcha'] : '';
+
+	$contact_postfields = array($contact_name, $contact_email, $contact_subject, $contact_message, $contact_captcha);
+	$contact_text_postfields = array($contact_name, $contact_subject, $contact_captcha);
+
+	foreach ($contact_postfields as $field) {
+		#echo $field;
+		if((trim($field) == '') OR (empty($field))) {
+			#echo "NOK: rule1";
+			$error="empty_fields";
+		}
+	}
+
+	//Check if special chars in name, subject, captcha
+	foreach ($contact_text_postfields as $field) {
+		if (preg_match("/.*[!@#$&*].*+/", $field)) {
+			$error="unallowed_special_chars";
+		}
+	}
+
+	// Check LengthName
+	if (strlen($contact_name) < 4 OR strlen($contact_name) > 20) {
+		echo $contact_name;
+		echo (strlen($contact_name));
+		$error="invalid_name";
+	}
+
+	//Check Email
+	elseif(!isEmail($contact_email) OR strlen($contact_email) < 10 OR strlen($contact_email) > 70) {
+		$error="invalid_email";
+	}
+	elseif (strlen($contact_subject) < 6 OR strlen($contact_subject) > 20 ) {
+		$error="invalid_subject";
+	}
+	elseif (strlen($contact_message) < 15 OR strlen($contact_message) > 600 ) {
+		$error="invalid_message";
+	}
+
+	//All fields seems valid
+	if (!isset($error)) {
+		$contact_name = htmlspecialchars(trim($contact_name));
+    $contact_email = htmlspecialchars(trim($contact_email));
+    $contact_subject = htmlspecialchars(trim($contact_subject));
+		$contact_message = htmlspecialchars(trim($contact_message));
+		$contact_captcha = htmlspecialchars(trim($contact_captcha));
+
+		$contact_date = date('Y-m-d H:i:s');
+		$contact_postfields = array($contact_name, $contact_email, $contact_subject, $contact_message, $contact_date);
+		echo "Les donnees sont : ";
+		echo var_dump($contact_postfields);
+		if (register_contacts_stats($DB, $contact_postfields)) {
+			echo "Registered in DB";
+		}
+
+		$contact_entry = check_contact_exists($DB, $contact_email, $contact_subject, $contact_date);
+		echo "contact_entry est ".$contact_entry;
+
+		if ($contact_entry > 0) {
+			foreach ($contact_postfields as $field) {
+				$field = urlencode($field);
+			}
+
+			//Send email
+			$team_mail_content = '<html><body>';
+			$team_mail_content .= '<h4>'."Nouveau message de contact".'</h4>'.'<br>'.'<br>';
+			$team_mail_content .= "Votre message de contact a bien été pris en compte".'<br>'.'<br>';
+			$team_mail_content .= "Voici le message posté : ".'<br>'.'<br>';
+			$team_mail_content .= "Message posté par : ".$contact_name.'<br>';
+			$team_mail_content .= "Avec l'adresse email  : ".$contact_email.'<br>';
+			$team_mail_content .= "Object : ".$contact_subject.'<br>';
+			$team_mail_content .= "Message : ".$contact_message.'<br>';
+			$team_mail_content .= "Ces informations ont normalement été enregistrées en base de données ".'<br>';
+			$team_mail_content .= '</body> </html>';
+			if(send_by_mailgun('info@gozpeak.com', 'Nouveau message de contact [demo.gozpeak.com]', "$team_mail_content")) {
+				$message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre message a été envoyé avec succès ! <br> Votre demande sera prise en compte dès que possible </div> </div>';
+
+				$mail_subject = "Contact de l'équipe Gozpeak";
+				$mail_content = '<html><body>';
+				$mail_content .= '<h4>'."Bonjour $contact_name ! ".'</h4>'.'<br>'.'<br>';
+				$mail_content .= "Vous venez de contacter l'équipe Gozpeak, votre message de contact a bien été pris en compte".'<br>'.'<br>';
+				$mail_content .= "Pour rappel, voici votre message : ".'<br>'.'<br>';
+				$mail_content .= "Votre email : ".$contact_email.'<br>';
+				$mail_content .= "Object : ".$contact_subject.'<br>';
+				$mail_content .= "Message : ".$contact_message.'<br>';
+				$mail_content .= "Linguistiquement,".'<br>'.'<br>';
+				$mail_content .= "L'équipe Gozpeak".'<br>';
+				$mail_content .= '<img src="'."$gozpeak_protocol"."$gozpeak_host".'/views/images/gozpeak_small.png" alt="Gozpeak Logo">'.'<br>';
+				$mail_content .= '</body> </html>';
+				send_by_mailgun($contact_email, "$mail_subject", "$mail_content");
+			} else {
+				$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'envoi du message de contact. <br>  Veuillez réessayer ultérieurement </div> </div>';
+			}
+			//Contact failed to be registered in DB
+		} else {
+			$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'envoi du message de contact. <br>  Veuillez réessayer ultérieurement </div> </div>';
+		}
+	}
 }
 
-if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
 
-$name     = $_POST['name'];
-$email    = $_POST['email'];
-$subject  = $_POST['subject'];
-$comments = $_POST['comments'];
-$verify   = $_POST['verify'];
-
-if(trim($name) == '') {
-	echo '<div class="error_message">Veuillez entrer votre nom.</div>';
-	exit();
-} else if(trim($email) == '') {
-	echo '<div class="error_message">Veuillez entrer une adresse mail valide.</div>';
-	exit();
-} else if(!isEmail($email)) {
-	echo '<div class="error_message">Vous avez entré une adresse mail invalide. Veuillez réessayer.</div>';
-	exit();
+if (isset($error)) {
+  if ($error == 'empty_fields') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir tous les champs du formulaire de contact </div> </div>';
+  } elseif ($error == 'unallowed_special_chars') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Certains champs ne doivent pas contenir de caractères spéciaux </div> </div>';
+  } elseif ($error == 'invalid_name') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Le nom doit être compris entre 4 et 20 caratères </div> </div>';
+	} elseif ($error == 'invalid_email') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre adresse email de contact ne semble pas valide </div> </div>';
+	} elseif ($error == 'invalid_subject') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> L\'objet de votre message doit être compris entre 6 et 20 caractères </div> </div>';
+	} elseif ($error == 'invalid_message') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre message de contact doit être compris entre 15 et 600 caractères </div> </div>';
+	}
 }
 
-if(trim($subject) == '') {
-	echo '<div class="error_message">Vous devez préciser un objet.</div>';
-	exit();
-} else if(trim($comments) == '') {
-	echo '<div class="error_message">Veuillez préciser un messsage.</div>';
-	exit();
-} else if(trim($verify) != '4') {
-	echo '<div class="error_message">Attention! Le code de vérification entré est incorrect.</div>';
-	exit();
+/******** Finally, set Global var if $message isset, and simply redirect to HOME *********/
+if (isset($message)) {
+	$_SESSION['msg'] = $message;
 }
 
-if(get_magic_quotes_gpc()) {
-	$comments = stripslashes($comments);
-}
+redirect_to_page($baseUrl, $page);
 
-
-// Configuration option.
-// Enter the email address that you want to emails to be sent to.
-// Example $address = "joe.doe@yourdomain.com";
-
-//$address = "example@example.net";
-$address = "info@gozpeak.com";
-
-
-// Configuration option.
-// i.e. The standard subject will appear as, "You've been contacted by John Doe."
-
-// Example, $e_subject = '$name . ' has contacted you via Your Website.';
-
-$e_subject = 'You have been contacted by ' . $name . '.';
-
-
-// Configuration option.
-// You can change this if you feel that you need to.
-// Developers, you may wish to add more fields to the form, in which case you must be sure to add them here.
-
-$e_body = "Vous avez été contacté par $name avec l'objet suivant $subject, et son message ci-dessous." . PHP_EOL . PHP_EOL;
-$e_content = "\"$comments\"" . PHP_EOL . PHP_EOL;
-$e_reply = "Contactez $name avec l'email suivant : $email";
-
-$msg = wordwrap( $e_body . $e_content . $e_reply, 70 );
-
-$headers = "From: $email" . PHP_EOL;
-$headers .= "Reply-To: $email" . PHP_EOL;
-$headers .= "MIME-Version: 1.0" . PHP_EOL;
-$headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
-$headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
-
-if(mail($address, $e_subject, $msg, $headers)) {
-
-	// Email has sent successfully, echo a success page.
-
-	echo "<fieldset>";
-	echo "<div id='success_page'>";
-	echo "<h1>Email envoyé avec succès.</h1>";
-	echo "<p>Merci <strong>$name</strong>, votre message nous a bien été envoyé.</p>";
-	echo "</div>";
-	echo "</fieldset>";
-
-} else {
-
-	echo 'ERROR!';
-
-}
-
-
-// Then Send email to user 
-//Subject 
-$user_subject = "Souscription Gozpeak :)";
-
-//Body message
-$user_body = "Bonjour $name" . PHP_EOL;
-$user_body .= "Merci de nous avoir contacté !  " . PHP_EOL;
-$user_body .= "Nous vous tiendrons au courant de l'avancement de notre site web, puis vous serez ensuite averti des nouveaux évènements." . PHP_EOL;
-$user_body .= "Pour rappel, voici votre message : " . PHP_EOL;
-$user_body .= "\"$comments\"" . PHP_EOL . PHP_EOL;
-$user_body .= "A très bientôt :) " . PHP_EOL . PHP_EOL;
-$user_signature = "L'équipe de Gozpeak" . PHP_EOL;
-$user_msg = wordwrap( $user_body . $user_signature, 70 );
-
-
-//Headers
-$user_headers = "From: $address" . PHP_EOL;
-$user_headers .= "Reply-To: $address" . PHP_EOL;
-$user_headers .= "MIME-Version: 1.0" . PHP_EOL;
-$user_headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
-$user_headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
-
-
-// SEND
-mail($email, $user_subject, $user_msg, $user_headers);
-
+?>

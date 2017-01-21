@@ -1,0 +1,101 @@
+/************************************/
+/******* Generic Css Classes ********/
+/************************************/
+/******* Sourced for every page *****/
+/************************************/
+
+
+/*** Tests navbar ***/
+.navbar-default {
+  background:rgba(0, 0, 0, 0.71);
+  border: 0 none;
+  padding: 2px 0;
+  transition: padding 0.3s ease 0s;
+}
+
+/*Typo*/
+@font-face {
+  font-family: 'noteworthy';
+  src: url('../fonts/typo/noteworthy.ttc');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html, body {
+	background:url(../images/backgrounds/bg_lowcontrast.png) repeat scroll 0 0;
+  font-family: 'noteworthy';
+  height: 100%;
+  min-width: 500px;
+}
+
+
+.corpse {
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+}
+
+body a {
+  color: #0086bf;
+}
+
+body a:hover {
+  text-decoration: underline;
+}
+
+
+/***** NAVBAR *****/
+.glyphicon-search {
+  font-size: 1.1em; // slightly bigger
+}
+
+
+/***** Actual Navbar *****/
+/***** NAVBAR *****/
+
+.navbar-form button {
+  margin-top: -0.7%;
+}
+
+.navbar-nav {
+  margin-top:-0.5%;
+}
+
+.nav-tabs a {
+  color: #669DDF;
+  font-size: 14pt;
+}
+
+
+/***** DEV NAVBAR *****/
+/*#zpeakNavigation a {
+  color:#669DD4!important;
+  font-size: 12pt;
+}
+
+#zpeakNavigation a:hover {
+  color: #DAE3E6!important;
+}
+
+#zpeakNavbar {
+  width: 45%;
+  background-color: blue;
+}
+
+#zpeakNavbar li {
+  margin-right: 3%;
+}
+
+#zpeakLogo img {
+  margin-left: 14%;
+  width: 74%;
+}*/
+/******/
+
+/********************/
+
+
+.alert {
+  border-radius: 15px;
+  text-align: center;
+}

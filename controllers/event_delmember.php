@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once('./language.php');
 require_once('./lib/sessions_init.php');
 require_once('./lib/check_login.php');
 require_once('./lib/mailgun.php');
@@ -15,10 +16,10 @@ if ($logged == 1) {
 		/***** Check eventname hidden field and select informations if OK *****/
 		$eventname = isset($_POST['delmember-eventname']) ? $_POST['delmember-eventname'] : '';
 		$pseudo_userlogged = isset($_SESSION['profil']) ? $_SESSION['profil'] : '';
-	
+
 		if(!empty($eventname) || (!empty($pseudo_userlogged))) {
 			$infos_event = retrieve_event($DB, $eventname);
-			
+
 			/***** If date of event not expired *****/
 			if(strtotime($infos_event['eventdatetime']) > strtotime($infos_event['NowDate'])) {
 				$userid = retrieve_userid($DB, $pseudo_userlogged);
@@ -30,14 +31,14 @@ if ($logged == 1) {
 					if($eventuser_entries_before > 0) {
 						$data_eventusers = array($infos_event['id'], $userid);
 						del_eventuser_association($DB, $data_eventusers);
-						
-       						/****** Check entries in database ******/ 
+
+       						/****** Check entries in database ******/
 						$eventuser_entries = check_eventuser_association($DB, $eventid, $userid);
 
 						if($eventuser_entries < 1) {
 							/*********** Optionnaly send mail to user ********/
 							/*********** This implies 'select mail' request *********/
-							$message='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Vous avez été desinscrit de l\'événement avec succès </div> </div>';	
+							$message='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Vous avez été desinscrit de l\'événement avec succès </div> </div>';
 						} else {
 							$message = '<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Une erreur est survenue lors de la désinscription à l\'événement - second </div> </div>';
 						}
@@ -66,7 +67,7 @@ if (isset($message)) {
         $_SESSION['msg'] = $message;
 }
 
-header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=event&query='.$infos_event['eventtype'].'&event='.$eventname);
+header('location: '.$baseUrl.'/index.php?page=event&query='.$infos_event['eventtype'].'&event='.$eventname);
 
 
 ?>

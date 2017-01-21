@@ -1,62 +1,69 @@
 <?php
 
 session_start();
-
-require_once(LIB.'display.php');
-require_once(LIB.'sessions_init.php');
-require_once(MODELS.'dbconnect.php');
-require_once(MODELS.'activation_functions.php');
+require_once('./language.php');
+require_once('./lib/sessions_init.php');
+require_once('../models/dbconnect.php');
+require_once('../models/resetpass_functions.php');
 
 
 /******** Controller to change your password (profile page) ********/
-
 // IF ALL THE PREVIOUS CONDITIONS ARE OK (token, login, etc...), THE SCRIPT WILL LEAVE THE MESSAGES EMPTY, AND THE USER WILL TRY TO CHANGE HIS PASSWORD //
-if(isset($_POST['submit'])) {
-	$pass_one = isset($_POST['pass1']) ? $_POST['pass1'] : '';
-	$pass_confirm = isset($_POST['pass2']) ? $_POST['pass2'] : '';
-	
-	if($pass_one == '' OR $pass_confirm == '') {
-		//header('location: index.php?page=reset_pass&error=2');
-		 my_echo ("4", "red", "Veuillez remplir tous les champs ! ");
+if(isset($_POST)) {
+	$actual_password = isset($_POST['profile_password']) ? $_POST['profile_password'] : '';
+	$pass_one = isset($_POST['profile_new_password']) ? $_POST['profile_new_password'] : '';
+	$pass_confirm = isset($_POST['profile_confirm_new_password']) ? $_POST['profile_confirm_new_password'] : '';
+
+	$error=1;
+
+	/***** Escape bad characters *****/
+	$actual_passsword = htmlspecialchars(trim($actual_password));
+	$pass_one = htmlspecialchars(trim($pass_one));
+	$pass_confirm = htmlspecialchars(trim($pass_confirm));
+
+
+	if($actual_password == '' OR $pass_one == '' OR $pass_confirm == '') {
+		echo "EMPTY FIELDS";
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Erreur lors du changement de mot de passe </div> </div>';
+		$error=1;
 	} elseif($pass_one != $pass_confirm) {
-		//header('location: index.php?page=reset_pass&error=3');
-		my_echo ("4", "red", "Les mots de passe saisis ne correspondent pas ! ");
+		echo "ERROR CONFIRM";
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> La confirmation de mot de passe a échouée </div> </div>';
+		$error=1;
 	} elseif (strlen($pass_one) > 25 || strlen($pass_one) < 6) {
-		//header('location: index.php?page=reset_pass&error=4');
-		my_echo ("4", "red", "Le mot de passe doit etre compris entre 6 et 25 caracteres !");
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Le nouveau mot de passe n\'est pas valide </div> </div>';
+		$error=1;
 	} else {
-		$newpass = hash("sha1", "$pass_one");
-		update_password($DB, $newpass, $login);
-		set_resetpass_token($DB, 'NULL', $login);
-		set_resetpass_expiration($DB, 'NULL', $login);
-		my_echo ("4", "green", "Votre mot de passe a ete change avec succes !  Redirection vers la page de connexion ... ");
-		header('Refresh: 4,url=index.php?page=connexion');
+		$pseudo = $_SESSION['profil'];
+		if ($hashed_dbpass = retrieve_pass_from_pseudo($DB, $pseudo)) {
+
+			/***** If actual password is the same that in database *****/
+			if (password_verify($actual_password, $hashed_dbpass)) {
+				$hashed_password = password_hash($pass_one, PASSWORD_DEFAULT);
+				/***** If password updated successfully *****/
+				if (update_password($DB, $hashed_password, $pseudo)) {
+					#$message='<div class="form-group"> <div class="alert alert-success text-center fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a>  Mot de passe change. </div> </div>';
+					$_SESSION['msg'] ='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a>  Votre mot de passe a été changé avec succès. Veuillez vous reconnecter.  </div> </div>';
+					set_resetpass_token($DB, 'NULL', $pseudo);
+					set_resetpass_expiration($DB, 'NULL', $pseudo);
+					$error=0;
+				}
+			}
+		}
 	}
+} else {
+	echo "NO SUBMIT";
 }
 
+if ($error == 0) {
+	session_destroy();
+}
 
+if (isset($message)) {
+	$_SESSION['msg'] = $message;
+}
 
-$error = isset($_GET['error']) ? $_GET['error'] : '';
-switch ($error) {
-        case 1:
-                my_echo ("4", "red", "Le lien fourni est invalide ou expiré... Vous allez etre redirige vers la page d'accueil. ");
-                break;
-        case 2:
-                my_echo ("4", "red", "Veuillez remplir tous les champs de réinitialisation ! ");
-                break;
-        case 3:
-                my_echo ("4", "red", "Les mots de passe saisis ne correspondent pas ! ");
-		break;
-	case 4:
-		my_echo ("4", "red", "Le mot de passe doit etre compris entre 6 et 25 caracteres !");
-        }
+header('location: '.$baseUrl.'/index.php?page=profil&profil='.$_SESSION['profil']);
 
-
-include_once('Views/reset_pass.php');
-include_once('Views/footer.php');
 
 ?>
-
-
-
-

@@ -31,15 +31,16 @@
 //}
 
 
-
-function showEventMembers(zpeaktype, eventname) {
+function showEventMembers(baseUrl, zpeaktype, eventname) {
 	// Retrieve name of each member (Ajax ?)
+	ajaxUrl = baseUrl;
+
 	$.ajax({
 	  type: "GET",
-          url: 'http://demo.gozpeak.com:8002/controllers/members-list.php?',
+    url: ajaxUrl+'/controllers/members-list.php?',
 	  data: "zpeaktype=" + zpeaktype + "&eventname=" + eventname,
-	  //dataType: 'json',
-          cache: false,
+		contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
+		cache: false,
 	  success: function(data)
 	  {
 	    //alert("Liste des membres actuellement inscrits : " + data + ", " + data + ".");
@@ -48,7 +49,7 @@ function showEventMembers(zpeaktype, eventname) {
 	    /*if ($("h4").hasClass('modal-title displaymembers')) {
 		$("<span class=eventtitle-displaymembers> " + eventname + " </span>").appendTo("h4");
 	    };*/
-	    $('#modal-displaymembers').modal('show');
+	    /*$('#modal-displaymembers').modal('show');*/
 	    //$("#ajaxupdate").dialog("open");
 	  }
 	});
@@ -72,4 +73,3 @@ function showEventMembers(zpeaktype, eventname) {
 //
 //	$('#modalEventWithQuery').modal('show');
 //}
-

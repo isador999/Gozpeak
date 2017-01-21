@@ -1,120 +1,46 @@
+/***** CSS file for event and idea pages *****/
 /*********************************************/
-/***** Design for event.php and idea.php *****/
 
-.event-head {
-	padding-top: 3%;
-        font:34px "noteworthy";
+.activity {
+	font-size: 14pt;
+	color: #576CAA;
 }
 
-.idea-banner {
-        width: 60%;
-        margin:auto;
-        padding-bottom: 3.5%;
-        font: 28px "noteworthy";
-        color:#2b5f92;
+.idea-infos {
+  margin-top: 4%;
+  margin-bottom: 5%;
 }
 
-.event-banner {
-        width: 60%;
-        margin:auto;
-        padding-bottom: 3.5%;
-        font: 28px "noteworthy";
-	/*color:#d9523b;*/
-	color:#d9523f;
+.event-infos {
+  margin-top: 4%;
+  margin-bottom: 7%;
 }
 
-.event-titles {
-	font-size: 16px;
-	width: 25%;
-	margin:auto;
-	float:center;
-	padding-bottom: 5%;
+table {
+  font-size: 13pt;
+  background-color: white;
 }
 
-.event-content {
-	padding-top: 3%;
-	margin:auto;
-        width:96%;
-	height:60%;
+legend {
+  font-size: 20pt;
+  font-weight: bold;
+  font-style: italic;
 }
 
-
-.event-images {
-	width: 28%;
-	float:left;
+.event-buttons {
+  padding-top: 26%;
+  height: 30%;
 }
 
-
-.event-addmember {
-	margin-top:3%;
-	margin-right:35%;
+.event-buttons .btn {
+  font-size: 13pt;
+  margin-bottom: 20%;
 }
 
-.idea-addmember {
-	margin-top:3%;
-	margin-right:35%;
+.event-buttons .badge {
+  background-color: SteelBlue!important;
+  font-size: 11pt;
+  margin-left: 8px;
+  width: 26pt;
+  border-radius: 7px;
 }
-
-
-
-/***** JS Event Img Form *****/
-/*.event-img-uploader {
-	width: 100%;
-	text-align:left;
-	
-}*/
-
-.eventFeedbackForm {
-	text-align:left;
-}
-
-
-
-/***** Table for event.php *****/
-.event-infos table {
-        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-        font-style: italic;
-        font-size:17px;
-}
-
-.event-infos th {
-        width:40%;
-}
-
-.event-infos td {
-        width:30%;
-}
-
-.event-infos td {
-        color: DimGray;
-}
-
-.idinfos-unlogged a:hover {
-        color: SteelBlue;
-}
-
-.idinfos-unlogged a:visited, .idinfos-unlogged a:active {
-        color: DarkGray;
-}
-
-
-
-/** .idinfos-logged a:hover {
-        color: SteelBlue;
-}
-
-.idinfos-logged a:visited, .idinfos-logged a:active {
-        color: DarkGray;
-} **/
-
-
-
-/*Typo*/
-@font-face {
-    font-family: 'noteworthy';
-    src: url('../images/typo/noteworthy.ttc');
-    font-weight: normal;
-    font-style: normal;
-}
-
-

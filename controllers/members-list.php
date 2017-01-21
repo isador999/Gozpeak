@@ -1,11 +1,12 @@
 <?php
 
 session_start();
-require_once('./lib/sessions_init.php');
 require_once('./language/fr.php');
+require_once('./lib/sessions_init.php');
 
 require_once('../models/dbconnect.php');
-require_once('../models/memberslist_functions.php');
+//require_once('../models/memberslist_functions.php');
+require_once('../models/ajax_event_functions.php');
 
 
 if($_GET) {
@@ -32,7 +33,7 @@ if($_GET) {
 
 		if ($eventtype == "zpeakevent") {
 			$eventname_exists = check_eventname($DB, $eventname);
-		} elseif ($eventtype == "zpeakidea") { 
+		} elseif ($eventtype == "zpeakidea") {
 			$eventname_exists = check_ideaname($DB, $eventname);
 		}
 
@@ -54,12 +55,16 @@ if($_GET) {
 
 		/****** Finally return list of members ******/
 		$lastmember = end($memberslist);
-		foreach($memberslist as $member) {
-			if ($member == $lastmember) {
-    				echo $member['pseudo'];
-			} else {
-    				echo $member['pseudo'].", ";
+		if (!empty($memberslist)) {
+			foreach($memberslist as $member) {
+				if ($member == $lastmember) {
+    					echo $member['pseudo'];
+				} else {
+    					echo $member['pseudo'].", ";
+				}
 			}
+		} else {
+			echo "Aucun membre n'est inscrit actuellement";
 		}
 	}
 }
@@ -76,4 +81,3 @@ if (isset($message)) {
 }
 
 ?>
-

@@ -1,5 +1,6 @@
 <?php
 
+header('Content-Type: text/html; charset=UTF-8');
 // DECLARE SOME PATHS CONSTANTS (useful for PHP) //
 define('ROOTDIR', __DIR__);
 define('MODELS', ROOTDIR . '/models/');
@@ -15,7 +16,7 @@ define('JS', VIEWS . '/js/');
 
 
 /***** Source generic vars to have independant environments (source language and SERVER_HOST vars*****/
-require_once(LIB.'sessions_init.php');
+#require_once(LIB.'sessions_init.php');
 
 ### First loop to redirect to the next file (controller or view, depending of request and the existing files )    ###
 ### ------------------------------------------------------------------------------------------------------------- ###
@@ -36,24 +37,27 @@ if(strpos($_SERVER['REQUEST_URI'], "index")) {
 		#if(strpos($_SERVER['REQUEST_URI'], "page")) {
 		if(!empty($_GET['page'])) {
 			$page = $_GET['page'];
-	
+
 			if(is_file(CONTROLLERS.$page.'.php')) {
 				require_once (CONTROLLERS.$page.'.php');
 			}
 			#elseif (is_file(VIEWS.$page.'.php')) {
-			#	require_once (VIEWS.$page.'.php');
+		#		require_once (VIEWS.$page.'.php');
 			#}
 			else {
-				require_once (ERROR_PAGES.'404.php');
+				require_once (CONTROLLERS.'home.php');
 			}
-		} else {
-			#require_once (ERROR_PAGES.'404.html');
-			require_once(CONTROLLERS.'init.php');
-			require_once(CONTROLLERS.'welcome.php');
+		}
+		else {
+			require_once(LIB.'sessions_init.php');
+			require_once(CONTROLLERS.'language.php');
+			require_once(CONTROLLERS.'home.php');
 		}
 	} else {
-		require_once(CONTROLLERS.'init.php');
-	        require_once(CONTROLLERS.'welcome.php');
+		//require_once(CONTROLLERS.'init.php');
+		require_once(LIB.'sessions_init.php');
+		require_once(CONTROLLERS.'language.php');
+	  require_once(CONTROLLERS.'home.php');
 }
 
 ?>

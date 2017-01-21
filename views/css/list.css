@@ -1,13 +1,80 @@
 /***** Design of list.php, list-head.php ..... *****/
 
-/* list-head.php */
-/*****************/
-.list-header {
-        padding-top: 5%;
-        height: 42%;
+/*#scrollable-dropdown-menu .tt-dropdown-menu {
+  max-height: 150px;
+  overflow-y: auto;
+}*/
+
+
+.listing-header {
+  min-height: 19%;
+  max-height: 25%;
+  font-size: 13pt;
+  margin-bottom: 5%;
 }
 
-.list-titles {
+
+#selectedLanguages {
+  margin: 3%;
+  border-radius: 3px;
+}
+
+
+.activity {
+	font-size: 14pt;
+	color: #576CAA;
+}
+
+
+
+/*********************/
+
+.eventsblock {
+  background-color: #F1F1F1;
+  border-radius: 20px;
+  padding-top: 0.7%;
+}
+
+.pageblock {
+  margin:auto;
+  width: 70%;
+}
+
+.listing-events legend {
+  font-size: 19pt;
+  font-weight: bold;
+  font-style: italic;
+  /*margin-left: 4%;
+  margin-right: 4%;*/
+  margin-bottom: 6%;
+}
+
+.listing-events fieldset {
+  /*background-color: white;*/
+  min-height: 75%;
+  max-height: 100%;
+}
+
+
+.empty-events {
+  height: 45px;
+  font-size: 12pt;
+}
+
+.ideas-title {
+  color: rgb(34, 80, 138);
+}
+
+.events-title {
+  color: rgb(205, 90, 50);
+}
+
+
+/* END OF list-head.php */
+/************************/
+
+
+/*.list-titles {
         width: 25%;
         font-size: 16px;
         margin:auto;
@@ -35,30 +102,31 @@
         float: right;
         text-align:left;
 }
+*/
 
 
 
 /***** list.php *****/
 /********************/
 
-.list-content {
+/*.list-content {
         width: 90%;
         height: 100%;
         margin:auto;
         float:center;
         padding-top: 4%;
         padding-bottom: 2%;
-	margin-bottom: 4%;
+	      margin-bottom: 4%;
 }
 
-/*** Left global bloc ***/
+
 .middle-left {
         float:left;
         width: 50%;
         height: 100%;
 }
 
-/*** Right global blocœ ***/
+
 .middle-right {
         float:right;
         width: 50%;
@@ -75,7 +143,7 @@
         width:80%;
 }
 
-/*** Paginations at bottom of left paper ***/
+
 .pagination-left {
 	font:16px "noteworthy";
 	font-style: bold;
@@ -100,34 +168,34 @@
         float:right;
         height:100%;
         width:80%;
-}
+}*/
 
 
 /*** Title in left paper ***/
-.list-content-img-left {
+/*.list-content-img-left {
         width: 60%;
         margin:auto;
         padding-bottom: 3.5%;
         font:28px "noteworthy";
         color:#d9523b;
-}
+}*/
 
 
 /*** Title in right paper ***/
-.list-content-img-right {
+/*.list-content-img-right {
         width: 60%;
         margin:auto;
         padding-bottom: 3.5%;
         font:28px "noteworthy";
         color:#2b5f92;
-}
+}*/
 
 
 
 /***** List tables *****/
 /***********************/
 /* Left table */
-.list-content-left table {
+/*.list-content-left table {
         margin: auto;
         width:96%;
         font-size:14px;
@@ -148,12 +216,12 @@
         font-size:14px;
         padding-top: 0.2%;
 }
-
+*/
 
 
 /*** Right table ***/
 /*******************/
-.list-content-right table {
+/*.list-content-right table {
         margin: auto;
         width:96%;
         font-size:14px;
@@ -172,7 +240,4 @@
         font-size:14px;
         padding-top: 0.2%;
 }
-
-
-
-
+*/

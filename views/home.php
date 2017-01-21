@@ -1,86 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-	<head>
-	</head>
-	
-	<body>		
-		<div id="home">
-			<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
-			<?php if(isset($_SESSION['resetpass']) && ($_SESSION['resetpass'] == "valid")) { ?>
-				<script src="views/js/jquery.resetpass.js"> </script>
-				<script> $("#modalResetPassword").modal() </script>
-			<?php } ?>
-
-			
-        <!-- <a href="#" class="close" data-dismiss="alert">&times;</a> -->
+<div class="corpse container-fluid">
+	<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+	<?php if(isset($_SESSION['resetpass']) && ($_SESSION['resetpass'] == 'valid')) { ?>
+		<script type="text/javascript" src="views/js/jquery.resetpass.js"> </script>
+		<script> $("#modalResetPassword").modal() </script>
+	<?php } ?>
 
 
-			<div class="alert alert-info fade in" id="course-message">
-				<a href="" class="close" data-dismiss="alert">&times;</a>
-				<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-) <br>
-				<a onclick="showModalCourses()"><i class="fa fa-leanpub"></i> Cliquez pour plus d'informations </a>
+	<header>
+	<!-- <div class="col-lg-5 pull-left alert alert-info fade in" id="course-message">
+	<a href="" class="close" data-dismiss="alert">&times;</a>
+	<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-) <br>
+	<a onclick="showModalCourses()"><i class="fa fa-leanpub"></i> Cliquez pour plus d'informations </a>
+	</div> -->
+		<div class="city-block row">
+			<div class="col-lg-5 pull-left">
+				<h4>
+					<?php echo $generic[$_SESSION['language']]['text'][0]; ?> :
+					<a onclick="showCities()" href="#" title="<?php echo $generic[$_SESSION['language']]['city'][0]['title']; ?>"> <?php echo $generic[$_SESSION['language']]['city'][0]['name']; ?> </a>
+				</h4>
+
+				<div id="ZpeakCities" style="display:none;">
+					<div> <button class="btn btn-default" title="<?php echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Rennes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Nantes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Tours </button> </div>
+				</div>
 			</div>
-
-
-			<div id="staticHome">
-				<div class="city center">
-					<?php if(isset($generic[$_SESSION['language']]['city'][0])) echo $generic[$_SESSION['language']]['city'][0]; ?>
-				</div>
-				<br>
-				<br>
-				<a style="font-size: 14px;" href="<?php echo "$gozpeak_protocol"."$gozpeak_host"?>/index.php"> Retourner à l'accueil  </a> <br>
-				
-				<div class="activity-img hidden-xs hidden-sm hidden-md col-lg-12">
-					<a href="index.php?page=list&query=run" ><span class="col-lg-3 center"><img src="<?php echo $home[$_SESSION['language']]['run']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['run']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['run']['title']; ?>" /></span></a>
-					<a href="index.php?page=list&query=art" ><span class="col-lg-3 center"><img src="<?php echo $home[$_SESSION['language']]['art']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['art']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['art']['title']; ?>" /></span></a>
-					<a href="index.php?page=list&query=party" ><span class="col-lg-3 center"><img src="<?php echo $home[$_SESSION['language']]['party']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['party']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['party']['title']; ?>" /></span></a>
-					<a href="index.php?page=list&query=eat" ><span class="col-lg-3 center"><img src="<?php echo $home[$_SESSION['language']]['eat']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['eat']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['eat']['title']; ?>" /></span></a>
-				</div>
-					
-				<div class="activity-text hidden-xs hidden-sm hidden-md col-lg-12">
-					<span class="col-lg-3 center"><?php echo $home[$_SESSION['language']]['run']['text']; ?></span>
-					<span class="col-lg-3 center"><?php echo $home[$_SESSION['language']]['art']['text']; ?></span>
-					<span class="col-lg-3 center"><?php echo $home[$_SESSION['language']]['party']['text']; ?></span>
-					<span class="col-lg-3 center"><?php echo $home[$_SESSION['language']]['eat']['text']; ?></span>
-				</div>
-				
-				<div class="activity-img col-xs-12 col-sm-12 col-md-12 hidden-lg">
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><img src="<?php echo $home[$_SESSION['language']]['run']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['run']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['run']['title']; ?>" /></span>
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><img src="<?php echo $home[$_SESSION['language']]['art']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['art']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['art']['title']; ?>" /></span>
-				</div>
-				
-				<div class="activity-text col-xs-12 col-sm-12 col-md-12 hidden-lg">
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><?php echo $home[$_SESSION['language']]['run']['text']; ?></span>
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><?php echo $home[$_SESSION['language']]['art']['text']; ?></span>
-				</div>
-				
-				<div class="activity-img col-xs-12 col-sm-12 col-md-12 hidden-lg">
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><img src="<?php echo $home[$_SESSION['language']]['party']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['party']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['party']['title']; ?>" /></span>
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><img src="<?php echo $home[$_SESSION['language']]['eat']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['eat']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['eat']['title']; ?>" /></span>
-				</div>
-				
-				<div class="activity-text col-xs-12 col-sm-12 col-md-12 hidden-lg">
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><?php echo $home[$_SESSION['language']]['party']['text']; ?></span>
-					<span class="col-xs-6 col-sm-6 col-md-6 center"><?php echo $home[$_SESSION['language']]['eat']['text']; ?></span>
-				</div>
-				
-				<div class="small-xs col-xs-12" style="display: none">
-					<span class="col-xs-12 center"><img src="<?php echo $home[$_SESSION['language']]['run']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['run']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['run']['title']; ?>" /></span>
-					<span class="col-xs-12 center"><?php echo $home[$_SESSION['language']]['run']['text']; ?></span>
-					<span class="col-xs-12 center"><img src="<?php echo $home[$_SESSION['language']]['art']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['art']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['art']['title']; ?>" /></span>
-					<span class="col-xs-12 center"><?php echo $home[$_SESSION['language']]['art']['text']; ?></span>
-					<span class="col-xs-12 center"><img src="<?php echo $home[$_SESSION['language']]['party']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['party']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['party']['title']; ?>" /></span>
-					<span class="col-xs-12 center"><?php echo $home[$_SESSION['language']]['party']['text']; ?></span>
-					<span class="col-xs-12 center"><img src="<?php echo $home[$_SESSION['language']]['eat']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['eat']['alt']; ?>" title="<?php echo $home[$_SESSION['language']]['eat']['title']; ?>" /></span>
-					<span class="col-xs-12 center"><?php echo $home[$_SESSION['language']]['eat']['text']; ?></span>
-				</div>	
-			</div>
-			
-			<!-- <div id="dynamicHome">
-				<h5><a onclick="alert('Resolution : La largeur de votre écran, en pixels : ' + window.innerWidth + 'px');"> Largeur d'écran </a></h5>
-				<h5><a onclick="alert('Resolution : La hauteur de votre écran, en pixels : ' + window.innerHeight + 'px');"> Hauteur d'écran </a></h5>
-			</div> -->
 		</div>
-	</body>
-</html>
+
+
+		<div class="row promote-block">
+			<div class="col-lg-4 col-sm-10 col-xs-10">
+				<?php echo $home[$_SESSION['language']]['promote']['text']; ?>
+			</div>
+
+			<div class="col-lg-4 col-md-6 col-sm-6 col-xs-8">
+				<img src="views/images/aperitivo_clara_martes.jpg" class="img-rounded" alt="apéritif_linguistique_la_clara">
+				<div class="caption">
+					<p> El Aperitivo de La Clara </p>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-6 col-sm-5 col-xs-2">
+				<iframe width="440" height="250" src="https://www.youtube.com/embed/sjW8tB3Yw8A"></iframe>
+			</div>
+		</div>
+	</header>
+
+	<?php #echo $_SERVER['HTTP_ACCEPT_LANGUAGE']; ?>
+
+	<!-- LG and MD -->
+	<div class="row text-center activities" style="height:35%;">
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+			<h3><a title="<?php echo $home[$_SESSION['language']]['run']['title']; ?>" href="index.php?page=list&query=run" ><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['run']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['run']['alt']; ?>"/> </span></a></h3>
+			<span><?php echo $home[$_SESSION['language']]['run']['text']; ?></span>
+		</div>
+
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+			<h3><a title="<?php echo $home[$_SESSION['language']]['art']['title']; ?>" href="index.php?page=list&query=art"><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['art']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['art']['alt']; ?>" /> </span></a></h3>
+			<span><?php echo $home[$_SESSION['language']]['art']['text']; ?></span>
+		</div>
+
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+			<h3><a title="<?php echo $home[$_SESSION['language']]['party']['title']; ?>" href="index.php?page=list&query=party"><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['party']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['party']['alt']; ?>" /> </span></a></h3>
+			<span><?php echo $home[$_SESSION['language']]['party']['text']; ?></span>
+		</div>
+
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+			<h3><a title="<?php echo $home[$_SESSION['language']]['eat']['title']; ?>" href="index.php?page=list&query=eat"><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['eat']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['eat']['alt']; ?>" /> </span></a></h3>
+			<span><?php echo $home[$_SESSION['language']]['eat']['text']; ?></span>
+		</div>
+	</div>
+
+<!-- <div>
+	<a onclick="alert('Resolution : La largeur de votre écran, en pixels : ' + window.innerWidth + 'px');"> Largeur d'écran </a>
+	<a onclick="alert('Resolution : La hauteur de votre écran, en pixels : ' + window.innerHeight + 'px');"> Hauteur d'écran </a>
+</div>  -->

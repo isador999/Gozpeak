@@ -4,6 +4,11 @@ $('#modalInscription').on('hidden.bs.modal', function() {
 });
 
 
+$('#modalInscription').on('shown.bs.modal', function () {
+  $('#pseudo').focus();
+})
+
+
 $(document).ready(function() {
     $('#inscriptionForm').on('init.field.fv', function(e, data) {
             var field  = data.field,        // Get the field name
@@ -31,9 +36,9 @@ $(document).ready(function() {
 	message: "Cette valeur n'est pas valide",
 	verbose: 'false',
 	excluded: 'disabled',
-	//trigger: 'blur',
+	trigger: 'blur',
 	err: {
-        	container: '#errors',
+        	container: '#inscription-errors',
 	},
         icon: {
 	    required: 'glyphicon glyphicon-asterisk',
@@ -49,12 +54,12 @@ $(document).ready(function() {
                     notEmpty: {
                         message: "Un pseudonyme est nécessaire pour vous inscrire"
                     },
-		    stringLength: {
-			min: 6,
+		                  stringLength: {
+			                  min: 6,
                         max: 20,
                         message: "Votre pseudonyme doit comporter 6 caractères au minimum, et 20 caractères au maximum"
                     },
-		    regexp: {
+		                  regexp: {
                             regexp: /^[a-zA-Z0-9_\.]+$/,
                             message: "Le pseudo ne peut pas comporter des caractères spéciaux comme l'@, le point ou l'underscore (_)"
                     }
@@ -67,8 +72,8 @@ $(document).ready(function() {
                     notEmpty: {
                         message: "Votre adresse email est nécessaire pour vous inscrire"
                     },
-		    stringLength: {
-			min: 10,
+		                  stringLength: {
+			                  min: 10,
                         max: 70,
                         message: "Une adresse mail doit comporter au moins 10 caractères"
                     },
@@ -102,14 +107,14 @@ $(document).ready(function() {
                     emailAddress: {
                         message: "La valeur n'est pas une adresse email valide"
                     },
-		    identical: {
+		                identical: {
                         field: "mail",
                         message: "Les adresses email entrées ne correspondent pas"
                     }
 		    //blank: {}
                 }
             },
-            password: {
+      password: {
 		//validMessage: 'Le mot de passe respecte les consignes de sécurité',
                 validators: {
                     notEmpty: {
@@ -120,12 +125,11 @@ $(document).ready(function() {
                         max: 25,
                         message: "Le mot de passe doit comporter 8 caractères au minimum, et 25 caractères au maximum"
                     },
-		    regexp: {
-                            //regexp: /^[a-zA-Z0-9_\.]+$/,
-                            regexp: /(?=.*[A-Z].*)(?=.*[0-9].*[0-9])(?=.*[!@#$&*].*)/,
-                            message: "Le mot de passe doit comporter au minimum une majuscule, deux chiffres et un caractère spécial"
+		                regexp: {
+                        regexp: /(?=.*[A-Z].*)(?=.*[0-9].*[0-9])(?=.*[!@#$&*].*)/,
+                        message: "Le mot de passe doit comporter au minimum une majuscule, deux chiffres et un caractère spécial"
                     },
-		    different: {
+		                  different: {
                         field: 'pseudo',
                         message: 'Le mot de passe doit être différent du pseudo'
                     }
@@ -143,7 +147,7 @@ $(document).ready(function() {
                     //    max: 25,
                     //    message: "Le mot de passe doit comporter 8 caractères au minimum, et 25 caractères au maximum"
                     //},
-		    identical: {
+		                identical: {
                         field: "password",
                         message: "Les mots de passe entrés ne correspondent pas"
                     }
@@ -181,7 +185,7 @@ $(document).ready(function() {
 //        })
 .on('success.form.fv', function(e) {
             // Reset the message element when the form is valid
-            $('#errors').html('');
+            $('#inscription-errors').html('');
         })
         .on('err.field.fv', function(e, data) {
             // data.fv      --> The FormValidation instance
@@ -192,7 +196,7 @@ $(document).ready(function() {
             var messages = data.fv.getMessages(data.element);
 
             // Remove the field messages if they're already available
-            $('#errors').find('li[data-field="' + data.field + '"]').remove();
+            $('#inscription-errors').find('li[data-field="' + data.field + '"]').remove();
 
             // Loop over the messages
             for (var i in messages) {
@@ -211,7 +215,7 @@ $(document).ready(function() {
                                 data.element.focus();
                             })
                     )
-                    .appendTo('#errors');
+                    .appendTo('#inscription-errors');
             }
 
             // Hide the default message
@@ -223,7 +227,7 @@ $(document).ready(function() {
         })
         .on('success.field.fv', function(e, data) {
             // Remove the field messages
-            $('#errors').find('li[data-field="' + data.field + '"]').remove();
+            $('#inscription-errors').find('li[data-field="' + data.field + '"]').remove();
         })
         .on('err.form.fv', function(e) {
             // Show the message modal
@@ -256,7 +260,7 @@ $(document).ready(function() {
             // Some instances you can use are
             var $form = $(e.target),        // The form instance
                 fv    = $(e.target).data('formValidation'); // FormValidation instance
-		
+
 		//$('#modalInscription').modal('hide');
 		//$('#inscription-succeed').modal('show');
 		fv.defaultSubmit()//.on('click', function(e) {
@@ -306,7 +310,7 @@ $(document).ready(function() {
 //	});
 
 //});
-              
+
 
 //$(function() {
 //  $('inscriptionForm').submit(function(e) {

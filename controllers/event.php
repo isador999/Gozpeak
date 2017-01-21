@@ -2,18 +2,26 @@
 
 session_start();
 require_once(CONTROLLERS.'init.php');
-require_once(VIEWS.'styles.php');
 require_once(MODELS.'dbconnect.php');
 require_once(MODELS.'event_functions.php');
 
+/***** Default variables *****/
+$user_is_organizer = 0;
+$user_registered = 0;
+/*****************************/
+/* Set List of views to be sourced */
+$ViewPages = array();
+
 
 if(isset($_GET['query']) && !empty($_GET['query'])) {
-        $query = $_GET['query'];
+  $query = $_GET['query'];
 }
 
 if(isset($_GET['event']) && !empty($_GET['event'])) {
 	$eventname = $_GET['event'];
 }
+
+
 
 /***** Retrieve event infos from Database *****/
 $infos_event = retrieve_event($DB, $eventname);
@@ -32,7 +40,6 @@ $nb_members = event_members_count($DB, $eventid);
 
 /***** Check if user logged *****/
 $logged = check_logged();
-
 if ($logged == 1) {
 	/***** Check if user is already registered to event, or if user is organizer *****/
 	$pseudo = $_SESSION['profil'];
@@ -45,27 +52,30 @@ if ($logged == 1) {
 		if($eventuser_entries > 0) {
 			$user_registered = 1;
 		} else {
-			$user_registered = 0;
+		  $user_registered = 0;
 		}
 	}
 
-        require_once(VIEWS.'header-logged.php');
-	require_once(MODALS.'modal-postevent-logged.php');
-	require_once(VIEWS.'event-logged.php');
-	require_once(MODALS.'modal-displaymembers.php');
-
+  $ViewPages[] = VIEWS.'header-logged.php';
+  $ViewPages[] = MODALS.'modal-postevent-logged.php';
+  $ViewPages[] = VIEWS.'event-logged.php';
+  $ViewPages[] = MODALS.'modal-displaymembers.php';
 } else {
-        require_once(VIEWS.'header-notlogged.php');
-	require_once(MODALS.'modal-postevent-notlogged.php');
-	require_once(VIEWS.'event-notlogged.php');
+
+  $ViewPages[] = VIEWS.'header-notlogged.php';
+  $ViewPages[] = MODALS.'modal-postevent-notlogged.php';
+  $ViewPages[] = VIEWS.'event-notlogged.php';
 }
 
 
-require_once(MODALS.'modal-footer.php');
-require_once(VIEWS.'scripts.php');
-require_once(VIEWS.'footer.php');
+$ViewPages[] = MODALS.'modal-navbar.php';
+$ViewPages[] = MODALS.'modal-footer.php';
+$ViewPages[] = VIEWS.'footer.php';
+
+$ViewTitle = $generic['fr']['region'][0].' - '.$generic['fr']['city'][0]['name'];
+
+require_once(VIEWS.'maintemplate.php');
 
 unset($_SESSION['msg']);
-
 
 ?>

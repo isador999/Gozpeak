@@ -1,81 +1,100 @@
-<head>
-	<script src="views/js/jquery.profiledelete.js"></script>
-	<script src="views/js/jquery.profile.js"></script>
-</head>
+<script type="text/javascript" src="views/js/jquery.changepass.js"> </script>
+<script type="text/javascript" src="views/js/jquery.profile.js"></script>
 
-<div class="profile-head">
-	<div class="head-links">
-		<p class="idhead">Votre profil Gozpeak</p>
-		<a onclick="showModalProfile('<?php echo $_SESSION['profil']?>')"><i> Editer la Zpeak ID </i> </a> <br>
-		<a onclick="showModalProfileDeletion('<?php echo $_SESSION['profil']?>')"><i> <span class="glyphicon glyphicon-trash"></span> Supprimer le compte GoZpeak </i></a> <br>
-	</div>
-</div>
+<div class="corpse container-fluid">
+	<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+	<div class="row">
+		<div class="col-lg-offset-1 col-md-offset-1 profile">
+			<div class="row">
+				<div class="col-lg-11 col-md-11 profile-header">
+					<legend id="profile-title">
+						Profil <span><?php echo $pseudo ?> </span>
+					</legend>
 
+					<div class="profile-avatar row">
+						<div class="col-lg-2 col-md-2 col-sm-3">
+							<img src="views/images/avatar_defaut.jpeg">
+						</div>
 
-<div class="profile-content">
-	<div class="idlang">
-		<br/>
-		<br/>
-		<?php foreach($minilang[$_SESSION['language']]['icon'] as $key => $value){ ?>
-                	<img src="<?php echo $value['png']; ?>"> <?php echo $value['text']; ?> <br>
-                <?php } ?>
-		<br/>
-	</div>
+						<div class="profile-head-text col-lg-5 col-md-5 col-sm-9">
+							Inscrit depuis le <?php echo ' '.$infos['subscribedayname']; echo ' '.$infos['subscribedaynumber']; echo ' '.$infos['subscribemonthname']; echo ' '.$infos['subscribeyear']; ?>  <br> <br>
+							Dernière connexion : <?php if (!empty($connect_interval)) { echo $connect_interval; } else { echo "Inconnu"; } ?>
+						</div>
 
+						<div class="profile-head-text col-lg-5 col-md-5 col-sm-10">
+							<button data-toggle="modal" data-target="#modalChangePassword" class="btn btn-primary"> Changer votre mot de passe </button> <br> <br>
+							<button data-toggle="modal" data-target="#modalProfileDeletion" class="btn btn-danger"> Supprimer votre compte Gozpeak </button>
+						</div>
+					</div>
+				</div>
+			</div>
 
-	<!-- <div class="idcard"> -->
-	<div class="idcontent">
-		<div class="idpicture"> <img src="views/images/portrait_moyen.png"> </div>
-		<div class="idnumber"> Profil N°<?php echo $infos['id'] ?> </div>
-		<div class="idinfos-logged">
-		<table>
-			<tr>
-				<th> Pseudo : </th>
-				<td> <?php echo $infos['pseudo'] ?> &nbsp; &nbsp; </td>
-			</tr>
-			<tr>
-				<th> Email : </th>
-				<td> <?php echo $infos['email'] ?> &nbsp; &nbsp; </td>
-			</tr>
-			<tr>
-				<th> Nom : </th>
-				<td> <?php echo $infos['lastname'] ?> &nbsp; &nbsp; </td>
-			</tr>
-			<tr>
-				<th> Prenom : </th>
-				<td> <?php echo $infos['name'] ?> </td>
-			</tr>
-			<!-- <tr>
-				<th> Profession : </th>
-				<td> <?php //echo $infos['profession'] ?> &nbsp; &nbsp; &nbsp; </td>
-			</tr> -->
-			<tr>
-				<th> Nationalite : </th>
-				<td> <?php echo $infos['nationality'] ?> &nbsp; &nbsp; &nbsp; </td>
-			</tr>
-			</tr>
-				<th> Date de naissance : </th>
-				<td> <?php echo $infos['birthday'] ?> </td>
-			</tr>
-			<tr>
-				<th> Nombre de sorties proposées : </th>
-				<td> <?php echo $nb_events; ?> </td>
-			</tr>
-			<tr>
-				<th> Langues parlées : </th>
-				<td> <?php //echo $infos['languages'] ?> </td>
-			</tr>
-			<tr>
-				<th> Niveau des langues parlées : </th>
-				<td> <?php echo $infos['level_languages'] ?> &nbsp; &nbsp; &nbsp; </td>
-			</tr>
-			<tr>
-				<th> Utilisateur Premium : </th>
-				<td> <a href="#premium#"> <?php echo $_SESSION['ispremium'] ?> </a></td>
-			</tr>
-		</table>
+			<div class="row">
+				<div class="col-lg-10 col-md-10 col-sm-9 col-sm-8 profile-table">
+					<div class="row">
+						<div class="profile-table-title col-lg-9 col-md-9 col-sm-8 col-xs-8" style="margin-bottom: 3.5%;">
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+								Les informations de votre <img src="views/images/zpeak_orange.png" style="width:12%;" title="Zpeak" />  ID
+							</div>
+							<div class="col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-2 col-sm-2 col-xs-2">
+								<button id="btn-profile-update" onclick="GetProfileInfos('<?php echo $baseUrl; ?>', '<?php echo $_SESSION['profil']; ?>')" data-toggle="modal" data-target="#modalProfileEdition" class="btn btn-primary"> Modifier vos informations de profil </button>
+							</div>
+						</div>
+					</div>
+
+					<table class="table table-condensed table-bordered table-striped table-hover">
+						<tr>
+							<th> Pseudo : </th>
+							<td> <?php echo $infos['pseudo'] ?> </td>
+						</tr>
+						<tr>
+							<th> Email : </th>
+							<td> <?php echo $infos['email'] ?> </td>
+						</tr>
+						<tr>
+							<th> Nom : </th>
+							<td> <?php echo $infos['lastname'] ?> </td>
+						</tr>
+						<tr>
+							<th> Prénom : </th>
+							<td> <?php echo $infos['name'] ?> </td>
+						</tr>
+						<!-- <tr>
+							<th> Profession : </th>
+							<td> <?php //echo $infos['profession'] ?> &nbsp; &nbsp; &nbsp; </td>
+						</tr> -->
+						<tr>
+							<th> Nationalité : </th>
+							<td> <?php echo $infos['nationality'] ?>  </td>
+						</tr>
+						</tr>
+							<th> Date de naissance : </th>
+							<td> <?php echo $infos['birthday'] ?> </td>
+						</tr>
+						<tr>
+							<th> Nombre de sorties proposées : </th>
+							<td> <div class="col-lg-10"> <?php echo $nb_posted_ideas; ?>  <button type="button" class="col-lg-offset-1 btn btn-default" data-toggle="modal" data-target="#modalProfileEventListing" onclick="getIdeasByUser('<?php echo $baseUrl ?>', '<?php echo $_SESSION["profil"] ?>');"> Voir vos événements postés </button> </div> </td>
+						</tr>
+						<tr>
+							<th> Langues parlées : </th>
+							<td> <?php //echo $infos['languages'] ?> </td>
+						</tr>
+						<tr>
+							<th> Niveau des langues pratiquées </th>
+							<td> <?php echo $infos['level_languages'] ?> </td>
+						</tr>
+					</table>
+				</div>
+
+				<!-- <div class="col-lg-3 col-md-3">
+					<div class="profile-minilang-block">
+						<?php #foreach($minilang[$_SESSION['language']]['icon'] as $key => $value){ ?>
+    					<img class="profile-minilang-entry" src="<?php #echo $value['png']; ?>"> &nbsp; <?php #echo $value['text']; ?> <br>
+    				<?php #} ?>
+					</div>
+				</div> -->
+			</div>
+
 		</div>
 	</div>
-
 </div>
-	
