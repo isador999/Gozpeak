@@ -1,4 +1,5 @@
 <?php
 
+$MyEvent = new Event();
 
  ?>

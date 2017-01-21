@@ -12,9 +12,6 @@ class EventEntity {
   public $monthname;
   public $hour;
 
-  function getEvent();
-
-
 
 }
 
