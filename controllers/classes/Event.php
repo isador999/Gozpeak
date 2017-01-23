@@ -7,11 +7,9 @@ class Event {
   public $language;
   public $description;
   public $organizer;
-  //public $finished;
   public $datetime;
   public $languagelevel;
   public $phonenumber;
-  public $message = "None";
 
 
   public function __construct($name, $place, $category, $language, $description, $organizer, $datetime, $languagelevel, $phonenumber)
@@ -22,58 +20,62 @@ class Event {
     $this->language = $language;
     $this->description = $description;
     $this->organizer = $organizer;
-    //$this->$finished = isset($finished);
     $this->datetime = $datetime;
     $this->languagelevel = $languagelevel;
     $this->phonenumber = $phonenumber;
   }
 
-  private function check_compliance() {
+  public function validate_fields() {
+    foreach(get_object_vars($this) as $value) {
+      if(empty($value)) {
+        throw new LengthException();
+      }
+    }
+
+    if((strlen($this->name) < 6) OR (strlen($this->name > 25))) {
+      //throw new LengthException("Le nom de l'événement doit faire entre 6 et 25 caractères");
+      throw new LengthException();
+    } elseif ((strlen($this->place) < 6) OR (strlen($this->place > 25))) {
+      //throw new LengthException("Le lieu de l'événement doit faire entre 6 et 25 caractères");
+      throw new LengthException();
+    } elseif ((strlen($this->description) < 15) OR (strlen($this->description > 255))) {
+      //throw new LengthException("La description de l'événement doit faire entre 15 et 255 caractères");
+      throw new LengthException();
+    } elseif (!strlen((string)$this->phonenumber) == 10) {
+      //throw new LengthException("Le numéro de téléphone doit être composé de 10 chiffres");
+      throw new LengthException();
+    }
+
     $text_fields = array($this->name, $this->category, $this->language, $this->organizer, $this->languagelevel);
     foreach($text_fields as $value) {
       if(!preg_match("/^[a-zA-Z0-9éèàêç'+()\- ]+$/", $value)) {
-        $this->message = "notcompliant_fields";
+        throw new UnexpectedValueException();
       }
     }
-    //var_dump($this->message);
   }
 
-  //private function check_lengths($datas = array()) {
-  private function check_lengths() {
-    if((strlen($this->name) < 6) OR (strlen($this->name > 25))) {
-      $this->message = "invalid_eventname";
-    } elseif ((strlen($this->place) < 6) OR (strlen($this->place > 25))) {
-      $this->message = "invalid_eventplace";
-    } elseif ((strlen($this->description) < 15) OR (strlen($this->description > 255))) {
-      $this->message = "invalid_eventdesc";
-    } elseif (!strlen((string)$this->phonenumber) == 10) {
-      $this->message = "invalid_eventphone";
-    } else {
-      $this->message = "Success";
-    }
-      // } elseif (strlen(str($this->phonenumber)) > 10) {
-      //   $this->message = "invalid_phonenumber";
-      // }
-    var_dump($this->message);
-
-  }
-
-  public function validate()
-  {
-    //var_dump(get_object_vars($this));
-    foreach(get_object_vars($this) as $value) {
-      if(empty($value)) {
-        $this->message = "empty_fields";
-      }
+  public function check_values() {
+    switch($this->language) {
+      case "english":
+      case "spanish":
+      case "italian":
+      case "french":
+      case "others":
+        break;
+      default:
+        throw new OutOfBoundsException();
     }
 
-    while($this->message === "None") {
-      $this->check_compliance();
-      $this->check_lengths();
-      //To check possible values of select postevent.
-      //$this->check_values();
+    switch($this->languagelevel) {
+      case "beginner":
+      case "middle":
+      case "advanced":
+        break;
+      default:
+        throw new OutOfBoundsException();
     }
   }
+
 }
 
 ?>

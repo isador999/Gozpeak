@@ -16,8 +16,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
 
 if($_POST) {
 	$organizer 				= isset($_SESSION['profil']) ? $_SESSION['profil'] : '';
-	//$event_name 			= isset($_POST['event_name']) ? $_POST['event_name'] : '';
-	$event_name 			= isset($_POST['event_name']) ? $_POST['event_name'] : 'tr';
+	$event_name 			= isset($_POST['event_name']) ? $_POST['event_name'] : '';
 	$event_place 			= isset($_POST['event_place']) ? $_POST['event_place'] : '';
 	$event_desc 			= isset($_POST['event_desc']) ? $_POST['event_desc'] : '';
 	$event_datetime 	= isset($_POST['event_datetime']) ? $_POST['event_datetime'] : '';
@@ -34,20 +33,31 @@ if($_POST) {
 	$event = new Event($event_name, $event_place, $query, $lang, $event_desc, $organizer, $event_datetime, $langlevel, $phone_number);
 	$db = new Database('gozpeak_dev');
 
-	$member = $db->query("SELECT COUNT(pseudo) FROM members where pseudo = '$organizer'");
+	var_dump($db);
+	  //If member does not exists;
+	// if(is_null($member)) {
+	//  	throw new Exception(BadMethodCallException, "ERREUR : Vérifiez que vous êtes connectés à Gozpeak");
+	// }
+	$member = $db->query("SELECT COUNT(pseudo) FROM members where pseudo = 'test'");
+	var_dump($member);
 
-	if(is_null($member)) {
-		$event->message = "unauthorized";
+	try {
+		$event->validate_fields();
+		$event->check_values();
+	}catch(LengthException $e) {
+		echo $e;
+	} catch(UnexpectedValueException $e) {
+		echo $e;
+	}catch(OutOfBoundsException $e) {
+		echo $e;
 	}
 
-	$event->validate();
-	var_dump($event->message);
-	//var_dump($event->message);
+	//$member = $db->query("SELECT COUNT(pseudo) FROM members where pseudo = '$event->organizer'");
 
+
+	//var_dump($event->message);
 	//Puis enregistrer en BDD l'événement.
-
 	//var_dump($event->message);
-
 	//$results= $db->query('SELECT * from events');
 }
 
