@@ -30,8 +30,8 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
-					<button type="<?php echo $modal['fr']['inscription']['check']['type']; ?>" value=<?php echo $modal['fr']['inscription']['check']['submit']; ?> class="btn btn-primary pull-right"><?php echo $modal['fr']['inscription']['check']['desc']; ?></button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal[$_SESSION['language']]['generic']['closed']; ?></button>
+					<button type="submit" value="Submit" class="btn btn-primary pull-right"><?php echo $modal[$_SESSION['language']]['inscription']['check']['desc']; ?></button>
 				</div>
 			</form>
 		</div>
@@ -68,9 +68,9 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-link left" data-dismiss="modal" data-toggle="modal" data-target="#modalForgottenPass"> <?php echo $modal['fr']['connection']['check']['link']; ?></button>
-					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
-					<button type="<?php echo $modal['fr']['connection']['check']['type']; ?>" value="<?php echo $modal['fr']['connection']['check']['submit']; ?>" class="btn btn-primary"><?php echo $modal['fr']['connection']['check']['desc']; ?></button>
+					<button type="button" class="btn btn-link left" data-dismiss="modal" data-toggle="modal" data-target="#modalForgottenPass"> <?php echo $modal[$_SESSION['language']]['connection']['check']['link']; ?></button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal[$_SESSION['language']]['generic']['closed']; ?></button>
+					<button type="submit" value="Submit" class="btn btn-primary"><?php echo $modal[$_SESSION['language']]['connection']['check']['desc']; ?></button>
 				</div>
 			</form>
 		</div>
@@ -79,7 +79,6 @@
 
 
 
-<!-- ### BEGIN Password Modals - ChangePass AND ForgottenPass ### BEGIN -->
 <!-- Modal ForgotPassword -->
 <div class="modal fade" style="display:none;" id="modalForgottenPass" tabindex="-1" role="dialog" aria-labelledby="ModalForgottenPass">
 	<div class="modal-dialog modal-md" role="document">
@@ -93,22 +92,21 @@
     	<div id="forgotpass-errors" class="text-left col-lg-9 col-lg-offset-1 modal-errors"></div>
 			<form role="form" data-toggle="validator" class="form-horizontal forgotpassForm" id="forgotpassForm" name="forgotpassForm" method="post" action="<?php echo $baseUrl.'/controllers/forgotpass.php' ?>">
 				<div class="modal-body">
-					<?php foreach($modal[$_SESSION['language']]['forgotpass']['field'] as $key => $value){ ?>
-    				<div class="form-group">
-							<div class="col-lg-6 col-lg-offset-1">
-        				<label for="<?php echo $value['input']; ?>"><?php echo $value['desc']; ?>&nbsp;&#42;</label>
-							</div>
 
-							<div class="col-lg-8 col-lg-offset-1">
-								<input type="<?php echo $value['type']; ?>" class="form-control" id="<?php echo $value['input']; ?>" name="<?php echo $value['input']; ?>" placeholder="<?php echo $value['placeholder']; ?>"/>
-        			</div>
-  					</div>
-    			<?php } ?>
-    		</div>
+					<div class="form-group">
+						<div class="col-lg-6 col-lg-offset-1">
+        			<label for="mail_forgotpass"><?php echo $modal[$_SESSION['language']]['forgotpass']['field'][0]['desc']; ?>&nbsp;&#42;</label>
+						</div>
+
+						<div class="col-lg-8 col-lg-offset-1">
+							<input type="email" class="form-control" id="mail_forgotpass" name="mail_forgotpass" placeholder="<?php echo $modal[$_SESSION['language']]['forgotpass']['field'][0]['desc']; ?>"/>
+      			</div>
+					</div>
+  			</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
-					<button type="<?php echo $modal['fr']['forgotpass']['check']['type']; ?>" value="<?php echo $modal['fr']['forgotpass']['check']['submit']; ?>" class="btn btn-primary"><?php echo $modal['fr']['forgotpass']['check']['desc']; ?></button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal[$_SESSION['language']]['generic']['closed']; ?></button>
+					<button type="submit" value="Submit" class="btn btn-primary"><?php echo $modal[$_SESSION['language']]['forgotpass']['check']['desc']; ?></button>
 				</div>
 			</form>
 		</div>

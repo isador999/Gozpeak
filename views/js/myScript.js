@@ -294,21 +294,24 @@ function showDatetimePicker() {
 };
 
 
-
-function showModalSelectQuery() {
-	/*jQuery.noConflict();*/
-	$('#modalSelectQuery').modal('show');
-}
-
-
-function showModalEventWithQuery(logo, color, img, query) {
+function genericShowModalEvent(logo, color, img, query, modalIdSelector) {
 	$('#modalSelectQuery').modal('hide');
-	$(".modal-title #EventWithQueryTitle").attr("src", logo);
-	$(".modal-title").attr("style", color);
-	$(".modal-body #EventWithQueryImg").attr("src", img);
-	$(".modal-body #EventWithQueryImg").attr("alt", query);
 
-	$(".modal-body #hiddenInput").attr("value", query);
-
-	$('#modalEventWithQuery').modal('show');
+	$("#"+modalIdSelector+" .EventLogoTitle").attr("src", logo);
+	$("#"+modalIdSelector+" .modal-title").attr("style", color);
+	$("#"+modalIdSelector+" .EventQueryImg").attr("src", img);
+	$("#"+modalIdSelector+" .EventQueryImg").attr("alt", query);
+	$('#'+modalIdSelector+" .hiddenInputQuery").attr("value", query);
 }
+
+// function showModalEventWithQuery(logo, color, img, query) {
+// 	$('#modalSelectQuery').modal('hide');
+// 	$(".modal-title #EventWithQueryTitle").attr("src", logo);
+// 	$(".modal-title").attr("style", color);
+// 	$(".modal-body #EventWithQueryImg").attr("src", img);
+// 	$(".modal-body #EventWithQueryImg").attr("alt", query);
+//
+// 	$(".modal-body #hiddenInput").attr("value", query);
+//
+// 	$('#modalEventWithQuery').modal('show');
+// }

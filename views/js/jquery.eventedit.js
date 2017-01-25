@@ -1,5 +1,5 @@
 
-function GetEventInfos(baseUrl, zpeaktype, eventname, eventlogo, eventcolor, eventimg) {
+function GetEventInfos(baseUrl, zpeaktype, eventname, eventlogo, eventcolor, eventimg, query) {
 	// Retrieve name of each member (Ajax ?)
 	ajaxUrl = baseUrl;
 
@@ -15,35 +15,32 @@ function GetEventInfos(baseUrl, zpeaktype, eventname, eventlogo, eventcolor, eve
 	    //alert("Liste des membres actuellement inscrits : " + data + ", " + data + ".");
 	    //var tmp = response.split("|");
 
-	    $(".modal-title #EventWithQueryTitle").attr("src", eventlogo);
-      $(".modal-title").attr("style", eventcolor);
-      $(".modal-body #EventWithQueryTitle").attr("src", eventimg);
-			$(".modal-body #EventWithQueryImg").attr("src", eventimg);
-			$(".modal-body #hiddenInput").attr("value", zpeaktype);
-	    /*$("#ajaxupdate-ideaname").val(tmp);*/
+	    // $(".modal-title #EventWithQueryTitle").attr("src", eventlogo);
+      // $(".modal-title").attr("style", eventcolor);
+      // $(".modal-body #EventWithQueryTitle").attr("src", eventimg);
+			// $(".modal-body #EventWithQueryImg").attr("src", eventimg);
+			// $(".modal-body #hiddenInput").attr("value", zpeaktype
 
 			var data = JSON.parse(response);
 			if (zpeaktype == "idea") {
-				$(".posteventForm").find("#event_name").val(data.ideaname);
-				$(".posteventForm").find("#event_place").val(data.ideaplace);
-				$(".posteventForm").find("#event_desc").val(data.ideadesc);
-				$(".posteventForm").find("#phone_number").val(data.ideaphone);
-				$(".posteventForm").find("#datetime-btn-event").val(data.ideadatetime);
-				$(".posteventForm").find("#selectlang").val(data.language);
-				$(".posteventForm").find("#selectlanglevel").val(data.level_language);
+				alert(zpeaktype+" has been called");
+				$(".eventeditForm").find("#event_name").val(data.ideaname);
+				$(".eventeditForm").find("#event_place").val(data.ideaplace);
+				$(".eventeditForm").find("#event_desc").val(data.ideadesc);
+				$(".eventeditForm").find("#phone_number").val(data.ideaphone);
+				$(".eventeditForm").find("#datetime-btn-event").val(data.ideadatetime);
+				$(".eventeditForm").find("#selectlang").val(data.language);
+				$(".eventeditForm").find("#selectlanglevel").val(data.level_language);
 			} else if (zpeaktype == "event") {
-				$(".posteventForm").find("#event_name").val(data.eventname);
-				$(".posteventForm").find("#event_place").val(data.eventplace);
-				$(".posteventForm").find("#event_desc").val(data.eventdesc);
-				$(".posteventForm").find("#datetime-btn").val(data.eventdatetime);
+				$(".eventeditForm").find("#event_name").val(data.eventname);
+				$(".eventeditForm").find("#event_place").val(data.eventplace);
+				$(".eventeditForm").find("#event_desc").val(data.eventdesc);
+				$(".eventeditForm").find("#datetime-btn").val(data.eventdatetime);
 			}
-
-	    /*if ($("h4").hasClass('modal-title displaymembers')) {
-		$("<span class=eventtitle-displaymembers> " + eventname + " </span>").appendTo("h4");
-	    };*/
-	    //$("#ajaxupdate").dialog("open");
+			genericShowModalEvent(eventlogo, eventcolor, eventimg, query, 'modalEventEdit');
 	  }
 	});
+	//$('#modalEventEdit').modal('show');
 };
 
 
@@ -63,7 +60,6 @@ function GetEventInfos(baseUrl, zpeaktype, eventname, eventlogo, eventcolor, eve
         }
      });
  }*/
-
 
 /*$('#modal-displaymembers').on('hidden.bs.modal', function() {
     if ($("span").hasClass('displaymembers')) {

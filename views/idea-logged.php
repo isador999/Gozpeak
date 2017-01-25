@@ -1,5 +1,5 @@
 <div class="corpse container-fluid">
-  <?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+  <?php #if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
 
   <div class="row">
     <div class="text-center activity">
@@ -71,7 +71,7 @@
       <div class="col-lg-offset-1 col-lg-2 event-buttons">
         <?php if ($user_is_organizer == 1) { ?>
           <script src="views/js/jquery.eventedit.js"></script>
-          <button title="<?php echo $form[$_SESSION['language']]['organizer']['eventedit']['title']; ?>" data-toggle="modal" data-target="#modalEventWithQuery" onclick="GetEventInfos('<?php echo $baseUrl; ?>', 'idea','<?php echo $infos_idea['ideaname'] ?>','<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['logo'] ?>','<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['color'] ?>','<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['img'] ?>')" class="btn btn-primary"><?php echo $form[$_SESSION['language']]['organizer']['eventedit']['desc']; ?></button>
+          <button title="<?php echo $form[$_SESSION['language']]['organizer']['eventedit']['title']; ?>" data-toggle="modal" data-target="#modalEventEdit" onclick="GetEventInfos('<?php echo $baseUrl; ?>', 'idea','<?php echo $infos_idea['ideaname'] ?>','<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['logo'] ?>','<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['color'] ?>','<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['img'] ?>', '<?php echo $infos_idea['ideatype']; ?>');" class="btn btn-primary"><?php echo $form[$_SESSION['language']]['organizer']['eventedit']['desc']; ?></button>
         <?php } elseif ($user_registered == 0) { ?>
           <form class="form-horizontal idea-addmember" action="<?php echo $baseUrl.'/controllers/idea_addmember.php' ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="addmember-ideaname" value="<?php echo $infos_idea['ideaname'] ?>">

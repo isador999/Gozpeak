@@ -18,14 +18,16 @@ if($_POST) {
 	$event_place 			= isset($_POST['event_place']) ? $_POST['event_place'] : '';
 	$event_desc 			= isset($_POST['event_desc']) ? $_POST['event_desc'] : '';
 	$event_datetime 	= isset($_POST['event_datetime']) ? $_POST['event_datetime'] : '';
-	$phone_number 		= isset($_POST['phone_number']) ? $_POST['phone_number'] : '';
+	$phone_number 		= isset($_POST['event_phonenumber']) ? $_POST['event_phonenumber'] : '';
 	$lang 						= isset($_POST['lang']) ? $_POST['lang'] : '';
 	$langlevel 				= isset($_POST['langlevel']) ? $_POST['langlevel'] : '';
 	$query						= isset($_POST['query']) ? $_POST['query'] : '';
 
-	$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query);
-	$text_postfields = array($event_name, $event_place);
+	$source						= isset($_POST['source']) ? $_POST['source'] : '';
 
+
+	$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query, $source);
+	$text_postfields = array($event_name, $event_place, $query, $source);
 
 	/************ Foreach loops *************/
 	foreach ($mandatory_postfields as $field) {
@@ -47,14 +49,13 @@ if($_POST) {
 
 	/************ Unitary tests ************/
 	/***************************************/
-
 	if(!isset($error)) {
 		/*********** Check if pseudo of organizer exists ************/
 		$nb_organizer = pseudo_exist($DB, $organizer);
 
 		if($nb_organizer < 0) {
 		  #echo "NOK: rule3";
-		  $error="unauthorized_postevent";
+		  $error="unauthorized_case";
 		}
 		elseif((strlen($event_name) < 6) OR (strlen($event_name) > 25))
 		{
@@ -82,11 +83,11 @@ if($_POST) {
 				$error="invalid_phone_number";
 			}
 		}
-		elseif(!preg_match("/^(anglais|espagnol|italien|français|portugais|breton|autre)$/", $lang)) {
+		elseif(!preg_match("/^(english|spanish|italian|french|multilanguages)$/", $lang)) {
 			#echo "nok: rule8";
 			$error="invalid_lang";
 		}
-		elseif(!preg_match("/^(Débutant|Intermédiaire|Avancé)$/", $langlevel)) {
+		elseif(!preg_match("/^(beginner|middle|advanced)$/", $langlevel)) {
 			#echo "NOK: rule9";
 			$error="invalid_langlevel";
 		}
@@ -94,19 +95,25 @@ if($_POST) {
 			#echo "NOK: rule10";
 			$error="invalid_query";
 		}
-
+		elseif(!preg_match("/^(newevent|eventedit)/", $source)) {
+			$error="unauthorized_case";
+		}
 
 		/*************** Other checks ***************/
 		/***** Check if event_name already exists *****/
 		$nb_event_name = idea_exist($DB, $event_name);
+
 		if(!isset($error)) {
-			if($nb_event_name > 0)
+			//if ($source == 'newevent') {
+			if ($nb_event_name > 0)
 			{
-			    #echo "NOK: rule11";
-			    $error="eventname_already_exists";
+				$error="eventname_already_exists";
+			}
+			elseif (($source='eventedit') && ($nb_event_name < 1)) {
+				$error="eventname_not_exists";
 			}
 			else {
-   				/***** 'htmlentities function permit to esacpe/protect fields against attacks, like XSS *****/
+   				/***** 'htmlentities function permit to escape/protect fields against attacks, like XSS *****/
 				$event_name = htmlspecialchars(trim($event_name));
 				$event_place = htmlspecialchars(trim($event_place));
 				$event_desc = htmlspecialchars(trim($event_desc));
@@ -115,10 +122,6 @@ if($_POST) {
 				$lang = htmlspecialchars(trim($lang));
 				$langlevel = htmlspecialchars(trim($langlevel));
 
-				/***** Generate Activation Key *****/
-				#$key = md5(microtime(TRUE)*100000);
-				#$password = hash(sha1, $password);
-				#$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 				/***** Registering... *****/
 				$postfields = array($organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query);
@@ -176,8 +179,8 @@ if (isset($error)) {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir les champs obligatoires pour proposer votre événement </div> </div>';
   } elseif ($error == 'notcompliant_fields') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Certains caractères spéciaux sont interdits pour les noms et lieux d\'événement </div> </div>';
-  } elseif ($error == 'unauthorized_postevent') {
-		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Vous n\'êtes pas autorisé à poster un événement. Vérifiez que vous êtes connecté. </div> </div>';
+  } elseif ($error == 'unauthorized_case') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Vous n\'êtes pas autorisé à poster ou modifier d\'événement. Vérifiez que vous êtes connecté. </div> </div>';
   } elseif ($error == 'invalid_event_name') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Le nom de l\'événement doit être compris entre 6 et 15 caractères </div> </div>';
   } elseif ($error == 'invalid_event_place') {
@@ -196,8 +199,11 @@ if (isset($error)) {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> La catégorie sélectionnée n\'est pas valide </div> </div>';
   } elseif ($error == 'eventname_already_exists') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, un événement du même nom existe déjà </div> </div>';
-  }
+  } elseif($error == 'eventname_not_exists') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, l\'événement concerné est introuvable. Veuillez réessayer ultérieurement </div> </div>';
+	}
 }
+
 
 /******** Finally, set Global var if $message isset, and simply redirect to HOME *********/
 if (isset($message)) {

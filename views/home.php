@@ -25,10 +25,13 @@
 			</div>
 		</div>
 
-
 		<div class="row promote-block">
 			<div class="col-lg-4 col-sm-10 col-xs-10">
 				<?php echo $home[$_SESSION['language']]['promote']['text']; ?>
+
+				<br>
+				<?php echo "< Gozpeak_Master_Branch >"; ?>
+				<br>
 			</div>
 
 			<div class="col-lg-4 col-md-6 col-sm-6 col-xs-8">
@@ -43,8 +46,6 @@
 			</div>
 		</div>
 	</header>
-
-	<?php #echo $_SERVER['HTTP_ACCEPT_LANGUAGE']; ?>
 
 	<!-- LG and MD -->
 	<div class="row text-center activities" style="height:35%;">

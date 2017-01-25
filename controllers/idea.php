@@ -49,7 +49,8 @@ if ($logged == 1) {
 
 	if ($pseudo == $infos_idea['organizer']) {
 		$user_is_organizer = 1;
-		/*require_once(MODALS.'modal-eventedit.php');*/
+		//require_once(MODALS.'modal-eventedit.php');
+    $ViewPages[] = MODALS.'modal-eventedit.php';
 	} elseif(!empty($pseudo)) {
     if($nbre_entries > 0) {
       $user_registered = 1;
