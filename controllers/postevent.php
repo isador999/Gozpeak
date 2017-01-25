@@ -20,36 +20,48 @@ if($_POST) {
 	$event_place 			= isset($_POST['event_place']) ? $_POST['event_place'] : '';
 	$event_desc 			= isset($_POST['event_desc']) ? $_POST['event_desc'] : '';
 	$event_datetime 	= isset($_POST['event_datetime']) ? $_POST['event_datetime'] : '';
-	$phone_number 		= isset($_POST['phone_number']) ? $_POST['phone_number'] : '';
+	$phone_number 		= isset($_POST['event_phonenumber']) ? $_POST['event_phonenumber'] : '';
 	$lang 						= isset($_POST['lang']) ? $_POST['lang'] : '';
 	$langlevel 				= isset($_POST['langlevel']) ? $_POST['langlevel'] : '';
 	$query						= isset($_POST['query']) ? $_POST['query'] : '';
-//
-// 	$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query);
-// 	$text_postfields = array($event_name, $event_place);
+
 
 	Autoloader::register();
 
 	$event = new Event($event_name, $event_place, $query, $lang, $event_desc, $organizer, $event_datetime, $langlevel, $phone_number);
 	$db = new Database('gozpeak_dev');
 
-	var_dump($db);
-	  //If member does not exists;
-	// if(is_null($member)) {
-	//  	throw new Exception(BadMethodCallException, "ERREUR : Vérifiez que vous êtes connectés à Gozpeak");
-	// }
-	$member = $db->query("SELECT COUNT(pseudo) FROM members where pseudo = 'test'");
-	var_dump($member);
+	// var_dump($db);
+	// echo "<br>";
+	// echo "<br>";
+	// echo "<br>";
+
+	//$member = $db->query("SELECT COUNT(pseudo) FROM members where pseudo = 'test'");
+
+	//If member does not exists;
+
 
 	try {
 		$event->validate_fields();
-		$event->check_values();
+		$event->check_select_values();
+		$db->check_Ideaname($event_name);
+		$db->retrieveMember($organizer);
+		//$event_params = get_object_vars($event);
+		$event_params = array($event_name, $event_place, $query, $lang, $event_desc, $organizer, $event_datetime, $langlevel, $phone_number);
+		$db->registerIdea($event_params);
+		//$db->registerIdea(array(get_object_vars($event)));
 	}catch(LengthException $e) {
-		echo $e;
+		echo "Erreur de taille : " . $e->getMessage();
+		//$message="La longueur des champs n'est pas valide";
 	} catch(UnexpectedValueException $e) {
-		echo $e;
+		echo "Valeurs incorrectes : " . $e->getMessage();
+		//$message="Certains champs ne doivent pas contenir de caractères spéciaux";
 	}catch(OutOfBoundsException $e) {
-		echo $e;
+		echo "Valeurs non autorisées : " . $e->getMessage();
+		//$message="Valeurs incorrectes lors de l'envoi des données";
+	} catch(LogicException $e) {
+		echo "Erreur fonctionnelle : " . $e->getMessage();
+		//$message="Vous n'êtes pas autorisé à poster un événement. ";
 	}
 
 	//$member = $db->query("SELECT COUNT(pseudo) FROM members where pseudo = '$event->organizer'");

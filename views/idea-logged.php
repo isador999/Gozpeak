@@ -75,12 +75,12 @@
         <?php } elseif ($user_registered == 0) { ?>
           <form class="form-horizontal idea-addmember" action="<?php echo $baseUrl.'/controllers/idea_addmember.php' ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="addmember-ideaname" value="<?php echo $infos_idea['ideaname'] ?>">
-            <button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['addmember']['submit']; ?> class="idea-addmember btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
+            <button type="submit" value="Submit" class="idea-addmember btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
           </form>
         <?php } elseif ($user_registered == 1) { ?>
           <form class="form-horizontal idea-addmember" action="<?php echo $baseUrl.'/controllers/idea_delmember.php' ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="delmember-ideaname" value="<?php echo $infos_idea['ideaname']; ?>">
-            <button type="<?php echo $form[$_SESSION['language']]['delmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['delmember']['submit']; ?> class="idea-addmember btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button>
+            <button type="submit" value="Submit" class="idea-addmember btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button>
           </form>
         <?php } ?>
         <button title="<?php echo $form[$_SESSION['language']]['listmembers']['title']; ?>" data-toggle="modal" data-target="#modal-displaymembers" onclick="showEventMembers('<?php echo $baseUrl; ?>', 'zpeakidea','<?php echo $infos_idea['ideaname'] ?>')" class="idea-listmembers btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['listmembers']['desc']; ?> <span class="badge"><?php echo $nb_members; ?></span></button>

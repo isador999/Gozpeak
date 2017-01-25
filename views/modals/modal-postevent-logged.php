@@ -55,16 +55,16 @@
               <!-- Name et Place of event -->
               <div class="col-lg-5">
                 <div class="form-group">
-                  <label class="text-left" for="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['input']; ?>"><?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['desc']; ?>&nbsp;&#42;</label>
+                  <label class="text-left" for="event_name"><?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['desc']; ?>&nbsp;&#42;</label>
                   <div class="text-left">
-                    <input type="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['type'] ?>" class="form-control" id="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['input']; ?>" name="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['input']; ?>" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['placeholder']; ?>" required />
+                    <input type="event_name" class="form-control" id="event_name" name="event_name" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['placeholder']; ?>" required />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="text-left" for="<?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['input']; ?>"><?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['desc']; ?>&nbsp;&#42;</label>
+                  <label class="text-left" for="event_place"><?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['desc']; ?>&nbsp;&#42;</label>
                   <div class="text-left">
-                    <input type="<?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['type'] ?>" class="form-control" id="<?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['input']; ?>" name="<?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['input']; ?>" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['placeholder']; ?>" required />
+                    <input type="text" class="form-control" id="event_place" name="event_place" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][1]['placeholder']; ?>" required />
                   </div>
                 </div>
                 <!-- End of eventplace and eventname -->
@@ -76,9 +76,9 @@
               <div class="col-lg-offset-1">
                 <div class="row">
                   <div class="form-group col-lg-8">
-                    <label class="text-left" for="<?php echo $modal[$_SESSION['language']]['postevent']['field'][2]['input']; ?>"><?php echo $modal[$_SESSION['language']]['postevent']['field'][2]['desc']; ?>&nbsp;&#42;</label>
+                    <label class="text-left" for="event_desc"><?php echo $modal[$_SESSION['language']]['postevent']['field'][2]['desc']; ?>&nbsp;&#42;</label>
                     <div class="text-left">
-                      <textarea rows=5 cols=8 class="form-control" id="<?php echo $modal[$_SESSION['language']]['postevent']['field'][2]['input']; ?>" name="<?php echo $modal[$_SESSION['language']]['postevent']['field'][2]['input']; ?>" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][2]['placeholder']; ?>" required></textarea>
+                      <textarea rows=5 cols=8 class="form-control" id="event_desc" name="event_desc" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][2]['placeholder']; ?>" required></textarea>
                     </div>
                   </div>
                 </div>
@@ -90,17 +90,17 @@
               <div class="col-lg-offset-1 col-lg-10">
                 <div class="row">
                   <div class="col-lg-5 form-group">
-                    <label class="text-left" for="<?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['input']; ?>"><?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['desc']; ?>&nbsp;&#42;</label>
-                    <input id="datetime-btn-event" class="form-control datetime-btn"  type="<?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['type'] ?>" name="<?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['input']; ?>" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['placeholder']; ?>" required />
+                    <label class="text-left" for="event_datetime"><?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['desc']; ?>&nbsp;&#42;</label>
+                    <input id="datetime-btn-event" class="form-control datetime-btn"  type="date" name="event_datetime" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['placeholder']; ?>" required />
                   </div>
                   <script type="text/javascript">
                     showDatetimePicker();
                   </script>
 
                   <div class="col-lg-5 form-group">
-                    <label class="text-left" for="<?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['input']; ?>"><?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['desc']; ?></label>
+                    <label class="text-left" for="event_phonenumber"><?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['desc']; ?></label>
                     <div class="text-left">
-                      <input type="<?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['type'] ?>" class="form-control" id="<?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['input']; ?>" name="<?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['input']; ?>" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['placeholder']; ?>" />
+                      <input type="tel" class="form-control" id="phonenumber" name="event_phonenumber" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][4]['placeholder']; ?>" />
                     </div>
                   </div>
                 </div>
@@ -112,18 +112,20 @@
               <div class="col-lg-offset-1 col-lg-10">
                 <div class="row">
                   <div class="col-lg-5 form-group">
-                    <label for="<?php echo $modal[$_SESSION['language']]['select']['lang']['input']; ?>"><?php echo $modal[$_SESSION['language']]['select']['lang']['label']; ?>&nbsp;&#42;</label>
-                    <select id="<?php echo $modal[$_SESSION['language']]['select']['lang']['input']; ?>" class="form-control" name="<?php echo $modal[$_SESSION['language']]['select']['lang']['name']; ?>" required >
-                      <?php foreach($modal[$_SESSION['language']]['select']['lang']['option'] as $key => $lang){ ?>
-                        <option value="<?php echo $lang['value']; ?>"> <?php echo $lang['entry']; ?></option>
+                    <label for="lang"><?php echo $modal[$_SESSION['language']]['selectlang']['label']; ?>&nbsp;&#42;</label>
+                    <select id="select_lang" class="form-control" name="lang" required>
+                      <option value="<?php echo $modal[$_SESSION['language']]['selectlang']['default']['value']; ?>"> <?php echo $modal[$_SESSION['language']]['selectlang']['default']['entry']; ?></option>
+                      <?php foreach($minilang[$_SESSION['language']]['icon'] as $key => $lang){ ?>
+                        <option style="background-image:url(<?php echo $lang['png'] ?>); background-repeat: no-repeat; padding-left: 18px; background-size: 19px 19px;" value="<?php echo $lang['value']; ?>"> &nbsp;&nbsp; <?php echo $lang['text']; ?></option>
                       <?php } ?>
                     </select>
                   </div>
 
                   <div class="col-lg-5 form-group">
-                    <label for="<?php echo $modal[$_SESSION['language']]['select']['langlevel']['input']; ?>"><?php echo $modal[$_SESSION['language']]['select']['langlevel']['label']; ?>&nbsp;&#42;</label>
-                    <select id="<?php echo $modal[$_SESSION['language']]['select']['langlevel']['input']; ?>" class="form-control" name="<?php echo $modal[$_SESSION['language']]['select']['langlevel']['name']; ?>" required >
-                      <?php foreach($modal[$_SESSION['language']]['select']['langlevel']['option'] as $key => $lang){ ?>
+                    <label for="langlevel"><?php echo $modal[$_SESSION['language']]['selectlanglevel']['label']; ?>&nbsp;&#42;</label>
+                    <select id="select_langlevel" class="form-control" name="langlevel" required>
+                      <option value="<?php echo $modal[$_SESSION['language']]['selectlanglevel']['default']['value']; ?>"> <?php echo $modal[$_SESSION['language']]['selectlanglevel']['default']['entry']; ?></option>
+                      <?php foreach($modal[$_SESSION['language']]['selectlanglevel']['option'] as $key => $lang){ ?>
                         <option value="<?php echo $lang['value']; ?>"> <?php echo $lang['entry']; ?></option>
                       <?php } ?>
                     </select>
@@ -138,8 +140,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
-          <button type="<?php echo $modal[$_SESSION['language']]['postevent']['check']['type']; ?>" value=<?php echo $modal[$_SESSION['language']]['postevent']['check']['submit']; ?> class="btn btn-primary pull-right"><?php echo $modal[$_SESSION['language']]['postevent']['check']['desc']; ?></button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal[$_SESSION['language']]['generic']['closed']; ?></button>
+          <button type="submit" value="Submit" class="btn btn-primary pull-right"><?php echo $modal[$_SESSION['language']]['postevent']['check']['desc']; ?></button>
         </div>
       </form>
     </div>

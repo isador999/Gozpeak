@@ -22,8 +22,8 @@
 				</div>
 
 				<div class="modal-footer">
-      		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal['fr']['generic']['closed']; ?></button>
-					<button type="<?php echo $modal['fr']['resetpass']['check']['type']; ?>" value=<?php echo $modal['fr']['resetpass']['check']['submit']; ?> class="btn btn-primary pull-right"><?php echo $modal['fr']['resetpass']['check']['desc']; ?></button>
+      		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $modal[$_SESSION['language']]['generic']['closed']; ?></button>
+					<button type="submit" value="Submit" class="btn btn-primary pull-right"><?php echo $modal[$_SESSION['language']]['resetpass']['check']['desc']; ?></button>
       	</div>
 			</form>
 		</div>
