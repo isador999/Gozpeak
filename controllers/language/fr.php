@@ -165,6 +165,9 @@ $modal['fr']['postevent']['field'][4]['desc'] = "Téléphone (facultatif)";
 $modal['fr']['postevent']['field'][4]['placeholder'] = "0623456789";
 $modal['fr']['postevent']['check']['desc'] = "Proposer la sortie !";
 
+$modal['fr']['editevent']['title'] = "Modifier votre idée d'événement !";
+$modal['fr']['editevent']['check']['desc'] = "Valider les modifications";
+
 
 $message['fr']['postevent']['length']['eventname'] = "Le nom doit être compris entre 6 et 25 caractères";
 $message['fr']['postevent']['length']['eventplace'] = "Le lieu de l'événement doit être compris entre 6 et 25 caractères";
@@ -291,11 +294,6 @@ $minilang['fr']['icon']['breton']['value'] = "breton";*/
 #$minilang['fr']['icon']['arabe'] = "views/images/p_arabe.png";
 #$minilang['fr']['icon']['hebreux'] = "views/images/p_hebreux.png";
 #$minilang['fr']['icon']['japonais'] = "views/images/p_japonais.png";
-
-
-
-
-
 
 
 // List.php
