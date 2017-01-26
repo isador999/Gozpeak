@@ -25,9 +25,11 @@ if($_POST) {
 
 	$source						= isset($_POST['source']) ? $_POST['source'] : '';
 
+	//Field specific to eventedit case
+	$old_event_name = isset($_POST['old_event_name']) ? $_POST['old_event_name'] : '';
 
-	$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query, $source);
-	$text_postfields = array($event_name, $event_place, $query, $source);
+	$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query, $source, $old_event_name);
+	$text_postfields = array($event_name, $event_place, $query, $source, $old_event_name);
 
 	/************ Foreach loops *************/
 	foreach ($mandatory_postfields as $field) {
@@ -100,32 +102,62 @@ if($_POST) {
 		}
 
 		/*************** Other checks ***************/
+
+		/***** 'htmlentities function permit to escape/protect fields against attacks, like XSS *****/
+		$event_name = htmlspecialchars(trim($event_name));
+		$event_place = htmlspecialchars(trim($event_place));
+		$event_desc = htmlspecialchars(trim($event_desc));
+		$event_datetime = htmlspecialchars(trim($event_datetime));
+		$phone_number = htmlspecialchars(trim($phone_number));
+		$lang = htmlspecialchars(trim($lang));
+		$langlevel = htmlspecialchars(trim($langlevel));
+
+		/***** Registering... *****/
+		$postfields = array($organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query);
+
+		// $update_postfields = array("organizer"=>"$organizer",
+		// 													 "ideaplace"=>$event_place,
+		// 													 "ideadesc"=>$event_desc,
+		// 													 "ideadatetime"=>$event_datetime,
+		// 												 	 "ideaphone"=>$phone_number,
+		// 												 	 "language"=>$lang,
+		// 												   "level_language"=>$langlevel,
+		// 												   "ideatype"=>$query,
+		// 												   "ideaname"=>$event_name);
+
 		/***** Check if event_name already exists *****/
-		$nb_event_name = idea_exist($DB, $event_name);
 
 		if(!isset($error)) {
-			//if ($source == 'newevent') {
-			if ($nb_event_name > 0)
-			{
-				$error="eventname_already_exists";
-			}
-			elseif (($source='eventedit') && ($nb_event_name < 1)) {
-				$error="eventname_not_exists";
-			}
-			else {
-   				/***** 'htmlentities function permit to escape/protect fields against attacks, like XSS *****/
-				$event_name = htmlspecialchars(trim($event_name));
-				$event_place = htmlspecialchars(trim($event_place));
-				$event_desc = htmlspecialchars(trim($event_desc));
-				$event_datetime = htmlspecialchars(trim($event_datetime));
-				$phone_number = htmlspecialchars(trim($phone_number));
-				$lang = htmlspecialchars(trim($lang));
-				$langlevel = htmlspecialchars(trim($langlevel));
 
+			$nb_event_name = idea_exist($DB, $event_name);
+			if ($source == 'newevent') {
+				if ($nb_event_name > 0)
+				{
+					$error="eventname_already_exists";
+				}	else {
+					add_idea($DB, $postfields);
+				}
 
-				/***** Registering... *****/
-				$postfields = array($organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query);
-				add_idea($DB, $postfields);
+			} elseif ($source == 'eventedit') {
+
+				$nb_event_name = idea_exist($DB, $old_event_name);
+				if ($nb_event_name < 1) {
+					$error="not_existant_eventname";
+				} else {
+					//$go_event_edition = 1;
+					$idea_id = get_idea_id($DB, $old_event_name);
+					if(!empty($idea_id)) {
+						$error="idevent_not_empty";
+
+						if(update_existant_idea($DB, $organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query, $idea_id)) {
+							$error="registerDB_not_failed";
+						} else {
+							$error="registerDB_failed";
+						}
+					} else {
+						$error="update_existant_idea_failed";
+					}
+				}
 
 				/****** Check if register processed correctly ******/
 				$nb_event_name = idea_exist($DB, $event_name);
@@ -133,9 +165,23 @@ if($_POST) {
 					/***** URLENCODE TO CHANGE SPECIAL CHARS TO CODE *****/
 					/**** Change to use $_SESSION['profil'] $pseudo = urlencode($pseudo); *****/
 					$event_name = urlencode($event_name);
+
+					switch ($source) {
+						case "newevent":
+							$mail_subject = "Gozpeak : Votre idée a été validée";
+							$team_mail_subject = "Nouvelle idée postée [demo.gozpeak.com]";
+							break;
+						case "eventedit":
+							$mail_subject = "Gozpeak : Modification de votre idée d'événement";
+							$team_mail_subject = "Modification d'une idée [demo.gozpeak.com]";
+							break;
+						default:
+							die();
+					}
+
 					$mail_organizer = get_mail_organizer($DB, $organizer);
 
-					$mail_subject="Ajout d'événement Gozpeak";
+					//$mail_subject = "Ajout d'événement Gozpeak";
 					$mail_content = '<html><body>';
 					$mail_content .= '<h4>'."Bonjour $organizer ! ".'</h4>'.'<br>'.'<br>';
 					$mail_content .= "Votre idée d'événement Gozpeak a bien été enregistrée".'<br>';
@@ -147,8 +193,9 @@ if($_POST) {
 					$mail_content .= "L'équipe Gozpeak".'<br>';
 					$mail_content .= '<img src="'."$gozpeak_protocol"."$gozpeak_host".'/views/images/gozpeak_small.png" alt="Gozpeak Logo">'.'<br>';
 					$mail_content .= '</body> </html>';
-	       	if(send_by_mailgun($mail_organizer, "$mail_subject", "$mail_content")) {
+	       	if(send_by_mailgun($mail_organizer, $mail_subject, $mail_content)) {
 						$message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre idée d\'événement a été enregistré avec succès ! </div> </div>';
+
 						/******** Send Mail to Gozpeak Team ********/
 						/***** $team_mail_content = '<html><body>'; *****/
             $team_mail_content = '<h4>'."Nouvelle idée postée - $query ! ".'</h4>'.'<br>'.'<br>';
@@ -158,15 +205,16 @@ if($_POST) {
             $team_mail_content .= "Description de l'idée : $event_desc".'<br>'.'<br>';
             $team_mail_content .= "Langue / Niveau souhaités : $lang niveau $langlevel".'<br>';
             $team_mail_content .= "Les personnes ayant un compte actif peuvent désormais s'inscrire à cette sortie".'<br>';
-						send_by_mailgun('info@gozpeak.com', 'Nouvelle idée postée [demo.gozpeak.com]', "$team_mail_content");
+						send_by_mailgun('info@gozpeak.com', $team_mail_subject, $team_mail_content);
 					} else {
 						$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de votre inscription.   Veuillez réessayer ultérieurement </div> </div>';
 					}
+
 				/***** If register has not processed correctly *****/
 				}
 				else
 				{
-					$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'enregistrement de l`événement.  Veuillez réessayer ultérieurement . Test nb_event_name failed </div> </div>'.$nb_event_name;
+					$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'enregistrement de l`événement.  Veuillez réessayer ultérieurement . Test nb_event_name failed </div> </div>';
 				}
 			}
 		}
@@ -199,9 +247,16 @@ if (isset($error)) {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> La catégorie sélectionnée n\'est pas valide </div> </div>';
   } elseif ($error == 'eventname_already_exists') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, un événement du même nom existe déjà </div> </div>';
-  } elseif($error == 'eventname_not_exists') {
+  } elseif($error == 'not_existant_eventname') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, l\'événement concerné est introuvable. Veuillez réessayer ultérieurement </div> </div>';
+	} elseif ($error == 'update_existant_idea_failed') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Update Existant Event failed (DB function) </div> </div>';
+	} elseif ($error == 'registerDB_not_failed') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> RegisterDB not failed </div> </div>';
+	} elseif ($error == 'registerDB_failed') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> RegisterDB failed </div> </div>';
 	}
+
 }
 
 

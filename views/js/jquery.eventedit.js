@@ -31,11 +31,13 @@ function GetEventInfos(baseUrl, zpeaktype, eventname, eventlogo, eventcolor, eve
 				$(".eventeditForm").find("#datetime-btn-event").val(data.ideadatetime);
 				$(".eventeditForm").find("#selectlang").val(data.language);
 				$(".eventeditForm").find("#selectlanglevel").val(data.level_language);
+				$(".eventeditForm").find(".hiddenInputOldEventName").val(data.ideaname);
 			} else if (zpeaktype == "event") {
 				$(".eventeditForm").find("#event_name").val(data.eventname);
 				$(".eventeditForm").find("#event_place").val(data.eventplace);
 				$(".eventeditForm").find("#event_desc").val(data.eventdesc);
 				$(".eventeditForm").find("#datetime-btn").val(data.eventdatetime);
+				$(".eventeditForm").find(".hiddenInputOldEventName").val(data.eventname);
 			}
 			genericShowModalEvent(eventlogo, eventcolor, eventimg, query, 'modalEventEdit');
 	  }

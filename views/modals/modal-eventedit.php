@@ -142,6 +142,8 @@
             </div>
 
             <input class="hiddenInputQuery" type="hidden" name="query">
+            <input type="hidden" value="eventedit" name="source">
+            <input class="hiddenInputOldEventName" type="hidden" name="old_event_name">
           </div>
         <!-- End of Modal Body -->
         </div>
