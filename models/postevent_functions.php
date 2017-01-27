@@ -17,11 +17,11 @@ function idea_exist($DB, $idea_name) {
 }
 
 function get_idea_id($DB, $idea_name) {
-  $req = $DB->prepare("SELECT id from ideas where ideaname = ?");
-  $req->execute(array($idea_name));
-  $idea_id = $req->fetch();
+  $req = $DB->prepare("SELECT id from ideas where ideaname = " . $DB->quote($idea_name));
+  $req->execute();
+  $idea_id = $req->fetchColumn();
   $req->closeCursor();
-  return intval($idea_id);
+  return $idea_id;
 }
 
 function add_idea($DB, $d) {
@@ -32,23 +32,24 @@ function add_idea($DB, $d) {
 
 
 function update_existant_idea($DB, $organizer, $ideaname, $ideaplace, $ideadesc, $ideadatetime, $ideaphone, $language, $level_language, $ideatype, $idea_id) {
-  $idea_id = intval($idea_id);
-  $req = $DB->prepare("UPDATE ideas SET organizer = '$organizer',
-                                       ideaname = '$ideaname',
-                                       ideaplace = '$ideaplace',
-                                       ideadesc = '$ideadesc',
-                                       ideadatetime = '$ideadatetime',
-                                       ideaphone = '$ideaphone',
-                                       language = '$language',
-                                       level_language = '$level_language'
-                                      where ideatype = '$ideatype' AND id = $idea_id");
+  //$idea_id = intval($idea_id);
 
+  settype($idea_id, "integer");
+  $req = $DB->prepare("UPDATE ideas SET organizer = " . $DB->quote($organizer) . ",
+                                       ideaname = " . $DB->quote($ideaname) . ",
+                                       ideaplace = " . $DB->quote($ideaplace) . ",
+                                       ideadesc = " . $DB->quote($ideadesc) . ",
+                                       ideadatetime = " . $DB->quote($ideadatetime) . ",
+                                       ideaphone = " . $DB->quote($ideaphone) . ",
+                                       language = " . $DB->quote($language) . ",
+                                       level_language = " . $DB->quote($level_language) . "
+                                       where id = " . $idea_id);
   $req->execute();
   $req->closeCursor();
 }
 
 
-
+# where ideatype = " . $DB->quote($ideatype) . " AND id = " . $idea_id);
 // function update_existant_idea($DB, $data, $eventid) {
 //   try {
 //   $req = $DB->prepare("UPDATE ideas set organizer = ':organizer',

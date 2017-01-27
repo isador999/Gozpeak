@@ -19,6 +19,17 @@ jQuery(document).ready(function($){
 	$("#current_picked_year").html("&nbsp;"+current_year);
 });
 
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+				 //.replace(/ /g, "+");
+				 //.replace(/ /g, "");
+ }
+
 
 function showCities () {
 	var list = document.getElementById("ZpeakCities");
@@ -47,7 +58,7 @@ function listLanguages() {
       return split( term ).pop();
     }
 
-    $("#selectedLanguages")
+    $('#selectedLanguages')
       // don't navigate away from the field on tab when selecting an item
       .on( "keydown", function( event ) {
         if ( event.keyCode === $.ui.keyCode.TAB &&
@@ -91,13 +102,13 @@ function retrieve_pagination (baseUrl, query, zpeaktype, pickedyear, selectedLan
 		success: function(response)
 		{
 			var Pagination = JSON.parse(response);
-			$("ul.pagination_" + zpeaktype).html("");
+			$('ul.pagination_' + zpeaktype).html("");
 			for (var i = 1; i < Pagination.total_pages+1; i++) {
 				if (i == Pagination.current_page) {
-					$("ul.pagination_" + zpeaktype).append("<li class='active'><a href='#'>"+ i + "</a></li>");
+					$('ul.pagination_' + zpeaktype).append('<li class="active"><a href="#">'+ i + '</a></li>');
 				} else {
 					//OnclickParams="'"+ajaxUrl+zpeaktype;
-					$("ul.pagination_" + zpeaktype).append("<li><a href='#' onclick=\"sortyears('"+ajaxUrl+"', '"+zpeaktype+"', '"+query+"', '"+pickedyear+"', '"+i+"')\" >"+ i + "</a></li>");
+					$('ul.pagination_' + zpeaktype).append('<li><a href="#" onclick=\'sortyears("'+ajaxUrl+'", "'+zpeaktype+'", "'+query+'", "'+pickedyear+'", "'+i+'")\' >'+ i + '</a></li>');
 				}
 			}
 		}
@@ -124,13 +135,23 @@ function getIdeasByUser(baseUrl, username, pagenumber) {
 			} else {
 				$('#empty-ideas-message-profile').hide();
 				for (var i = 0; i < ideas.length; i++) {
-					$("#table-ideas-profile > tbody").append("<tr class='row'> </tr>");
-					$("#table-ideas-profile > tbody").find('tr:last').append("<td class='col-lg-1'> <img src='views/images/p_"+ideas[i].language+".png' title='"+ideas[i].language+"' /> </td>");
-					$("#table-ideas-profile > tbody").find('tr:last').append("<td class='col-lg-1'> <img style='width:150%;' src='views/images/"+ideas[i].ideatype+".png' title='"+ideas[i].ideatype+"' /> </td>");
+
+					//escapeHtml
+					escapeHtml(ideas[i].language);
+					escapeHtml(ideas[i].ideatype);
+					escapeHtml(ideas[i].ideaname);
+					escapeHtml(ideas[i].ideadayname);
+					escapeHtml(ideas[i].ideadaynumber);
+					escapeHtml(ideas[i].ideamonthname);
+					escapeHtml(ideas[i].ideatime);
+
+					$('#table-ideas-profile > tbody').append('<tr class="row"> </tr>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+ideas[i].language+'.png" title="'+ideas[i].language+'" /> </td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1"> <img style="width:150%;" src="views/images/'+ideas[i].ideatype+'.png" title="'+ideas[i].ideatype+'" /> </td>');
 					//$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-2'> <a href='"+ajaxUrl+"/index.php?page=profil&profil="+ideas[i].organizer+"' >"+ideas[i].organizer+"</a></td>");
-					$("#table-ideas-profile > tbody").find('tr:last').append("<td class='col-lg-5'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href='"+ajaxUrl+"/index.php?page=event&query="+ideas[i].ideatype+"&event="+ideas[i].ideaname+"' >"+ideas[i].ideaname+"</a></td>");
-					$("#table-ideas-profile > tbody").find('tr:last').append("<td class='col-lg-3'>"+ideas[i].ideadayname+" "+ideas[i].ideadaynumber+" "+ideas[i].ideamonthname+"</td>");
-					$("#table-ideas-profile > tbody").find('tr:last').append("<td class='col-lg-1'>"+ideas[i].ideatime+"</td>");
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-5"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="'+ajaxUrl+'/index.php?page=idea&query='+ideas[i].ideatype+'&idea='+ideas[i].ideaname+'" >'+ideas[i].ideaname+'</a></td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-3">'+ideas[i].ideadayname+' '+ideas[i].ideadaynumber+' '+ideas[i].ideamonthname+'</td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1">'+ideas[i].ideatime+'</td>');
 				}
 			}
 		}
@@ -154,8 +175,8 @@ function filterByLanguages(baseUrl, query, eventyear, ideayear, selectedLanguage
 		success: function(response)
 		{
 			var events = JSON.parse(response);
-			$("#table-events > tbody").html("");
-			$("#current_picked_eventyear").html(eventyear);
+			$('#table-events > tbody').html("");
+			$('#current_picked_eventyear').html(eventyear);
 
 			//For events
 			if(events.length === 0) {
@@ -163,11 +184,21 @@ function filterByLanguages(baseUrl, query, eventyear, ideayear, selectedLanguage
 			} else {
 				$('#empty-events-message').hide();
 				for (var i = 0; i < events.length; i++) {
-					$("#table-events > tbody").append("<tr class='row'> </tr>");
-					$("#table-events > tbody").find('tr:last').append("<td class='col-lg-1'> <img src='views/images/p_"+events[i].language+".png' title='"+events[i].language+"' /> </td>");
-					$("#table-events > tbody").find('tr:last').append("<td class='col-lg-6'> <a href='"+ajaxUrl+"/index.php?page=event&query="+events[i].eventtype+"&event="+events[i].eventname+"' >"+events[i].eventname+"</a></td>");
-					$("#table-events > tbody").find('tr:last').append("<td class='col-lg-4'>"+events[i].eventdayname+" "+events[i].eventdaynumber+" "+events[i].eventmonthname+"</td>");
-					$("#table-events > tbody").find('tr:last').append("<td class='col-lg-1'>"+events[i].eventtime+"</td>");
+
+					//escapeHtml
+					escapeHtml(events[i].language);
+					escapeHtml(events[i].eventtype);
+					escapeHtml(events[i].eventname);
+					escapeHtml(events[i].eventdayname);
+					escapeHtml(events[i].eventdaynumber);
+					escapeHtml(events[i].eventmonthname);
+					escapeHtml(events[i].eventtime);
+
+					$('#table-events > tbody').append('<tr class="row"> </tr>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+events[i].language+'.png" title="'+events[i].language+'" /> </td>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-6"> <a href="'+ajaxUrl+'/index.php?page=event&query='+events[i].eventtype+'&event='+events[i].eventname+'" >'+events[i].eventname+'</a></td>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-4">'+events[i].eventdayname+' '+events[i].eventdaynumber+' '+events[i].eventmonthname+'</td>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1">'+events[i].eventtime+'</td>');
 				}
 			}
 		} // End of success
@@ -185,8 +216,8 @@ function filterByLanguages(baseUrl, query, eventyear, ideayear, selectedLanguage
 		success: function(response)
 		{
 			var ideas = JSON.parse(response);
-			$("#table-ideas > tbody").html("");
-			$("#current_picked_ideayear").html(ideayear);
+			$('#table-ideas > tbody').html("");
+			$('#current_picked_ideayear').html(ideayear);
 
 			//For ideas
 			if(ideas.length === 0) {
@@ -194,12 +225,22 @@ function filterByLanguages(baseUrl, query, eventyear, ideayear, selectedLanguage
 			} else {
 				$('#empty-ideas-message').hide();
 				for (var i = 0; i < ideas.length; i++) {
-					$("#table-ideas > tbody").append("<tr class='row'> </tr>");
-					$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-1'> <img src='views/images/p_"+ideas[i].language+".png' title='"+ideas[i].language+"' /> </td>");
-					$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-2'> <a href='"+ajaxUrl+"/index.php?page=profil&profil="+ideas[i].organizer+"' >"+ideas[i].organizer+"</a></td>");
-					$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-4'> <a href='"+ajaxUrl+"/index.php?page=event&query="+ideas[i].ideatype+"&event="+ideas[i].ideaname+"' >"+ideas[i].ideaname+"</a></td>");
-					$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-4'>"+ideas[i].ideadayname+" "+ideas[i].ideadaynumber+" "+ideas[i].ideamonthname+"</td>");
-					$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-1'>"+ideas[i].ideatime+"</td>");
+
+					//escapeHtml
+					escapeHtml(ideas[i].language);
+					escapeHtml(ideas[i].ideatype);
+					escapeHtml(ideas[i].ideaname);
+					escapeHtml(ideas[i].ideadayname);
+					escapeHtml(ideas[i].ideadaynumber);
+					escapeHtml(ideas[i].ideamonthname);
+					escapeHtml(ideas[i].ideatime);
+
+					$('#table-ideas > tbody').append('<tr class="row"> </tr>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+ideas[i].language+'.png" title="'+ideas[i].language+'" /> </td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-2"> <a href="'+ajaxUrl+'/index.php?page=profil&profil='+ideas[i].organizer+'" >'+ideas[i].organizer+'</a></td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4"> <a href="'+ajaxUrl+'/index.php?page=idea&query='+ideas[i].ideatype+'&idea='+ideas[i].ideaname+'" >'+ideas[i].ideaname+'</a></td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4">'+ideas[i].ideadayname+' '+ideas[i].ideadaynumber+' '+ideas[i].ideamonthname+'</td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1">'+ideas[i].ideatime+'</td>');
 				}
 			}
 		} //End of success
@@ -224,42 +265,63 @@ function sortyears(baseUrl, zpeaktype, query, pickedyear, pagenumber) {
 	  {
 			var donnees = JSON.parse(response);
 			if (zpeaktype == 'event') {
-				$("#current_picked_eventyear").html(pickedyear);
-				$("ul#event-years > li").attr("class", "");
-				$("ul#event-years > li#events-"+pickedyear).attr("class", "disabled");
-				$("#table-events > tbody").html("");
+				$('#current_picked_eventyear').html(pickedyear);
+				$('ul#event-years > li').attr("class", "");
+				$('ul#event-years > li#events-'+pickedyear).attr("class", "disabled");
+				$('#table-events > tbody').html("");
 
 				if(donnees.length === 0) {
 					$('#empty-events-message').show();
 				} else {
 					$('#empty-events-message').hide();
 					for (var i = 0; i < donnees.length; i++) {
-						$("#table-events > tbody").append("<tr class='row'> </tr>");
-						$("#table-events > tbody").find('tr:last').append("<td class='col-lg-1'> <img src='views/images/p_"+donnees[i].language+".png' title='"+donnees[i].language+"' /> </td>");
-						$("#table-events > tbody").find('tr:last').append("<td class='col-lg-6'> <a href='"+baseUrl+"/index.php?page=event&query="+donnees[i].eventtype+"&event="+donnees[i].eventname+"' >"+donnees[i].eventname+"</a></td>");
-						$("#table-events > tbody").find('tr:last').append("<td class='col-lg-4'>"+donnees[i].eventdayname+" "+donnees[i].eventdaynumber+" "+donnees[i].eventmonthname+"</td>");
-						$("#table-events > tbody").find('tr:last').append("<td class='col-lg-1'>"+donnees[i].eventtime+"</td>");
+
+						//escapeHtml
+						escapeHtml(donnees[i].language);
+						escapeHtml(donnees[i].eventtype);
+						escapeHtml(donnees[i].eventname);
+						escapeHtml(donnees[i].eventdayname);
+						escapeHtml(donnees[i].eventdaynumber);
+						escapeHtml(donnees[i].eventmonthname);
+						escapeHtml(donnees[i].eventtime);
+
+
+						$('#table-events > tbody').append('<tr class="row"> </tr>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+donnees[i].language+'.png" title="'+donnees[i].language+'" /> </td>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-6"> <a href="'+baseUrl+'/index.php?page=event&query='+donnees[i].eventtype+'&event='+donnees[i].eventname+' ">'+donnees[i].eventname+'</a></td>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-4">'+donnees[i].eventdayname+' '+donnees[i].eventdaynumber+' '+donnees[i].eventmonthname+'</td>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1">'+donnees[i].eventtime+'</td>');
 					}
 				}
 			} else if (zpeaktype == 'idea') {
-				$("#current_picked_ideayear").html(pickedyear);
+				$('#current_picked_ideayear').html(pickedyear);
 
-				$("ul#idea-years > li").attr("class", "");
-				$("ul#idea-years > li#ideas-"+pickedyear).attr("class", "disabled");
+				$('ul#idea-years > li').attr("class", "");
+				$('ul#idea-years > li#ideas-'+pickedyear).attr("class", "disabled");
 
-				$("#table-ideas > tbody").html("");
+				$('#table-ideas > tbody').html("");
 
 				if(donnees.length === 0) {
 					$('#empty-ideas-message').show();
 				} else {
 					$('#empty-ideas-message').hide();
 					for (var i = 0; i < donnees.length; i++) {
-						$("#table-ideas > tbody").append("<tr class='row'> </tr>");
-						$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-1'> <img src='views/images/p_"+donnees[i].language+".png' title='"+donnees[i].language+"' /> </td>");
-						$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-2'> <a href='"+ajaxUrl+"/index.php?page=profil&profil="+donnees[i].organizer+"' >"+donnees[i].organizer+"</a></td>");
-						$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-4'> <a href='"+ajaxUrl+"/index.php?page=idea&query="+donnees[i].ideatype+"&idea="+donnees[i].ideaname+"' >"+donnees[i].ideaname+"</a></td>");
-						$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-4'>"+donnees[i].ideadayname+" "+donnees[i].ideadaynumber+" "+donnees[i].ideamonthname+"</td>");
-						$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-1'>"+donnees[i].ideatime+"</td>");
+
+						//escapeHtml
+						escapeHtml(donnees[i].language);
+						escapeHtml(donnees[i].ideatype);
+						escapeHtml(donnees[i].ideaname);
+						escapeHtml(donnees[i].ideadayname);
+						escapeHtml(donnees[i].ideadaynumber);
+						escapeHtml(donnees[i].ideamonthname);
+						escapeHtml(donnees[i].ideatime);
+
+						$('#table-ideas > tbody').append('<tr class="row"> </tr>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+donnees[i].language+'.png" title="'+donnees[i].language+'" /> </td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-2"> <a href="'+ajaxUrl+'/index.php?page=profil&profil='+donnees[i].organizer+'" >'+donnees[i].organizer+'</a></td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4"> <a href="'+ajaxUrl+'/index.php?page=idea&query='+donnees[i].ideatype+'&idea='+donnees[i].ideaname+'" >'+donnees[i].ideaname+'</a></td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4">'+donnees[i].ideadayname+' '+donnees[i].ideadaynumber+' '+donnees[i].ideamonthname+'</td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1">'+donnees[i].ideatime+'</td>');
 					}
 				}
 			} //End of condition zpeaktype
@@ -297,21 +359,9 @@ function showDatetimePicker() {
 function genericShowModalEvent(logo, color, img, query, modalIdSelector) {
 	$('#modalSelectQuery').modal('hide');
 
-	$("#"+modalIdSelector+" .EventLogoTitle").attr("src", logo);
-	$("#"+modalIdSelector+" .modal-title").attr("style", color);
-	$("#"+modalIdSelector+" .EventQueryImg").attr("src", img);
-	$("#"+modalIdSelector+" .EventQueryImg").attr("alt", query);
-	$('#'+modalIdSelector+" .hiddenInputQuery").attr("value", query);
+	$('#'+modalIdSelector+' .EventLogoTitle').attr("src", logo);
+	$('#'+modalIdSelector+' .modal-title').attr("style", color);
+	$('#'+modalIdSelector+' .EventQueryImg').attr("src", img);
+	$('#'+modalIdSelector+' .EventQueryImg').attr("alt", query);
+	$('#'+modalIdSelector+' .hiddenInputQuery').attr("value", query);
 }
-
-// function showModalEventWithQuery(logo, color, img, query) {
-// 	$('#modalSelectQuery').modal('hide');
-// 	$(".modal-title #EventWithQueryTitle").attr("src", logo);
-// 	$(".modal-title").attr("style", color);
-// 	$(".modal-body #EventWithQueryImg").attr("src", img);
-// 	$(".modal-body #EventWithQueryImg").attr("alt", query);
-//
-// 	$(".modal-body #hiddenInput").attr("value", query);
-//
-// 	$('#modalEventWithQuery').modal('show');
-// }

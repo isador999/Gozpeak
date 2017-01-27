@@ -31,7 +31,6 @@
   </div>
 </div>
 
-
 <div class="modal fade" style="display:none;" id="modalEventWithQuery" tabindex="-1" role="dialog" aria-labelledby="ModalEventWithQuery">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -136,6 +135,7 @@
             </div>
 
             <input class="hiddenInputQuery" type="hidden" name="query">
+            <input type="hidden" value="newevent" name="source">
           </div>
         <!-- End of Modal Body -->
         </div>

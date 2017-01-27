@@ -28,8 +28,13 @@ if($_POST) {
 	//Field specific to eventedit case
 	$old_event_name = isset($_POST['old_event_name']) ? $_POST['old_event_name'] : '';
 
-	$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query, $source, $old_event_name);
-	$text_postfields = array($event_name, $event_place, $query, $source, $old_event_name);
+	if($source == 'newevent') {
+		$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query, $source);
+		$text_postfields = array($event_name, $event_place, $query, $source);
+	} elseif ($source == 'eventedit') {
+		$mandatory_postfields = array($event_name, $event_place, $event_desc, $event_datetime, $lang, $langlevel, $query, $source, $old_event_name);
+		$text_postfields = array($event_name, $event_place, $query, $source, $old_event_name);
+	}
 
 	/************ Foreach loops *************/
 	foreach ($mandatory_postfields as $field) {
@@ -43,7 +48,7 @@ if($_POST) {
 	/********* Regexp : Check if special chars in fields ***********/
 	foreach ($text_postfields as $field) {
 		if(!preg_match("/^[a-zA-Z0-9éèàêç'+()\- ]+$/", $field)) {
-			#echo "$field nok: rule2";
+			//echo "- Validation compliance :  " . $field . ". <br>";
 			$error="notcompliant_fields";
 		}
 	}
@@ -102,7 +107,6 @@ if($_POST) {
 		}
 
 		/*************** Other checks ***************/
-
 		/***** 'htmlentities function permit to escape/protect fields against attacks, like XSS *****/
 		$event_name = htmlspecialchars(trim($event_name));
 		$event_place = htmlspecialchars(trim($event_place));
@@ -113,7 +117,6 @@ if($_POST) {
 		$langlevel = htmlspecialchars(trim($langlevel));
 
 		/***** Registering... *****/
-		$postfields = array($organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query);
 
 		// $update_postfields = array("organizer"=>"$organizer",
 		// 													 "ideaplace"=>$event_place,
@@ -128,105 +131,113 @@ if($_POST) {
 		/***** Check if event_name already exists *****/
 
 		if(!isset($error)) {
-
 			$nb_event_name = idea_exist($DB, $event_name);
 			if ($source == 'newevent') {
+
+
+				//Check if event already exists
 				if ($nb_event_name > 0)
 				{
 					$error="eventname_already_exists";
 				}	else {
+					$postfields = array($organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query);
+					// foreach ($postfields as $field) {
+					// 	echo "- Array to send (postevent) :  " . $field . ". <br>";
+					// }
+
 					add_idea($DB, $postfields);
 				}
 
+			//Event Edition Case
 			} elseif ($source == 'eventedit') {
-
 				$nb_event_name = idea_exist($DB, $old_event_name);
 				if ($nb_event_name < 1) {
 					$error="not_existant_eventname";
 				} else {
 					//$go_event_edition = 1;
 					$idea_id = get_idea_id($DB, $old_event_name);
-					if(!empty($idea_id)) {
-						$error="idevent_not_empty";
 
-						if(update_existant_idea($DB, $organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query, $idea_id)) {
-							$error="registerDB_not_failed";
-						} else {
-							$error="registerDB_failed";
-						}
+					if(!empty($idea_id)) {
+						//$update_fields = array($organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query, $idea_id);
+						update_existant_idea($DB, $organizer, $event_name, $event_place, $event_desc, $event_datetime, $phone_number, $lang, $langlevel, $query, $idea_id);
 					} else {
 						$error="update_existant_idea_failed";
 					}
 				}
+			}
 
-				/****** Check if register processed correctly ******/
-				$nb_event_name = idea_exist($DB, $event_name);
-				if($nb_event_name > 0) {
-					/***** URLENCODE TO CHANGE SPECIAL CHARS TO CODE *****/
-					/**** Change to use $_SESSION['profil'] $pseudo = urlencode($pseudo); *****/
-					$event_name = urlencode($event_name);
+			/****** Check if register processed correctly ******/
+			$nb_event_name = idea_exist($DB, $event_name);
+			if($nb_event_name > 0) {
+				/***** URLENCODE TO CHANGE SPECIAL CHARS TO CODE *****/
+				/**** Change to use $_SESSION['profil'] $pseudo = urlencode($pseudo); *****/
 
-					switch ($source) {
-						case "newevent":
-							$mail_subject = "Gozpeak : Votre idée a été validée";
-							$team_mail_subject = "Nouvelle idée postée [demo.gozpeak.com]";
-							break;
-						case "eventedit":
-							$mail_subject = "Gozpeak : Modification de votre idée d'événement";
-							$team_mail_subject = "Modification d'une idée [demo.gozpeak.com]";
-							break;
-						default:
-							die();
-					}
+				switch ($source) {
+					case "newevent":
+						$mail_subject = "Gozpeak : Votre idée a été validée";
+						$team_mail_subject = "Nouvelle idée postée [demo.gozpeak.com]";
+						break;
+					case "eventedit":
+						$mail_subject = "Gozpeak : Modification de votre idée d'événement";
+						$team_mail_subject = "Modification d'une idée [demo.gozpeak.com]";
+						break;
+					default:
+						die();
+				}
 
-					$mail_organizer = get_mail_organizer($DB, $organizer);
+				$event_name_for_link = urlencode($event_name);
+				$mail_organizer = get_mail_organizer($DB, $organizer);
 
-					//$mail_subject = "Ajout d'événement Gozpeak";
-					$mail_content = '<html><body>';
-					$mail_content .= '<h4>'."Bonjour $organizer ! ".'</h4>'.'<br>'.'<br>';
-					$mail_content .= "Votre idée d'événement Gozpeak a bien été enregistrée".'<br>';
-					$mail_content .= "Vous pouvez la retrouver en cliquant sur le lien ci-dessous : ".'<br>';
-					$mail_content .= "$gozpeak_protocol"."$gozpeak_host"."/index.php?page=idea&idea=$event_name".'<br>'.'<br>';
-					$mail_content .= "Les membres ayant un compte actif peuvent désormais s'inscrire à votre sortie".'<br>';
-					$mail_content .= "En espérant que vous ayez de nombreux inscrits !".'<br>'.'<br>';
-					$mail_content .= "Linguistiquement,".'<br>'.'<br>';
-					$mail_content .= "L'équipe Gozpeak".'<br>';
-					$mail_content .= '<img src="'."$gozpeak_protocol"."$gozpeak_host".'/views/images/gozpeak_small.png" alt="Gozpeak Logo">'.'<br>';
-					$mail_content .= '</body> </html>';
-	       	if(send_by_mailgun($mail_organizer, $mail_subject, $mail_content)) {
-						$message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre idée d\'événement a été enregistré avec succès ! </div> </div>';
+				//$mail_subject = "Ajout d'événement Gozpeak";
+				$mail_content = '<html> <body>';
+				$mail_content .= '<h4>' . "Bonjour $organizer ! " . '</h4>' . '<br>' . '<br>';
+				$mail_content .= '<strong>' . "Votre idée d'événement Gozpeak a bien été enregistrée" . '</strong>' . '<br>';
+				$mail_content .= "Vous pouvez la retrouver en cliquant sur le lien ci-dessous :  " . '<br>';
+				$mail_content .= '<a href="' . $baseUrl . '/index.php?page=idea&idea=' . $event_name_for_link . '">' . $event_name . '</a>';
+				$mail_content .= "Les membres ayant un compte actif peuvent désormais s'inscrire à votre sortie" . '<br>';
+				$mail_content .= "En espérant que vous ayez de nombreux inscrits !" . '<br>' . '<br>';
+				$mail_content .= "Linguistiquement," . '<br>' . '<br>';
+				$mail_content .= "L'équipe Gozpeak" . '<br>';
+				$mail_content .= '<img src="' . $baseUrl . '/views/images/gozpeak_small.png" alt="Gozpeak Logo">' . '<br>';
+				$mail_content .= '</body> </html>';
+	      if(send_by_mailgun($mail_organizer, $mail_subject, $mail_content)) {
+					$message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Votre idée d\'événement a été enregistré avec succès ! </div> </div>';
 
-						/******** Send Mail to Gozpeak Team ********/
-						/***** $team_mail_content = '<html><body>'; *****/
-            $team_mail_content = '<h4>'."Nouvelle idée postée - $query ! ".'</h4>'.'<br>'.'<br>';
-            $team_mail_content .= "L'organisateur : $organizer".'<br>';
-            $team_mail_content .= "Téléphone (peut être vide) : $phone_number".'<br>'.'<br>';
-            $team_mail_content .= "Le nom de l'idée postée : $event_name".'<br>'.'<br>';
-            $team_mail_content .= "Description de l'idée : $event_desc".'<br>'.'<br>';
-            $team_mail_content .= "Langue / Niveau souhaités : $lang niveau $langlevel".'<br>';
-            $team_mail_content .= "Les personnes ayant un compte actif peuvent désormais s'inscrire à cette sortie".'<br>';
-						send_by_mailgun('info@gozpeak.com', $team_mail_subject, $team_mail_content);
-					} else {
-						$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de votre inscription.   Veuillez réessayer ultérieurement </div> </div>';
-					}
+					/******** Send Mail to Gozpeak Team ********/
+					/***** $team_mail_content = '<html><body>'; *****/
+					$team_mail_content = "<html> <body>";
+          $team_mail_content .= '<h4>' . "Nouvelle idée postée - $query ! " . '</h4>' . '<br>' . '<br>';
+          $team_mail_content .= "L'organisateur : " . '<strong>' . $organizer . '</strong>' . '<br>';
+          $team_mail_content .= "Téléphone (peut être vide) : " . '<strong>' . $phone_number . '</strong>' . '<br>' . '<br>';
+          $team_mail_content .= "Le nom de l'idée postée : " . '<strong>' . $event_name . '</strong>' . '<br>' . '<br>';
+					$team_mail_content .= "Description de l'idée : " . '<br>' . '<strong>' . $event_desc . '</strong>' . '<br>' . '<br>';
+          $team_mail_content .= "Le lien vers l'idée :  " . '<a href="' . $baseUrl . '/index.php?page=idea&idea=' . $event_name_for_link . '">' . $event_name . '</a>' . '<br>' . '<br>';
+          $team_mail_content .= "Langue / Niveau souhaités : " . '<strong>' . " $lang niveau $langlevel" . '</strong>' . '<br>';
+          $team_mail_content .= "Les personnes ayant un compte actif peuvent s'inscrire à cette sortie" . '<br>' . '<br>';
+					$team_mail_content .= '<img src="' . $baseUrl . '/views/images/gozpeak_small.png" alt="Gozpeak Logo">' . '<br>';
+					$team_mail_content .= "<html> <body>";
+					send_by_mailgun('info@gozpeak.com', $team_mail_subject, $team_mail_content);
+				} else {
+					$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de votre inscription.   Veuillez réessayer ultérieurement </div> </div>';
+				}
 
 				/***** If register has not processed correctly *****/
-				}
-				else
-				{
-					$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'enregistrement de l`événement.  Veuillez réessayer ultérieurement . Test nb_event_name failed </div> </div>';
-				}
 			}
-		}
-  }
-}
+			else
+			{
+				$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>  Désolé, une erreur est survenue lors de l\'enregistrement de l`événement.  Veuillez réessayer ultérieurement . Test nb_event_name failed </div> </div>';
+			}
+		} //End if not set error
+	} //End if not set error - at Unitary tests
+} //End of if $_POST.
+
 
 
 if (isset($error)) {
   if ($error == 'empty_fields') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir les champs obligatoires pour proposer votre événement </div> </div>';
   } elseif ($error == 'notcompliant_fields') {
-		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Certains caractères spéciaux sont interdits pour les noms et lieux d\'événement </div> </div>';
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Certains caractères spéciaux sont interdits pour les noms et lieux d\'événement  ' . $source . "  " .  $query . " " . $old_event_name . "  " .  '</div> </div>';
   } elseif ($error == 'unauthorized_case') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Vous n\'êtes pas autorisé à poster ou modifier d\'événement. Vérifiez que vous êtes connecté. </div> </div>';
   } elseif ($error == 'invalid_event_name') {
