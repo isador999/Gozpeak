@@ -36,6 +36,9 @@ for($i=0;$i<=11;$i++) {
 }
 
 
+
+/********** Tests sortMonths **********/
+
 // $sortMonths[] = ucfirst((strftime("%B")));
 // $sortMonths[] = ucfirst((strftime("%B"+1)));
 
@@ -53,8 +56,9 @@ for($i=0;$i<=11;$i++) {
 // $sortMonths[] = date(("F")+10);
 // $sortMonths[] = date(("F")+11);
 
-$current_eventmonth = ucfirst(strftime("%B"));
-$current_ideamonth = ucfirst(strftime("%B"));
+//$current_eventmonth = ucfirst(strftime("%B"));
+//$current_ideamonth = ucfirst(strftime("%B"));
+$current_eventmonth = $current_ideamonth = $list[$_SESSION['language']]['monthpicker']['option'][0]['entry'];
 
 
 // $nb_events = count_events_by_type($DB, $query, $filteredLanguages, $current_eventyear);

@@ -146,12 +146,12 @@ function getIdeasByUser(baseUrl, username, pagenumber) {
 					escapeHtml(ideas[i].ideatime);
 
 					$('#table-ideas-profile > tbody').append('<tr class="row"> </tr>');
-					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+ideas[i].language+'.png" title="'+ideas[i].language+'" /> </td>');
-					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1"> <img style="width:150%;" src="views/images/'+ideas[i].ideatype+'.png" title="'+ideas[i].ideatype+'" /> </td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1"> <img src="views/images/p_'+ideas[i].language+'.png" title="'+ideas[i].language+'" /> </td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1"> <img style="width:150%;" src="views/images/'+ideas[i].ideatype+'.png" title="'+ideas[i].ideatype+'" /> </td>');
 					//$("#table-ideas > tbody").find('tr:last').append("<td class='col-lg-2'> <a href='"+ajaxUrl+"/index.php?page=profil&profil="+ideas[i].organizer+"' >"+ideas[i].organizer+"</a></td>");
-					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-5"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="'+ajaxUrl+'/index.php?page=idea&query='+ideas[i].ideatype+'&idea='+ideas[i].ideaname+'" >'+ideas[i].ideaname+'</a></td>');
-					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-3">'+ideas[i].ideadayname+' '+ideas[i].ideadaynumber+' '+ideas[i].ideamonthname+'</td>');
-					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1">'+ideas[i].ideatime+'</td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-5 col-md-5"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="'+ajaxUrl+'/index.php?page=idea&query='+ideas[i].ideatype+'&idea='+ideas[i].ideaname+'" >'+ideas[i].ideaname+'</a></td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-3 col-md-5">'+ideas[i].ideadayname+' '+ideas[i].ideadaynumber+' '+ideas[i].ideamonthname+'</td>');
+					$('#table-ideas-profile > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1">'+ideas[i].ideatime+'</td>');
 				}
 			}
 		}
@@ -195,10 +195,10 @@ function filterByLanguages(baseUrl, query, eventyear, ideayear, selectedLanguage
 					escapeHtml(events[i].eventtime);
 
 					$('#table-events > tbody').append('<tr class="row"> </tr>');
-					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+events[i].language+'.png" title="'+events[i].language+'" /> </td>');
-					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-6"> <a href="'+ajaxUrl+'/index.php?page=event&query='+events[i].eventtype+'&event='+events[i].eventname+'" >'+events[i].eventname+'</a></td>');
-					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-4">'+events[i].eventdayname+' '+events[i].eventdaynumber+' '+events[i].eventmonthname+'</td>');
-					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1">'+events[i].eventtime+'</td>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1"> <img src="views/images/p_'+events[i].language+'.png" title="'+events[i].language+'" /> </td>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-6 col-md-6"> <a href="'+ajaxUrl+'/index.php?page=event&query='+events[i].eventtype+'&event='+events[i].eventname+'" >'+events[i].eventname+'</a></td>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-4 col-md-4">'+events[i].eventdayname+' '+events[i].eventdaynumber+' '+events[i].eventmonthname+'</td>');
+					$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1">'+events[i].eventtime+'</td>');
 				}
 			}
 		} // End of success
@@ -236,11 +236,11 @@ function filterByLanguages(baseUrl, query, eventyear, ideayear, selectedLanguage
 					escapeHtml(ideas[i].ideatime);
 
 					$('#table-ideas > tbody').append('<tr class="row"> </tr>');
-					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+ideas[i].language+'.png" title="'+ideas[i].language+'" /> </td>');
-					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-2"> <a href="'+ajaxUrl+'/index.php?page=profil&profil='+ideas[i].organizer+'" >'+ideas[i].organizer+'</a></td>');
-					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4"> <a href="'+ajaxUrl+'/index.php?page=idea&query='+ideas[i].ideatype+'&idea='+ideas[i].ideaname+'" >'+ideas[i].ideaname+'</a></td>');
-					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4">'+ideas[i].ideadayname+' '+ideas[i].ideadaynumber+' '+ideas[i].ideamonthname+'</td>');
-					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1">'+ideas[i].ideatime+'</td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1"> <img src="views/images/p_'+ideas[i].language+'.png" title="'+ideas[i].language+'" /> </td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-2 col-md-2"> <a href="'+ajaxUrl+'/index.php?page=profil&profil='+ideas[i].organizer+'" >'+ideas[i].organizer+'</a></td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4 col-md-4"> <a href="'+ajaxUrl+'/index.php?page=idea&query='+ideas[i].ideatype+'&idea='+ideas[i].ideaname+'" >'+ideas[i].ideaname+'</a></td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4 col-md-4">'+ideas[i].ideadayname+' '+ideas[i].ideadaynumber+' '+ideas[i].ideamonthname+'</td>');
+					$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1">'+ideas[i].ideatime+'</td>');
 				}
 			}
 		} //End of success
@@ -297,10 +297,10 @@ function sortEvents(baseUrl, zpeaktype, query, pickedyear, pickedmonth, pagenumb
 
 
 						$('#table-events > tbody').append('<tr class="row"> </tr>');
-						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+donnees[i].language+'.png" title="'+donnees[i].language+'" /> </td>');
-						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-6"> <a href="'+baseUrl+'/index.php?page=event&query='+donnees[i].eventtype+'&event='+donnees[i].eventname+' ">'+donnees[i].eventname+'</a></td>');
-						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-4">'+donnees[i].eventdayname+' '+donnees[i].eventdaynumber+' '+donnees[i].eventmonthname+'</td>');
-						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1">'+donnees[i].eventtime+'</td>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1"> <img src="views/images/p_'+donnees[i].language+'.png" title="'+donnees[i].language+'" /> </td>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-6 col-md-6"> <a href="'+baseUrl+'/index.php?page=event&query='+donnees[i].eventtype+'&event='+donnees[i].eventname+' ">'+donnees[i].eventname+'</a></td>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-4 col-md-4">'+donnees[i].eventdayname+' '+donnees[i].eventdaynumber+' '+donnees[i].eventmonthname+'</td>');
+						$('#table-events > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1">'+donnees[i].eventtime+'</td>');
 					}
 				}
 			} else if (zpeaktype == 'idea') {
@@ -334,11 +334,11 @@ function sortEvents(baseUrl, zpeaktype, query, pickedyear, pickedmonth, pagenumb
 						escapeHtml(donnees[i].ideatime);
 
 						$('#table-ideas > tbody').append('<tr class="row"> </tr>');
-						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1"> <img src="views/images/p_'+donnees[i].language+'.png" title="'+donnees[i].language+'" /> </td>');
-						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-2"> <a href="'+ajaxUrl+'/index.php?page=profil&profil='+donnees[i].organizer+'" >'+donnees[i].organizer+'</a></td>');
-						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4"> <a href="'+ajaxUrl+'/index.php?page=idea&query='+donnees[i].ideatype+'&idea='+donnees[i].ideaname+'" >'+donnees[i].ideaname+'</a></td>');
-						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4">'+donnees[i].ideadayname+' '+donnees[i].ideadaynumber+' '+donnees[i].ideamonthname+'</td>');
-						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1">'+donnees[i].ideatime+'</td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1"> <img src="views/images/p_'+donnees[i].language+'.png" title="'+donnees[i].language+'" /> </td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-2 col-md-2"> <a href="'+ajaxUrl+'/index.php?page=profil&profil='+donnees[i].organizer+'" >'+donnees[i].organizer+'</a></td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4 col-md-4"> <a href="'+ajaxUrl+'/index.php?page=idea&query='+donnees[i].ideatype+'&idea='+donnees[i].ideaname+'" >'+donnees[i].ideaname+'</a></td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-4 col-md-4">'+donnees[i].ideadayname+' '+donnees[i].ideadaynumber+' '+donnees[i].ideamonthname+'</td>');
+						$('#table-ideas > tbody').find('tr:last').append('<td class="col-lg-1 col-md-1">'+donnees[i].ideatime+'</td>');
 					}
 				}
 			} //End of condition zpeaktype

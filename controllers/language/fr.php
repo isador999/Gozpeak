@@ -311,17 +311,30 @@ $list['fr']['yearpicker']['text'] = "Année";
 $list['fr']['monthpicker']['text'] = "Mois";
 
 
-$list['fr']['monthpicker'][0]['entry'] = "Janvier";
-$list['fr']['monthpicker'][1]['entry'] = "Février";
-$list['fr']['monthpicker'][2]['entry'] = "Mars";
-$list['fr']['monthpicker'][3]['entry'] = "Avril";
-$list['fr']['monthpicker'][4]['entry'] = "Mai";
-$list['fr']['monthpicker'][5]['entry'] = "Juin";
-$list['fr']['monthpicker'][6]['entry'] = "Juillet";
-$list['fr']['monthpicker'][7]['entry'] = "Août";
-$list['fr']['monthpicker'][8]['entry'] = "Septembre";
-$list['fr']['monthpicker'][9]['entry'] = "Octobre";
-$list['fr']['monthpicker'][10]['entry'] = "Novembre";
-$list['fr']['monthpicker'][11]['entry'] = "Décembre";
+$list['fr']['monthpicker']['option'][0]['entry'] = "Janvier";
+$list['fr']['monthpicker']['option'][0]['value'] = "01";
+$list['fr']['monthpicker']['option'][1]['entry'] = "Février";
+$list['fr']['monthpicker']['option'][1]['value'] = "02";
+$list['fr']['monthpicker']['option'][2]['entry'] = "Mars";
+$list['fr']['monthpicker']['option'][2]['value'] = "03";
+$list['fr']['monthpicker']['option'][3]['entry'] = "Avril";
+$list['fr']['monthpicker']['option'][3]['value'] = "04";
+$list['fr']['monthpicker']['option'][4]['entry'] = "Mai";
+$list['fr']['monthpicker']['option'][4]['value'] = "05";
+$list['fr']['monthpicker']['option'][5]['entry'] = "Juin";
+$list['fr']['monthpicker']['option'][5]['value'] = "06";
+$list['fr']['monthpicker']['option'][6]['entry'] = "Juillet";
+$list['fr']['monthpicker']['option'][6]['value'] = "07";
+$list['fr']['monthpicker']['option'][7]['entry'] = "Août";
+$list['fr']['monthpicker']['option'][7]['value'] = "08";
+$list['fr']['monthpicker']['option'][8]['entry'] = "Septembre";
+$list['fr']['monthpicker']['option'][8]['value'] = "09";
+$list['fr']['monthpicker']['option'][9]['entry'] = "Octobre";
+$list['fr']['monthpicker']['option'][9]['value'] = "10";
+$list['fr']['monthpicker']['option'][10]['entry'] = "Novembre";
+$list['fr']['monthpicker']['option'][10]['value'] = "11";
+$list['fr']['monthpicker']['option'][11]['entry'] = "Décembre";
+$list['fr']['monthpicker']['option'][11]['value'] = "12";
+
 
 ?>

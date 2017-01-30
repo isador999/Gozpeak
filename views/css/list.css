@@ -52,7 +52,6 @@
 }
 
 .listing-events fieldset {
-  /*background-color: white;*/
   min-height: 75%;
   max-height: 100%;
 }
@@ -75,8 +74,8 @@
 }
 
 .table-responsive {
-  overflow-x: visible !important;
   overflow-y: visible !important;
+  overflow-x: visible !important;
 }
 
 /* END OF list-head.php */

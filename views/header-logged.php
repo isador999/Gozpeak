@@ -5,7 +5,7 @@ session_start();
 <nav role="navigation" class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header row text-center col-lg-6 col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3 visible-lg visible-md visible-sm">
-      <p class="branding"> <?php echo $headband[$_SESSION['language']]['welcomebranding']; ?>
+      <p class="branding"> <?php #echo $headband[$_SESSION['language']]['welcomebranding']; ?>
       <a href="index.php?page=home"><img src="views/images/gozpeak_small.png" alt="GoZpeak" title="GoZpeak!" /></a> </p>
     </div>
 
