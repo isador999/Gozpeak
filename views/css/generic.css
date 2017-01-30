@@ -45,6 +45,19 @@ body a:hover {
 
 
 /***** NAVBAR *****/
+.branding {
+  padding-top: 2%;
+  padding-left: 18%;
+  font-size: 21pt;
+  font-style: italic;
+  color: #B3511D;
+}
+
+.branding img {
+  width: 29%;
+}
+
+
 .glyphicon-search {
   font-size: 1.1em; // slightly bigger
 }
@@ -56,6 +69,7 @@ body a:hover {
 .navbar-form button {
   margin-top: -0.7%;
 }
+
 
 .navbar-nav {
   margin-top:-0.5%;

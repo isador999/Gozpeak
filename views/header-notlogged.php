@@ -5,14 +5,14 @@ session_start();
 
 <nav role="navigation" class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header row text-center col-md-offset-1 col-sm-offset-1 col-lg-5 col-md-3 col-sm-3 hidden-xs">
-      <a href="index.php?page=home"><img src="views/images/gozpeak_small.png" alt="GoZpeak" title="GoZpeak!" /></a>
+    <div class="navbar-header row text-center col-lg-5 col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3 hidden-xs">
+      <p class="branding"> <?php echo $headband[$_SESSION['language']]['welcomebranding']; ?>
+      <a href="index.php?page=home"><img src="views/images/gozpeak_small.png" alt="GoZpeak" title="GoZpeak!" /></a> </p>
     </div>
 
     <div class="navbar-header row col-xs-5 visible-xs">
       <a href="index.php?page=home"><img src="views/images/gozpeak_small.png" alt="GoZpeak" title="GoZpeak!" /></a>
     </div>
-
 
 
     <div class="pull-left col-xs-12 visible-xs" style="padding-top: 0.25%;">
@@ -49,7 +49,6 @@ session_start();
           </div>
         </form>
       </div>
-
 
 
     <!-- NAV TABS BUTTONS -->

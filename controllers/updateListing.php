@@ -14,6 +14,10 @@ if($_GET) {
   $languages          = isset($_GET['languages']) ? $_GET['languages'] : '';
   $picked_eventyear   = isset($_GET['eventyear']) ? $_GET['eventyear'] : '';
   $picked_ideayear    = isset($_GET['ideayear']) ? $_GET['ideayear'] : '';
+
+  $picked_eventmonth   = isset($_GET['eventmonth']) ? $_GET['eventmonth'] : '';
+  $picked_ideamonth    = isset($_GET['ideamonth']) ? $_GET['ideamonth'] : '';
+
   $eventpage          = isset($_GET['eventpage']) ? $_GET['eventpage'] : '';
   $ideapage           = isset($_GET['ideapage']) ? $_GET['ideapage'] : '';
   $membername         = isset($_GET['membername']) ? $_GET['membername'] : '';
@@ -27,8 +31,8 @@ if($_GET) {
   	$languages = "";
   }
 
-  if(!empty($picked_eventyear) OR (!empty($pagination_events))) {
-    $nb_events = count_events_by_type($DB, $query, $languages, $picked_eventyear);
+  if(!empty($picked_eventyear) OR (!empty($picked_eventmonth)) OR (!empty($pagination_events))) {
+    $nb_events = count_events_by_type($DB, $query, $languages, $picked_eventyear, $picked_eventmonth);
 
     $nb_rows_per_page = 15;
     // Nombre de pages à afficher
@@ -61,12 +65,12 @@ if($_GET) {
       $PaginateResponse = array('current_page' => $events_current_page, 'total_pages' => $events_total_pages);
       echo json_encode($PaginateResponse);
     } else {
-      $events = list_events_by_type($DB, $events_offset, $nb_rows_per_page, $query, $languages, $picked_eventyear);
+      $events = list_events_by_type($DB, $events_offset, $nb_rows_per_page, $query, $languages, $picked_eventyear, $picked_eventmonth);
       echo json_encode($events);
     }
 
-  } else if (!empty($picked_ideayear) OR (!empty($pagination_ideas)) OR (!empty($membername))) {
-      $nb_ideas = count_ideas_by_type($DB, $query, $languages, $picked_ideayear, $membername);
+  } else if (!empty($picked_ideayear) OR (!empty($picked_ideamonth)) OR (!empty($pagination_ideas)) OR (!empty($membername))) {
+      $nb_ideas = count_ideas_by_type($DB, $query, $languages, $picked_ideayear, $picked_ideamonth, $membername);
 
       $nb_rows_per_page = 15;
       // Nombre de pages à afficher
@@ -97,7 +101,7 @@ if($_GET) {
         $PaginateResponse = array('current_page' => $ideas_current_page, 'total_pages' => $ideas_total_pages);
         echo json_encode($PaginateResponse);
       } else {
-        $ideas = list_ideas_by_type($DB, $ideas_offset, $nb_rows_per_page, $query, $languages, $picked_ideayear, $membername);
+        $ideas = list_ideas_by_type($DB, $ideas_offset, $nb_rows_per_page, $query, $languages, $picked_ideayear, $picked_eventmonth, $membername);
         echo json_encode($ideas);
       }
   }

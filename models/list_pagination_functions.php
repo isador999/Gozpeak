@@ -1,6 +1,6 @@
 <?php
 
-function list_events_by_type($DB, $eventoffset, $eventpagination, $eventtype, $filteredLanguages, $year) {
+function list_events_by_type($DB, $eventoffset, $eventpagination, $eventtype, $filteredLanguages, $year, $month) {
 	$sql = "SELECT language, organizer, eventname, eventtype, CONCAT(UCASE(LEFT(DAYNAME(eventdatetime),1)), SUBSTRING(DAYNAME(eventdatetime), 2)) eventdayname, DATE_FORMAT(eventdatetime, '%d') eventdaynumber, MONTHNAME(eventdatetime) eventmonthname, DATE_FORMAT(eventdatetime, '%H:%i') eventtime FROM events";
 
 	if(!empty($eventtype)) {
@@ -25,6 +25,11 @@ function list_events_by_type($DB, $eventoffset, $eventpagination, $eventtype, $f
 	if(!empty($year)) {
 		$sql .= " AND YEAR(eventdatetime) = '$year'";
 	}
+
+	if(!empty($month)) {
+		$sql .= " AND MONTHNAME(eventdatetime) = '$month'";
+	}
+
 	$sql .= " ORDER BY eventdatetime asc LIMIT :eventoffset, :eventpagination";
 
 	$req = $DB->prepare($sql);
@@ -35,7 +40,7 @@ function list_events_by_type($DB, $eventoffset, $eventpagination, $eventtype, $f
 }
 
 
-function list_ideas_by_type($DB, $ideaoffset, $ideapagination, $ideatype, $filteredLanguages, $year, $membername) {
+function list_ideas_by_type($DB, $ideaoffset, $ideapagination, $ideatype, $filteredLanguages, $year, $month, $membername) {
 	$sql = "SELECT language, organizer, ideaname, ideatype, CONCAT(UCASE(LEFT(DAYNAME(ideadatetime),1)), SUBSTRING(DAYNAME(ideadatetime), 2)) ideadayname, DATE_FORMAT(ideadatetime, '%d') ideadaynumber, MONTHNAME(ideadatetime) ideamonthname, DATE_FORMAT(ideadatetime, '%H:%i') ideatime FROM ideas ";
 	$args = 0;
 
@@ -71,6 +76,9 @@ function list_ideas_by_type($DB, $ideaoffset, $ideapagination, $ideatype, $filte
 	if(!empty($year)) {
 		$sql .= " AND YEAR(ideadatetime) = '$year'";
 	}
+	if(!empty($month)) {
+		$sql .= " AND MONTHNAME(ideadatetime) = '$month'";
+	}
 
 	$sql .= " ORDER BY ideadatetime asc LIMIT :ideaoffset, :ideapagination";
 
@@ -82,7 +90,7 @@ function list_ideas_by_type($DB, $ideaoffset, $ideapagination, $ideatype, $filte
 }
 
 
-function count_events_by_type ($DB, $eventtype, $filteredLanguages, $year) {
+function count_events_by_type ($DB, $eventtype, $filteredLanguages, $year, $month) {
 	$sql = "SELECT COUNT(*) AS nb_total_events from events where eventtype = :eventtype";
 
 	if(isset($filteredLanguages) && (!empty($filteredLanguages))) {
@@ -100,6 +108,7 @@ function count_events_by_type ($DB, $eventtype, $filteredLanguages, $year) {
 	}
 
 	$sql .= " AND YEAR(eventdatetime) = '$year'";
+	$sql .= " AND MONTHNAME(eventdatetime) = '$month'";
 
 	$req = $DB->prepare($sql);
 	$req -> execute(array(':eventtype'=>$eventtype));
@@ -109,7 +118,7 @@ function count_events_by_type ($DB, $eventtype, $filteredLanguages, $year) {
 }
 
 
-function count_ideas_by_type ($DB, $ideatype, $filteredLanguages, $year, $membername) {
+function count_ideas_by_type ($DB, $ideatype, $filteredLanguages, $year, $month, $membername) {
 	$sql = "SELECT COUNT(*) AS nb_total_ideas from ideas ";
 	$args = 0;
 
@@ -142,6 +151,7 @@ function count_ideas_by_type ($DB, $ideatype, $filteredLanguages, $year, $member
 	}
 
 	$sql .= " AND YEAR(ideadatetime) = '$year'";
+	$sql .= " AND MONTHNAME(ideadatetime) = '$month'";
 
 	$req = $DB->prepare($sql);
 	//$req -> execute(array(':ideatype'=>$ideatype));

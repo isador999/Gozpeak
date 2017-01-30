@@ -108,7 +108,7 @@ function retrieve_pagination (baseUrl, query, zpeaktype, pickedyear, selectedLan
 					$('ul.pagination_' + zpeaktype).append('<li class="active"><a href="#">'+ i + '</a></li>');
 				} else {
 					//OnclickParams="'"+ajaxUrl+zpeaktype;
-					$('ul.pagination_' + zpeaktype).append('<li><a href="#" onclick=\'sortyears("'+ajaxUrl+'", "'+zpeaktype+'", "'+query+'", "'+pickedyear+'", "'+i+'")\' >'+ i + '</a></li>');
+					$('ul.pagination_' + zpeaktype).append('<li><a href="#" onclick=\'sortEvents("'+ajaxUrl+'", "'+zpeaktype+'", "'+query+'", "'+pickedyear+'", "'+i+'")\' >'+ i + '</a></li>');
 				}
 			}
 		}
@@ -251,13 +251,13 @@ function filterByLanguages(baseUrl, query, eventyear, ideayear, selectedLanguage
 
 
 
-function sortyears(baseUrl, zpeaktype, query, pickedyear, pagenumber) {
+function sortEvents(baseUrl, zpeaktype, query, pickedyear, pickedmonth, pagenumber) {
 	ajaxUrl = baseUrl;
 
 	$.ajax({
 	  type: "GET",
   	url: ajaxUrl+'/controllers/updateListing.php?',
-		data: "query=" + query + "&" + zpeaktype + "year=" + pickedyear + "&" + zpeaktype + "page=" + pagenumber,
+		data: "query=" + query + "&" + zpeaktype + "year=" + pickedyear + "&" + zpeaktype + "month="+ pickedmonth + "&" + zpeaktype + "page=" + pagenumber,
 	  dataType: 'html',
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
     cache: false,
@@ -265,9 +265,19 @@ function sortyears(baseUrl, zpeaktype, query, pickedyear, pagenumber) {
 	  {
 			var donnees = JSON.parse(response);
 			if (zpeaktype == 'event') {
+				//Set dropdowns to current choice.
 				$('#current_picked_eventyear').html(pickedyear);
+				$('#current_picked_eventmonth').html(pickedmonth);
+
+				//Reset disabled state of all dropdowns.
 				$('ul#event-years > li').attr("class", "");
+				$('ul#event-months > li').attr("class", "");
+
+				//Disable selected dropdown choices.
 				$('ul#event-years > li#events-'+pickedyear).attr("class", "disabled");
+				$('ul#event-months > li#events-'+pickedmonth).attr("class", "disabled");
+
+
 				$('#table-events > tbody').html("");
 
 				if(donnees.length === 0) {
@@ -294,10 +304,17 @@ function sortyears(baseUrl, zpeaktype, query, pickedyear, pagenumber) {
 					}
 				}
 			} else if (zpeaktype == 'idea') {
+				//Set dropdowns to current choice.
 				$('#current_picked_ideayear').html(pickedyear);
+				$('#current_picked_ideamonth').html(pickedmonth);
 
+				//Reset disabled state of all dropdowns.
 				$('ul#idea-years > li').attr("class", "");
+				$('ul#idea-months > li').attr("class", "");
+
+				//Disable selected dropdown choices.
 				$('ul#idea-years > li#ideas-'+pickedyear).attr("class", "disabled");
+				$('ul#idea-months > li#ideas-'+pickedmonth).attr("class", "disabled");
 
 				$('#table-ideas > tbody').html("");
 

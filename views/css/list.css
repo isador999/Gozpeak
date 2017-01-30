@@ -26,7 +26,6 @@
 }
 
 
-
 /*********************/
 
 .eventsblock {
@@ -40,6 +39,7 @@
   width: 70%;
 }
 
+
 .listing-events legend {
   font-size: 19pt;
   font-weight: bold;
@@ -47,6 +47,8 @@
   /*margin-left: 4%;
   margin-right: 4%;*/
   margin-bottom: 6%;
+  min-height: 85px;
+  max-height: 150px;
 }
 
 .listing-events fieldset {
@@ -61,14 +63,21 @@
   font-size: 12pt;
 }
 
+
 .ideas-title {
   color: rgb(34, 80, 138);
+
 }
 
 .events-title {
   color: rgb(205, 90, 50);
+
 }
 
+.table-responsive {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
 
 /* END OF list-head.php */
 /************************/

@@ -30,18 +30,31 @@
 	<div class="listing-events row">
 		<div class="table-responsive eventsblock col-lg-5 col-md-5">
 			<fieldset class="scheduler-border">
-				<legend class="scheduler-border row">
-					<div class="col-lg-8 col-md-6 events-title">
-						Les <img src="views/images/zpeak_orange.png" style="width:23%;" alt="Zpeak"/> événements
-					</div>
+				<legend class="scheduler-border">
+					<div class="row">
+						<div class="col-lg-5 col-md-5 text-left events-title">
+							Les <img src="views/images/zpeak_orange.png" style="width:80px;" alt="Zpeak"/> événements
+						</div>
+					<!-- </div> -->
 
-					<div id="dropdown-eventyears" class="col-lg-1 col-md-1 dropdown">
-						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['yearpicker']['text'] ?> : <span id="current_picked_eventyear"> <?php echo $current_eventyear; ?> </span> &nbsp; <span class="caret"></span> </button>
-						<ul id="event-years" class="dropdown-menu">
-							<?php foreach ($sortYears as $year) { ?>
-								<li id="events-<?php echo $year; ?>"><a onclick="sortyears('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $year ?>')" href="#"> <?php echo $year; ?> </a></li>
-							<?php } ?>
-						</ul>
+					<!-- <div class="row"> -->
+						<div id="dropdown-eventmonths" class="col-lg-3 col-md-7 text-center dropdown">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['monthpicker']['text'] ?> : <span id="current_picked_eventmonth"> <?php echo $current_eventmonth; ?> </span> &nbsp; <span class="caret"></span> </button>
+							<ul id="event-months" class="dropdown-menu">
+								<?php foreach ($sortMonths as $month) { ?>
+									<li id="events-<?php echo $month; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML, '<?php echo $month ?>')" href="#"> <?php echo $month; ?> </a></li>
+								<?php } ?>
+							</ul>
+						</div>
+
+						<div id="dropdown-eventyears" class="col-lg-2 col-md-7 text-center dropdown">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['yearpicker']['text'] ?> : <span id="current_picked_eventyear"> <?php echo $current_eventyear; ?> </span> &nbsp; <span class="caret"></span> </button>
+							<ul id="event-years" class="dropdown-menu">
+								<?php foreach ($sortYears as $year) { ?>
+									<li id="events-<?php echo $year; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $year ?>', document.getElementById('current_picked_eventmonth').innerHTML)" href="#"> <?php echo $year; ?> </a></li>
+									<?php } ?>
+								</ul>
+							</div>
 					</div>
 				</legend>
 
@@ -59,29 +72,15 @@
 		  		</thead>
 
 					<tbody>
-						<script> sortyears('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML) </script>
-						<?php #foreach ($events as $event) { ?>
-							<!-- <tr class="row">
-		    				<td class="col-lg-1"> <img src="<?php #echo $minilang[$_SESSION['language']]['icon'][$event["language"]]['png'] ?>" alt="<?php #echo $event["language"]; ?>" title="<?php #echo $minilang[$_SESSION['language']]['icon'][$event["language"]]['text']; ?>"> </td>
-		    				<td class="col-lg-6"> <a href="<?php #echo $baseUrl.'/index.php?page=event&query='.$event["eventtype"].'&event='.$event["eventname"]; ?>"> <?php #echo $event["eventname"] ?> </a></td>
-		    				<td class="col-lg-4"> <?php #echo $event["eventdayname"].' '.$event["eventdaynumber"].' '.$event["eventmonthname"]; ?></td>
-		    				<td class="col-lg-1"> <?php #echo $event["eventtime"]; ?></td>
-							</tr> -->
-						<?php #} ?>
+						<script> sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML) </script>
+
 					</tbody>
 				</table>
 			</fieldset>
 
 			<div class="row pageblock text-center">
 				<ul class="pagination pagination-lg pagination_event">
-					<script> //retrieve_pagination('<?php echo $baseUrl ?>', '<?php echo $query ?>', 'event', document.getElementById('current_picked_eventyear').innerHTML, document.getElementById('selectedLanguages').value) </script>
-					<?php #for ($i = 1 ; $i <= $events_total_pages ; $i++) {
-						#if ($i == $events_current_page ) { ?>
-							<!-- <li class="active"><a href="#"> <?php #echo $i; ?></a></li> -->
-						<?php #} else { ?>
-							<!-- <li><a href="<?php #echo $baseUrl.'/index.php?page=list&query='.$query.'&eventpage='.$i; ?>"> <?php #echo $i; ?></a></li> -->
-					<?php #}
-							#} ?>
+
 				</ul>
 			</div>
 		</div>
@@ -90,18 +89,29 @@
 
 		<div class="table-responsive eventsblock col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-6">
 			<fieldset class="scheduler-border">
-				<legend class="scheduler-border row">
-					<div class="col-lg-8 col-md-6 ideas-title">
-						Vos <img src="views/images/zpeak_bleu.png" style="width:20%;" alt="Zpeak"/> idées d'événements
-					</div>
+				<legend class="scheduler-border">
+					<div class="row">
+						<div class="col-lg-5 col-md-5 text-left ideas-title">
+							Vos <img src="views/images/zpeak_bleu.png" style="width:80px;" alt="Zpeak"/> idées d'événements
+						</div>
 
-					<div id="dropdown-ideayears" class="col-lg-offset-1 col-lg-1 col-md-offset-1 col-md-1 dropdown">
-						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['yearpicker']['text'] ?> : <span id="current_picked_ideayear"> <?php echo $current_ideayear; ?> </span> &nbsp; <span class="caret"></span> </button>
-						<ul id="idea-years" class="dropdown-menu">
-							<?php foreach ($sortYears as $year) { ?>
-								<li id="ideas-<?php echo $year; ?>"><a onclick="sortyears('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', '<?php echo $year ?>')" href="#"> <?php echo $year; ?> </a></li>
-							<?php } ?>
-						</ul>
+						<div id="dropdown-ideamonths" class="col-lg-offset-1 col-lg-3 col-md-7 text-center dropdown">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['monthpicker']['text'] ?> : <span id="current_picked_ideamonth"> <?php echo $current_ideamonth; ?> </span> &nbsp; <span class="caret"></span> </button>
+							<ul id="idea-months" class="dropdown-menu">
+								<?php foreach ($sortMonths as $month) { ?>
+									<li id="ideas-<?php echo $month; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', document.getElementById('current_picked_ideayear').innerHTML, '<?php echo $month ?>')" href="#"> <?php echo $month; ?> </a></li>
+								<?php } ?>
+							</ul>
+						</div>
+
+						<div id="dropdown-ideayears" class="col-lg-2 col-md-7 text-center dropdown">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['yearpicker']['text'] ?> : <span id="current_picked_ideayear"> <?php echo $current_ideayear; ?> </span> &nbsp; <span class="caret"></span> </button>
+							<ul id="idea-years" class="dropdown-menu">
+								<?php foreach ($sortYears as $year) { ?>
+									<li id="ideas-<?php echo $year; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', '<?php echo $year ?>', document.getElementById('current_picked_ideamonth').innerHTML)" href="#"> <?php echo $year; ?> </a></li>
+								<?php } ?>
+							</ul>
+						</div>
 					</div>
 				</legend>
 
@@ -119,30 +129,14 @@
 			  	</thead>
 
         	<tbody>
-					<?php	#foreach ($ideas as $idea) { ?>
-						<script> sortyears('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', document.getElementById('current_picked_ideayear').innerHTML) </script>
-						<!-- <tr class="row">
-							<td class="col-lg-1 text-left"> <img src="<?php #echo $minilang[$_SESSION['language']]['icon'][$idea["language"]]['png'] ?>" alt="<?php #echo $idea["language"]; ?>" title="<?php #echo $minilang[$_SESSION['language']]['icon'][$idea["language"]]['text']; ?>"> </td>
-              <td class="col-lg-2"> <a href="<?php #echo $baseUrl.'/index.php?page=profil&profil='.$idea["organizer"]; ?>"><?php #echo $idea["organizer"]; ?></a> </td>
-              <td class="col-lg-4"> <a href="<?php #echo $baseUrl.'/index.php?page=idea&query='.$idea["ideatype"].'&idea='.$idea["ideaname"]; ?>"> <?php #echo $idea["ideaname"]; ?> </a></td>
-              <td class="col-lg-4"> <?php #echo $idea["ideadayname"].' '.$idea["ideadaynumber"].' '.$idea["ideamonthname"]; ?></td>
-              <td class="col-lg-1"> <?php #echo $idea["ideatime"]; ?> </td>
-						</tr> -->
-						<?php #} ?>
+						<script> sortEvents('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', document.getElementById('current_picked_ideayear').innerHTML) </script>
+
 			  	</tbody>
 				</table>
 			</fieldset>
 
 			<div class="row pageblock text-center">
 				<ul class="pagination pagination-lg pagination_idea">
-					<script> //retrieve_pagination('<?php echo $baseUrl ?>', '<?php echo $query ?>', 'idea', document.getElementById('current_picked_ideayear').innerHTML, document.getElementById('selectedLanguages').value) </script>
-					<?php #for ($i = 1 ; $i <= $ideas_total_pages ; $i++) {
-						#if ($i == $ideas_current_page ) { ?>
-							<!-- <li class="active"><a href="#"> <?php #echo $i; ?></a></li> -->
-						<?php #} else { ?>
-							<!-- <li><a href="<?php #echo $baseUrl.'/index.php?page=list&query='.$query.'&ideapage='.$i; ?>"> <?php #echo $i; ?></a></li> -->
-					<?php #}
-							#} ?>
 				</ul>
 			</div>
 		</div>

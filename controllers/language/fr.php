@@ -229,6 +229,9 @@ $form['fr']['organizer']['eventedit']['title'] = "Cliquez pour modifier les info
 
 
 // HEADER
+$headband['fr']['welcomebranding'] = "Bienvenue sur ";
+
+
 $headband['fr']['registration']['text'] = "S'inscrire";
 $headband['fr']['registration']['title'] = "Créez-vous un compte";
 $headband['fr']['connection']['text'] = "Se connecter";
@@ -284,7 +287,7 @@ $minilang['fr']['icon']['english']['text'] = "Anglais";
 $minilang['fr']['icon']['spanish']['text'] = "Espagnol";
 $minilang['fr']['icon']['italian']['text'] = "Italien";
 $minilang['fr']['icon']['french']['text'] = "Français";
-$minilang['fr']['icon']['multi']['text'] = "Libre / International";
+$minilang['fr']['icon']['multi']['text'] = "Autre / Multiples";
 /*$minilang['fr']['icon']['portugais']['png'] = "views/images/p_portugais.png";
 $minilang['fr']['icon']['portugais']['text'] = "Portugais";
 $minilang['fr']['icon']['portugais']['value'] = "portugais";
@@ -305,5 +308,20 @@ $list['fr']['ideas']['empty'] = "Il n'y a aucune idée proposée dans cette cat�
 $list['fr']['filter']['placeholder'] = "Filtrer par langues";
 $list['fr']['filter']['submit'] = "Filtrer les événements";
 $list['fr']['yearpicker']['text'] = "Année";
+$list['fr']['monthpicker']['text'] = "Mois";
+
+
+$list['fr']['monthpicker'][0]['entry'] = "Janvier";
+$list['fr']['monthpicker'][1]['entry'] = "Février";
+$list['fr']['monthpicker'][2]['entry'] = "Mars";
+$list['fr']['monthpicker'][3]['entry'] = "Avril";
+$list['fr']['monthpicker'][4]['entry'] = "Mai";
+$list['fr']['monthpicker'][5]['entry'] = "Juin";
+$list['fr']['monthpicker'][6]['entry'] = "Juillet";
+$list['fr']['monthpicker'][7]['entry'] = "Août";
+$list['fr']['monthpicker'][8]['entry'] = "Septembre";
+$list['fr']['monthpicker'][9]['entry'] = "Octobre";
+$list['fr']['monthpicker'][10]['entry'] = "Novembre";
+$list['fr']['monthpicker'][11]['entry'] = "Décembre";
 
 ?>

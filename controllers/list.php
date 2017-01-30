@@ -6,7 +6,9 @@ require_once(CONTROLLERS.'init.php');
 require_once(MODELS.'dbconnect.php');
 require_once(MODELS.'list_pagination_functions.php');
 
-setlocale (LC_TIME, 'fr_FR','fra');
+//setlocale(LC_TIME, 'fr_FR');
+setlocale(LC_TIME, 'fr_FR.UTF8');
+setlocale(LC_ALL, 'fra_fra');
 date_default_timezone_set("Europe/Paris");
 mb_internal_encoding("UTF-8");
 
@@ -16,6 +18,7 @@ if(isset($_GET['query']) && !empty($_GET['query'])) {
 	$query = $_GET['query'];
 }
 
+
 /***** Define 3 current years *****/
 $sortYears = array();
 $sortYears[] = date("Y")-1;
@@ -24,6 +27,34 @@ $sortYears[] = date("Y")+1;
 
 $current_eventyear = date("Y");
 $current_ideayear = date("Y");
+
+$sortMonths = array();
+//$sortMonths[] = ucfirst(strftime("%B"));
+for($i=0;$i<=11;$i++) {
+	//$sortMonths[] = ucfirst(strftime("%B", strtotime("+".$i." month")));
+	$sortMonths[] = ucfirst(strftime("%B", strtotime("+".($i*30)." days")));
+}
+
+
+// $sortMonths[] = ucfirst((strftime("%B")));
+// $sortMonths[] = ucfirst((strftime("%B"+1)));
+
+//$sortMonths[] = strftime("F");
+//$sortMonths[] = date("F", strtotime("+1 month"));
+
+// $sortMonths[] = date(("F")+2);
+// $sortMonths[] = date(("F")+3);
+// $sortMonths[] = date(("F")+4);
+// $sortMonths[] = date(("F")+5);
+// $sortMonths[] = date(("F")+6);
+// $sortMonths[] = date(("F")+7);
+// $sortMonths[] = date(("F")+8);
+// $sortMonths[] = date(("F")+9);
+// $sortMonths[] = date(("F")+10);
+// $sortMonths[] = date(("F")+11);
+
+$current_eventmonth = ucfirst(strftime("%B"));
+$current_ideamonth = ucfirst(strftime("%B"));
 
 
 // $nb_events = count_events_by_type($DB, $query, $filteredLanguages, $current_eventyear);

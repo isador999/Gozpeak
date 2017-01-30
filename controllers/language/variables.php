@@ -8,16 +8,15 @@ $SQL['de']['locale'] = "de_DE";
 $SQL['ru']['locale'] = "ru_RU";
 
 
-$message['fr']['postevent']['length']['eventname'] = "Le nom doit être compris entre 6 et 25 caractères";
-$message['fr']['postevent']['length']['eventplace'] = "Le lieu de l'événement doit être compris entre 6 et 25 caractères";
-$message['fr']['postevent']['length']['eventdesc'] = "La description doit faire 15 caractères au minimum";
-$message['fr']['postevent']['length']['eventphone'] = "Le numéro de téléphone doit faire 10 chiffres";
-$message['fr']['postevent']['specialchars'] = "Certains champs ne doivent pas contenir de caractères spéciaux";
-$message['fr']['postevent']['lang'] = "La langue de l'événement est invalide";
-$message['fr']['postevent']['langlevel'] = "Le niveau de langue de l'événement est invalide";
-$message['fr']['postevent']['organizernotfound'] = "Impossible de vérifier les autorisations, veuillez vous (re)connecter. ";
-$message['fr']['postevent']['eventexists'] = "Un événement avec ce nom existe déjà";
-
+$message[$_SESSION['language']]['postevent']['length']['eventname'] = "Le nom doit être compris entre 6 et 25 caractères";
+$message[$_SESSION['language']]['postevent']['length']['eventplace'] = "Le lieu de l'événement doit être compris entre 6 et 25 caractères";
+$message[$_SESSION['language']]['postevent']['length']['eventdesc'] = "La description doit faire 15 caractères au minimum";
+$message[$_SESSION['language']]['postevent']['length']['eventphone'] = "Le numéro de téléphone doit faire 10 chiffres";
+$message[$_SESSION['language']]['postevent']['specialchars'] = "Certains champs ne doivent pas contenir de caractères spéciaux";
+$message[$_SESSION['language']]['postevent']['lang'] = "La langue de l'événement est invalide";
+$message[$_SESSION['language']]['postevent']['langlevel'] = "Le niveau de langue de l'événement est invalide";
+$message[$_SESSION['language']]['postevent']['organizernotfound'] = "Impossible de vérifier les autorisations, veuillez vous (re)connecter. ";
+$message[$_SESSION['language']]['postevent']['eventexists'] = "Un événement avec ce nom existe déjà";
 
 
 //Homepage
@@ -72,7 +71,7 @@ $minilang[$_SESSION['language']]['icon']['italian']['png'] = "views/images/p_ita
 $minilang[$_SESSION['language']]['icon']['italian']['value'] = "italian";
 $minilang[$_SESSION['language']]['icon']['french']['png'] = "views/images/p_french.png";
 $minilang[$_SESSION['language']]['icon']['french']['value'] = "french";
-$minilang[$_SESSION['language']]['icon']['multi']['png'] = "views/images/p_multi.png";
+$minilang[$_SESSION['language']]['icon']['multi']['png'] = "views/images/p_multiples.png";
 $minilang[$_SESSION['language']]['icon']['multi']['value'] = "multilanguages";
 ### Other possible languages :
 #$modal[$_SESSION['language']]['lang'][4]['value'] = "portuguese";
