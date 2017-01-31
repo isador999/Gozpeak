@@ -36,7 +36,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center"><?php echo $modal[$_SESSION['language']]['postevent']['title']; ?> <span> <img class="EventLogoTitle"></span> </h4>
+        <h4 class="modal-title text-center"><?php echo $modal[$_SESSION['language']]['postevent']['title']; ?> <span> <img class="EventLogoTitle" src="to_be_defined" alt="Logo Title"></span> </h4>
       </div>
 
       <form role="form" data-toggle="validator" class="vertical-form posteventForm" name="eventForm" id="eventForm" method="post" action="<?php echo $baseUrl.'/controllers/postevent.php' ?>">
@@ -48,7 +48,7 @@
 
             <div class="row">
               <div class="col-lg-5">
-                <img style="width: 92%;" class="EventQueryImg" alt="logo">
+                <img style="width: 92%;" class="EventQueryImg" src="to_be_defined" alt="CategoryImg">
               </div>
 
               <!-- Name et Place of event -->
@@ -56,7 +56,7 @@
                 <div class="form-group">
                   <label class="text-left" for="event_name"><?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['desc']; ?>&nbsp;&#42;</label>
                   <div class="text-left">
-                    <input type="event_name" class="form-control" id="event_name" name="event_name" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['placeholder']; ?>" required />
+                    <input type="text" class="form-control" id="event_name" name="event_name" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][0]['placeholder']; ?>" required />
                   </div>
                 </div>
 
@@ -91,7 +91,8 @@
                 <div class="row">
                   <div class="col-lg-5 form-group">
                     <label class="text-left" for="event_datetime"><?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['desc']; ?>&nbsp;&#42;</label>
-                    <input id="datetime-btn-event" class="form-control datetime-btn"  type="date" name="event_datetime" placeholder="<?php echo $modal[$_SESSION['language']]['postevent']['field'][3]['placeholder']; ?>" required />
+                    <!-- <input id="datetime-btn-event" class="form-control datetime-btn"  type="date" name="event_datetime" placeholder="<?php #echo $modal[$_SESSION['language']]['postevent']['field'][3]['placeholder']; ?>" required /> -->
+                    <input id="datetime-btn-event" class="form-control datetime-btn" type="datetime" name="event_datetime" value="<?php echo date('Y-m-d H:i:s') ?>" required />
                   </div>
                   <script type="text/javascript">
                     showDatetimePicker();

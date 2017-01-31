@@ -4,7 +4,6 @@ session_start();
 
 <nav role="navigation" class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
-    <!-- <div class="navbar-header row text-center col-lg-5 col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3 hidden-xs"> -->
     <div class="row">
       <div class="col-lg-offset-1 col-lg-2 col-md-offset-4 col-sm-offset-4 col-sm-4">
         <a href="<?php echo $baseUrl.'/index.php?page=home'; ?>" title="GoZpeak!"><img src="views/images/gozpeak_small.png" alt="GoZpeak" /></a>
@@ -64,5 +63,6 @@ session_start();
           <li class="col-xs-offset-1 pull-left btn navbar-btn"><a title="<?php #echo $headband[$_SESSION['language']]['event']['title']; ?>" data-toggle="modal" data-target="#modalSelectQueryNotLogged"><span class="glyphicon glyphicon-calendar"> <?php #echo $headband[$_SESSION['language']]['event']['text']; ?> </span></a></li>
         </ul>
       </div> -->
+    </div>
   </div>
 </nav>

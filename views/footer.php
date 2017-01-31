@@ -1,5 +1,5 @@
 
-<footer>
+<!-- <footer> -->
   <div class="container-fluid">
     <div class="row text-center">
       <div class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10">
@@ -46,4 +46,4 @@
       <?php echo $generic['fr']['footer'][0]; ?>
     </div>
   </div>
-</footer>
+<!-- </footer> -->

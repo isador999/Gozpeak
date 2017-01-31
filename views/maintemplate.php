@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+
     <title><?php echo $ViewTitle; ?></title>
 
     <!-- PERSONAL FONT -->
@@ -45,20 +46,39 @@
     <script type="text/javascript" src="views/js/bootstrap-datetimepicker.fr.js"></script>
     <!-- <script type="text/javascript" src="views/js/typeahead.bundle.min.js"></script>
     <script type="text/javascript" src="views/js/typeahead-scroll.js"></script> -->
-
   </head>
   <!-- <?php #require($this->viewFile); ?> -->
 
 
-  <!-- SOURCE VIEWS IN BODY -->
   <body>
-    <div id="wrap">
-      <?php foreach ($ViewPages as $page) {
-        require_once($page);
+    <?php
+      if (!empty($ViewNavPages)) {
+        foreach ($ViewNavPages as $page) {
+          require_once($page);
+        }
       }
-      ?>
+    ?>
 
-      <!-- <title><?php #echo $viewModel->get('pageTitle'); ?></title> -->
+    <!-- Corpse Views -->
+    <div class="corpse container-fluid">
+      <?php
+        if (!empty($ViewPages)) {
+          foreach ($ViewPages as $page) {
+            require_once($page);
+          }
+        }
+      ?>
     </div>
+
+    <!-- Footer -->
+    <footer>
+      <?php
+        if (!empty($ViewFooterPages)) {
+          foreach ($ViewFooterPages as $page) {
+            require_once($page);
+          }
+        }
+      ?>
+    </footer>
   </body>
 </html>

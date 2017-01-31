@@ -8,7 +8,8 @@
 			</div>
 
 			<!-- The messages container -->
-			<div id="inscription-errors" class="text-left col-lg-offset-1 modal-errors"></div>
+			<div id="inscription-errors" class="text-left col-lg-offset-1 modal-errors">
+			</div>
 
 			<form role="form" class="form-horizontal inscriptionForm" id="inscriptionForm" name="inscriptionForm" method="post" action="<?php echo $baseUrl .'/controllers/inscription.php' ?>">
 
@@ -50,7 +51,8 @@
 			</div>
 
 			<!-- The messages container -->
-			<div id="connect-errors" class="text-left col-lg-offset-1 modal-errors"></div>
+			<div id="connect-errors" class="text-left col-lg-offset-1 modal-errors">
+			</div>
 			<form role="form" data-toggle="validator" class="form-horizontal connectionForm" name="connectionForm" id="connectionForm" method="post" action="<?php echo $baseUrl.'/controllers/connexion.php' ?>">
 				<div class="modal-body">
 					<?php foreach($modal[$_SESSION['language']]['connection']['field'] as $key => $value){ ?>
@@ -89,7 +91,8 @@
     	</div>
 
 			<!-- The messages container -->
-    	<div id="forgotpass-errors" class="text-left col-lg-9 col-lg-offset-1 modal-errors"></div>
+    	<div id="forgotpass-errors" class="text-left col-lg-9 col-lg-offset-1 modal-errors">
+			</div>
 			<form role="form" data-toggle="validator" class="form-horizontal forgotpassForm" id="forgotpassForm" name="forgotpassForm" method="post" action="<?php echo $baseUrl.'/controllers/forgotpass.php' ?>">
 				<div class="modal-body">
 

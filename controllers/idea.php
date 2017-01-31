@@ -11,6 +11,8 @@ $user_registered = 0;
 /*****************************/
 /* Set List of views to be sourced */
 $ViewPages = array();
+$ViewFooterPages = array();
+$ViewNavPages = array();
 
 
 if(isset($_GET['query']) && !empty($_GET['query'])) {
@@ -80,21 +82,21 @@ if ($logged == 1) {
       }
   }
 
-  $ViewPages[] = VIEWS.'header-logged.php';
-  $ViewPages[] = MODALS.'modal-postevent-logged.php';
-  $ViewPages[] = VIEWS.'idea-logged.php';
+  $ViewNavPages[] = MODALS.'modal-postevent-logged.php';
+  $ViewNavPages[] = VIEWS.'header-logged.php';
   $ViewPages[] = MODALS.'modal-displaymembers.php';
+  $ViewPages[] = VIEWS.'idea-logged.php';
 } else {
-  $ViewPages[] = VIEWS.'header-notlogged.php';
-  $ViewPages[] = MODALS.'modal-postevent-notlogged.php';
+  $ViewNavPages[] = MODALS.'modal-postevent-notlogged.php';
+  $ViewNavPages[] = VIEWS.'header-notlogged.php';
   $ViewPages[] = VIEWS.'idea-notlogged.php';
 }
 
-$ViewPages[] = MODALS.'modal-navbar.php';
-$ViewPages[] = MODALS.'modal-footer.php';
-$ViewPages[] = VIEWS.'footer.php';
+$ViewNavPages[] = MODALS.'modal-navbar.php';
+$ViewFooterPages[] = MODALS.'modal-footer.php';
+$ViewFooterPages[] = VIEWS.'footer.php';
 
-$ViewTitle = $generic['fr']['region'][0].' - '.$generic['fr']['city'][0]['name'];
+$ViewTitle = $generic[$_SESSION['language']]['region'][0].' - '.$generic[$_SESSION['language']]['city'][0]['name'];
 
 require_once(VIEWS.'maintemplate.php');
 

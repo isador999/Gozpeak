@@ -13,6 +13,8 @@ date_default_timezone_set("Europe/Paris");
 mb_internal_encoding("UTF-8");
 
 $ViewPages = array();
+$ViewFooterPages = array();
+$ViewNavPages = array();
 
 if(isset($_GET['query']) && !empty($_GET['query'])) {
 	$query = $_GET['query'];
@@ -130,19 +132,23 @@ $current_eventmonth = $current_ideamonth = $list[$_SESSION['language']]['monthpi
 //Source Views
 $logged = check_logged();
 if ($logged == 1) {
-	$ViewPages[] = VIEWS.'header-logged.php';
+	$ViewNavPages[] = MODALS.'modal-navbar.php';
+	$ViewNavPages[] = MODALS.'modal-postevent-logged.php';
+	$ViewNavPages[] = VIEWS.'header-logged.php';
+
 	$ViewPages[] = VIEWS.'list.php';
-	$ViewPages[] = VIEWS.'footer.php';
-	$ViewPages[] = MODALS.'modal-navbar.php';
-	$ViewPages[] = MODALS.'modal-postevent-logged.php';
-	$ViewPages[] = MODALS.'modal-footer.php';
+
+	$ViewFooterPages[] = MODALS.'modal-footer.php';
+	$ViewFooterPages[] = VIEWS.'footer.php';
 } else {
-	$ViewPages[] = VIEWS.'header-notlogged.php';
+	$ViewNavPages[] = MODALS.'modal-navbar.php';
+	$ViewNavPages[] = MODALS.'modal-postevent-notlogged.php';
+	$ViewNavPages[] = VIEWS.'header-notlogged.php';
+
 	$ViewPages[] = VIEWS.'list.php';
-	$ViewPages[] = VIEWS.'footer.php';
-	$ViewPages[] = MODALS.'modal-navbar.php';
-	$ViewPages[] = MODALS.'modal-postevent-notlogged.php';
-	$ViewPages[] = MODALS.'modal-footer.php';
+
+	$ViewFooterPages[] = MODALS.'modal-footer.php';
+	$ViewFooterPages[] = VIEWS.'footer.php';
 }
 
 

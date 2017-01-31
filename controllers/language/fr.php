@@ -20,7 +20,7 @@ $modal['fr']['generic']['closed'] = "Fermer";
 // Modal What
 $modal['fr']['what']['title'] = "Le nouveau concept pour apprendre une langue";
 $modal['fr']['what'][0]['presentation'] = "
-<p>Vous avez certainement remarqué qu’apprendre une langue ce n’est pas seulement de la théorie. Vous êtes peut-être arrivés à la conclusion qu´il faut rencontrer des natifs pour améliorer votre niveau. Savez-vous que dans votre ville, des natifs qui parlent la langue que vous êtes en train d'étudier ont eux aussi besoin de pratiquer la vôtre?
+<p> Vous avez certainement remarqué qu’apprendre une langue ce n’est pas seulement de la théorie. Vous êtes peut-être arrivés à la conclusion qu´il faut rencontrer des natifs pour améliorer votre niveau. Savez-vous que dans votre ville, des natifs qui parlent la langue que vous êtes en train d'étudier ont eux aussi besoin de pratiquer la vôtre?
 						  Nous nous sommes confrontés au problème et nous avons trouvé une solution : </p>
 <p class='center'><img src='views/images/gozpeak_small.png' alt='GoZpeak' title='GoZpeak' /></p>
 <p><img src='views/images/gozpeak_mini.png' alt='GoZpeak' title='GoZpeak' />

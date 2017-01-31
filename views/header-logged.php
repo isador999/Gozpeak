@@ -54,7 +54,7 @@ session_start();
     <!-- NAV TABS BUTTONS -->
       <div class="col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-6">
         <ul class="nav nav-tabs">
-          <li class="col-lg-3 col-md-3 col-sm-3 col-xs-7 text-right btn navbar-btn"><a href="<?php echo $baseUrl.'/index.php?page=profil' ?>"><span class="glyphicon glyphicon-user"> <?php echo $_SESSION['profil']; ?></span></a></li>1
+          <li class="col-lg-3 col-md-3 col-sm-3 col-xs-7 text-right btn navbar-btn"><a href="<?php echo $baseUrl.'/index.php?page=profil' ?>"><span class="glyphicon glyphicon-user"> <?php echo $_SESSION['profil']; ?></span></a></li>
           <li class="col-lg-4 col-md-4 col-sm-4 col-xs-9 text-right btn navbar-btn"><a href="<?php echo $baseUrl.'/index.php?page=logout' ?>"><span class="glyphicon glyphicon-log-out"> <?php echo $headband[$_SESSION['language']]['logout']; ?> </span></a></li>
           <li class="col-lg-4 col-md-4 col-sm-4 col-xs-10 text-right btn navbar-btn"><a title="<?php echo $headband[$_SESSION['language']]['event']['title']; ?>" data-toggle="modal" data-target="#modalSelectQuery"><span class="glyphicon glyphicon-calendar"> <?php echo $headband[$_SESSION['language']]['event']['text']; ?> </span></a></li>
         </ul>

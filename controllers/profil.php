@@ -10,6 +10,8 @@ require_once(MODELS.'profile_functions.php');
 
 /* Set List of views to be sourced */
 $ViewPages = array();
+$ViewFooterPages = array();
+$ViewNavPages = array();
 
 if (isset($_GET['profil']) && (!empty($_GET['profil']))) {
 	$provided_profile = $_GET['profil'];
@@ -30,19 +32,19 @@ if (isset($pseudo)) {
 
 	$logged = check_logged();
 	if ($logged == 1) {
-		$ViewPages[] = VIEWS.'header-logged.php';
-		$ViewPages[] = MODALS.'modal-postevent-logged.php';
+		$ViewNavPages[] = MODALS.'modal-postevent-logged.php';
+		$ViewNavPages[] = VIEWS.'header-logged.php';
 		if ($pseudo == $_SESSION['profil']) {
+			$ViewPages[] = MODALS.'modal-profile-eventlist.php';
 			$ViewPages[] = VIEWS.'profile-logged.php';
 			$ViewPages[] = MODALS.'modal-profile.php';
-			$ViewPages[] = MODALS.'modal-profile-eventlist.php';
 		} else {
 			$ViewPages[] = VIEWS.'profile-notlogged.php';
 		}
 	} else {
-		$ViewPages[] = VIEWS.'header-notlogged.php';
+		$ViewNavPages[] = MODALS.'modal-postevent-notlogged.php';
+		$ViewNavPages[] = VIEWS.'header-notlogged.php';
 		$ViewPages[] = VIEWS.'profile-notlogged.php';
-		$ViewPages[] = MODALS.'modal-postevent-notlogged.php';
 	}
 
 	if ($infos['premium'] == 0) {
@@ -54,12 +56,10 @@ if (isset($pseudo)) {
 	$error="unknown_pseudo";
 }
 
-
 /* Retrieve Subscribe date of the user */
-$ViewPages[] = VIEWS.'footer.php';
-$ViewPages[] = MODALS.'modal-navbar.php';
-$ViewPages[] = MODALS.'modal-footer.php';
-
+$ViewNavPages[] = MODALS.'modal-navbar.php';
+$ViewFooterPages[] = MODALS.'modal-footer.php';
+$ViewFooterPages[] = VIEWS.'footer.php';
 
 unset($_SESSION['msg']);
 
@@ -70,7 +70,7 @@ if (isset($error) && ($error == 'unknown_pseudo')) {
 	header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 }
 
-$ViewTitle = $generic['fr']['region'][0];
+$ViewTitle = $generic[$_SESSION['language']]['region'][0];
 require_once(VIEWS.'maintemplate.php');
 
 ?>
