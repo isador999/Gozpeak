@@ -43,14 +43,14 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            pseudo: {
+            profile_pseudo: {
                 validators: {
                     notEmpty: {
                         message: "Votre pseudo ne peut pas être vide"
                     }
                 }
             },
-            lastname: {
+            profile_lastname: {
                 validators: {
                     stringLength: {
                       min: 3,
@@ -59,7 +59,7 @@ $(document).ready(function() {
                     },
                 }
             },
-            firstname: {
+            profile_firstname: {
                 validators: {
                     stringLength: {
                       min: 2,
@@ -75,7 +75,7 @@ $(document).ready(function() {
                   }
                 }
             },
-            nationality: {
+            profile_nationality: {
                 validators: {
                   stringLength: {
                     min: 4,
@@ -88,7 +88,7 @@ $(document).ready(function() {
                   }
                 }
             },
-            birthdate: {
+            profile_birthdate: {
                 validators: {
                   stringLength: {
                     min: 8,
@@ -210,12 +210,12 @@ function GetProfileInfos(baseUrl, profile) {
     success: function(response)
     {
       var data = JSON.parse(response);
-      $("#profileForm").find("#pseudo").val(data.pseudo);
-      $("#profileForm").find("#lastname").val(data.lastname);
-      $("#profileForm").find("#firstname").val(data.name);
+      $("#profileForm").find("#profile_pseudo").val(data.pseudo);
+      $("#profileForm").find("#profile_lastname").val(data.lastname);
+      $("#profileForm").find("#profile_firstname").val(data.name);
       $("#profileForm").find("#profile_mail").val(data.email);
-      $("#profileForm").find("#nationality").val(data.nationality);
-      $("#profileForm").find("#birthdate").val(data.birthday);
+      $("#profileForm").find("#profile_nationality").val(data.nationality);
+      $("#profileForm").find("#profile_birthdate").val(data.birthday);
     }
   });
 }

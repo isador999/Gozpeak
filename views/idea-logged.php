@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="text-center activity">
-      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
+      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
       <p> <?php echo $home[$_SESSION['language']][$query]['text'] ?></p>
     </div>
   </div>
@@ -20,11 +20,11 @@
 
           <tr>
             <th> Langue(s) : </th>
-            <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['png']; ?>">  <?php echo $infos_idea['language'] ?><br/> </td>
+            <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['png']; ?>" alt="langue de l'événement" /> <?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['text']; ?> </td>
           </tr>
 
           <tr>
-            <th> Niveau en <?php echo $infos_idea['language'] ?> conseillé : </th>
+            <th> Niveau de langue conseillé : </th>
             <td> <?php echo $infos_idea['level_language'] ?> </td>
           </tr>
 
@@ -68,19 +68,19 @@
 
     <!-- EVENT BUTTONS -->
     <div class="row">
-      <div class="col-lg-offset-1 col-lg-2 event-buttons">
+      <div class="col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-offset-1 col-xs-3 event-buttons">
         <?php if ($user_is_organizer == 1) { ?>
           <script src="views/js/jquery.eventedit.js"></script>
           <button title="<?php echo $form[$_SESSION['language']]['organizer']['eventedit']['title']; ?>" data-toggle="modal" data-target="#modalEventEdit" onclick="GetEventInfos('<?php echo $baseUrl; ?>', 'idea', '<?php echo urlencode($infos_idea['ideaname']); ?>', '<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['logo']; ?>', '<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['color']; ?>', '<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['img']; ?>', '<?php echo $infos_idea['ideatype']; ?>');" class="btn btn-primary"><?php echo $form[$_SESSION['language']]['organizer']['eventedit']['desc']; ?></button>
         <?php } elseif ($user_registered == 0) { ?>
           <form class="form-horizontal idea-addmember" action="<?php echo $baseUrl.'/controllers/idea_addmember.php' ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="addmember-ideaname" value="<?php echo $infos_idea['ideaname'] ?>">
-            <button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['addmember']['submit']; ?> class="idea-addmember btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
+            <button type="button" value=<?php echo $form[$_SESSION['language']]['addmember']['submit']; ?> class="idea-addmember btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
           </form>
         <?php } elseif ($user_registered == 1) { ?>
           <form class="form-horizontal idea-addmember" action="<?php echo $baseUrl.'/controllers/idea_delmember.php' ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="delmember-ideaname" value="<?php echo $infos_idea['ideaname']; ?>">
-            <button type="<?php echo $form[$_SESSION['language']]['delmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['delmember']['submit']; ?> class="idea-addmember btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button>
+            <button type="button" value=<?php echo $form[$_SESSION['language']]['delmember']['submit']; ?> class="idea-addmember btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button>
           </form>
         <?php } ?>
         <button title="<?php echo $form[$_SESSION['language']]['listmembers']['title']; ?>" data-toggle="modal" data-target="#modal-displaymembers" onclick="showEventMembers('<?php echo $baseUrl; ?>', 'zpeakidea','<?php echo $infos_idea['ideaname'] ?>')" class="idea-listmembers btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['listmembers']['desc']; ?> <span class="badge"><?php echo $nb_members; ?></span></button>
@@ -88,9 +88,9 @@
     </div>
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div style="background-color: dimgray;">
       Futurs commentaires
     </div>
-  </div>
+  </div> -->
 </div>  <!-- END OF CORPSE -->

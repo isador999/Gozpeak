@@ -7,6 +7,7 @@
 				<h4 class="modal-title text-center"><?php echo $modal[$_SESSION['language']]['profile']['edition']['title']; ?></h4>
 			</div>
 
+
 			<!-- The messages container -->
 			<div id="profile-errors" class="text-left col-lg-offset-1 modal-errors"></div>
 			<form role="form" data-toggle="validator" class="form-horizontal" name="profileForm" id="profileForm" method="POST" action="<?php echo $baseUrl.'/controllers/updateprofile.php' ?>">

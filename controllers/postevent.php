@@ -193,7 +193,7 @@ if($_POST) {
 				$mail_content .= '<h4>' . "Bonjour $organizer ! " . '</h4>' . '<br>' . '<br>';
 				$mail_content .= '<strong>' . "Votre idée d'événement Gozpeak a bien été enregistrée" . '</strong>' . '<br>';
 				$mail_content .= "Vous pouvez la retrouver en cliquant sur le lien ci-dessous :  " . '<br>';
-				$mail_content .= '<a href="' . $baseUrl . '/index.php?page=idea&query=' . $query . 'idea=' . $event_name_for_link . '">' . $event_name . '</a>' . '<br>' . '<br>';
+				$mail_content .= '<a href="' . $baseUrl . '/index.php?page=idea&query=' . $query . '&idea=' . $event_name_for_link . '">' . $event_name . '</a>' . '<br>' . '<br>';
 				$mail_content .= "Les membres ayant un compte actif peuvent désormais s'inscrire à votre sortie" . '<br>';
 				$mail_content .= "En espérant que vous ayez de nombreux inscrits !" . '<br>' . '<br>';
 				$mail_content .= "Linguistiquement," . '<br>' . '<br>';
@@ -211,7 +211,7 @@ if($_POST) {
           $team_mail_content .= "Téléphone (peut être vide) : " . '<strong>' . $phone_number . '</strong>' . '<br>' . '<br>';
           $team_mail_content .= "Le nom de l'idée postée : " . '<strong>' . $event_name . '</strong>' . '<br>' . '<br>';
 					$team_mail_content .= "Description de l'idée : " . '<br>' . '<strong>' . $event_desc . '</strong>' . '<br>' . '<br>';
-          $team_mail_content .= "Le lien vers l'idée :  " . '<a href="' . $baseUrl . '/index.php?page=idea&query=' . $query . 'idea=' . $event_name_for_link . '">' . $event_name . '</a>' . '<br>' . '<br>';
+          $team_mail_content .= "Le lien vers l'idée :  " . '<a href="' . $baseUrl . '/index.php?page=idea&query=' . $query . '&idea=' . $event_name_for_link . '">' . $event_name . '</a>' . '<br>' . '<br>';
           $team_mail_content .= "Langue / Niveau souhaités : " . '<strong>' . " $lang niveau $langlevel" . '</strong>' . '<br>';
           $team_mail_content .= "Les personnes ayant un compte actif peuvent s'inscrire à cette sortie" . '<br>' . '<br>';
 					$team_mail_content .= '<img src="' . $baseUrl . '/views/images/gozpeak_small.png" alt="Gozpeak Logo">' . '<br>';
@@ -260,12 +260,8 @@ if (isset($error)) {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, un événement du même nom existe déjà </div> </div>';
   } elseif($error == 'not_existant_eventname') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, l\'événement concerné est introuvable. Veuillez réessayer ultérieurement </div> </div>';
-	} elseif ($error == 'update_existant_idea_failed') {
-		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Update Existant Event failed (DB function) </div> </div>';
-	} elseif ($error == 'registerDB_not_failed') {
-		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> RegisterDB not failed </div> </div>';
-	} elseif ($error == 'registerDB_failed') {
-		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> RegisterDB failed </div> </div>';
+	}  elseif ($error == 'registerDB_failed') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, une erreur est survenue lors de l\'enregistrement de l`événement.  Veuillez réessayer ultérieurement </div> </div>';
 	}
 
 }

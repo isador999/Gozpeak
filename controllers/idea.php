@@ -27,6 +27,22 @@ if(isset($_GET['idea']) && !empty($_GET['idea'])) {
 $infos_idea = retrieve_idea($DB, $ideaname);
 $ideaid = $infos_idea['id'];
 
+//Set corresponding language vars in $infos_idea
+switch($infos_idea['level_language']) {
+  case "beginner":
+    $infos_idea['level_language'] = $modal[$_SESSION['language']]['selectlanglevel']['option'][0]['entry'];
+    break;
+  case "middle":
+    $infos_idea['level_language'] = $modal[$_SESSION['language']]['selectlanglevel']['option'][1]['entry'];
+    break;
+  case "advanced":
+    $infos_idea['level_language'] = $modal[$_SESSION['language']]['selectlanglevel']['option'][2]['entry'];
+    break;
+  default:
+    $infos_idea['level_language'] = "<i> Unknown level_language </i>";
+}
+
+
 $DiffDate = retrieve_remaining_days_idea($DB, $ideaname);
 if ($DiffDate < 0) {
 	$DiffDate = "Evenement terminé";

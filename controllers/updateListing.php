@@ -8,7 +8,6 @@ require_once('./lib/check_strings.php');
 require_once('../models/dbconnect.php');
 require_once('../models/list_pagination_functions.php');
 
-
 if($_GET) {
   $query              = isset($_GET['query']) ? $_GET['query'] : '';
   $languages          = isset($_GET['languages']) ? $_GET['languages'] : '';
@@ -101,7 +100,13 @@ if($_GET) {
         $PaginateResponse = array('current_page' => $ideas_current_page, 'total_pages' => $ideas_total_pages);
         echo json_encode($PaginateResponse);
       } else {
-        $ideas = list_ideas_by_type($DB, $ideas_offset, $nb_rows_per_page, $query, $languages, $picked_ideayear, $picked_eventmonth, $membername);
+        $ideas = list_ideas_by_type($DB, $ideas_offset, $nb_rows_per_page, $query, $languages, $picked_ideayear, $picked_ideamonth, $membername);
+        // echo "ideas_offset : " . $ideas_offset;
+        // echo "nb_rows : " . $nb_rows_per_page;
+        // echo "Query : " . $query;
+        // echo "ideayear selected : " . $$picked_ideayear;
+        // echo "ideamonth selected : " . $picked_ideamonth;
+        // echo "membername : " . $membername;
         echo json_encode($ideas);
       }
   }

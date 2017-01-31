@@ -22,7 +22,7 @@
 						</div>
 
 						<div class="profile-head-text col-lg-5 col-md-5 col-sm-10">
-							<button data-toggle="modal" data-target="#modalMsgMember" class="btn btn-primary"> Envoyer un message à ce membre </button>
+							<button data-toggle="modal" data-target="#modalMsgMember" class="btn btn-primary" disabled> Envoyer un message à ce membre </button>
 						</div>
 					</div>
 				</div>

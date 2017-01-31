@@ -23,7 +23,7 @@
 
 						<div class="profile-head-text col-lg-5 col-md-5 col-sm-10">
 							<button data-toggle="modal" data-target="#modalChangePassword" class="btn btn-primary"> Changer votre mot de passe </button> <br> <br>
-							<button data-toggle="modal" data-target="#modalProfileDeletion" class="btn btn-danger"> Supprimer votre compte Gozpeak </button>
+							<button data-toggle="modal" data-target="#modalProfileDeletion" class="btn btn-danger" disabled> Supprimer votre compte Gozpeak </button>
 						</div>
 					</div>
 				</div>

@@ -42,6 +42,7 @@
     <script type="text/javascript" async src="views/js/jquery.contact.js"></script>
     <script type="text/javascript" async src="views/js/jquery.listmembers.js"></script>
     <script type="text/javascript" src="views/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="views/js/bootstrap-datetimepicker.fr.js"></script>
     <!-- <script type="text/javascript" src="views/js/typeahead.bundle.min.js"></script>
     <script type="text/javascript" src="views/js/typeahead-scroll.js"></script> -->
 

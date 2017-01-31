@@ -27,6 +27,7 @@ function list_events_by_type($DB, $eventoffset, $eventpagination, $eventtype, $f
 	}
 
 	if(!empty($month)) {
+		$month = lcfirst($month);
 		$sql .= " AND MONTHNAME(eventdatetime) = '$month'";
 	}
 
@@ -77,6 +78,7 @@ function list_ideas_by_type($DB, $ideaoffset, $ideapagination, $ideatype, $filte
 		$sql .= " AND YEAR(ideadatetime) = '$year'";
 	}
 	if(!empty($month)) {
+		$month = lcfirst($month);
 		$sql .= " AND MONTHNAME(ideadatetime) = '$month'";
 	}
 
@@ -108,6 +110,8 @@ function count_events_by_type ($DB, $eventtype, $filteredLanguages, $year, $mont
 	}
 
 	$sql .= " AND YEAR(eventdatetime) = '$year'";
+
+	$month = lcfirst($month);
 	$sql .= " AND MONTHNAME(eventdatetime) = '$month'";
 
 	$req = $DB->prepare($sql);
@@ -151,6 +155,8 @@ function count_ideas_by_type ($DB, $ideatype, $filteredLanguages, $year, $month,
 	}
 
 	$sql .= " AND YEAR(ideadatetime) = '$year'";
+
+	$month = lcfirst($month);
 	$sql .= " AND MONTHNAME(ideadatetime) = '$month'";
 
 	$req = $DB->prepare($sql);

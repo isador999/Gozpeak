@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="text-center activity">
-      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
+      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
       <p> <?php echo $home[$_SESSION['language']][$query]['text'] ?></p>
     </div>
   </div>
@@ -22,11 +22,11 @@
 
           <tr>
             <th> Langue(s) : </th>
-            <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['png']?>">  <?php echo $infos_idea['language'] ?><br/> </td>
+            <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['png']; ?>" alt="langue de l'événement" /> <?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['text']; ?> </td>
           </tr>
 
           <tr>
-            <th> Niveau en <?php echo $infos_idea['language'] ?> conseillé : </th>
+            <th> Niveau de langue conseillé : </th>
             <td> <?php echo $infos_idea['level_language'] ?> </td>
           </tr>
 
@@ -70,15 +70,15 @@
 
     <!-- EVENT BUTTONS -->
     <div class="row">
-      <div class="col-lg-offset-1 col-lg-2 text-center event-buttons">
-        <button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" title="<?php echo $form[$_SESSION['language']]['addmember']['title']; ?>" class="idea-addmember btn btn-primary pull-right disabled"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
+      <div class="col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-offset-1 col-xs-3 text-center event-buttons">
+        <button type="button" title="<?php echo $form[$_SESSION['language']]['addmember']['title']; ?>" class="idea-addmember btn btn-primary pull-right disabled"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
       </div>
     </div>
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div style="background-color: dimgray;">
       Futur comments
     </div>
-  </div>
+  </div> -->
 </div>  <!-- END OF CORPSE -->

@@ -1,6 +1,6 @@
 <?php
 
-$SQL['fr']['locale'] = "fr_FR";
+
 $SQL['it']['locale'] = "it_IT";
 $SQL['es']['locale'] = "es_ES";
 $SQL['en']['locale'] = "en_US";
@@ -55,7 +55,6 @@ $modal[$_SESSION['language']]['SelectQuery']['field']['eat']['img'] = "views/ima
 $modal[$_SESSION['language']]['SelectQuery']['field']['eat']['query'] = "eat";
 
 
-
 //Select Lang Postevent
 // $modal[$_SESSION['language']]['select']['lang']['option'][0]['value'] = "english";
 // $modal[$_SESSION['language']]['select']['lang']['option'][1]['value'] = "spanish";
@@ -71,8 +70,8 @@ $minilang[$_SESSION['language']]['icon']['italian']['png'] = "views/images/p_ita
 $minilang[$_SESSION['language']]['icon']['italian']['value'] = "italian";
 $minilang[$_SESSION['language']]['icon']['french']['png'] = "views/images/p_french.png";
 $minilang[$_SESSION['language']]['icon']['french']['value'] = "french";
-$minilang[$_SESSION['language']]['icon']['multi']['png'] = "views/images/p_multiples.png";
-$minilang[$_SESSION['language']]['icon']['multi']['value'] = "multilanguages";
+$minilang[$_SESSION['language']]['icon']['multiples']['png'] = "views/images/p_multiples.png";
+$minilang[$_SESSION['language']]['icon']['multiples']['value'] = "multiples";
 ### Other possible languages :
 #$modal[$_SESSION['language']]['lang'][4]['value'] = "portuguese";
 #$modal[$_SESSION['language']]['lang'][4]['entry'] = "Portugais";

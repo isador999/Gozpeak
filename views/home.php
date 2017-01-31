@@ -20,7 +20,8 @@
 				</h4>
 
 				<div id="ZpeakCities" style="display:none;">
-					<div> <button class="btn btn-default" title="<?php echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Rennes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Nantes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Tours </button> </div>
+					<!-- <div> <button class="btn btn-default" title="<?php #echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Rennes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php #echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Nantes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php #echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Tours </button> </div> -->
+					<div> <button class="btn btn-default" disabled> Gozpeak est seulement associé à la ville de Rennes actuellement </button></div>
 				</div>
 			</div>
 		</div>
@@ -69,8 +70,3 @@
 			<span><?php echo $home[$_SESSION['language']]['eat']['text']; ?></span>
 		</div>
 	</div>
-
-<!-- <div>
-	<a onclick="alert('Resolution : La largeur de votre écran, en pixels : ' + window.innerWidth + 'px');"> Largeur d'écran </a>
-	<a onclick="alert('Resolution : La hauteur de votre écran, en pixels : ' + window.innerHeight + 'px');"> Hauteur d'écran </a>
-</div>  -->

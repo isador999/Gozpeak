@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="text-center activity">
-      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
+      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
       <p> <?php echo $home[$_SESSION['language']][$query]['text'] ?></p>
     </div>
   </div>
@@ -21,10 +21,11 @@
           <tr>
             <th> Langue(s) : </th>
             <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_event['language']]['png']?>">  <?php echo $infos_event['language'] ?><br/> </td>
+            <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_event['language']]['png']; ?>" alt="langue de l'événement" /> <?php echo $minilang[$_SESSION['language']]['icon'][$infos_event['language']]['text']; ?> </td>
           </tr>
 
           <tr>
-            <th> Niveau en <?php echo $infos_event['language'] ?> conseillé : </th>
+            <th> Niveau de langue conseillé : </th>
             <td> <?php echo $infos_event['level_language'] ?> </td>
           </tr>
 
@@ -69,21 +70,20 @@
 
     <!-- EVENT BUTTONS -->
     <div class="row">
-      <div class="col-lg-offset-1 col-lg-2 text-center event-buttons">
-
+      <div class="col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-offset-1 col-xs-3 text-center event-buttons">
 			<?php if ($user_is_organizer == 1) { ?>
         <script src="views/js/jquery.eventedit.js"></script>
         <button onclick="showModalEventEdit()" title="<?php echo $form[$_SESSION['language']]['organizer']['eventedit']['title']; ?>" class="event-edit btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['organizer']['eventedit']['desc']; ?></button>
       <?php } elseif ($user_registered == 0) { ?>
 				<form class="form-horizontal event-addmember" action="<?php echo $baseUrl.'/controllers/event_addmember.php' ?>" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="addmember-eventname" value="<?php echo $infos_event['eventname']; ?>">
-					<button type="<?php echo $form[$_SESSION['language']]['addmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['addmember']['submit']; ?> class="event-addmember btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
+					<button type="button" value=<?php echo $form[$_SESSION['language']]['addmember']['submit']; ?> class="event-addmember btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
 				</form>
 
 			<?php } elseif ($user_registered == 1) { ?>
 				<form class="form-horizontal event-addmember" action="<?php echo $baseUrl.'/controllers/event_delmember.php' ?>" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="delmember-eventname" value="<?php echo $infos_event['eventname']; ?>">
-				  <button type="<?php echo $form[$_SESSION['language']]['delmember']['type']; ?>" value=<?php echo $form[$_SESSION['language']]['delmember']['submit']; ?> class="event-addmember btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button>
+				  <button type="button" value=<?php echo $form[$_SESSION['language']]['delmember']['submit']; ?> class="event-addmember btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['delmember']['desc']; ?></button>
 				</form>
 			<?php } ?>
         <button title="<?php echo $form[$_SESSION['language']]['listmembers']['title']; ?>" data-toggle="modal" data-target="#modal-displaymembers" onclick="showEventMembers('<?php echo $baseUrl; ?>', 'zpeakevent','<?php echo $infos_event['eventname'] ?>')" class="event-listmembers btn btn-default pull-left"><?php echo $form[$_SESSION['language']]['listmembers']['desc']; ?> <span class="badge"><?php echo $nb_members; ?></span></button>
@@ -91,9 +91,9 @@
     </div>
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-lg-offset-2 col-lg-9" style="background-color: dimgray;">
       Futur comments
     </div>
-  </div>
+  </div> -->
 </div>  <!-- END OF CORPSE -->

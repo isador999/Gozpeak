@@ -1,5 +1,6 @@
 <?php
 
+$SQL['fr']['locale'] = "fr_FR";
 
 // GENERAL
 $generic['fr']['what'][0]['text'] = "C'est quoi Gozpeak ?";
@@ -287,7 +288,7 @@ $minilang['fr']['icon']['english']['text'] = "Anglais";
 $minilang['fr']['icon']['spanish']['text'] = "Espagnol";
 $minilang['fr']['icon']['italian']['text'] = "Italien";
 $minilang['fr']['icon']['french']['text'] = "Français";
-$minilang['fr']['icon']['multi']['text'] = "Autre / Multiples";
+$minilang['fr']['icon']['multiples']['text'] = "Autre / Multiples";
 /*$minilang['fr']['icon']['portugais']['png'] = "views/images/p_portugais.png";
 $minilang['fr']['icon']['portugais']['text'] = "Portugais";
 $minilang['fr']['icon']['portugais']['value'] = "portugais";
@@ -302,8 +303,8 @@ $minilang['fr']['icon']['breton']['value'] = "breton";*/
 
 
 // List.php
-$list['fr']['events']['empty'] = "Il n'y a aucun événement présent dans cette catégorie";
-$list['fr']['ideas']['empty'] = "Il n'y a aucune idée proposée dans cette catégorie";
+$list['fr']['events']['empty'] = "Aucun événement Gozpeak pour ces critères de recherche";
+$list['fr']['ideas']['empty'] = "Aucune idée proposée pour ces critères de recherche";
 
 $list['fr']['filter']['placeholder'] = "Filtrer par langues";
 $list['fr']['filter']['submit'] = "Filtrer les événements";
