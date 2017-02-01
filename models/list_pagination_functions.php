@@ -111,8 +111,10 @@ function count_events_by_type ($DB, $eventtype, $filteredLanguages, $year, $mont
 
 	$sql .= " AND YEAR(eventdatetime) = '$year'";
 
-	$month = lcfirst($month);
-	$sql .= " AND MONTHNAME(eventdatetime) = '$month'";
+	if(!empty($month)) {
+		$month = lcfirst($month);
+		$sql .= " AND MONTHNAME(eventdatetime) = '$month'";
+	}
 
 	$req = $DB->prepare($sql);
 	$req -> execute(array(':eventtype'=>$eventtype));
@@ -156,8 +158,10 @@ function count_ideas_by_type ($DB, $ideatype, $filteredLanguages, $year, $month,
 
 	$sql .= " AND YEAR(ideadatetime) = '$year'";
 
-	$month = lcfirst($month);
-	$sql .= " AND MONTHNAME(ideadatetime) = '$month'";
+	if(!empty($month)) {
+		$month = lcfirst($month);
+		$sql .= " AND MONTHNAME(ideadatetime) = '$month'";
+	}
 
 	$req = $DB->prepare($sql);
 	//$req -> execute(array(':ideatype'=>$ideatype));

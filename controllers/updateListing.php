@@ -30,7 +30,14 @@ if($_GET) {
   	$languages = "";
   }
 
+
   if(!empty($picked_eventyear) OR (!empty($picked_eventmonth)) OR (!empty($pagination_events))) {
+
+    if ($picked_eventmonth == $list[$_SESSION['language']]['monthpicker']['option'][12]['entry']) {
+      $picked_eventmonth = "";
+      //unset($picked_eventmonth);
+    }
+
     $nb_events = count_events_by_type($DB, $query, $languages, $picked_eventyear, $picked_eventmonth);
 
     $nb_rows_per_page = 15;
@@ -69,46 +76,44 @@ if($_GET) {
     }
 
   } else if (!empty($picked_ideayear) OR (!empty($picked_ideamonth)) OR (!empty($pagination_ideas)) OR (!empty($membername))) {
-      $nb_ideas = count_ideas_by_type($DB, $query, $languages, $picked_ideayear, $picked_ideamonth, $membername);
 
-      $nb_rows_per_page = 15;
-      // Nombre de pages à afficher
-      $ideas_total_pages = ceil($nb_ideas / $nb_rows_per_page);
+    if ($picked_ideamonth == $list[$_SESSION['language']]['monthpicker']['option'][12]['entry']) {
+      $picked_ideamonth = "";
+    }
 
-      if (!empty($ideapage) && (is_numeric($ideapage))) {
-        $ideas_current_page = $ideapage;
-      } else {
-        $ideas_current_page = 1;
-      }
+    $nb_ideas = count_ideas_by_type($DB, $query, $languages, $picked_ideayear, $picked_ideamonth, $membername);
+    $nb_rows_per_page = 15;
+    // Nombre de pages à afficher
+    $ideas_total_pages = ceil($nb_ideas / $nb_rows_per_page);
 
-      // if idea current page is greater than total pages...
-      if ($ideas_current_page > $ideas_total_pages) {
-        // set current page to last page
-        $ideas_current_page = $ideas_total_pages;
-      } // end if
-      // if current page is less than first page...
-      if ($ideas_current_page < 1) {
-        // set current page to first page
-        $ideas_current_page = 1;
-      } // end if
+    if (!empty($ideapage) && (is_numeric($ideapage))) {
+      $ideas_current_page = $ideapage;
+    } else {
+      $ideas_current_page = 1;
+    }
 
-      // the offset of the list, based on current page
-      $ideas_offset = ($ideas_current_page - 1) * $nb_rows_per_page;
+    // if idea current page is greater than total pages...
+    if ($ideas_current_page > $ideas_total_pages) {
+      // set current page to last page
+      $ideas_current_page = $ideas_total_pages;
+    } // end if
+    // if current page is less than first page...
+    if ($ideas_current_page < 1) {
+      // set current page to first page
+      $ideas_current_page = 1;
+    } // end if
 
-      //Send response to Ajax
-      if ($pagination_ideas == 'true' ) {
-        $PaginateResponse = array('current_page' => $ideas_current_page, 'total_pages' => $ideas_total_pages);
-        echo json_encode($PaginateResponse);
-      } else {
-        $ideas = list_ideas_by_type($DB, $ideas_offset, $nb_rows_per_page, $query, $languages, $picked_ideayear, $picked_ideamonth, $membername);
-        // echo "ideas_offset : " . $ideas_offset;
-        // echo "nb_rows : " . $nb_rows_per_page;
-        // echo "Query : " . $query;
-        // echo "ideayear selected : " . $$picked_ideayear;
-        // echo "ideamonth selected : " . $picked_ideamonth;
-        // echo "membername : " . $membername;
-        echo json_encode($ideas);
-      }
+    // the offset of the list, based on current page
+    $ideas_offset = ($ideas_current_page - 1) * $nb_rows_per_page;
+
+    //Send response to Ajax
+    if ($pagination_ideas == 'true' ) {
+      $PaginateResponse = array('current_page' => $ideas_current_page, 'total_pages' => $ideas_total_pages, 'nb_ideas' => $nb_ideas);
+      echo json_encode($PaginateResponse);
+    } else {
+      $ideas = list_ideas_by_type($DB, $ideas_offset, $nb_rows_per_page, $query, $languages, $picked_ideayear, $picked_ideamonth, $membername);
+      echo json_encode($ideas);
+    }
   }
 }
 

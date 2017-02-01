@@ -1,4 +1,4 @@
-<div class="corpse container-fluid">
+<!-- <div class="corpse container-fluid"> -->
 	<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
 
 	<header class="row listing-header text-center" style="margin-top: 1.5%;">
@@ -43,7 +43,7 @@
 									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['monthpicker']['text'] ?> : <span id="current_picked_eventmonth"> <?php echo $current_eventmonth; ?> </span> &nbsp; <span class="caret"></span> </button>
 									<ul id="event-months" class="dropdown-menu">
 										<?php foreach ($list[$_SESSION['language']]['monthpicker']['option'] as $month) { ?>
-											<li id="events-<?php echo $month['entry']; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML, '<?php echo $month['entry'] ?>')" href="#"> <?php echo $month['entry']; ?> </a></li>
+											<li id="events-<?php echo $month['entry']; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', 'document.getElementById('current_picked_eventyear').innerHTML', '<?php echo $month['entry'] ?>')" href="#"> <?php echo $month['entry']; ?> </a></li>
 										<?php } ?>
 									</ul>
 								</div>
@@ -52,7 +52,7 @@
 									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['yearpicker']['text'] ?> : <span id="current_picked_eventyear"> <?php echo $current_eventyear; ?> </span> &nbsp; <span class="caret"></span> </button>
 									<ul id="event-years" class="dropdown-menu">
 										<?php foreach ($sortYears as $year) { ?>
-											<li id="events-<?php echo $year; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $year ?>', document.getElementById('current_picked_eventmonth').innerHTML)" href="#"> <?php echo $year; ?> </a></li>
+											<li id="events-<?php echo $year; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $year ?>', 'document.getElementById('current_picked_eventmonth').innerHTML')" href="#"> <?php echo $year; ?> </a></li>
 										<?php } ?>
 									</ul>
 								</div>
@@ -75,7 +75,8 @@
 		  		</thead>
 
 					<tbody>
-						<script> sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML) </script>
+						<!-- <script> sortEvents('<?php #echo $baseUrl ?>', 'event', '<?php #echo $query; ?>', document.getElementById("current_picked_eventyear").innerHTML, document.getElementById("current_picked_eventmonth").innerHTML) </script> -->
+						<script> sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $current_eventyear; ?>', '<?php echo $current_eventmonth; ?>', '1') </script>
 					</tbody>
 				</table>
 			</fieldset>
@@ -134,9 +135,11 @@
 						</tr>
 			  	</thead>
 
+
         	<tbody>
-						<script> sortEvents('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', document.getElementById('current_picked_ideayear').innerHTML) </script>
-			  	</tbody>
+						<!-- <script> sortEvents('<?php #echo $baseUrl ?>', 'idea', '<?php #echo $query; ?>', document.getElementById("current_picked_ideayear").innerHTML, document.getElementById("current_picked_ideamonth").innerHTML) </script> -->
+						<script> sortEvents('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', '<?php echo $current_ideayear; ?>', '<?php echo $current_ideamonth; ?>', '1') </script>
+					</tbody>
 				</table>
 			</fieldset>
 
@@ -146,5 +149,5 @@
 			</div>
 		</div>
 
+
 	</div>  <!-- END OF LISTING-EVENTS -->
-</div> <!-- END OF CORPSE -->

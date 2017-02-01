@@ -108,7 +108,7 @@ function retrieve_pagination (baseUrl, query, zpeaktype, pickedyear, pickedmonth
 					$('ul.pagination_' + zpeaktype).append('<li class="active"><a href="#">'+ i + '</a></li>');
 				} else {
 					//OnclickParams="'"+ajaxUrl+zpeaktype;
-					$('ul.pagination_' + zpeaktype).append('<li><a href="#" onclick=\'sortEvents("'+ajaxUrl+'", "'+zpeaktype+'", "'+query+'", "'+pickedyear+'", "'+i+'")\' >'+ i + '</a></li>');
+					$('ul.pagination_' + zpeaktype).append('<li><a href="#" onclick=\'sortEvents("'+ajaxUrl+'", "'+zpeaktype+'", "'+query+'", "'+pickedyear+'", "'+pickedmonth+'", "'+i+'")\' >'+ i + '</a></li>');
 				}
 			}
 		}
