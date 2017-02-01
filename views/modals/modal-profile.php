@@ -76,8 +76,6 @@
         			<label for="profile_languages"> <?php echo $modal[$_SESSION['language']]['profile']['edition']['select']['lang']['label']; ?> </label>
 						</div>
 
-
-
 						<div class="col-lg-5">
             	<select class="form-control" name="profile_languages" multiple>
 								<?php foreach($minilang[$_SESSION['language']]['icon'] as $key => $lang){ ?>

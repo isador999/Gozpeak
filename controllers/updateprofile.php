@@ -11,36 +11,40 @@ require_once('../models/profile_functions.php');
 
 
 if($_POST) {
-	$pseudo 	      	= isset($_POST['pseudo']) ? $_POST['pseudo'] : '';
-  $lastname 	    	= isset($_POST['lastname']) ? $_POST['lastname'] : '';
-  $firstname 	    	= isset($_POST['firstname']) ? $_POST['firstname'] : '';
+	$pseudo 	      	= isset($_POST['profile_pseudo']) ? $_POST['profile_pseudo'] : '';
+  $lastname 	    	= isset($_POST['profile_lastname']) ? $_POST['profile_lastname'] : '';
+  $firstname 	    	= isset($_POST['profile_firstname']) ? $_POST['profile_firstname'] : '';
 	$email 		      	= isset($_POST['profile_mail']) ? $_POST['profile_mail'] : '';
-  $nationality 			= isset($_POST['nationality']) ? $_POST['nationality'] : '';
-  $birthdate   			= isset($_POST['birthdate']) ? $_POST['birthdate'] : '';
-	$speakedlanguages = isset($_POST['languages']) ? $_POST['languages'] : '';
+  $nationality 			= isset($_POST['profile_nationality']) ? $_POST['profile_nationality'] : '';
+  $birthdate   			= isset($_POST['profile_birthdate']) ? $_POST['profile_birthdate'] : '';
+	$speakedlanguages = isset($_POST['profile_languages']) ? $_POST['profile_languages'] : '';
 
-	if((trim($pseudo) == '') OR (trim($email) == '')) {
+
+	$text_postfields = array($lastname, $firstname, $nationality, $speakedlanguages);
+	if((trim($pseudo) == '') OR (trim($email) == '') OR (empty($pseudo)) OR (empty($email))) {
 		$error="empty_fields";
-	}
-	elseif((strlen($email) < 10) OR (!isEmail($email)))
+	} elseif((strlen($email) < 10) OR (!isEmail($email))) {
 	  $error="invalid_email";
-		{
 	}
-	#else if(!isEmail($email)) {
-	#	echo "NOK: rule2";
-	#	$error="invalid_email";
-	#}
+
+	foreach ($text_postfields as $field) {
+		if(!preg_match("/^[a-zA-Z0-9éèàêç'+()\- ]+$/", $field)) {
+			$error="notcompliant_fields";
+		}
+	}
 
 
 	/*************** Other checks ***************/
 	/***** Count pseudo, count mail in DB *****/
 	$nbre_pseudo = pseudo_exist($DB, $pseudo);
 
-	/***** If pseudo or mail is not 0, so one of them exists already *****/
 	if($nbre_pseudo < 1)
 	{
 	  $error="pseudo_dont_exists";
+	} elseif () {
+
 	}
+
 
 /*	elseif (strlen($password) > 25 || strlen($password) < 8)
 	{
