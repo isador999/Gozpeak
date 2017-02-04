@@ -18,7 +18,7 @@
 							<label for="profile_pseudo"><?php echo $modal[$_SESSION['language']]['profile']['edition']['pseudo']['desc']; ?>&nbsp;&#42;</label>
 						</div>
 						<div class="col-lg-5">
-							<input type="text" class="form-control" id="profile_pseudo" title="<?php echo $modal[$_SESSION['language']]['profile']['edition']['pseudo']['title']; ?>" name="profile_pseudo" placeholder="<?php echo $modal[$_SESSION['language']]['profile']['edition']['pseudo']['placeholder']; ?>" disabled required />
+							<input type="text" class="form-control" id="profile_pseudo" title="<?php echo $modal[$_SESSION['language']]['profile']['edition']['pseudo']['title']; ?>" name="profile_pseudo" placeholder="<?php echo $modal[$_SESSION['language']]['profile']['edition']['pseudo']['placeholder']; ?>" readonly required />
 						</div>
 					</div>
 
@@ -77,7 +77,7 @@
 						</div>
 
 						<div class="col-lg-5">
-            	<select class="form-control" name="profile_languages" multiple>
+            	<select class="form-control" name="profile_languages" multiple disabled>
 								<?php foreach($minilang[$_SESSION['language']]['icon'] as $key => $lang){ ?>
 									<!-- <option value="<?php #echo $lang['value']; ?>"> <?php #echo $lang['entry'] ?></option> -->
 									<option style="background-image:url(<?php echo $lang['png'] ?>); background-repeat: no-repeat; padding-left: 18px; background-size: 19px 19px;" value="<?php echo $lang['value']; ?>"> &nbsp;&nbsp; <?php echo $lang['text']; ?></option>

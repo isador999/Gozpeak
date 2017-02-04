@@ -18,7 +18,7 @@
 
 						<div class="profile-head-text col-lg-5 col-md-5 col-sm-9">
 							Inscrit depuis le <?php echo ' '.$infos['subscribedayname']; echo ' '.$infos['subscribedaynumber']; echo ' '.$infos['subscribemonthname']; echo ' '.$infos['subscribeyear']; ?>  <br> <br>
-							Dernière connexion : <?php if (!empty($connect_interval)) { echo $connect_interval; } else { echo "Inconnu"; } ?>
+							Dernière connexion : <?php if (!empty($last_connection_interval)) { echo $last_connection_interval; } else { echo "Inconnu"; } ?>
 						</div>
 
 						<div class="profile-head-text col-lg-5 col-md-5 col-sm-10">
@@ -72,7 +72,7 @@
 						</tr>
 						<tr> -->
 							<th> Nombre de sorties proposées : </th>
-							<td> <div class="col-lg-10"> <?php echo $nb_events; ?>  <button class="col-lg-offset-1 btn btn-default" disabled> Voir les événements postés </button> </div> </td>
+							<td> <div class="col-lg-10"> <?php echo $nb_posted_ideas; ?>  <button class="col-lg-offset-1 btn btn-default" disabled> Voir les événements postés </button> </div> </td>
 						</tr>
 						<tr>
 							<th> Langues parlées : </th>

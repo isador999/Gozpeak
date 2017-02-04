@@ -13,6 +13,7 @@ $ViewPages = array();
 $ViewFooterPages = array();
 $ViewNavPages = array();
 
+
 if (isset($_GET['profil']) && (!empty($_GET['profil']))) {
 	$provided_profile = $_GET['profil'];
 	$nbre_pseudo = pseudo_exist($DB, $provided_profile);
@@ -30,11 +31,28 @@ if (isset($pseudo)) {
 	$infos = profile_info($DB, $pseudo);
 	$nb_posted_ideas = count_ideas($DB, $pseudo);
 
+	$raw_connectionTime = get_last_connection($DB, $pseudo);
+	$connectionTime = new DateTime($raw_connectionTime);
+	$now = new DateTime();
+
+	//Set diff in object
+	$connect_interval = $connectionTime->diff($now);
+	if($connect_interval->d < 1) {
+		$last_connection_interval = $connect_interval->format("Il y a moins de 24 heures");
+	} elseif ($connect_interval->d === 1) {
+		$last_connection_interval = $connect_interval->format("Hier");
+	}	else {
+		$last_connection_interval = $connect_interval->format("Il y a %d jours");
+	}
+
 	$logged = check_logged();
 	if ($logged == 1) {
+
 		$ViewNavPages[] = MODALS.'modal-postevent-logged.php';
 		$ViewNavPages[] = VIEWS.'header-logged.php';
 		if ($pseudo == $_SESSION['profil']) {
+			$connect_interval = $profile[$_SESSION['language']]['connect_interval']['connected'];
+
 			$ViewPages[] = MODALS.'modal-profile-eventlist.php';
 			$ViewPages[] = VIEWS.'profile-logged.php';
 			$ViewPages[] = MODALS.'modal-profile.php';

@@ -1,12 +1,11 @@
 $('#modalInscription').on('hidden.bs.modal', function() {
     $('#inscriptionForm').formValidation('resetForm', true);
-    $('#errors').html('');
+    $('#inscription-errors').html('');
 });
 
-
-$('#modalInscription').on('shown.bs.modal', function () {
-  $('#pseudo').focus();
-})
+// $('#modalInscription').on('shown.bs.modal', function () {
+//   $('#pseudo').focus();
+// })
 
 
 $(document).ready(function() {

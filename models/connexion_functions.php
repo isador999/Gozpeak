@@ -83,4 +83,12 @@ function update_passwd($DB, $newpass, $pseudo) {
 	$req -> closeCursor();
 }
 
+
+function register_connectionTime($DB, $connectionTime, $pseudo) {
+	$req = $DB->prepare("UPDATE members SET last_connection = '$connectionTime' where pseudo = '$pseudo'");
+	$req -> execute();
+	$req -> closeCursor();
+}
+
+
 ?>

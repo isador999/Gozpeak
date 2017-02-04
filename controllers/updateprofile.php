@@ -6,8 +6,9 @@ require_once('./language.php');
 require_once('./lib/sessions_init.php');
 require_once('./lib/check_strings.php');
 require_once('../models/dbconnect.php');
-require_once('../models/inscription_functions.php');
+//require_once('../models/inscription_functions.php');
 require_once('../models/profile_functions.php');
+require_once('./lib/check_strings.php');
 
 
 if($_POST) {
@@ -19,32 +20,38 @@ if($_POST) {
   $birthdate   			= isset($_POST['profile_birthdate']) ? $_POST['profile_birthdate'] : '';
 	$speakedlanguages = isset($_POST['profile_languages']) ? $_POST['profile_languages'] : '';
 
-
-	$text_postfields = array($lastname, $firstname, $nationality, $speakedlanguages);
-	if((trim($pseudo) == '') OR (trim($email) == '') OR (empty($pseudo)) OR (empty($email))) {
-		$error="empty_fields";
-	} elseif((strlen($email) < 10) OR (!isEmail($email))) {
-	  $error="invalid_email";
+	foreach($_POST as $field) {
+		echo $field;
 	}
 
+
+	if((trim($email) == '') OR (trim($pseudo) == '') OR (empty($pseudo)) OR (empty($email))) {
+		$error="empty_fields";
+		echo $error;
+
+	} elseif((strlen($email) < 10) OR (!isEmail($email))) {
+	  $error="invalid_email";
+		echo $error;
+
+	}
+
+	$text_postfields = array($lastname, $firstname, $nationality, $speakedlanguages);
 	foreach ($text_postfields as $field) {
 		if(!preg_match("/^[a-zA-Z0-9éèàêç'+()\- ]+$/", $field)) {
 			$error="notcompliant_fields";
+			echo $error;
 		}
 	}
-
 
 	/*************** Other checks ***************/
 	/***** Count pseudo, count mail in DB *****/
 	$nbre_pseudo = pseudo_exist($DB, $pseudo);
+	$bdd_mail = select_mail($DB, $pseudo);
 
-	if($nbre_pseudo < 1)
+	if(($nbre_pseudo < 1) OR ($bdd_mail < 1))
 	{
-	  $error="pseudo_dont_exists";
-	} elseif () {
-
+	  $error="pseudo_or_mail_dont_exists";
 	}
-
 
 /*	elseif (strlen($password) > 25 || strlen($password) < 8)
 	{
@@ -76,18 +83,14 @@ if($_POST) {
 		$birthdate = htmlspecialchars(trim($birthdate));
     $speakedlanguages = htmlspecialchars(trim($speakedlanguages));
 
-		/***** Generate Activation Key *****/
-		/*$key = md5(microtime(TRUE)*100000);
-		$hashed_password = password_hash($password, PASSWORD_DEFAULT);*/
-
-		/***** Registering... *****/
-		//$profile_infos_attrs = "$pseudo, $email, $lastname, $name, $nationality, $birthdate, $speakedlanguages";
-		update_profile($DB, $pseudo, $email, $lastname, $name, $nationality, $birthdate, $speakedlanguages);
+		//update_profile($DB, $pseudo, $email, $lastname, $name, $nationality, $birthdate, $speakedlanguages);
+		//profile_update($DB, $pseudo, $email, $lastname, $firstname, $nationality, $birthdate, $speakedlanguages);
+		profile_update($DB, $pseudo, $email, $lastname, $firstname, $nationality, $birthdate);
 
 		/****** Check if update processed correctly ******/
-    $nbre_mail = mail_exist($DB, $email);
+    $nbre_mail = select_mail($DB, $pseudo);
 
-		if($nbre_mail > 0) {
+		if($nbre_mail == 1) {
       echo "OK ! ";
       $message='<div class="form-group"> <div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Vos informations de profil ont été validées !  </div> </div>';
 			/*$mail_subject="Confirmation de votre inscription Gozpeak";
@@ -132,18 +135,20 @@ if($_POST) {
 if (isset($error)) {
   if ($error == 'empty_fields') {
 	  $message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir les champs obligatoires pour votre inscription </div> </div>';
-  } elseif ($error == 'pseudo_dont_exists') {
-		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Désolé, le pseudo que vous avez choisi existe deja </div> </div>';
+  } elseif ($error == 'pseudo_or_mail_dont_exists') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Erreur : le pseudo et l\'adresse email sont bligatoires dans le formulaire </div> </div>';
   } elseif ($error == 'invalid_email') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> L\'adresse email est invalide </div> </div>';
-  }
+  } elseif ($error == 'notcompliant_fields') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Certains champs ne doivent pas contenir de caractères spéciaux </div> </div>';
+	}
 }
 
 /******** Finally, set Global var if $message isset, and simply redirect to HOME *********/
-/*if (isset($message)) {
+if (isset($message)) {
 	$_SESSION['msg'] = $message;
-}*/
+}
 
-//redirect_to_page($_GET['page']);
+redirect_to_page($_GET['page']);
 
 ?>

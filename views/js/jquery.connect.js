@@ -3,10 +3,9 @@ $('#modalConnection').on('hidden.bs.modal', function() {
     $('#connect-errors').html('');
 });
 
-
-$('#modalConnection').on('shown.bs.modal', function () {
-  $('#userlogin').focus();
-})
+// $('#modalConnection').on('shown.bs.modal', function () {
+//   $('#userlogin').focus();
+// })
 
 
 $(document).ready(function() {

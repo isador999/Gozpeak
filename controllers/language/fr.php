@@ -51,10 +51,10 @@ $modal['fr']['inscription']['field'][4]['mandatory']['placeholder'] = "Confirmer
 $modal['fr']['inscription']['check']['desc'] = "S'inscrire";
 
 
-
 // Modal UpdateProfile
-$modal['fr']['profile']['edition']['title'] = "Edition de votre Zpeak ID ! ";
+$profile['fr']['connect_interval']['connected'] = "En ligne";
 
+$modal['fr']['profile']['edition']['title'] = "Edition de votre Zpeak ID ! ";
 $modal['fr']['profile']['edition']['pseudo']['desc'] = "Pseudonyme";
 $modal['fr']['profile']['edition']['pseudo']['title'] = "Votre pseudonyme ne peut pas être modifié";
 $modal['fr']['profile']['edition']['pseudo']['placeholder'] = "Votre pseudo";
@@ -71,13 +71,12 @@ $modal['fr']['profile']['edition']['field'][4]['placeholder'] = "Format 3 mai 19
 $modal['fr']['profile']['edition']['select']['lang']['label'] = "Langues parlées";
 $modal['fr']['profile']['edition']['check']['desc'] = "Mettre à jour la Zpeak ID";
 
-$modal['fr']['profile']['edition']['selectlang']['help'] = "Maintenez la touche 'Ctrl' enfoncée pour choisir plusieurs langues";
-
+//$modal['fr']['profile']['edition']['selectlang']['help'] = "Maintenez la touche 'Ctrl' enfoncée pour choisir plusieurs langues";
+$modal['fr']['profile']['edition']['selectlang']['help'] = "Il n'est pas encore possible de spécifier les langues que vous parlez";
 
 //Modal to list events of a user (from profile view)
 $modal['fr']['profile']['eventlist']['title'] = "Vos propositions d'idées";
 $modal['fr']['profile']['eventlist']['empty'] = "Vous n'avez encore rien proposé sur Gozpeak. <br> N'hésitez pas à lancer une idée en cliquant <a href='#' onclick=$('#modalProfileEventListing').modal('hide'); data-toggle='modal' data-target='#modalSelectQuery' > ici </a> ";
-
 
 // Modal ProfileChangePassword
 // Modal PasswordChange

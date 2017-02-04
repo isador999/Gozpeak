@@ -25,7 +25,6 @@ function check_pass_and_connect ($DB, $login_pass, $login_user, $method) {
 	  //echo "Hash pass from DB : $hashed_dbpass";
   }
 
-
 	/******** Finally check passwords **********/
   if (password_verify($login_pass, $hashed_dbpass)) {
  	  $result_connect = "ok";
@@ -104,7 +103,8 @@ if($_POST) {
 			/*****  Set other session Variables *****/
 			$_SESSION['profil'] = $display_user;
 			$_SESSION['logged'] = 1;
-      $_SESSION['connecttime'] = date("now");
+      $connectionTime = date("Y-m-d H:i:s");
+      register_connectionTime($DB, $connectionTime, $display_user);
 			/*$_SESSION['premium'] = $premium;*/
 
 			$premium = check_if_premium($DB, $display_user);

@@ -4,10 +4,9 @@ $('#modalProfileEdition').on('hidden.bs.modal', function() {
     $('#profile-errors').html('');
 });
 
-
-$('#modalProfileEdition').on('shown.bs.modal', function () {
-  $('#lastname').focus();
-})
+// $('#modalProfileEdition').on('shown.bs.modal', function () {
+//   $('#lastname').focus();
+// })
 
 $(document).ready(function() {
     $('#profileForm').on('init.field.fv', function(e, data) {
@@ -51,6 +50,7 @@ $(document).ready(function() {
                 }
             },
             profile_lastname: {
+              threshold: 1,
                 validators: {
                     stringLength: {
                       min: 3,
@@ -60,6 +60,7 @@ $(document).ready(function() {
                 }
             },
             profile_firstname: {
+              threshold: 1,
                 validators: {
                     stringLength: {
                       min: 2,
@@ -76,6 +77,7 @@ $(document).ready(function() {
                 }
             },
             profile_nationality: {
+              threshold: 1,
                 validators: {
                   stringLength: {
                     min: 4,
@@ -83,34 +85,67 @@ $(document).ready(function() {
                     message: "Votre nationalité n'est pas valide"
                   },
                   regexp: {
-                    regexp: /(?=.*[A-Z].*)(?=.*[0-9].*[0-9])(?=.*[!@#$&*].*)/,
+                    regexp: /^[a-zA-Z0-9_ç\.]+$/,
                     message: "La nationalité ne peut pas comporter de caractères spéciaux"
                   }
                 }
             },
             profile_birthdate: {
+              threshold: 1,
                 validators: {
                   stringLength: {
                     min: 8,
-                    max: 10,
-                    message: "Le format de date de naissance ne semble pas valide"
+                    max: 16,
+                    message: "La date de naissance n'est' pas valide"
                   }
                 }
             },
+            // profile_languages: {
+            //     threshold: 1,
+            //     validators: {
+            //       stringLength: {
+            //         min: 5,
+            //         max: 30,
+            //         message: "Les langues parlées ne sont pas valides"
+            //       }
+            //     }
+            // },
             profile_languages: {
-                validators: {
-                  stringLength: {
-                    min: 8,
-                    max: 10,
-                    message: "Le format de date de naissance ne semble pas valide"
+              threshold: 4,
+              validators: {
+                callback: {
+                  message: "Les langues parlées ne sont pas valides",
+                  callback: function(value, validator, $field) {
+                    // Get the selected options
+                    var options = validator.getFieldElements('profile_languages').val();
+                    return (options != null
+                    && options.length >= 1);
                   }
                 }
+              }
             }
         }
     })
+
     .on('success.form.fv', function(e) {
             // Reset the message element when the form is valid
             $('#profile-errors').html('');
+            // $('#profileForm').find('[name="profile_languages"]')
+            //         .multiselect({
+            //             enableFiltering: true,
+            //             includeSelectAllOption: true,
+            //
+            //             onChange: function(element, checked) {
+            //                 $('#profileForm').formValidation('revalidateField', 'profile_languages');
+            //                 adjustByScrollHeight();
+            //             },
+            //             onDropdownShown: function(e) {
+            //                 adjustByScrollHeight();
+            //             },
+            //             onDropdownHidden: function(e) {
+            //                 adjustByHeight();
+            //             }
+            //         })
         })
     .on('err.field.fv', function(e, data) {
             // data.fv      --> The FormValidation instance
