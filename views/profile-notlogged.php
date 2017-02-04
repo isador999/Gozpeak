@@ -13,7 +13,7 @@
 
 					<div class="profile-avatar row">
 						<div class="col-lg-2 col-md-2 col-sm-3">
-							<img src="views/images/avatar_defaut.jpeg">
+							<img src="<?php echo $baseUrl; ?>/views/images/avatar_defaut.jpeg" alt="Avatar Img">
 						</div>
 
 						<div class="profile-head-text col-lg-5 col-md-5 col-sm-9">
@@ -33,7 +33,7 @@
 					<div class="row">
 						<div class="profile-table-title col-lg-9 col-md-9 col-sm-8 col-xs-8" style="margin-bottom: 3.5%;">
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-								Les informations de votre <img src="views/images/zpeak_orange.png" style="width: 12%;" title="Zpeak" />  ID
+								Les informations de votre <img src="<?php echo $baseUrl ?>/views/images/zpeak_orange.png" alt="Zpeak" style="width: 12%;" title="Zpeak" />  ID
 							</div>
 							<!-- <div class="col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-2 col-sm-2 col-xs-2">
 								<button id="btn-profile-update" onclick="GetProfileInfos('<?php #echo $_SESSION['profil']; ?>')" data-toggle="modal" data-target="#modalProfileEdition" class="btn btn-primary"> Modifier vos informations de profil </button>
@@ -69,8 +69,8 @@
 						<!--</tr>
 							<th> Date de naissance : </th>
 							<td> <?php #echo $infos['birthday'] ?> </td>
-						</tr>
-						<tr> -->
+						</tr> -->
+						<tr>
 							<th> Nombre de sorties proposées : </th>
 							<td> <div class="col-lg-10"> <?php echo $nb_posted_ideas; ?>  <button class="col-lg-offset-1 btn btn-default" disabled> Voir les événements postés </button> </div> </td>
 						</tr>

@@ -9,7 +9,7 @@
 				<div class="col-lg-9 col-md-11 col-sm-11 text-left">
 				<?php foreach($minilang[$_SESSION['language']]['icon'] as $key => $value) { ?>
 					<div style="display:inline-block;">
-						<img src="<?php echo $value['png']; ?>" /> <?php echo $value['text']; ?>
+						<img src="<?php echo $baseUrl."/".$value['png']; ?>" alt="<?php echo $value['value']; ?>_img" /> <?php echo $value['text']; ?>
 					</div>
 				<?php } ?>
 				</div>
@@ -23,7 +23,7 @@
 
 		<div class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-3" style="margin-top:2%;">
 			<input id="selectedLanguages" name="selectedLanguages" onclick="listLanguages()" type="text" placeholder="<?php echo $list[$_SESSION['language']]['filter']['placeholder']; ?>">
-			<button type="submit" onclick="filterByLanguages('<?php echo $baseUrl ?>', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML, document.getElementById('current_picked_eventmonth').innerHTML, document.getElementById('current_picked_ideayear').innerHTML, document.getElementById('current_picked_ideamonth').innerHTML, document.getElementById('selectedLanguages').value)" class="btn btn-default"> <?php echo $list[$_SESSION['language']]['filter']['submit'] ?></button>
+			<button type="submit" onclick="filterByLanguages('<?php echo $baseUrl ?>', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML, document.getElementById('current_picked_eventmonth').innerHTML, document.getElementById('current_picked_ideayear').innerHTML, document.getElementById('current_picked_ideamonth').innerHTML, document.getElementById('selectedLanguages').value);" class="btn btn-default"> <?php echo $list[$_SESSION['language']]['filter']['submit'] ?></button>
 		</div>
 	</header>
 
@@ -33,7 +33,7 @@
 				<legend class="scheduler-border">
 					<div class="row">
 						<div class="col-lg-4 col-md-7 col-sm-7 col-xs-5 text-left events-title">
-							Les <img src="views/images/zpeak_orange.png" style="width:80px;" alt="Zpeak"/> événements
+							Les <img src="<?php echo $baseUrl; ?>/views/images/zpeak_orange.png" style="width:80px;" alt="Zpeak"/> événements
 						</div>
 					<!-- </div> -->
 
@@ -43,7 +43,7 @@
 									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['monthpicker']['text'] ?> : <span id="current_picked_eventmonth"> <?php echo $current_eventmonth; ?> </span> &nbsp; <span class="caret"></span> </button>
 									<ul id="event-months" class="dropdown-menu">
 										<?php foreach ($list[$_SESSION['language']]['monthpicker']['option'] as $month) { ?>
-											<li id="events-<?php echo $month['entry']; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', 'document.getElementById('current_picked_eventyear').innerHTML', '<?php echo $month['entry'] ?>')" href="#"> <?php echo $month['entry']; ?> </a></li>
+											<li id="events-<?php echo $month['entry']; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', document.getElementById('current_picked_eventyear').innerHTML, '<?php echo $month['entry'] ?>')" href="#"> <?php echo $month['entry']; ?> </a></li>
 										<?php } ?>
 									</ul>
 								</div>
@@ -52,7 +52,7 @@
 									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <?php echo $list[$_SESSION['language']]['yearpicker']['text'] ?> : <span id="current_picked_eventyear"> <?php echo $current_eventyear; ?> </span> &nbsp; <span class="caret"></span> </button>
 									<ul id="event-years" class="dropdown-menu">
 										<?php foreach ($sortYears as $year) { ?>
-											<li id="events-<?php echo $year; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $year ?>', 'document.getElementById('current_picked_eventmonth').innerHTML')" href="#"> <?php echo $year; ?> </a></li>
+											<li id="events-<?php echo $year; ?>"><a onclick="sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $year ?>', document.getElementById('current_picked_eventmonth').innerHTML)" href="#"> <?php echo $year; ?> </a></li>
 										<?php } ?>
 									</ul>
 								</div>
@@ -76,7 +76,7 @@
 
 					<tbody>
 						<!-- <script> sortEvents('<?php #echo $baseUrl ?>', 'event', '<?php #echo $query; ?>', document.getElementById("current_picked_eventyear").innerHTML, document.getElementById("current_picked_eventmonth").innerHTML) </script> -->
-						<script> sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $current_eventyear; ?>', '<?php echo $current_eventmonth; ?>', '1') </script>
+						<script> sortEvents('<?php echo $baseUrl ?>', 'event', '<?php echo $query; ?>', '<?php echo $current_eventyear; ?>', '<?php echo $current_eventmonth; ?>', '1'); </script>
 					</tbody>
 				</table>
 			</fieldset>
@@ -95,7 +95,7 @@
 				<legend class="scheduler-border">
 					<div class="row">
 						<div class="col-lg-5 col-md-7 col-sm-7 col-xs-5 text-left ideas-title">
-							Vos <img src="views/images/zpeak_bleu.png" style="width:80px;" alt="Zpeak"/> idées d'événements
+							Vos <img src="<?php echo $baseUrl; ?>/views/images/zpeak_bleu.png" style="width:80px;" alt="Zpeak"/> idées d'événements
 						</div>
 
 						<div class="row">
@@ -138,7 +138,7 @@
 
         	<tbody>
 						<!-- <script> sortEvents('<?php #echo $baseUrl ?>', 'idea', '<?php #echo $query; ?>', document.getElementById("current_picked_ideayear").innerHTML, document.getElementById("current_picked_ideamonth").innerHTML) </script> -->
-						<script> sortEvents('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', '<?php echo $current_ideayear; ?>', '<?php echo $current_ideamonth; ?>', '1') </script>
+						<script> sortEvents('<?php echo $baseUrl ?>', 'idea', '<?php echo $query; ?>', '<?php echo $current_ideayear; ?>', '<?php echo $current_ideamonth; ?>', '1'); </script>
 					</tbody>
 				</table>
 			</fieldset>

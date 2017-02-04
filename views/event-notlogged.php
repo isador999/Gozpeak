@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="text-center activity">
-      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
+      <a href="<?php echo $baseUrl; ?>/index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
       <p> <?php echo $home[$_SESSION['language']][$query]['text'] ?></p>
     </div>
   </div>
@@ -17,12 +17,12 @@
         <table class="table table-striped table-hover">
           <tr>
             <th> Organisateur : </th>
-            <td> <img src="views/images/gozpeak_mini.png" title="Gozpeak" />
+            <td> <img src="<?php echo $baseUrl; ?>/views/images/gozpeak_mini.png" alt="Gozpeak Team" title="Gozpeak" />
           </tr>
 
           <tr>
             <th> Langue(s) : </th>
-            <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_event['language']]['png']; ?>" alt="langue de l'événement" /> <?php echo $minilang[$_SESSION['language']]['icon'][$infos_event['language']]['text']; ?> </td>
+            <td> <img src="<?php echo $baseUrl."/".$minilang[$_SESSION['language']]['icon'][$infos_event['language']]['png']; ?>" alt="langue de l'événement" /> <?php echo $minilang[$_SESSION['language']]['icon'][$infos_event['language']]['text']; ?> </td>
           </tr>
 
           <tr>
@@ -42,7 +42,7 @@
 
           <tr>
             <th> Type d'activité : </th>
-            <td> <img style="width: 45%;" src="<?php echo $home[$_SESSION['language']][$infos_event['eventtype']]['img'] ?>" title="<?php echo $home[$_SESSION['language']][$infos_event['eventtype']]['text'] ?>" /> </td>
+            <td> <img style="width: 45%;" src="<?php echo $baseUrl."/".$home[$_SESSION['language']][$infos_event['eventtype']]['img'] ?>" alt="<?php $home[$_SESSION['language']][$infos_idea['ideatype']]['alt'] ?>" title="<?php echo $home[$_SESSION['language']][$infos_event['eventtype']]['text'] ?>" /> </td>
           </tr>
 
           <tr>
@@ -50,7 +50,7 @@
             <td> <?php echo $infos_event['eventplace'] ?> </td>
           </tr>
 
-          </tr>
+          <tr>
             <th> Evénement posté le : </th>
             <td> <?php echo $infos_event['date'] ?> </td>
           </tr>

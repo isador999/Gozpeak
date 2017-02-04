@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="text-center activity">
-      <a href="index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
+      <a href="<?php echo $baseUrl ?>/index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>
       <p> <?php echo $home[$_SESSION['language']][$query]['text'] ?></p>
     </div>
   </div>
@@ -20,7 +20,7 @@
 
           <tr>
             <th> Langue(s) : </th>
-            <td> <img src="<?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['png']; ?>" alt="langue de l'événement" /> <?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['text']; ?> </td>
+            <td> <img src="<?php echo $baseUrl."/".$minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['png']; ?>" alt="langue de l'événement" /> <?php echo $minilang[$_SESSION['language']]['icon'][$infos_idea['language']]['text']; ?> </td>
           </tr>
 
           <tr>
@@ -40,7 +40,7 @@
 
           <tr>
             <th> Type d'activité : </th>
-            <td> <img style="width: 35%;" src="<?php echo $home[$_SESSION['language']][$infos_idea['ideatype']]['img'] ?>" title="<?php echo $home[$_SESSION['language']][$infos_idea['ideatype']]['text'] ?>" /> </td>
+            <td> <img style="width: 35%;" src="<?php echo $baseUrl."/".$home[$_SESSION['language']][$infos_idea['ideatype']]['img'] ?>" alt="<?php $home[$_SESSION['language']][$infos_idea['ideatype']]['alt'] ?>" title="<?php echo $home[$_SESSION['language']][$infos_idea['ideatype']]['text'] ?>" /> </td>
           </tr>
 
           <tr>
@@ -48,7 +48,7 @@
             <td> <?php echo $infos_idea['ideaplace'] ?></td>
           </tr>
 
-          </tr>
+          <tr>
             <th> Evénement posté le : </th>
             <td> <?php echo $infos_idea['date']; ?> </td>
           </tr>
