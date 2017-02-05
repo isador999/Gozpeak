@@ -20,8 +20,9 @@
 
       <div class="modal-footer">
 			  <div class="col-lg-offset-1 col-lg-10 text-left"> <u>Attention </u>:  Vous devez obligatoirement être connecté à votre compte Gozpeak pour pouvoir proposer une activité ! <br/>
-        Si vous n'avez pas de compte, <a onclick="$('#modalSelectQuery').modal('hide'); showModalInscription()"> Inscrivez-vous </a> gratuitement. <br>  Sinon : <a onclick="$('#modalSelectQuery').modal('hide'); showModalConnection()"> Connectez-vous !</a> </div>
+        Si vous n'avez pas de compte, <a href="#" onclick="$('#modalSelectQueryNotLogged').modal('hide');" data-toggle="modal" data-target="#modalInscription"> Inscrivez-vous </a> gratuitement. <br>  Sinon : <a href="#" onclick="$('#modalSelectQueryNotLogged').modal('hide');" data-toggle="modal" data-target="#modalConnection"> Connectez-vous !</a> </div>
       </div> <!-- END OF FOOTER -->
+
 
     </div> <!-- END OF MODAL-CONTENT -->
   </div>
