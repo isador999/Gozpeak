@@ -38,7 +38,7 @@ if ($logged == 1) {
 						if($eventuser_entries < 1) {
 							/*********** Optionnaly send mail to user ********/
 							/*********** This implies 'select mail' request *********/
-							$message='<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Vous avez été desinscrit de l\'événement avec succès </div> </div>';
+							$message = '<div class="form-group"> <div class="alert alert-success fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Vous avez été desinscrit de l\'événement avec succès </div> </div>';
 						} else {
 							$message = '<div class="form-group"> <div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a> Une erreur est survenue lors de la désinscription à l\'événement - second </div> </div>';
 						}

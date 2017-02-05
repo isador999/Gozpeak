@@ -1,7 +1,6 @@
 <?php
 
 #require_once('lib/sessions.php');
-
 require_once(CONTROLLERS.'init.php');
 require_once(MODELS.'dbconnect.php');
 require_once(MODELS.'list_pagination_functions.php');

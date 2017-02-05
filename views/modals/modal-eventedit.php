@@ -123,10 +123,11 @@
                     <select id="select_lang" class="form-control" name="lang" required>
                       <option value="<?php echo $modal[$_SESSION['language']]['selectlang']['default']['value']; ?>"> <?php echo $modal[$_SESSION['language']]['selectlang']['default']['entry']; ?></option>
                       <?php foreach($minilang[$_SESSION['language']]['icon'] as $key => $lang){ ?>
-                        <option style="background-image:url(<?php echo $lang['png'] ?>); background-repeat: no-repeat; padding-left: 18px; background-size: 19px 19px;" value="<?php echo $lang['value']; ?>"> &nbsp;&nbsp; <?php echo $lang['text']; ?></option>
+                        <option style="background-image:url(<?php echo $baseUrl.'/'.$lang['png'] ?>); background-repeat: no-repeat; padding-left: 18px; background-size: 19px 19px;" value="<?php echo $lang['value']; ?>"> &nbsp;&nbsp; <?php echo $lang['text']; ?></option>
                       <?php } ?>
                     </select>
                   </div>
+
 
                   <div class="col-lg-5 form-group">
                     <label for="langlevel"><?php echo $modal[$_SESSION['language']]['selectlanglevel']['label']; ?>&nbsp;&#42;</label>
