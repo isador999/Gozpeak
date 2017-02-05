@@ -74,7 +74,8 @@ if($_POST) {
 	    $result_connect = check_pass_and_connect($DB, $login_pass, $login_user, $method);
 	    //echo $result_connect;
     } else {
-	    echo "NOK: It seems that nothing (mail|pseudo) exists in BDD";
+	    #echo "NOK: It seems that nothing (mail|pseudo) exists in BDD";
+      $error="bad_user_or_pass";
     }
   }
 }
@@ -129,7 +130,9 @@ if($_POST) {
 if (isset($error)) {
 	if ($error == 'empty_fields') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Veuillez remplir les champs obligatoires pour votre inscription </div> </div>';
-	}	elseif ($error == 'bad_length_user') {
+	}	elseif ($error == 'bad_user_or_pass') {
+		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Le nom d\'utilisateur ou le mot de passe est invalide </div> </div>';
+	} elseif ($error == 'bad_length_user') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> L\'utilisateur de connexion est invalide </div> </div>';
 	}	elseif ($error == 'wrong_password') {
 		$message='<div class="form-group"> <div class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert">&times;</a> Le mot de passe entré est incorrect </div> </div>';
