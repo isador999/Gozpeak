@@ -74,7 +74,7 @@
           <button title="<?php echo $form[$_SESSION['language']]['organizer']['eventedit']['title']; ?>" data-toggle="modal" data-target="#modalEventEdit" onclick="GetEventInfos('<?php echo $baseUrl; ?>', 'idea', '<?php echo urlencode($infos_idea['ideaname']); ?>', '<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['logo']; ?>', '<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['color']; ?>', '<?php echo $modal[$_SESSION['language']]['SelectQuery']['field'][$infos_idea['ideatype']]['img']; ?>', '<?php echo $infos_idea['ideatype']; ?>');" class="btn btn-primary"><?php echo $form[$_SESSION['language']]['organizer']['eventedit']['desc']; ?></button>
         <?php } elseif ($user_registered == 0) { ?>
           <form class="form-horizontal idea-addmember" action="<?php echo $baseUrl.'/controllers/idea_addmember.php' ?>" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="addmember-ideaname" value="<?php echo $infos_idea['ideaname'] ?>">
+            <input type="hidden" name="addmember-ideaname" value="<?php echo $infos_idea['ideaname']; ?>">
             <button type="submit" class="idea-addmember btn btn-primary pull-left"><?php echo $form[$_SESSION['language']]['addmember']['desc']; ?></button>
           </form>
         <?php } elseif ($user_registered == 1) { ?>

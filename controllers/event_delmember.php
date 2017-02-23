@@ -16,6 +16,7 @@ if ($logged == 1) {
 		/***** Check eventname hidden field and select informations if OK *****/
 		$eventname = isset($_POST['delmember-eventname']) ? $_POST['delmember-eventname'] : '';
 		$pseudo_userlogged = isset($_SESSION['profil']) ? $_SESSION['profil'] : '';
+		$pseudo_userlogged = strtolower($pseudo_userlogged);
 
 		if(!empty($eventname) || (!empty($pseudo_userlogged))) {
 			$infos_event = retrieve_event($DB, $eventname);

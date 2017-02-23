@@ -16,6 +16,7 @@ if ($logged == 1) {
 		/***** Check ideaname hidden field and select informations if OK *****/
 		$ideaname = isset($_POST['delmember-ideaname']) ? $_POST['delmember-ideaname'] : '';
 		$pseudo_userlogged = isset($_SESSION['profil']) ? $_SESSION['profil'] : '';
+		$pseudo_userlogged = strtolower($pseudo_userlogged);
 
 		if(!empty($ideaname) || (!empty($pseudo_userlogged))) {
 			$infos_idea = retrieve_idea($DB, $ideaname);

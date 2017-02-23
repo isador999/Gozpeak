@@ -99,7 +99,7 @@ $(document).ready(function() {
                     message: "La date de naissance n'est' pas valide"
                   }
                 }
-            },
+            }
             // profile_languages: {
             //     threshold: 1,
             //     validators: {
@@ -110,20 +110,20 @@ $(document).ready(function() {
             //       }
             //     }
             // },
-            profile_languages: {
-              threshold: 4,
-              validators: {
-                callback: {
-                  message: "Les langues parlées ne sont pas valides",
-                  callback: function(value, validator, $field) {
-                    // Get the selected options
-                    var options = validator.getFieldElements('profile_languages').val();
-                    return (options != null
-                    && options.length >= 1);
-                  }
-                }
-              }
-            }
+            // profile_languages: {
+            //   threshold: 4,
+            //   validators: {
+            //     callback: {
+            //       message: "Les langues parlées ne sont pas valides",
+            //       callback: function(value, validator, $field) {
+            //         // Get the selected options
+            //         var options = validator.getFieldElements('profile_languages').val();
+            //         return (options != null
+            //         && options.length >= 1);
+            //       }
+            //     }
+            //   }
+            // }
         }
     })
 

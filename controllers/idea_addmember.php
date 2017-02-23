@@ -18,6 +18,7 @@ if ($logged == 1) {
 		$pseudo_userlogged = isset($_SESSION['profil']) ? $_SESSION['profil'] : '';
 
 		if(!empty($ideaname) || (!empty($pseudo_userlogged))) {
+			$pseudo_userlogged = strtolower($pseudo_userlogged);
 			$infos_idea = retrieve_idea($DB, $ideaname);
 
 			/***** If date of idea not expired *****/
