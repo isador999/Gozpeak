@@ -29,9 +29,10 @@ header {
   color:rgb(34,78,126);
 }
 
-.city-block {
-  height:20%;
-  margin-bottom: 4%;
+#brand-block {
+  height:10%;
+  color: #16599C;
+  margin-bottom: 2%;
 }
 
 .promote-block {

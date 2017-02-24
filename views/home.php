@@ -9,20 +9,26 @@
 	<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-) <br>
 	<a onclick="showModalCourses()"><i class="fa fa-leanpub"></i> Cliquez pour plus d'informations </a>
 	</div> -->
-	<div class="city-block row">
-		<div class="col-lg-5 pull-left">
-			<h4>
-				<?php echo $generic[$_SESSION['language']]['text'][0]; ?> :
-				<a onclick="showCities()" href="#" title="<?php echo $generic[$_SESSION['language']]['city'][0]['title']; ?>"> <?php echo $generic[$_SESSION['language']]['city'][0]['name']; ?> </a>
-			</h4>
 
-			<div id="ZpeakCities" style="display:none;">
-				<!-- <div> <button class="btn btn-default" title="<?php #echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Rennes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php #echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Nantes </button> <button class="col-lg-offset-1 btn btn-default" title="<?php #echo $generic[$_SESSION['language']]['cities']['title']; ?>" disabled> Gozpeak Tours </button> </div> -->
-				<div> <button class="btn btn-default" disabled>
-				 	Gozpeak est seulement associé à la ville de Rennes actuellement </button>
-				</div>
+	<div id="brand-block" class="row">
+		<!-- <div class="col-lg-5 pull-left"> -->
+		<h3>
+			<div class="col-lg-2">
+	      <img src="views/images/gozpeak_small.png" alt="GoZpeak" />
+	    </div>
+
+			<div class="col-lg-8" style="padding-top:1%;">
+				Votre référence des langues étrangères à Rennes !
 			</div>
-		</div>
+			<?php #echo $generic[$_SESSION['language']]['text'][0]; ?>
+			<!-- <a onclick="showCities()" href="#" title="<?php #echo $generic[$_SESSION['language']]['city'][0]['title']; ?>"> <?php #echo $generic[$_SESSION['language']]['city'][0]['name']; ?> </a> -->
+		</h3>
+
+		<!-- <div id="ZpeakCities" style="display:none;">
+			<div> <button class="btn btn-default" disabled>
+			 	Gozpeak est seulement associé à la ville de Rennes actuellement </button>
+			</div>
+		</div> -->
 	</div>
 
 	<div class="row promote-block">

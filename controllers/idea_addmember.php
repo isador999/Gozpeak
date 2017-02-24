@@ -68,6 +68,8 @@ if (isset($message)) {
   $_SESSION['msg'] = $message;
 }
 
+// echo $message;
+
 #header('location: '.$gozpeak_protocol.$gozpeak_host.'/index.php?page=home');
 header('location: '.$baseUrl.'/index.php?page=idea&query='.$infos_idea['ideatype'].'&idea='.$ideaname);
 

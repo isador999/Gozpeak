@@ -1,5 +1,6 @@
 <div class="corpse container-fluid">
-
+  <?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+  
   <div class="row">
     <div class="text-center activity">
       <a href="<?php echo $baseUrl; ?>/index.php?page=list&query=<?php echo $query?>"><img src="<?php echo $home[$_SESSION['language']][$query]['img'] ?>" style="width:240px;" alt="<?php echo $query?>" title="<?php echo $home[$_SESSION['language']][$query]['title'] ?>" /></a>

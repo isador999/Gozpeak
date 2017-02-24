@@ -1,5 +1,5 @@
 <div class="corpse container-fluid">
-  <?php #if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+  <?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
 
   <div class="row">
     <div class="text-center activity">
