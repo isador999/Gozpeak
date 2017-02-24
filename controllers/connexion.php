@@ -102,12 +102,12 @@ if($_POST) {
 		$active = check_active_account_by_pseudo($DB, $display_user);
 		if ($active == 1) {
 
-			/*****  Set other session Variables *****/
+      /*****  Set other session Variables *****/
       $display_user = ucfirst(strtolower($display_user));
 			$_SESSION['profil'] = $display_user;
 			$_SESSION['logged'] = 1;
       $connectionTime = date("Y-m-d H:i:s");
-      register_connectionTime($DB, $connectionTime, $display_user);
+      #register_connectionTime($DB, $connectionTime, $display_user);
 			/*$_SESSION['premium'] = $premium;*/
 
 			$premium = check_if_premium($DB, $display_user);

@@ -10,32 +10,76 @@
 	<a onclick="showModalCourses()"><i class="fa fa-leanpub"></i> Cliquez pour plus d'informations </a>
 	</div> -->
 
-	<div id="brand-block" class="row">
-		<!-- <div class="col-lg-5 pull-left"> -->
+	<div class="row">
+	<div id="zpeak_carousel" class="carousel slide" data-ride="carousel" style="height: 180px; margin-bottom: 5%;">
+		<!-- Bulles -->
+		<ol class="carousel-indicators">
+			<li data-target="#my_carousel" data-slide-to="0" class="active"></li>
+			<li data-target="#my_carousel" data-slide-to="1"></li>
+			<li data-target="#my_carousel" data-slide-to="2"></li>
+		</ol>
+
+		<!-- Slides -->
+		<div class="carousel-inner">
+			<!-- Page 1 -->
+			<div class="item active">
+				<div class="carousel-page" style="height:150px;">
+					<img src="views/images/gozpeak_small.png" class="img-responsive" style="margin:0px auto;" />
+				</div>
+
+				<div class="carousel-caption branding"> <?php echo "Votre référence des langues étrangères à Rennes !" ?> </div>
+			</div>
+
+			<!-- Page 2 -->
+			<div class="item">
+				<div class="carousel-page"><img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px;"  /></div>
+
+				<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Uno) </div> -->
+			</div>
+
+			<!-- Page 3 -->
+			<div class="item">
+				<div class="carousel-page">
+					<img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px"  />
+				</div>
+
+				<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Dos) </div> -->
+			</div>
+		</div>
+		<!-- Contrôles -->
+		<a class="left carousel-control" href="#my_carousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#my_carousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+</div>
+
+	<!-- <div id="brand-block" class="row">
 		<h3>
 			<div class="col-lg-2">
 	      <img src="views/images/gozpeak_small.png" alt="GoZpeak" />
 	    </div>
 
-			<div class="col-lg-8" style="padding-top:1%;">
+			<div class="col-lg-4" style="padding-top:1%;">
 				Votre référence des langues étrangères à Rennes !
 			</div>
 			<?php #echo $generic[$_SESSION['language']]['text'][0]; ?>
-			<!-- <a onclick="showCities()" href="#" title="<?php #echo $generic[$_SESSION['language']]['city'][0]['title']; ?>"> <?php #echo $generic[$_SESSION['language']]['city'][0]['name']; ?> </a> -->
-		</h3>
+			<a onclick="showCities()" href="#" title="<?php #echo $generic[$_SESSION['language']]['city'][0]['title']; ?>"> <?php #echo $generic[$_SESSION['language']]['city'][0]['name']; ?> </a>
+		</h3> -->
 
 		<!-- <div id="ZpeakCities" style="display:none;">
 			<div> <button class="btn btn-default" disabled>
 			 	Gozpeak est seulement associé à la ville de Rennes actuellement </button>
 			</div>
 		</div> -->
-	</div>
+	<!-- </div> -->
 
 	<div class="row promote-block">
 		<div class="col-lg-4 col-sm-10 col-xs-10">
 			<?php echo $home[$_SESSION['language']]['promote']['text']; ?>
 		</div>
-
 		<div class="col-lg-4 col-md-6 col-sm-6 col-xs-8">
 			<img src="views/images/aperitivo_clara_martes.jpg" class="img-rounded" alt="apéritif_linguistique_la_clara">
 			<div class="caption">

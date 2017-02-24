@@ -29,6 +29,22 @@ header {
   color:rgb(34,78,126);
 }
 
+#zpeak_carousel {
+  background-color: #CECECE;
+  border-radius: 30px;
+}
+
+.carousel-control {
+  background-color: #CECECE;
+  border-radius: 30px;
+}
+
+.branding {
+  font-size: 80%;
+  color: #16599C;
+}
+
+
 #brand-block {
   height:10%;
   color: #16599C;
