@@ -32,6 +32,9 @@ header {
 #zpeak_carousel {
   background-color: #CECECE;
   border-radius: 30px;
+  height: 180px;
+  margin-bottom: 3%;
+  margin-top: 2%;
 }
 
 .carousel-control {
@@ -43,7 +46,6 @@ header {
   font-size: 80%;
   color: #16599C;
 }
-
 
 #brand-block {
   height:10%;

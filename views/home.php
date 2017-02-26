@@ -11,50 +11,50 @@
 	</div> -->
 
 	<div class="row">
-	<div id="zpeak_carousel" class="carousel slide" data-ride="carousel" style="height: 180px; margin-bottom: 5%;">
-		<!-- Bulles -->
-		<ol class="carousel-indicators">
-			<li data-target="#my_carousel" data-slide-to="0" class="active"></li>
-			<li data-target="#my_carousel" data-slide-to="1"></li>
-			<li data-target="#my_carousel" data-slide-to="2"></li>
-		</ol>
+		<div id="zpeak_carousel" class="carousel slide" data-ride="carousel">
+			<!-- Bulles -->
+			<ol class="carousel-indicators">
+				<li data-target="#zpeak_carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#zpeak_carousel" data-slide-to="1"></li>
+				<li data-target="#zpeak_carousel" data-slide-to="2"></li>
+			</ol>
 
-		<!-- Slides -->
-		<div class="carousel-inner">
-			<!-- Page 1 -->
-			<div class="item active">
-				<div class="carousel-page" style="height:150px;">
-					<img src="views/images/gozpeak_small.png" class="img-responsive" style="margin:0px auto;" />
+			<!-- Slides -->
+			<div class="carousel-inner">
+				<!-- Page 1 -->
+				<div class="item active">
+					<div class="carousel-page" style="height:150px;">
+						<img src="views/images/gozpeak_small.png" class="img-responsive" style="margin:0px auto;" />
+					</div>
+
+					<div class="carousel-caption branding"> <?php echo "LA référence des langues étrangères à Rennes !" ?> </div>
 				</div>
 
-				<div class="carousel-caption branding"> <?php echo "Votre référence des langues étrangères à Rennes !" ?> </div>
-			</div>
+				<!-- Page 2 -->
+				<div class="item">
+					<div class="carousel-page"><img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px;"  /></div>
 
-			<!-- Page 2 -->
-			<div class="item">
-				<div class="carousel-page"><img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px;"  /></div>
-
-				<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Uno) </div> -->
-			</div>
-
-			<!-- Page 3 -->
-			<div class="item">
-				<div class="carousel-page">
-					<img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px"  />
+					<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Uno) </div> -->
 				</div>
 
-				<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Dos) </div> -->
+				<!-- Page 3 -->
+				<div class="item">
+					<div class="carousel-page">
+						<img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px"  />
+					</div>
+
+					<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Dos) </div> -->
+				</div>
 			</div>
+			<!-- Contrôles -->
+			<a class="left carousel-control" href="#zpeak_carousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#zpeak_carousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
 		</div>
-		<!-- Contrôles -->
-		<a class="left carousel-control" href="#my_carousel" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-		</a>
-		<a class="right carousel-control" href="#my_carousel" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		</a>
 	</div>
-</div>
 
 	<!-- <div id="brand-block" class="row">
 		<h3>
