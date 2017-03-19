@@ -17,24 +17,25 @@
 			<div class="carousel-inner">
 				<!-- Page 1 -->
 				<div class="item active">
-					<div class="carousel-page" style="height:150px;">
+					<div class="carousel-page" style="height:180px">
 						<img src="views/images/gozpeak_small.png" class="img-responsive" style="margin:0px auto;" />
-					</div>
 
 					<div class="carousel-caption branding"> <?php echo "LA référence des langues étrangères à Rennes !" ?> </div>
+				</div>
 				</div>
 
 				<!-- Page 2 -->
 				<div class="item">
-					<div class="carousel-page"><img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px;"  /></div>
-
+					<div class="carousel-page">
+						<img src="views/images/zpeak_concerto.png" class="img-responsive img-rounded" style="margin:0px auto; max-height: 220px;"  />
+					</div>
 					<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Uno) </div> -->
 				</div>
 
 				<!-- Page 3 -->
 				<div class="item">
 					<div class="carousel-page">
-						<img src="views/images/aperitivo_clara_martes.jpg" class="img-responsive img-rounded" style="margin:0px auto; max-height: 180px"  />
+						<img src="views/images/ateliers_langues.png" class="img-responsive img-rounded" style="margin:0px auto; max-height: 220px"  />
 					</div>
 
 					<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Dos) </div> -->
@@ -78,6 +79,7 @@
 				 <h3> Participez aux événements proposés par Gozpeak et proposez vos propres sorties linguistiques  ! </h3>
 			 </div>
 		</div>
+
 		<div class="col-lg-offset-2 col-lg-4 col-md-6 col-sm-6 col-xs-8">
 			<img src="views/images/aperitivo_clara_martes.jpg" class="img-rounded" alt="apéritif_linguistique_la_clara">
 			<div class="caption">
