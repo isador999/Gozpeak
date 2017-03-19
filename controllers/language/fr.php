@@ -279,7 +279,7 @@ $home['fr']['run']['text'] = "Pratiquer et faire du sport";
 $home['fr']['art']['text'] = "Pratiquer et se cultiver";
 $home['fr']['eat']['text'] = "Pratiquer et manger";
 $home['fr']['party']['text'] = "Pratiquer et boire un verre";
-$home['fr']['promote']['text'] = "Pratiquez vos langues étrangères favorites en rencontrant des natifs ! ";
+$home['fr']['promote']['text'] = "Envie d'apprendre ou de pratiquer une langue étrangère ? ";
 
 
 // MINI-LANG ICON PATHS //

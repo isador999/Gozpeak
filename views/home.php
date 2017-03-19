@@ -4,12 +4,6 @@
 	<script> $("#modalResetPassword").modal() </script>
 <?php } ?>
 <header>
-	<!-- <div class="col-lg-5 pull-left alert alert-info fade in" id="course-message">
-	<a href="" class="close" data-dismiss="alert">&times;</a>
-	<strong><u> Information :</u></strong> <br> Gozpeak proposera aussi des cours particuliers pour apprendre l'espagnol rapidement ;-) <br>
-	<a onclick="showModalCourses()"><i class="fa fa-leanpub"></i> Cliquez pour plus d'informations </a>
-	</div> -->
-
 	<div class="row">
 		<div id="zpeak_carousel" class="carousel slide" data-ride="carousel">
 			<!-- Bulles -->
@@ -77,19 +71,20 @@
 	<!-- </div> -->
 
 	<div class="row promote-block">
-		<div class="col-lg-4 col-sm-10 col-xs-10">
-			<?php echo $home[$_SESSION['language']]['promote']['text']; ?>
+		<div class="col-lg-offset-1 col-lg-5 col-sm-10 col-xs-10">
+			 <h2> <?php echo $home[$_SESSION['language']]['promote']['text']; ?> </h2>
+			 <br>
+			 <div>
+				 <h3> Participez aux événements proposés par Gozpeak et proposez vos propres sorties linguistiques  ! </h3>
+			 </div>
 		</div>
-		<div class="col-lg-4 col-md-6 col-sm-6 col-xs-8">
+		<div class="col-lg-offset-2 col-lg-4 col-md-6 col-sm-6 col-xs-8">
 			<img src="views/images/aperitivo_clara_martes.jpg" class="img-rounded" alt="apéritif_linguistique_la_clara">
 			<div class="caption">
 				<p> El Aperitivo de La Clara </p>
 			</div>
 		</div>
 
-		<div class="col-lg-3 col-md-6 col-sm-5 col-xs-2">
-			<iframe width="440" height="250" src="https://www.youtube.com/embed/sjW8tB3Yw8A"></iframe>
-		</div>
 	</div>
 </header>
 
