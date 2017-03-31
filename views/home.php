@@ -17,29 +17,42 @@
 			<div class="carousel-inner">
 				<!-- Page 1 -->
 				<div class="item active">
-					<div class="carousel-page" style="height:180px">
-						<img src="views/images/gozpeak_small.png" class="img-responsive" style="margin:0px auto;" />
-
-					<div class="carousel-caption branding"> <?php echo "LA référence des langues étrangères à Rennes !" ?> </div>
+					<div class="carousel-page">
+						<img src="views/images/gozpeak_small.png" class="img-responsive" style="margin: 0px auto;" />
+						<div class="branding text-center">
+					 		<?php echo "LA référence des langues étrangères à Rennes !" ?>
+						</div>
+						<img src="views/images/quiz_copy.jpeg" class="img-responsive img-rounded" style="margin:0px auto; height: 320px; max-height: 600px;"  />
 				</div>
 				</div>
 
 				<!-- Page 2 -->
-				<div class="item">
+				<!-- <div class="item">
 					<div class="carousel-page">
-						<img src="views/images/zpeak_concerto.png" class="img-responsive img-rounded" style="margin:0px auto; max-height: 220px;"  />
 					</div>
-					<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Uno) </div> -->
-				</div>
+				</div> -->
 
 				<!-- Page 3 -->
+				<!-- <div class="item">
+					<div class="carousel-page">
+						<img src="views/images/fete_culture_espagnole.jpeg" class="img-responsive img-rounded" style="margin:0px auto; padding-bottom: 45px; height: 500px; max-height: 550px"  />
+					</div>
+				</div> -->
+
+				<!-- Page 4 -->
 				<div class="item">
 					<div class="carousel-page">
-						<img src="views/images/ateliers_langues.png" class="img-responsive img-rounded" style="margin:0px auto; max-height: 220px"  />
+						<img src="views/images/sejour_malaga.jpeg" class="img-responsive img-rounded" style="margin:0px auto; height: 425px; max-height: 550px"  />
 					</div>
-
-					<!-- <div class="carousel-caption branding"> El Aperitivo Clara (Dos) </div> -->
 				</div>
+
+				<!-- Page 4 -->
+				<div class="item">
+					<div class="carousel-page">
+						<img src="views/images/articulo_les_rennais.jpeg" class="img-responsive img-rounded" style="margin:0px auto; height: 430px; max-height: 550px"  />
+					</div>
+				</div>
+
 			</div>
 			<!-- Contrôles -->
 			<a class="left carousel-control" href="#zpeak_carousel" data-slide="prev">
