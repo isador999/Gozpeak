@@ -72,13 +72,13 @@
 	<!-- </div> -->
 
 	<div class="row promote-block">
-		<div class="col-lg-offset-1 col-lg-3 col-sm-10 col-xs-10">
+		<div class="col-lg-offset-1 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-1 col-sm-3">
 			<div>
 				 <iframe width="600" height="440" src="https://www.youtube.com/embed/cXF3-OzHoYU"></iframe>
 		 </div>
 	 </div>
 
-		<div class="col-lg-offset-2 col-lg-4 col-sm-10 col-xs-10">
+		<div class="col-lg-offset-3 col-lg-4 col-md-offset-1 col-md-10 col-sm-12">
 		 <h2> <?php echo $home[$_SESSION['language']]['promote']['text']; ?> </h2>
 		 <br>
 		 <div>
