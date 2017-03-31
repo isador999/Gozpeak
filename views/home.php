@@ -72,7 +72,7 @@
 	<!-- </div> -->
 
 	<div class="row promote-block">
-		<div class="col-lg-offset-1 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-1 col-sm-3">
+		<div class="col-lg-offset-1 col-lg-4 col-md-offset-2 col-md-6 col-sm-offset-1 col-sm-3">
 			<div>
 				 <iframe width="600" height="440" src="https://www.youtube.com/embed/cXF3-OzHoYU"></iframe>
 		 </div>
