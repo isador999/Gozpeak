@@ -22,7 +22,7 @@
 						<div class="branding text-center">
 					 		<?php echo "LA référence des langues étrangères à Rennes !" ?>
 						</div>
-						<img src="views/images/quiz_copy.jpeg" class="img-responsive img-rounded" style="margin:0px auto; height: 320px; max-height: 600px;"  />
+						<img src="views/images/menu_clara.jpg" class="img-responsive img-rounded" style="margin:0px auto; height: 430px; max-height: 600px;"  />
 				</div>
 				</div>
 
@@ -42,14 +42,14 @@
 				<!-- Page 4 -->
 				<div class="item">
 					<div class="carousel-page">
-						<img src="views/images/sejour_malaga.jpeg" class="img-responsive img-rounded" style="margin:0px auto; height: 425px; max-height: 550px"  />
+						<img src="views/images/sejour.jpeg" class="img-responsive img-rounded" style="margin:0px auto; height: 520px; max-height: 600px"  />
 					</div>
 				</div>
 
 				<!-- Page 4 -->
 				<div class="item">
 					<div class="carousel-page">
-						<img src="views/images/articulo_les_rennais.jpeg" class="img-responsive img-rounded" style="margin:0px auto; height: 430px; max-height: 550px"  />
+						<img src="views/images/cartel.jpg" class="img-responsive img-rounded" style="margin:0px auto; height: 520px; max-height: 600px"  />
 					</div>
 				</div>
 
