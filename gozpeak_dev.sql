@@ -184,6 +184,7 @@ CREATE TABLE `members` (
   `premium` tinyint(1) NOT NULL DEFAULT '0',
   `resetpass_token` varchar(12) DEFAULT NULL,
   `resetpass_expiration` datetime DEFAULT NULL,
+  `last_connection` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
