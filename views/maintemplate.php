@@ -46,6 +46,7 @@
     <script type="text/javascript" src="views/js/bootstrap-datetimepicker.fr.js"></script>
     <!-- <script type="text/javascript" src="views/js/typeahead.bundle.min.js"></script>
     <script type="text/javascript" src="views/js/typeahead-scroll.js"></script> -->
+
   </head>
   <!-- <?php #require($this->viewFile); ?> -->
 
@@ -60,6 +61,7 @@
     ?>
 
     <!-- Corpse Views -->
+
     <div class="corpse container-fluid">
       <?php
         if (!empty($ViewPages)) {
@@ -81,4 +83,6 @@
       ?>
     </footer>
   </body>
+
+
 </html>

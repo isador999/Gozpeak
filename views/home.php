@@ -23,7 +23,7 @@
 					 		<?php echo "LA référence des langues étrangères à Rennes !" ?>
 						</div>
 						<img src="views/images/menu_clara.jpg" class="img-responsive img-rounded" style="margin:0px auto; height: 430px; max-height: 600px;"  />
-				</div>
+					</div>
 				</div>
 
 				<!-- Page 2 -->
@@ -111,25 +111,19 @@
 		</div> -->
 </header>
 
+
+<script type="text/javascript" src="views/js/vue.js"></script>
+
+
 <!-- LG and MD -->
-<div class="row text-center activities" style="height:35%;">
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-		<h3><a title="<?php echo $home[$_SESSION['language']]['run']['title']; ?>" href="index.php?page=list&query=run" ><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['run']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['run']['alt']; ?>"/> </span></a></h3>
-		<span><?php echo $home[$_SESSION['language']]['run']['text']; ?></span>
-	</div>
+<div id="app" class="row text-center activities" style="height:35%;">
+	<zpeak-categories
 
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-		<h3><a title="<?php echo $home[$_SESSION['language']]['art']['title']; ?>" href="index.php?page=list&query=art"><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['art']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['art']['alt']; ?>" /> </span></a></h3>
-		<span><?php echo $home[$_SESSION['language']]['art']['text']; ?></span>
-	</div>
-
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-		<h3><a title="<?php echo $home[$_SESSION['language']]['party']['title']; ?>" href="index.php?page=list&query=party"><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['party']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['party']['alt']; ?>" /> </span></a></h3>
-		<span><?php echo $home[$_SESSION['language']]['party']['text']; ?></span>
-	</div>
-
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-		<h3><a title="<?php echo $home[$_SESSION['language']]['eat']['title']; ?>" href="index.php?page=list&query=eat"><span><img style="width:90%; max-width:300px;" src="<?php echo $home[$_SESSION['language']]['eat']['img']; ?>" alt="<?php echo $home[$_SESSION['language']]['eat']['alt']; ?>" /> </span></a></h3>
-		<span><?php echo $home[$_SESSION['language']]['eat']['text']; ?></span>
-	</div>
+		v-for="item in categoriesList"
+		v-bind:category="item"
+		v-bind:key="item.id">
+	</zpeak-categories>
 </div>
+
+<script type="text/javascript" src="views/js/vue-instance.js"></script>
+<!-- <script type="text/javascript" src="views/js/vue-home.js"></script> -->
